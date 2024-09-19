@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { HoveredStudioImgProps } from '../types/worksType';
+import { HoveredStudioImgProps } from '../types/studiosType';
 
 const HoveredStudioImg = ({ imgsrc }: HoveredStudioImgProps) => {
   return <img css={imgContainer} src={imgsrc} />;

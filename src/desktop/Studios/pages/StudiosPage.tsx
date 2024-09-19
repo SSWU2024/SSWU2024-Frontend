@@ -4,10 +4,10 @@ import { ImgBg2Web } from '../../assets/image';
 import PageLayout from '../../Common/PageLayout';
 import Studios from '../components/Studios';
 
-const WorksPage = () => {
+const StudiosPage = () => {
   return (
     <PageLayout>
-      <section css={worksPageContainer}>
+      <section css={studiosPageContainer}>
         <img src={ImgBg2Web} css={bg} />
 
         <p css={title}>Works</p>
@@ -17,9 +17,9 @@ const WorksPage = () => {
   );
 };
 
-export default WorksPage;
+export default StudiosPage;
 
-const worksPageContainer = css`
+const studiosPageContainer = css`
   display: flex;
   flex-direction: column;
   position: relative;
