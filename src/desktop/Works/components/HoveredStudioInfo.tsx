@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import { colors, fonts } from '../../../styles/theme';
 import { IcListRight } from '../../assets/icon';
-import { HoveredStudioInfoProps } from '../types/studiosType';
+import { HoveredStudioInfoProps } from '../types/worksType';
 
 const HoveredStudioInfo = ({ description }: HoveredStudioInfoProps) => {
   return (
