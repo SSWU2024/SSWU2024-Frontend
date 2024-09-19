@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import React, { useState } from 'react';
 
+import { Link } from 'react-router-dom';
 import { STUDIO_DETAILS } from '../../../constants/studioDetail';
 import { colors, fonts } from '../../../styles/theme';
 import HoveredStudioImg from './HoveredStudioImg';
@@ -14,20 +15,22 @@ const Studios = () => {
       css={totalStudioContainer}
       onMouseLeave={() => setHoveredStudio('')}
     >
-      {STUDIO_DETAILS.map((detail, idx) => {
-        const { studio, description, imgsrc } = detail;
+      {STUDIO_DETAILS.map((detail) => {
+        const { id, studio, advisor, description, imgsrc, url } = detail;
         const isHoveredStudio = studio === hoveredStudio;
 
         return (
-          <React.Fragment key={idx}>
+          <React.Fragment key={id}>
             {isHoveredStudio && <HoveredStudioImg imgsrc={imgsrc} />}
             <article css={studioContainer}>
-              <span
+              <Link
+                to={url}
+                state={{ id, studio, advisor, description }}
                 css={studioName(isHoveredStudio)}
                 onMouseEnter={() => setHoveredStudio(studio)}
               >
                 {studio}
-              </span>
+              </Link>
 
               {isHoveredStudio && (
                 <HoveredStudioInfo description={description} />
