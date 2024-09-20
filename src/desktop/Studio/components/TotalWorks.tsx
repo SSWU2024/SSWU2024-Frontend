@@ -164,7 +164,7 @@ const TotalWorks = ({ id }: TotalWorksProps) => {
               src={isHoveredGif ? hoveredSrc : imgPath}
               css={workImg}
               onMouseEnter={() => handleHoverImg(images, workTitle)}
-              onMouseLeave={() => handleLeaveImg}
+              onMouseLeave={handleLeaveImg}
             />
             <p css={title(isHoveredImg)}>{workTitle}</p>
             <div css={designerNameContainer}>
