@@ -23,8 +23,7 @@ const footerContainer = css`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
-  bottom: 0;
+  position: absolute;
 
   width: 100%;
   padding: 1rem 6rem;

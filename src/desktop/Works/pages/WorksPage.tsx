@@ -25,7 +25,7 @@ const worksPageContainer = css`
   position: relative;
 
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 5.3rem);
   padding: calc(100vh / 5.33) calc(100vh / 2.03) calc(100vh / 5.47)
     calc(100vh / 13.5);
 `;
