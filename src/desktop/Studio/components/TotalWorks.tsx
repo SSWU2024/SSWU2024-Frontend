@@ -156,6 +156,8 @@ const TotalWorks = ({ id }: TotalWorksProps) => {
         const { workTitle, images, designers } = work;
         const { imgPath } = images[0];
         const isHoveredGif = hoveredSrc && workTitle === hovredTitle;
+        const isHoveredImg = workTitle === hovredTitle;
+
         return (
           <article key={workTitle} css={workContainer}>
             <img
@@ -164,12 +166,12 @@ const TotalWorks = ({ id }: TotalWorksProps) => {
               onMouseEnter={() => handleHoverImg(images, workTitle)}
               onMouseLeave={() => handleLeaveImg}
             />
-            <p css={title}>{workTitle}</p>
+            <p css={title(isHoveredImg)}>{workTitle}</p>
             <div css={designerNameContainer}>
               {designers.map((designer) => {
                 const { name } = designer;
                 return (
-                  <p key={name} css={designerName}>
+                  <p key={name} css={designerName(isHoveredImg)}>
                     {name}
                   </p>
                 );
@@ -207,10 +209,10 @@ const workImg = css`
   object-fit: cover;
 `;
 
-const title = css`
+const title = (isHoveredImg: boolean) => css`
   margin-bottom: calc(100vh / 202.5);
 
-  color: ${colors.gray900};
+  color: ${isHoveredImg ? colors.pink300 : colors.gray900};
   ${fonts.desktop_body_semi_20};
 `;
 
@@ -219,7 +221,7 @@ const designerNameContainer = css`
   align-items: center;
 `;
 
-const designerName = css`
-  color: ${colors.gray900};
+const designerName = (isHoveredImg: boolean) => css`
+  color: ${isHoveredImg ? colors.pink300 : colors.gray900};
   ${fonts.desktop_body_reg_18};
 `;
