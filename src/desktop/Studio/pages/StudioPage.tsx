@@ -24,8 +24,8 @@ const StudioPage = () => {
       <section css={studioPageContainer}>
         <img src={ImgBg2Web} css={bg} />
 
-        <StudioInfo info={state} />
-        <TotalWorks id={id} />
+        {state && <StudioInfo info={state} />}
+        {id && <TotalWorks id={id} />}
       </section>
     </PageLayout>
   );
