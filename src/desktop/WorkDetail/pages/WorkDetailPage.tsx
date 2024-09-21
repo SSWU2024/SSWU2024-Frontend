@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import { useEffect } from 'react';
 import PageLayout from '../../Common/PageLayout';
 import Designers from '../components/Designers';
 import DetailImages from '../components/DetailImages';
@@ -89,6 +90,10 @@ const DUMMY = {
 const WorkDetailPage = () => {
   const { workTitle, workBody, workEngBody, thumbnail, images, designers } =
     DUMMY;
+
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
 
   return (
     <PageLayout>
