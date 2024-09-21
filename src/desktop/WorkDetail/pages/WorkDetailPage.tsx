@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import { useState } from 'react';
 import { colors, fonts } from '../../../styles/theme';
 import PageLayout from '../../Common/PageLayout';
 
@@ -67,12 +68,48 @@ const DUMMY = {
         },
       ],
     },
+    {
+      name: '서아름',
+      engName: 'Areum Seo',
+      email: 'arooming123@gmail.com',
+      workTitle: '서비스 디자인',
+      studioNm: '디자인씽킹스튜디오',
+      images: [
+        {
+          imgPath:
+            'https://i.pinimg.com/236x/13/26/c1/1326c1f3ec2a54bfc0893a0c582360de.jpg',
+          fileFormat: 'jpeg',
+        },
+      ],
+    },
   ],
 };
 
 const WorkDetailPage = () => {
   const { workTitle, workBody, workEngBody, thumbnail, images, designers } =
     DUMMY;
+
+  const [hoveredImg, setHoveredImg] = useState({
+    hoveredTitle: '',
+    hoveredName: '',
+  });
+
+  const { hoveredName, hoveredTitle } = hoveredImg;
+
+  const handleHoverImg = (workTitle: string, name: string) => {
+    setHoveredImg({
+      hoveredTitle: workTitle,
+      hoveredName: name,
+    });
+  };
+
+  const handleLeaveImg = () => {
+    setHoveredImg({
+      hoveredTitle: '',
+      hoveredName: '',
+    });
+  };
+
   return (
     <PageLayout>
       <section css={workDetailContainer}>
@@ -110,15 +147,34 @@ const WorkDetailPage = () => {
             {designers.map((designer) => {
               const { name, engName, email, workTitle, studioNm, images } =
                 designer;
-              const { imgPath } = images.length > 1 ? images[1] : images[0];
+              const { imgPath, fileFormat } =
+                images.length > 1 ? images[1] : images[0];
+              const isStaticImg = fileFormat !== 'gif';
+              const isHoveredImg =
+                hoveredTitle === workTitle && hoveredName === name;
+
               return (
-                <article css={designerInfoContainer}>
+                <article key={name} css={designerInfoContainer}>
                   <div css={designerInfo}>
                     <p css={designerKrName}>{name}</p>
                     <p css={designerEngName}>{engName}</p>
                     <p css={designerEmail}>{email}</p>
                   </div>
-                  <img src={imgPath} css={designersWork} />
+                  <img
+                    src={imgPath}
+                    css={designersWork(isHoveredImg)}
+                    onMouseEnter={() =>
+                      isStaticImg && handleHoverImg(workTitle, name)
+                    }
+                    onMouseLeave={handleLeaveImg}
+                  ></img>
+
+                  {isHoveredImg && (
+                    <div css={hoveredInfo}>
+                      <p css={hoveredWorkTitle}>{workTitle}</p>
+                      <p css={hoveredStudioNm}>{studioNm}</p>
+                    </div>
+                  )}
                 </article>
               );
             })}
@@ -230,6 +286,7 @@ const designerInfoContainer = css`
   gap: 1.6rem;
   justify-content: center;
   flex-direction: column;
+  position: relative;
 `;
 
 const designerInfo = css`
@@ -257,7 +314,31 @@ const designerEmail = css`
   ${fonts.desktop_body_reg_16};
 `;
 
-const designersWork = css`
+const designersWork = (isHoveredImg: boolean) => css`
   width: 30.6rem;
   aspect-ratio: 1/1;
+
+  ${isHoveredImg &&
+  css`
+    filter: brightness(0.5);
+  `}
+`;
+
+const hoveredInfo = css`
+  display: flex;
+  gap: 0.4rem;
+  flex-direction: column;
+  position: absolute;
+  bottom: 1.6rem;
+  left: 1.6rem;
+`;
+
+const hoveredWorkTitle = css`
+  color: ${colors.white};
+  ${fonts.desktop_body_semi_20};
+`;
+
+const hoveredStudioNm = css`
+  color: ${colors.white};
+  ${fonts.desktop_body_reg_18};
 `;
