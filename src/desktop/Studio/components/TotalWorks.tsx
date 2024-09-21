@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import { useState } from 'react';
 import { colors, fonts } from '../../../styles/theme';
 import { TotalWorksProps } from '../types/studioType';
 
@@ -10,6 +11,11 @@ const DUMMY = {
         {
           imgPath: 'https://xen-api.linkareer.com/attachments/80334',
           fileFormat: 'jpeg',
+        },
+        {
+          imgPath:
+            'https://i.pinimg.com/originals/a0/89/e7/a089e759d7e713b4eba7b6cda87b6c8a.gif',
+          fileFormat: 'gif',
         },
       ],
       designers: [
@@ -59,6 +65,11 @@ const DUMMY = {
             'https://i.pinimg.com/236x/13/26/c1/1326c1f3ec2a54bfc0893a0c582360de.jpg',
           fileFormat: 'jpeg',
         },
+        {
+          imgPath:
+            'https://i.pinimg.com/originals/a0/89/e7/a089e759d7e713b4eba7b6cda87b6c8a.gif',
+          fileFormat: 'gif',
+        },
       ],
       designers: [
         {
@@ -104,24 +115,63 @@ const DUMMY = {
 
 const TotalWorks = ({ id }: TotalWorksProps) => {
   const { works } = DUMMY;
-
   // 빌드 에러 방지를 위한 코드 -> id는 추후 api 통신에 쓰일 예정
   console.log(id);
+
+  const [hoveredImg, setHoveredImg] = useState({
+    hoveredSrc: '',
+    hovredTitle: '',
+  });
+
+  const { hoveredSrc, hovredTitle } = hoveredImg;
+
+  const handleHoverImg = (
+    images: Array<{ imgPath: string; fileFormat: string }>,
+    title: string,
+  ) => {
+    if (images.length > 1) {
+      const { imgPath } = images[1];
+      setHoveredImg({
+        hoveredSrc: imgPath,
+        hovredTitle: title,
+      });
+    } else {
+      setHoveredImg({
+        hoveredSrc: '',
+        hovredTitle: title,
+      });
+    }
+  };
+
+  const handleLeaveImg = () => {
+    setHoveredImg({
+      hoveredSrc: '',
+      hovredTitle: '',
+    });
+  };
 
   return (
     <article css={worksContainer}>
       {works.map((work) => {
         const { workTitle, images, designers } = work;
         const { imgPath } = images[0];
+        const isHoveredGif = hoveredSrc && workTitle === hovredTitle;
+        const isHoveredImg = workTitle === hovredTitle;
+
         return (
           <article key={workTitle} css={workContainer}>
-            <img src={imgPath} css={workImg} />
-            <p css={title}>{workTitle}</p>
+            <img
+              src={isHoveredGif ? hoveredSrc : imgPath}
+              css={workImg}
+              onMouseEnter={() => handleHoverImg(images, workTitle)}
+              onMouseLeave={handleLeaveImg}
+            />
+            <p css={title(isHoveredImg)}>{workTitle}</p>
             <div css={designerNameContainer}>
               {designers.map((designer) => {
                 const { name } = designer;
                 return (
-                  <p key={name} css={designerName}>
+                  <p key={name} css={designerName(isHoveredImg)}>
                     {name}
                   </p>
                 );
@@ -149,6 +199,9 @@ const workContainer = css`
 `;
 
 const workImg = css`
+  min-width: 30.6rem;
+  min-height: 30.6rem;
+
   width: 100%;
   height: 100%;
   margin-bottom: calc(100vh / 67.5);
@@ -156,10 +209,10 @@ const workImg = css`
   object-fit: cover;
 `;
 
-const title = css`
+const title = (isHoveredImg: boolean) => css`
   margin-bottom: calc(100vh / 202.5);
 
-  color: ${colors.gray900};
+  color: ${isHoveredImg ? colors.pink300 : colors.gray900};
   ${fonts.desktop_body_semi_20};
 `;
 
@@ -168,7 +221,7 @@ const designerNameContainer = css`
   align-items: center;
 `;
 
-const designerName = css`
-  color: ${colors.gray900};
+const designerName = (isHoveredImg: boolean) => css`
+  color: ${isHoveredImg ? colors.pink300 : colors.gray900};
   ${fonts.desktop_body_reg_18};
 `;
