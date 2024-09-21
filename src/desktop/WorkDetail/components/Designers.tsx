@@ -1,17 +1,7 @@
 import { css } from '@emotion/react';
 import { useState } from 'react';
 import { colors, fonts } from '../../../styles/theme';
-
-interface DesignersProps {
-  designers: Array<{
-    name: string;
-    engName: string;
-    email: string;
-    workTitle: string;
-    studioNm: string;
-    images: Array<{ imgPath: string; fileFormat: string }>;
-  }>;
-}
+import { DesignersProps } from '../types/workDetailTypes';
 
 const Designers = ({ designers }: DesignersProps) => {
   const [hoveredImg, setHoveredImg] = useState({

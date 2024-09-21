@@ -1,11 +1,5 @@
 import { css } from '@emotion/react';
-
-interface DetailImagesProps {
-  images: Array<{
-    sort: number;
-    imgPath: string;
-  }>;
-}
+import { DetailImagesProps } from '../types/workDetailTypes';
 
 const DetailImages = ({ images }: DetailImagesProps) => {
   return (

@@ -1,12 +1,6 @@
 import { css } from '@emotion/react';
 import { colors, fonts } from '../../../styles/theme';
-
-interface DetailsProps {
-  workTitle: string;
-  designers: Array<{ name: string }>;
-  workBody: string;
-  workEngBody: string;
-}
+import { DetailsProps } from '../types/workDetailTypes';
 
 const Details = ({
   workTitle,
