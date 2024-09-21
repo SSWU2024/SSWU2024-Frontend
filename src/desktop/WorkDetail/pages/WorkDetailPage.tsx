@@ -167,7 +167,7 @@ const WorkDetailPage = () => {
                       isStaticImg && handleHoverImg(workTitle, name)
                     }
                     onMouseLeave={handleLeaveImg}
-                  ></img>
+                  />
 
                   {isHoveredImg && (
                     <div css={hoveredInfo}>
@@ -277,16 +277,20 @@ const designedByTitle = css`
 
 const totalDesigners = css`
   display: flex;
-  gap: 3.2rem;
+  gap: calc(100% / 45);
   align-items: center;
 `;
 
 const designerInfoContainer = css`
   display: flex;
-  gap: 1.6rem;
+  gap: calc(100vh / 50.6);
   justify-content: center;
   flex-direction: column;
   position: relative;
+
+  min-width: 30.6rem;
+
+  width: calc(100% / 4.7);
 `;
 
 const designerInfo = css`
@@ -296,14 +300,14 @@ const designerInfo = css`
 `;
 
 const designerKrName = css`
-  margin-bottom: 0.4rem;
+  margin-bottom: calc(100vh / 202.5);
 
   color: ${colors.gray900};
   ${fonts.desktop_body_semi_20};
 `;
 
 const designerEngName = css`
-  margin-bottom: 0.8rem;
+  margin-bottom: calc(100vh / 101.25);
 
   color: ${colors.gray900};
   ${fonts.desktop_body_reg_18};
@@ -315,8 +319,12 @@ const designerEmail = css`
 `;
 
 const designersWork = (isHoveredImg: boolean) => css`
-  width: 30.6rem;
-  aspect-ratio: 1/1;
+  min-height: 30.6rem;
+
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  object-fit: cover;
 
   ${isHoveredImg &&
   css`
@@ -326,7 +334,7 @@ const designersWork = (isHoveredImg: boolean) => css`
 
 const hoveredInfo = css`
   display: flex;
-  gap: 0.4rem;
+  gap: calc(100vh / 202.5);
   flex-direction: column;
   position: absolute;
   bottom: 1.6rem;
