@@ -1,18 +1,7 @@
 import { css } from '@emotion/react';
 import { Link } from 'react-router-dom';
 import { colors, fonts } from '../../../styles/theme';
-
-interface DesignerWorksProps {
-  works: Array<{
-    url: string;
-    workTitle: string;
-    studioNm: string;
-    images: Array<{
-      imgPath: string;
-      fileFormat: string;
-    }>;
-  }>;
-}
+import { DesignerWorksProps } from '../types/designerType';
 
 const DesignerWorks = ({ works }: DesignerWorksProps) => {
   const updateStudioUrl = (studioNm: string) => {

@@ -1,11 +1,6 @@
 import { css } from '@emotion/react';
 import { colors, fonts } from '../../../styles/theme';
-
-interface DesignerContactProps {
-  email: string;
-  instagram: string;
-  behance: string;
-}
+import { DesignerContactProps } from '../types/designerType';
 
 const DesignerContact = ({
   email,
