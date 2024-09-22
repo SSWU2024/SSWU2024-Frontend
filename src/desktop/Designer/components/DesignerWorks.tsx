@@ -40,7 +40,7 @@ const DesignerWorks = ({ works }: DesignerWorksProps) => {
         const studioUrl = updateStudioUrl(studioNm);
 
         return (
-          <Link to={`${studioUrl}/${url}`}>
+          <Link key={url} to={`${studioUrl}/${url}`}>
             <img src={imgPath} css={workImg} />
             <div css={workInfoContainer}>
               <p css={title}>{workTitle}</p>
@@ -56,14 +56,22 @@ const DesignerWorks = ({ works }: DesignerWorksProps) => {
 export default DesignerWorks;
 
 const worksContainer = css`
-  display: flex;
-  gap: 3.2rem;
+  display: grid;
+  column-gap: 3.2rem;
+
+  justify-content: end;
   align-items: center;
+  grid-template-columns: repeat(2, 1fr);
+
+  min-width: 64.4rem;
+
+  width: calc(100% / 2.24);
 `;
 
 const workImg = css`
-  width: 30.6rem;
-  height: 30.6rem;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
 `;
 
 const workInfoContainer = css`

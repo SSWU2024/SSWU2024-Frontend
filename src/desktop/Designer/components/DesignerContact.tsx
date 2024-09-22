@@ -35,14 +35,14 @@ export default DesignerContact;
 
 const contactContainer = css`
   display: flex;
-  gap: 2rem;
+  gap: calc(100vh / 40.5);
   justify-content: center;
   flex-direction: column;
 `;
 
 const contact = css`
   display: flex;
-  gap: 0.4rem;
+  gap: calc(100vh / 202.5);
   justify-content: center;
   flex-direction: column;
 `;

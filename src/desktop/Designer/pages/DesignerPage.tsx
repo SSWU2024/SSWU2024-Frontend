@@ -49,8 +49,9 @@ const DesignerPage = () => {
 
   return (
     <PageLayout>
-      <img src={ImgBg3Web} css={bg} />
       <section css={designerPageContainer}>
+        <img src={ImgBg3Web} css={bg} />
+
         <article css={basicInfo}>
           <p css={designerKrName}>{name}</p>
           <p css={designerEngName}>{engName}</p>
@@ -73,28 +74,34 @@ const DesignerPage = () => {
 
 export default DesignerPage;
 
+const designerPageContainer = css`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  width: 100%;
+  height: calc(100vh - 5.3rem);
+  padding: calc(100vh / 6.13) calc(100% / 24) calc(100vh / 31.15);
+`;
+
 const bg = css`
   position: absolute;
-  top: 0;
+  top: 5.2rem;
   left: 0;
   z-index: -1;
 
-  width: 100%;
-  height: calc(100vh - 5.2rem);
-`;
+  min-height: calc(100vh - 5.2rem);
 
-const designerPageContainer = css`
-  padding: 8rem 6rem 0;
-  margin: 5.2rem 0 2.6rem;
+  height: 100%;
 `;
 
 const basicInfo = css`
   display: flex;
-  gap: 0.8rem;
+  gap: calc(100vh / 101.25);
   justify-content: center;
   flex-direction: column;
 
-  margin-bottom: 2.4rem;
+  margin-bottom: calc(100vh / 33.75);
 `;
 
 const designerKrName = css`
@@ -117,5 +124,5 @@ const additionalInfo = css`
   justify-content: space-between;
   align-items: flex-start;
 
-  margin-top: 11.8rem;
+  margin-top: calc(100vh / 6.86);
 `;
