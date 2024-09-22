@@ -1,9 +1,42 @@
 import { css } from '@emotion/react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { colors, fonts } from '../../../styles/theme';
 import { DesignerWorksProps } from '../types/designerType';
 
 const DesignerWorks = ({ works }: DesignerWorksProps) => {
+  const [hoveredImg, setHoveredImg] = useState({
+    hoveredSrc: '',
+    hoveredUrl: '',
+  });
+
+  const { hoveredSrc, hoveredUrl } = hoveredImg;
+
+  const handleHoverImg = (
+    images: Array<{ imgPath: string; fileFormat: string }>,
+    url: string,
+  ) => {
+    if (images.length > 1) {
+      const { imgPath } = images[1];
+      setHoveredImg({
+        hoveredSrc: imgPath,
+        hoveredUrl: url,
+      });
+    } else {
+      setHoveredImg({
+        hoveredSrc: '',
+        hoveredUrl: url,
+      });
+    }
+  };
+
+  const handleLeaveImg = () => {
+    setHoveredImg({
+      hoveredSrc: '',
+      hoveredUrl: '',
+    });
+  };
+
   const updateStudioUrl = (studioNm: string) => {
     switch (studioNm) {
       case '시각디자인스튜디오 A':
@@ -36,15 +69,22 @@ const DesignerWorks = ({ works }: DesignerWorksProps) => {
     <article css={worksContainer}>
       {works.map((work) => {
         const { url, workTitle, studioNm, images } = work;
-        const { imgPath } = images.length > 1 ? images[1] : images[0];
+        const { imgPath } = images[0];
         const studioUrl = updateStudioUrl(studioNm);
+        const isHoveredImg = url === hoveredUrl;
+        const isHoveredGif = images.length > 1 && isHoveredImg;
 
         return (
           <Link key={url} to={`${studioUrl}/${url}`}>
-            <img src={imgPath} css={workImg} />
+            <img
+              src={isHoveredGif ? hoveredSrc : imgPath}
+              css={workImg}
+              onMouseEnter={() => handleHoverImg(images, url)}
+              onMouseLeave={handleLeaveImg}
+            />
             <div css={workInfoContainer}>
-              <p css={title}>{workTitle}</p>
-              <p css={studioName}>{studioNm}</p>
+              <p css={title(isHoveredImg)}>{workTitle}</p>
+              <p css={studioName(isHoveredImg)}>{studioNm}</p>
             </div>
           </Link>
         );
@@ -82,12 +122,12 @@ const workInfoContainer = css`
   margin-top: 1.2rem;
 `;
 
-const title = css`
-  color: ${colors.gray900};
+const title = (isHoveredImg: boolean) => css`
+  color: ${isHoveredImg ? colors.pink300 : colors.gray900};
   ${fonts.desktop_body_semi_20};
 `;
 
-const studioName = css`
-  color: ${colors.gray900};
+const studioName = (isHoveredImg: boolean) => css`
+  color: ${isHoveredImg ? colors.pink300 : colors.gray900};
   ${fonts.desktop_body_reg_18};
 `;
