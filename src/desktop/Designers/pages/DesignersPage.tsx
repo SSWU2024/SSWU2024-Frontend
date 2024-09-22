@@ -1,10 +1,15 @@
 import { css } from '@emotion/react';
+import { useEffect } from 'react';
 import { colors, fonts } from '../../../styles/theme';
 import PageLayout from '../../Common/PageLayout';
 import { ImgBg3Web } from '../../assets/image';
 import TotalDesigners from '../components/TotalDesigners';
 
 const DesignersPage = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0 });
+  }, []);
+
   return (
     <PageLayout>
       <img src={ImgBg3Web} css={bg} />
