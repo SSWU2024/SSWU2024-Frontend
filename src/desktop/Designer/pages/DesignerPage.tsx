@@ -55,9 +55,8 @@ const DesignerPage = () => {
         <article css={basicInfo}>
           <p css={designerKrName}>{name}</p>
           <p css={designerEngName}>{engName}</p>
+          <p css={mainMajor}>{major}</p>
         </article>
-
-        <span css={mainMajor}>{major}</span>
 
         <article css={additionalInfo}>
           <DesignerContact
@@ -76,6 +75,7 @@ export default DesignerPage;
 
 const designerPageContainer = css`
   display: flex;
+  justify-content: center;
   flex-direction: column;
   position: relative;
 
@@ -97,19 +97,20 @@ const bg = css`
 
 const basicInfo = css`
   display: flex;
-  gap: calc(100vh / 101.25);
   justify-content: center;
   flex-direction: column;
-
-  margin-bottom: calc(100vh / 33.75);
 `;
 
 const designerKrName = css`
+  margin-bottom: calc(100vh / 101.25);
+
   color: ${colors.gray900};
   ${fonts.desktop_title_semi_28};
 `;
 
 const designerEngName = css`
+  margin-bottom: calc(100vh / 33.75);
+
   ${colors.gray900};
   ${fonts.desktop_body_reg_20};
 `;
