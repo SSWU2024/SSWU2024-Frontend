@@ -154,11 +154,10 @@ const TotalDesigners = () => {
 export default TotalDesigners;
 const totalDesigners = css`
   display: grid;
-  gap: 4rem 3.2rem;
+  gap: calc(100vh / 20.25) calc(100% / 41.18);
   grid-template-columns: repeat(6, 1fr);
 `;
 
 const designerImg = css`
-  width: 19.3rem;
-  height: 39rem;
+  width: 100%;
 `;
