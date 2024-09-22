@@ -1,11 +1,13 @@
 import { css } from '@emotion/react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { colors, fonts } from '../../../styles/theme';
 import { TotalWorksProps } from '../types/studioType';
 
 const DUMMY = {
   works: [
     {
+      url: '1',
       workTitle: '제목 1',
       images: [
         {
@@ -28,6 +30,7 @@ const DUMMY = {
       ],
     },
     {
+      url: '2',
       workTitle: '제목 2',
       images: [
         {
@@ -43,6 +46,7 @@ const DUMMY = {
       ],
     },
     {
+      url: '3',
       workTitle: '제목 3',
       images: [
         {
@@ -58,6 +62,7 @@ const DUMMY = {
       ],
     },
     {
+      url: '4',
       workTitle: '제목 4',
       images: [
         {
@@ -81,6 +86,7 @@ const DUMMY = {
       ],
     },
     {
+      url: '5',
       workTitle: '제목 5',
       images: [
         {
@@ -96,6 +102,7 @@ const DUMMY = {
       ],
     },
     {
+      url: '6',
       workTitle: '제목 6',
       images: [
         {
@@ -153,30 +160,32 @@ const TotalWorks = ({ id }: TotalWorksProps) => {
   return (
     <article css={worksContainer}>
       {works.map((work) => {
-        const { workTitle, images, designers } = work;
+        const { workTitle, images, designers, url } = work;
         const { imgPath } = images[0];
         const isHoveredGif = hoveredSrc && workTitle === hovredTitle;
         const isHoveredImg = workTitle === hovredTitle;
 
         return (
           <article key={workTitle} css={workContainer}>
-            <img
-              src={isHoveredGif ? hoveredSrc : imgPath}
-              css={workImg}
-              onMouseEnter={() => handleHoverImg(images, workTitle)}
-              onMouseLeave={handleLeaveImg}
-            />
-            <p css={title(isHoveredImg)}>{workTitle}</p>
-            <div css={designerNameContainer}>
-              {designers.map((designer) => {
-                const { name } = designer;
-                return (
-                  <p key={name} css={designerName(isHoveredImg)}>
-                    {name}
-                  </p>
-                );
-              })}
-            </div>
+            <Link to={url}>
+              <img
+                src={isHoveredGif ? hoveredSrc : imgPath}
+                css={workImg}
+                onMouseEnter={() => handleHoverImg(images, workTitle)}
+                onMouseLeave={handleLeaveImg}
+              />
+              <p css={title(isHoveredImg)}>{workTitle}</p>
+              <div css={designerNameContainer}>
+                {designers.map((designer) => {
+                  const { name } = designer;
+                  return (
+                    <p key={name} css={designerName(isHoveredImg)}>
+                      {name}
+                    </p>
+                  );
+                })}
+              </div>
+            </Link>
           </article>
         );
       })}
@@ -203,7 +212,8 @@ const workImg = css`
   min-height: 30.6rem;
 
   width: 100%;
-  height: 100%;
+  aspect-ratio: 1 / 1;
+
   margin-bottom: calc(100vh / 67.5);
 
   object-fit: cover;
@@ -218,6 +228,7 @@ const title = (isHoveredImg: boolean) => css`
 
 const designerNameContainer = css`
   display: flex;
+  gap: 0.8rem;
   align-items: center;
 `;
 
