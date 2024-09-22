@@ -75,13 +75,13 @@ const DesignerWorks = ({ works }: DesignerWorksProps) => {
         const isHoveredGif = images.length > 1 && isHoveredImg;
 
         return (
-          <Link key={url} to={`${studioUrl}/${url}`}>
-            <img
-              src={isHoveredGif ? hoveredSrc : imgPath}
-              css={workImg}
-              onMouseEnter={() => handleHoverImg(images, url)}
-              onMouseLeave={handleLeaveImg}
-            />
+          <Link
+            key={url}
+            to={`${studioUrl}/${url}`}
+            onMouseEnter={() => handleHoverImg(images, url)}
+            onMouseLeave={handleLeaveImg}
+          >
+            <img src={isHoveredGif ? hoveredSrc : imgPath} css={workImg} />
             <div css={workInfoContainer}>
               <p css={title(isHoveredImg)}>{workTitle}</p>
               <p css={studioName(isHoveredImg)}>{studioNm}</p>
