@@ -3,6 +3,7 @@
 // ex) <img src={Sample01Image} /> 이런 식!
 
 export { default as ImgBg2Web } from './img_bg2_web.png';
+export { default as ImgBg3Web } from './img_bg3_web.png';
 export { default as ImgSymbolDesignThinking } from './img_symbol_design_thinking.png';
 export { default as ImgSymbolInformation } from './img_symbol_informaion.png';
 export { default as ImgSymbolMotion } from './img_symbol_motion.png';
