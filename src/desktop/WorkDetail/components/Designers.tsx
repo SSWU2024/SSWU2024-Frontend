@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { colors, fonts } from '../../../styles/theme';
 import { DesignersProps } from '../types/workDetailTypes';
 
@@ -37,22 +38,25 @@ const Designers = ({ designers }: DesignersProps) => {
           const isStaticImg = fileFormat !== 'gif';
           const isHoveredImg =
             hoveredTitle === workTitle && hoveredName === name;
+          const designerUrl = engName.split(' ').join('-');
 
           return (
             <article key={name} css={designerInfoContainer}>
-              <div css={designerInfo}>
-                <p css={designerKrName}>{name}</p>
-                <p css={designerEngName}>{engName}</p>
-                <p css={designerEmail}>{email}</p>
-              </div>
-              <img
-                src={imgPath}
-                css={designersWork(isHoveredImg)}
-                onMouseEnter={() =>
-                  isStaticImg && handleHoverImg(workTitle, name)
-                }
-                onMouseLeave={handleLeaveImg}
-              />
+              <Link to={`/designers/${designerUrl}`}>
+                <div css={designerInfo}>
+                  <p css={designerKrName}>{name}</p>
+                  <p css={designerEngName}>{engName}</p>
+                  <p css={designerEmail}>{email}</p>
+                </div>
+                <img
+                  src={imgPath}
+                  css={designersWork(isHoveredImg)}
+                  onMouseEnter={() =>
+                    isStaticImg && handleHoverImg(workTitle, name)
+                  }
+                  onMouseLeave={handleLeaveImg}
+                />
+              </Link>
 
               {isHoveredImg && (
                 <div css={hoveredInfo}>
