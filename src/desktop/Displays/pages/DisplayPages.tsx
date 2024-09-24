@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
-import DisplayImages from '../\bcomponents/DisplayImages';
-import DisplayInfo from '../\bcomponents/DisplayInfo';
+import DisplayImages from '../components/DisplayImages';
+import DisplayInfo from '../components/DisplayInfo';
 import PageLayout from '../../Common/PageLayout';
 import { ImgBg2Web } from '../../assets/image';
 
