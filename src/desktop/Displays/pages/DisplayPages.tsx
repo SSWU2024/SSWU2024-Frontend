@@ -69,6 +69,9 @@ const DisplayPages = () => {
         <img src={ImgBg2Web} css={bg} />
         {displays.map((display) => {
           const { name, studioList, images } = display;
+          const firstColomnImages = images.slice(0, 3);
+          const secondColumnImages = images.slice(3, 5);
+          const thirdColumnImages = images.slice(5, 7);
 
           return (
             <article key={name} css={displayContainer}>
@@ -86,10 +89,26 @@ const DisplayPages = () => {
               </div>
 
               <article css={imgContainer}>
-                {images.map((image, idx) => {
-                  const { imgPath } = image;
-                  return <img key={idx} src={imgPath} />;
-                })}
+                <div css={firstImagesContainer}>
+                  {firstColomnImages.map((image, idx) => {
+                    const { imgPath } = image;
+                    return <img key={idx} src={imgPath} css={img} />;
+                  })}
+                </div>
+
+                <div css={secondImagesContainer}>
+                  {secondColumnImages.map((image, idx) => {
+                    const { imgPath } = image;
+                    return <img key={idx} src={imgPath} css={img} />;
+                  })}
+                </div>
+
+                <div css={thirdImagesContainer}>
+                  {thirdColumnImages.map((image, idx) => {
+                    const { imgPath } = image;
+                    return <img key={idx} src={imgPath} css={img} />;
+                  })}
+                </div>
               </article>
             </article>
           );
@@ -145,7 +164,68 @@ const studioName = css`
 `;
 
 const imgContainer = css`
-  display: grid;
+  /* display: grid;
   gap: 0.8rem;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: calc(100% / 4) calc(100% / 2.05) calc(100% / 4);
+
+  grid-auto-flow: row; */
+  display: flex;
+  gap: 0.8rem;
+`;
+
+const img = css`
+  width: 100%;
+  object-fit: cover;
+`;
+
+const firstImagesContainer = css`
+  display: flex;
+  gap: 0.8rem;
+  flex-direction: column;
+
+  width: calc(100% / 4);
+
+  img:nth-of-type(1) {
+    height: 25.5rem;
+  }
+
+  img:nth-of-type(2) {
+    height: 26.1rem;
+  }
+
+  img:nth-of-type(3) {
+    height: 27.6rem;
+  }
+`;
+
+const secondImagesContainer = css`
+  display: flex;
+  gap: 0.8rem;
+  flex-direction: column;
+
+  width: calc(100% / 2.05);
+
+  img:nth-of-type(1) {
+    height: 46rem;
+  }
+
+  img:nth-of-type(2) {
+    height: 34rem;
+  }
+`;
+
+const thirdImagesContainer = css`
+  display: flex;
+  gap: 0.8rem;
+  flex-direction: column;
+
+  width: calc(100% / 4);
+
+  img:nth-of-type(1) {
+    height: 41rem;
+  }
+
+  img:nth-of-type(2) {
+    height: 39rem;
+  }
 `;
