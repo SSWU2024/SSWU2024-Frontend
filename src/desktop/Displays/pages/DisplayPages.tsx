@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
 import DisplayImages from '../\bcomponents/DisplayImages';
 import DisplayInfo from '../\bcomponents/DisplayInfo';
-import { colors, fonts } from '../../../styles/theme';
 import PageLayout from '../../Common/PageLayout';
 import { ImgBg2Web } from '../../assets/image';
 
@@ -108,24 +107,4 @@ const displayContainer = css`
   display: flex;
   justify-content: center;
   flex-direction: column;
-`;
-
-const displayName = css`
-  margin-bottom: calc(100vh / 101.25);
-
-  color: ${colors.gray900};
-  ${fonts.desktop_title_semi_28};
-`;
-
-const studiosContainer = css`
-  display: flex;
-  gap: calc(100% / 360);
-  align-items: center;
-
-  margin-bottom: calc(100vh / 20.25);
-`;
-
-const studioName = css`
-  color: ${colors.gray900};
-  ${fonts.desktop_body_reg_20};
 `;
