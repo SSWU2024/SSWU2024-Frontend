@@ -122,11 +122,11 @@ export default DisplayPages;
 
 const displaysContainer = css`
   display: flex;
-  gap: 8rem;
+  gap: calc(100vh / 10.125);
   justify-content: center;
   flex-direction: column;
 
-  padding: 13.2rem 6rem 14rem;
+  padding: calc(100vh / 6.1364) calc(100% / 24) calc(100vh / 5.7857);
 `;
 
 const bg = css`
@@ -140,13 +140,12 @@ const bg = css`
 
 const displayContainer = css`
   display: flex;
-  gap: 4rem;
   justify-content: center;
   flex-direction: column;
 `;
 
 const displayName = css`
-  margin-bottom: 0.8rem;
+  margin-bottom: calc(100vh / 101.25);
 
   color: ${colors.gray900};
   ${fonts.desktop_title_semi_28};
@@ -154,8 +153,10 @@ const displayName = css`
 
 const studiosContainer = css`
   display: flex;
-  gap: 0.4rem;
+  gap: calc(100% / 360);
   align-items: center;
+
+  margin-bottom: calc(100vh / 20.25);
 `;
 
 const studioName = css`
@@ -164,68 +165,78 @@ const studioName = css`
 `;
 
 const imgContainer = css`
-  /* display: grid;
-  gap: 0.8rem;
-  grid-template-columns: calc(100% / 4) calc(100% / 2.05) calc(100% / 4);
-
-  grid-auto-flow: row; */
   display: flex;
-  gap: 0.8rem;
-`;
-
-const img = css`
-  width: 100%;
-  object-fit: cover;
+  gap: calc(100% / 180);
 `;
 
 const firstImagesContainer = css`
   display: flex;
-  gap: 0.8rem;
+  gap: calc(100vh / 101.25);
   flex-direction: column;
 
   width: calc(100% / 4);
 
   img:nth-of-type(1) {
-    height: 25.5rem;
+    min-height: 25.5rem;
+
+    height: calc(100vh / 3.18);
   }
 
   img:nth-of-type(2) {
-    height: 26.1rem;
+    min-height: 26.1rem;
+
+    height: calc(100vh / 3.1034);
   }
 
   img:nth-of-type(3) {
-    height: 27.6rem;
+    min-height: 27.6rem;
+
+    height: calc(100vh / 2.9348);
   }
 `;
 
 const secondImagesContainer = css`
   display: flex;
-  gap: 0.8rem;
+  gap: calc(100vh / 101.25);
   flex-direction: column;
+  min-width: 64.4rem;
 
   width: calc(100% / 2.05);
 
   img:nth-of-type(1) {
-    height: 46rem;
+    min-height: 46rem;
+
+    height: calc(100vh / 1.7609);
   }
 
   img:nth-of-type(2) {
-    height: 34rem;
+    min-height: 34rem;
+
+    height: calc(100vh / 2.38);
   }
 `;
 
 const thirdImagesContainer = css`
   display: flex;
-  gap: 0.8rem;
+  gap: calc(100vh / 101.25);
   flex-direction: column;
 
   width: calc(100% / 4);
 
   img:nth-of-type(1) {
-    height: 41rem;
+    min-height: 41rem;
+
+    height: calc(100vh / 1.9756);
   }
 
   img:nth-of-type(2) {
-    height: 39rem;
+    min-height: 39rem;
+
+    height: calc(100vh / 2.0769);
   }
+`;
+
+const img = css`
+  width: 100%;
+  object-fit: cover;
 `;
