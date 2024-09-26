@@ -20,7 +20,6 @@ const mainContainer = css`
   padding-top: 5.8rem;
 `;
 
-// props 사용은 요렇게!
 const text = css`
   ${fonts.mobile_title_reg_32};
 `;

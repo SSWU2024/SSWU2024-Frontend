@@ -1,12 +1,13 @@
 import { css } from '@emotion/react';
 import { MouseEvent, useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { colors, fonts } from '../../styles/theme';
 import { IcGnbGraphicMobile, IcHamburger } from '../assets/icon';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const dropDownRef = useRef<HTMLDivElement>(null);
+  const location = useLocation(); // 현재 위치 가져오기
 
   const toggleDropDown = () => {
     setIsMenuOpen((prev) => !prev);
@@ -30,6 +31,10 @@ const Header = () => {
       );
     };
   }, []);
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location]);
 
   return (
     <div css={dropDownBackground(isMenuOpen)}>
@@ -67,7 +72,7 @@ const dropDownBackground = (isMenuOpen: boolean) => css`
   width: 100%;
   height: 100%;
 
-  background-color: ${isMenuOpen ? 'rgba(34, 34, 34, 0.5)' : 'transparent'};
+  background-color: ${isMenuOpen ? 'rgba(31, 27, 28, 0.5)' : 'transparent'};
 `;
 
 const headerContainer = css`
