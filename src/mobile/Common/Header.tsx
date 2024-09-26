@@ -1,13 +1,15 @@
 import { css } from '@emotion/react';
 import { MouseEvent, useEffect, useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { GNB } from '../../constants/headerConst';
 import { colors, fonts } from '../../styles/theme';
 import { IcGnbGraphicMobile, IcHamburger } from '../assets/icon';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const dropDownRef = useRef<HTMLDivElement>(null);
-  const location = useLocation(); // 현재 위치 가져오기
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const toggleDropDown = () => {
     setIsMenuOpen((prev) => !prev);
@@ -40,7 +42,7 @@ const Header = () => {
     <div css={dropDownBackground(isMenuOpen)}>
       <header css={headerContainer} ref={dropDownRef}>
         <div css={headerCss}>
-          <IcGnbGraphicMobile />
+          <IcGnbGraphicMobile onClick={() => navigate('/')} />
           <button onClick={toggleDropDown}>
             <IcHamburger />
           </button>
@@ -48,15 +50,13 @@ const Header = () => {
 
         {isMenuOpen && (
           <div css={dropDownMenu}>
-            <Link to="/works" css={dropDownItem}>
-              Works
-            </Link>
-            <Link to="/designers" css={dropDownItem}>
-              Designers
-            </Link>
-            <Link to="/displays" css={dropDownItem}>
-              Display
-            </Link>
+            {GNB.map(({ url, name }) => {
+              return (
+                <Link to={url} key={url} css={dropDownItem}>
+                  {name}
+                </Link>
+              );
+            })}
           </div>
         )}
       </header>
