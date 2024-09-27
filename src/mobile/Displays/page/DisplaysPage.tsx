@@ -2,19 +2,19 @@ import { css } from '@emotion/react';
 import { fonts } from '../../../styles/theme';
 import PageLayout from '../../Common/PageLayout';
 
-function MainPage() {
+const DisplaysPage = () => {
   return (
     <PageLayout>
-      <div css={mainContainer}>
-        <p css={text}>메인페이지</p>
+      <div css={displayCss}>
+        <p css={text}>Display</p>
       </div>
     </PageLayout>
   );
-}
+};
 
-export default MainPage;
+export default DisplaysPage;
 
-const mainContainer = css`
+const displayCss = css`
   width: 100%;
   height: calc(100dvh - 10rem);
   padding-top: 5.8rem;
