@@ -36,7 +36,7 @@ const PreparatoryCommitteeContainer = css`
 
 const bg = css`
   position: absolute;
-  top: 5.2rem;
+  bottom: 0;
   left: 0;
   z-index: -1;
 
