@@ -16,6 +16,10 @@ const COMMITTEE = [
     name: '차예린',
   },
   {
+    department: '',
+    name: '',
+  },
+  {
     department: '디자인팀장',
     name: '신수빈',
   },
@@ -31,6 +35,7 @@ const COMMITTEE = [
     department: '디자인팀',
     name: '황태경',
   },
+
   {
     department: '홍보콘텐츠팀장',
     name: '한소연',
@@ -42,6 +47,10 @@ const COMMITTEE = [
   {
     department: '홍보콘텐츠팀',
     name: '정유진',
+  },
+  {
+    department: '',
+    name: '',
   },
 ];
 
@@ -69,10 +78,11 @@ export default PreparatoryCommittee;
 
 const PreparatoryCommitteeContainer = css`
   display: flex;
-  gap: 8rem;
+  gap: calc(100vh / 10.125);
   flex-direction: column;
 
-  padding: 20rem 0 23.6rem 6rem;
+  padding: calc(100vh / 4.05) calc(100% / 1.5912) calc(100vh / 3.6818)
+    calc(100% / 24);
 `;
 
 const bg = css`
@@ -80,6 +90,9 @@ const bg = css`
   top: 5.2rem;
   left: 0;
   z-index: -1;
+
+  width: 100%;
+  height: calc(100vh - 10.4rem);
 `;
 
 const title = css`
@@ -89,15 +102,17 @@ const title = css`
 
 const committeeContainer = css`
   display: grid;
-  gap: 4.8rem 4.4rem;
+  gap: calc(100vh / 16.875) calc(100% / 32.7273);
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
 `;
 
 const personContainer = css`
   display: flex;
-  gap: 0.8rem;
+  gap: calc(100vh / 101.25);
   flex-direction: column;
+
+  min-width: 8.5rem;
 `;
 
 const committeeDepartment = css`
