@@ -1,18 +1,61 @@
 import { css, keyframes } from '@emotion/react';
+import { useEffect, useState } from 'react';
 import { colors, fonts } from '../../../styles/theme';
-import { ImgMainPeople } from '../../assets/image';
+import { ImgBubble, ImgMainPeople } from '../../assets/image';
 
 const InteractiveViews = () => {
+  const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+
   const renderSlideBannerItems = () => {
     return Array.from({ length: 10 }, (_, index) => (
       <img key={index} src={ImgMainPeople} css={individualsPeopleImg} />
     ));
   };
 
+  const textEventHandler = () => {
+    const text = document.querySelector('.text') as HTMLElement;
+
+    if (text) {
+      if (text.getBoundingClientRect().top < windowHeight - 500) {
+        text.style.opacity = '0';
+      } else {
+        text.style.opacity = '1';
+      }
+    }
+  };
+
+  const bubbleEventHandler = () => {
+    const bubble = document.querySelector('.bubble') as HTMLElement;
+
+    if (bubble) {
+      if (bubble.getBoundingClientRect().top < windowHeight - 515) {
+        setTimeout(() => {
+          bubble.style.opacity = '1';
+        }, 300);
+      } else {
+        bubble.style.opacity = '0';
+      }
+    }
+  };
+
+  useEffect(() => {
+    const handleResize = () => setWindowHeight(window.innerHeight);
+
+    window.addEventListener('scroll', textEventHandler);
+    window.addEventListener('scroll', bubbleEventHandler);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('scroll', textEventHandler);
+      window.removeEventListener('scroll', bubbleEventHandler);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [windowHeight]);
+
   return (
     <section css={interactiveViewContainer}>
       <article css={individualsContainer}>
-        <div css={individualsTitleContainer}>
+        <div className="text" css={individualsTitleContainer}>
           <span css={individualsTitle}>Moments of Individuals</span>
           <span
             css={individualsDesc}
@@ -25,6 +68,7 @@ const InteractiveViews = () => {
             {renderSlideBannerItems()}
           </div>
         </article>
+        <img className="bubble" src={ImgBubble} css={bubble} />
       </article>
     </section>
   );
@@ -52,6 +96,8 @@ const individualsTitleContainer = css`
   gap: calc(100vh / 22.5);
   align-items: center;
   flex-direction: column;
+
+  opacity: 1;
 `;
 
 const individualsTitle = css`
@@ -71,10 +117,18 @@ const individualsDesc = css`
 `;
 
 const sliderBannerContainer = css`
+  position: relative;
   overflow: hidden;
 
   width: 100%;
   height: calc(100vh / 2.2253);
+`;
+
+const bubble = css`
+  position: absolute;
+  top: 100rem;
+
+  opacity: 0;
 `;
 
 const infiniteSlide = keyframes`
