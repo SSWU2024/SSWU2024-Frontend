@@ -31,8 +31,10 @@ const InteractiveViews = () => {
       if (bubble.getBoundingClientRect().top < windowHeight - 515) {
         setTimeout(() => {
           bubble.style.opacity = '1';
-        }, 300);
+          bubble.style.transform = 'translateY(-100px)';
+        }, 200);
       } else {
+        bubble.style.transform = 'translateY(200px)';
         bubble.style.opacity = '0';
       }
     }
@@ -98,6 +100,7 @@ const individualsTitleContainer = css`
   flex-direction: column;
 
   opacity: 1;
+  transition: opacity 2s ease;
 `;
 
 const individualsTitle = css`
@@ -129,6 +132,8 @@ const bubble = css`
   top: 100rem;
 
   opacity: 0;
+  transition: opacity 3s ease;
+  transition: transform 2s ease;
 `;
 
 const infiniteSlide = keyframes`
