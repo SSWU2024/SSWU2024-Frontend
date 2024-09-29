@@ -3,6 +3,12 @@ import { colors, fonts } from '../../../styles/theme';
 import { ImgMainPeople } from '../../assets/image';
 
 const InteractiveViews = () => {
+  const renderSlideBannerItems = () => {
+    return Array.from({ length: 10 }, (_, index) => (
+      <img key={index} src={ImgMainPeople} css={individualsPeopleImg} />
+    ));
+  };
+
   return (
     <section css={interactiveViewContainer}>
       <article css={individualsContainer}>
@@ -15,8 +21,8 @@ const InteractiveViews = () => {
 
         <article css={sliderBannerContainer}>
           <div css={animationBox}>
-            <img src={ImgMainPeople} css={individualsPeopleImg} />
-            <img src={ImgMainPeople} css={individualsPeopleImg} />
+            {renderSlideBannerItems()}
+            {renderSlideBannerItems()}
           </div>
         </article>
       </article>
@@ -65,8 +71,10 @@ const individualsDesc = css`
 `;
 
 const sliderBannerContainer = css`
-  display: flex;
   overflow: hidden;
+
+  width: 100%;
+  height: calc(100vh / 2.2253);
 `;
 
 const infiniteSlide = keyframes`
@@ -74,21 +82,23 @@ const infiniteSlide = keyframes`
        transform: translateX(0);
      }
      100% {
-       transform: translateX(-100%);
+       transform: translateX(-500%);
      }
  `;
 
 const animationBox = css`
   display: flex;
 
+  width: calc(100% / 0.5894);
+  height: 100%;
+
   animation: ${infiniteSlide};
-  animation-duration: 30s;
+  animation-duration: 100s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 `;
 
 const individualsPeopleImg = css`
-  height: 36.4rem;
-
-  /* object-fit: fill; */
+  width: calc(100% / 0.5894);
+  height: 100%;
 `;
