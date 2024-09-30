@@ -5,12 +5,7 @@ import { ImgBubble, ImgMainPeople } from '../../assets/image';
 
 const InteractiveViews = () => {
   const [windowHeight, setWindowHeight] = useState(window.innerHeight);
-
-  const renderSlideBannerItems = () => {
-    return Array.from({ length: 10 }, (_, index) => (
-      <img key={index} src={ImgMainPeople} css={individualsPeopleImg} />
-    ));
-  };
+  const [isVerticalScrollLocked, setIsVerticalScrollLocked] = useState(false);
 
   const textEventHandler = () => {
     const text = document.querySelector('.text') as HTMLElement;
@@ -40,11 +35,48 @@ const InteractiveViews = () => {
     }
   };
 
+  const peopleSliderEventHandler = () => {
+    const peopleSlider = document.querySelector('.peopleSlider') as HTMLElement;
+    const pageHeight =
+      document.documentElement.scrollHeight - window.innerHeight;
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    peopleSlider.scrollLeft = 0;
+
+    if (peopleSlider && pageHeight / scrollTop <= 2.3) {
+      // 세로 스크롤 잠금 활성화
+      setIsVerticalScrollLocked(true);
+      // 현재 스크롤 위치로 고정 -> 이거 왜 안되지 ?
+      window.scrollTo(0, scrollTop);
+
+      // 세로 스크롤 비율 계산
+      const scrollRatio = scrollTop / pageHeight;
+      // 가로 스크롤 최대 거리
+      const maxScrollLeft = peopleSlider.scrollWidth - peopleSlider.clientWidth;
+
+      // 가로 스크롤 이동
+      peopleSlider.scrollLeft = maxScrollLeft * scrollRatio;
+
+      if (peopleSlider.scrollLeft >= maxScrollLeft) {
+        // 가로 스크롤이 끝에 도달하면 세로 스크롤 잠금 해제
+        setIsVerticalScrollLocked(false);
+        if (!isVerticalScrollLocked) {
+          window.addEventListener('scroll', textEventHandler);
+          window.addEventListener('scroll', bubbleEventHandler);
+        }
+      }
+    }
+  };
+
+  console.log(isVerticalScrollLocked);
+
   useEffect(() => {
     const handleResize = () => setWindowHeight(window.innerHeight);
 
-    window.addEventListener('scroll', textEventHandler);
-    window.addEventListener('scroll', bubbleEventHandler);
+    window.addEventListener('scroll', () => {
+      if (!isVerticalScrollLocked) {
+        peopleSliderEventHandler();
+      }
+    });
     window.addEventListener('resize', handleResize);
 
     return () => {
@@ -64,10 +96,9 @@ const InteractiveViews = () => {
           >{`성신여대 디자인과 졸업생들은 각자의 삶 속에서 다양한 일상과 경험을 마주하며 자신만의 길을 걸어갑니다.\n각자의 개성과 비전이 교차하는 복잡한 관계 속에서 우리는 유기적 네트워크를 이루고, 그 안에서 의미와 가치를 재창조합니다.\n이는 우리 모두를 더 크고 의미 있는 흐름 속으로 이끌어 갑니다.`}</span>
         </div>
 
-        <article css={sliderBannerContainer}>
+        <article className="peopleSlider" css={sliderBannerContainer}>
           <div css={animationBox}>
-            {renderSlideBannerItems()}
-            {renderSlideBannerItems()}
+            <img src={ImgMainPeople} css={individualsPeopleImg} />
           </div>
         </article>
         <img className="bubble" src={ImgBubble} css={bubble} />
@@ -151,10 +182,10 @@ const animationBox = css`
   width: calc(100% / 0.5894);
   height: 100%;
 
-  animation: ${infiniteSlide};
+  /* animation: ${infiniteSlide};
   animation-duration: 100s;
   animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  animation-iteration-count: infinite; */
 `;
 
 const individualsPeopleImg = css`
