@@ -42,7 +42,7 @@ const Header = () => {
 
   return (
     <>
-      {isMenuOpen && <div css={dropDownBackground(isMenuOpen)} />}
+      {isMenuOpen && <div css={dropDownBackground} />}
       <header css={headerContainer} ref={dropDownRef}>
         <div css={headerCss}>
           <IcGnbGraphicMobile onClick={() => navigate('/')} />
@@ -69,7 +69,7 @@ const Header = () => {
 
 export default Header;
 
-const dropDownBackground = (isMenuOpen: boolean) => css`
+const dropDownBackground = css`
   position: absolute;
 
   width: 100%;
