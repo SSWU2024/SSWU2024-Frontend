@@ -17,8 +17,8 @@ const router = createBrowserRouter([
   { path: '/displays', element: <DisplaysPage /> },
 ]);
 
-const MobileRouter = () => {
+const TabletRouter = () => {
   return <RouterProvider router={router} />;
 };
 
-export default MobileRouter;
+export default TabletRouter;
