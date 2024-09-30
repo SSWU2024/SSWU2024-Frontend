@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import { Link } from 'react-router-dom';
 import { STUDIO_DETAILS } from '../../../constants/studioDetail';
 import { colors, fonts } from '../../../styles/theme';
 import PageLayout from '../../Common/PageLayout';
@@ -12,11 +13,17 @@ const WorksPage = () => {
           <h1 css={title}>Works</h1>
           <ul>
             {STUDIO_DETAILS.map((detail) => {
+              const { id, studio, advisor, description, imgsrc, url } = detail;
               return (
-                <li key={detail.id} css={detailContainer} onClick={() => {}}>
+                <Link
+                  to={url}
+                  state={{ studio, advisor, description, imgsrc }}
+                  key={id}
+                  css={detailContainer}
+                >
                   <h1 css={studioTitle}>{detail.studio}</h1>
                   <span css={advisorCss}>지도교수 {detail.advisor}</span>
-                </li>
+                </Link>
               );
             })}
           </ul>
