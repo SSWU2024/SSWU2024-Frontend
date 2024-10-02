@@ -12,7 +12,8 @@ const Header = () => {
   const navigate = useNavigate();
 
   const toggleDropDown = () => {
-    setIsMenuOpen((prev) => !prev);
+    setIsMenuOpen(true);
+    document.body.style.overflow = 'hidden';
   };
 
   const handleOutsideDropDown = (e: CustomEvent<MouseEvent>) => {
@@ -20,6 +21,7 @@ const Header = () => {
       dropDownRef.current &&
       !dropDownRef.current.contains(e.target as Node)
     ) {
+      document.body.style.overflow = '';
       setIsMenuOpen(false);
     }
   };
@@ -39,7 +41,8 @@ const Header = () => {
   }, [location]);
 
   return (
-    <div css={dropDownBackground(isMenuOpen)}>
+    <>
+      {isMenuOpen && <div css={dropDownBackground} />}
       <header css={headerContainer} ref={dropDownRef}>
         <div css={headerCss}>
           <IcGnbGraphicMobile onClick={() => navigate('/')} />
@@ -60,26 +63,26 @@ const Header = () => {
           </div>
         )}
       </header>
-    </div>
+    </>
   );
 };
 
 export default Header;
 
-const dropDownBackground = (isMenuOpen: boolean) => css`
-  position: fixed;
+const dropDownBackground = css`
+  position: absolute;
 
   width: 100%;
   height: 100%;
 
-  background-color: ${isMenuOpen ? 'rgba(31, 27, 28, 0.5)' : 'transparent'};
+  background-color: rgb(31 27 28 / 50%);
 `;
 
 const headerContainer = css`
   display: flex;
   flex-direction: column;
-  position: relative;
-  z-index: 2;
+  position: fixed;
+  z-index: 999;
 
   width: 100%;
 `;
