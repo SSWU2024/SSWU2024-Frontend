@@ -51,6 +51,9 @@ const worksContainer = (url: string) => css`
 
 const title = css`
   padding: 3.2rem 0;
+
+  color: ${colors.gray900};
+
   ${fonts.mobile_title_reg_32};
 `;
 
