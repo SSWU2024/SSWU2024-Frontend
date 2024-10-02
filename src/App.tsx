@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import DesktopRouter from './DesktopRouter';
 import MobileRouter from './MobileRouter';
 import { GlobalStyles } from './styles/GlobalStyles';
+import TabletRouter from './TabletRouter';
 
 function App() {
   const [queryClient] = useState(() => new QueryClient());
@@ -21,10 +22,20 @@ function App() {
     };
   }, []);
 
+  const renderRouter = () => {
+    if (width >= 375 && width < 768) {
+      return <MobileRouter />;
+    } else if (width >= 768 && width < 1440) {
+      return <TabletRouter />;
+    } else {
+      return <DesktopRouter />;
+    }
+  };
+
   return (
     <QueryClientProvider client={queryClient}>
       <GlobalStyles />
-      {width >= 375 && width < 1440 ? <MobileRouter /> : <DesktopRouter />}
+      {renderRouter()}
     </QueryClientProvider>
   );
 }
