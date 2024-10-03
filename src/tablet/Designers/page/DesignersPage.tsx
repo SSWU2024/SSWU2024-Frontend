@@ -1,5 +1,47 @@
+import { css } from '@emotion/react';
+import DesignerList from '../../../mobile/Designers/components/DesignerList';
+import { colors, fonts } from '../../../styles/theme';
+import PageLayout from '../../Common/PageLayout';
+import { ImgBg3Tablet } from '../../assets/image';
+
 const DesignersPage = () => {
-  return <div>DesignersPage</div>;
+  return (
+    <PageLayout>
+      <div css={designersCss(ImgBg3Tablet)}>
+        <p css={text}>Designers</p>
+        <DesignerList />
+      </div>
+    </PageLayout>
+  );
 };
 
 export default DesignersPage;
+
+const designersCss = (url: string) => css`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  width: 100%;
+
+  @media (768px <= width < 1025px) {
+    padding: 5.8rem 2.4rem 10rem;
+  }
+
+  @media (1024px <= width < 1440px) {
+    padding: 5.8rem 5rem 10rem;
+  }
+
+  background-position: top 5.6rem left 0;
+  background-size: contain;
+  background-image: url(${url});
+  background-repeat: no-repeat;
+`;
+
+const text = css`
+  padding: 5.4rem 0 6rem;
+
+  color: ${colors.gray900};
+
+  ${fonts.tablet_title_reg_36};
+`;

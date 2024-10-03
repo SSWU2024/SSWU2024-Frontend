@@ -111,6 +111,13 @@ export const fonts = {
     letter-spacing: -1%;
   `,
 
+  tablet_title_reg_36: css`
+    font-weight: 400;
+    font-size: 3.6rem;
+    line-height: 100%;
+    letter-spacing: -1%;
+  `,
+
   tablet_body_semi_16: css`
     font-weight: 600;
     font-size: 1.6rem;
