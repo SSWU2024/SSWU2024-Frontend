@@ -25,11 +25,11 @@ const designersCss = (url: string) => css`
   width: 100%;
 
   @media (768px <= width < 1025px) {
-    padding: 5.8rem 2.4rem 10rem;
+    padding: 5.6rem 2.4rem 10rem;
   }
 
-  @media (1024px <= width < 1440px) {
-    padding: 5.8rem 5rem 10rem;
+  @media (1025px <= width < 1440px) {
+    padding: 5.6rem 4rem 10rem;
   }
 
   background-position: top 5.6rem left 0;
@@ -39,7 +39,13 @@ const designersCss = (url: string) => css`
 `;
 
 const text = css`
-  padding: 5.4rem 0 6rem;
+  @media (768px <= width < 1025px) {
+    padding: 5.4rem 0 6rem;
+  }
+
+  @media (1025px <= width < 1440px) {
+    padding: 5.4rem 4rem 6rem;
+  }
 
   color: ${colors.gray900};
 
