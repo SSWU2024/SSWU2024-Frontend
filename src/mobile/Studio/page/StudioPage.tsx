@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { ImgBg2Mobile } from '../../assets/image';
 import PageLayout from '../../Common/PageLayout';
 
-import StudioInfoMobile from '../components/StudioInfo';
+import StudioInfoMobile from '../components/MStudioInfo';
 import WorkList from '../components/WorkList';
 
 const StudioPage = () => {
@@ -33,7 +33,7 @@ const studioContainer = (url: string) => css`
   padding: 7.4rem 1.6rem 10rem;
 
   background-position: top 5.8rem left 0;
-  background-size: cover;
+  background-size: contain;
   background-image: url(${url});
   background-repeat: no-repeat;
 `;

@@ -240,7 +240,61 @@ export const DESIGNER_TOTAL_WORKS = {
         ],
       },
       {
+        workId: 12,
+        workTitle: '디자인 5',
+        images: [
+          {
+            imgPath: 'https://i.postimg.cc/TpnVbQ8t/IMG-0541.jpg',
+            fildFormat: 'jpg',
+          },
+        ],
+        designers: [
+          {
+            name: '박소영',
+          },
+          {
+            name: '이하은',
+          },
+        ],
+      },
+      {
         workId: 13,
+        workTitle: '디자인 5',
+        images: [
+          {
+            imgPath: 'https://i.postimg.cc/TpnVbQ8t/IMG-0541.jpg',
+            fildFormat: 'jpg',
+          },
+        ],
+        designers: [
+          {
+            name: '박소영',
+          },
+          {
+            name: '이하은',
+          },
+        ],
+      },
+      {
+        workId: 14,
+        workTitle: '디자인 5',
+        images: [
+          {
+            imgPath: 'https://i.postimg.cc/TpnVbQ8t/IMG-0541.jpg',
+            fildFormat: 'jpg',
+          },
+        ],
+        designers: [
+          {
+            name: '박소영',
+          },
+          {
+            name: '이하은',
+          },
+        ],
+      },
+      {
+        workId: 15,
         workTitle: '디자인 5',
         images: [
           {
