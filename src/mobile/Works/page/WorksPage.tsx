@@ -13,11 +13,12 @@ const WorksPage = () => {
           <h1 css={title}>Works</h1>
           <ul>
             {STUDIO_DETAILS.map((detail) => {
-              const { id, studio, advisor, description, imgsrc, url } = detail;
+              const { id, studio, advisor, description, mobileImgSrc, url } =
+                detail;
               return (
                 <Link
                   to={url}
-                  state={{ studio, advisor, description, imgsrc }}
+                  state={{ studio, advisor, description, mobileImgSrc }}
                   key={id}
                   css={detailContainer}
                 >
