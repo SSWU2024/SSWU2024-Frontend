@@ -38,29 +38,17 @@ export default WorkList;
 const listContainer = css`
   display: flex;
 
-  @media (375px <= width <= 432px) {
-    gap: 1rem;
+  /* 모바일 */
+  @media (375px <= width < 768px) {
+    column-gap: 1.2rem;
   }
 
-  @media (432px < width <= 552px) {
-    gap: 1.2rem;
+  /* 태블릿 */
+  @media (768px <= width < 1440px) {
+    column-gap: 1.6rem;
   }
 
-  @media (552px < width <= 582px) {
-    gap: 1rem;
-  }
-
-  @media (582px < width <=682px) {
-    gap: 1.1rem;
-  }
-
-  @media (682px < width <=767px) {
-    gap: 1.3rem;
-  }
-
-  @media (width >= 768px) {
-    gap: 1.2rem;
-  }
+  row-gap: 3.2rem;
 
   flex-wrap: wrap;
 
@@ -68,24 +56,26 @@ const listContainer = css`
 `;
 
 const listItem = css`
+  /* 모바일 (2 컬럼) */
   @media (375px <= width <= 552px) {
-    width: 48.5%;
-    height: auto;
+    flex: 0 0 calc(50% - 0.6rem);
   }
 
+  /* 모바일 (3 컬럼) */
   @media (552px<= width < 768px) {
-    width: 32%;
+    flex: 0 0 calc(33.3333% - 0.8rem);
   }
 
-  @media (width> 768px) {
-    width: 24%;
+  /* 태블릿 (4 컬럼) */
+  @media (768px <= width < 1440px) {
+    flex: 0 0 calc(25% - 1.2rem);
   }
 
   display: flex;
   gap: 1.2rem;
   flex-direction: column;
 
-  padding-bottom: 3.2rem;
+  height: auto;
 `;
 
 const imgBox = css`
@@ -121,7 +111,15 @@ const textCss = css`
 `;
 
 const title = css`
-  ${fonts.mobile_body_semi_14};
+  /* 모바일 */
+  @media (375px <= width < 768px) {
+    ${fonts.mobile_body_semi_14};
+  }
+
+  /* 태블릿 */
+  @media (768px <= width < 1440px) {
+    ${fonts.tablet_body_semi_16};
+  }
 `;
 
 const name = css`
