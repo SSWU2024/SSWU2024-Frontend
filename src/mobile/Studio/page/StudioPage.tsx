@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { ImgBg2Mobile } from '../../assets/image';
 import PageLayout from '../../Common/PageLayout';
 
-import StudioInfoMobile from '../components/MStudioInfo';
+import StudioInfoMobile from '../components/StudioInfo';
 import WorkList from '../components/WorkList';
 
 const StudioPage = () => {

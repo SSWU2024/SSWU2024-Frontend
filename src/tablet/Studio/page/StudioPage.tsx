@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import { useLocation } from 'react-router-dom';
 
-import StudioInfoMobile from '../../../mobile/Studio/components/MStudioInfo';
+import StudioInfoMobile from '../../../mobile/Studio/components/StudioInfo';
 import WorkList from '../../../mobile/Studio/components/WorkList';
 import { ImgBg2Tablet } from '../../assets/image';
 import PageLayout from '../../Common/PageLayout';

@@ -22,7 +22,7 @@ function StudioInfoMobile(studioInfo: studioInfoProps) {
         </div>
         <img src={mobileImgSrc} css={imgCss} alt="스튜디오 대표 이미지" />
       </div>
-      <p css={desCss}>{description}</p>
+      <p css={descriptionCss}>{description}</p>
     </section>
   );
 }
@@ -53,13 +53,28 @@ const textCss = css`
 const studioCss = css`
   color: ${colors.gray900};
 
-  ${fonts.mobile_title_semi_20};
+  /* 모바일 */
+  @media (375px <= width < 768px) {
+    ${fonts.mobile_title_semi_20};
+  }
+
+  /* 태블릿 */
+  @media (768px <= width < 1440px) {
+    ${fonts.desktop_title_semi_24};
+  }
 `;
 
 const advisorCss = css`
   color: ${colors.pink300};
 
-  ${fonts.mobile_body_semi_14};
+  @media (375px <= width < 768px) {
+    ${fonts.mobile_body_semi_14};
+  }
+
+  /* 태블릿 */
+  @media (768px <= width < 1440px) {
+    ${fonts.tablet_body_semi_16};
+  }
 `;
 
 const imgCss = css`
@@ -67,8 +82,16 @@ const imgCss = css`
   height: auto;
 `;
 
-const desCss = css`
+const descriptionCss = css`
   color: ${colors.gray900};
 
-  ${fonts.mobile_body_reg_14};
+  /* 모바일 */
+  @media (375px <= width < 768px) {
+    ${fonts.mobile_body_reg_14};
+  }
+
+  /* 태블릿 */
+  @media (768px <= width < 1440px) {
+    ${fonts.desktop_body_reg_16};
+  }
 `;
