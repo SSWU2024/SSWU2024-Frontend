@@ -23,7 +23,8 @@ const designerContainer = (url: string) => css`
   flex-direction: column;
 
   width: 100%;
-  height: calc(100dvh - 10rem);
+  min-height: calc(100dvh - 10rem);
+
   padding: 8.8rem 1.6rem 9rem;
 
   background-position: top 5.8rem left 0;
