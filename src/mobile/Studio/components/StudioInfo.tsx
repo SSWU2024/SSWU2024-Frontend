@@ -54,7 +54,7 @@ const studioCss = css`
   color: ${colors.gray900};
 
   /* 모바일 */
-  @media (375px <= width < 768px) {
+  @media (width < 768px) {
     ${fonts.mobile_title_semi_20};
   }
 
@@ -67,7 +67,7 @@ const studioCss = css`
 const advisorCss = css`
   color: ${colors.pink300};
 
-  @media (375px <= width < 768px) {
+  @media (width < 768px) {
     ${fonts.mobile_body_semi_14};
   }
 
@@ -86,7 +86,7 @@ const descriptionCss = css`
   color: ${colors.gray900};
 
   /* 모바일 */
-  @media (375px <= width < 768px) {
+  @media (width < 768px) {
     ${fonts.mobile_body_reg_14};
   }
 

@@ -23,7 +23,7 @@ function App() {
   }, []);
 
   const renderRouter = () => {
-    if (width >= 375 && width < 768) {
+    if (width < 768) {
       return <MobileRouter />;
     } else if (width >= 768 && width < 1440) {
       return <TabletRouter />;

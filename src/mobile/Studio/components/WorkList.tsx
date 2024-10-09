@@ -39,7 +39,7 @@ const listContainer = css`
   display: flex;
 
   /* 모바일 */
-  @media (375px <= width < 768px) {
+  @media (width < 768px) {
     column-gap: 1.2rem;
   }
 
@@ -57,7 +57,7 @@ const listContainer = css`
 
 const listItem = css`
   /* 모바일 (2 컬럼) */
-  @media (375px <= width <= 552px) {
+  @media (width <= 552px) {
     flex: 0 0 calc(50% - 0.6rem);
   }
 
@@ -112,7 +112,7 @@ const textCss = css`
 
 const title = css`
   /* 모바일 */
-  @media (375px <= width < 768px) {
+  @media (width < 768px) {
     ${fonts.mobile_body_semi_14};
   }
 
