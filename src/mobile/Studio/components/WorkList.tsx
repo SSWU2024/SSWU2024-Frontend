@@ -10,8 +10,7 @@ function WorkList() {
     <ul css={listContainer}>
       {workList.map((work) => {
         const { workId, workTitle, images, designers } = work;
-        const imgSrc =
-          images.length === 2 ? images[1].imgPath : images[0].imgPath;
+        const { imgPath } = images.length === 2 ? images[1] : images[0];
 
         const designerList = designers
           .map((designer) => designer.name)
@@ -20,7 +19,11 @@ function WorkList() {
         return (
           <li key={workId} css={listItem} onClick={() => console.log(workId)}>
             <div css={imgBox}>
-              <img css={imgCss} src={imgSrc} alt="" />
+              <img
+                css={imgCss}
+                src={imgPath}
+                alt={`${workTitle}의 썸네일 이미지`}
+              />
             </div>
             <div css={textCss}>
               <h1 css={title}>{workTitle}</h1>

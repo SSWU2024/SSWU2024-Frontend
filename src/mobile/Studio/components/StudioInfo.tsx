@@ -1,14 +1,6 @@
 import { css } from '@emotion/react';
 import { colors, fonts } from '../../../styles/theme';
-
-interface studioInfoProps {
-  info: {
-    studio: string;
-    advisor: string;
-    description: string;
-    mobileImgSrc: string;
-  };
-}
+import { studioInfoProps } from '../types/studioType';
 
 function StudioInfoMobile(studioInfo: studioInfoProps) {
   const { studio, advisor, description, mobileImgSrc } = studioInfo.info;
@@ -20,7 +12,7 @@ function StudioInfoMobile(studioInfo: studioInfoProps) {
           <h1 css={studioCss}>{studio}</h1>
           <span css={advisorCss}>지도교수 {advisor}</span>
         </div>
-        <img src={mobileImgSrc} css={imgCss} alt="스튜디오 대표 이미지" />
+        <img src={mobileImgSrc} css={imgCss} alt={`${studio}의 대표 이미지`} />
       </div>
       <p css={descriptionCss}>{description}</p>
     </section>
