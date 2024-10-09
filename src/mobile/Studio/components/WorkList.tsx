@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import { colors, fonts } from '../../../styles/theme';
 
+import { Link } from 'react-router-dom';
 import { DESIGNER_TOTAL_WORKS } from '../../constants/WORKS';
 
 function WorkList() {
@@ -17,7 +18,7 @@ function WorkList() {
           .join(' ');
 
         return (
-          <li key={workId} css={listItem} onClick={() => console.log(workId)}>
+          <Link key={workId} css={listItem} to={`${workId}`}>
             <div css={imgBox}>
               <img
                 css={imgCss}
@@ -29,7 +30,7 @@ function WorkList() {
               <h1 css={title}>{workTitle}</h1>
               <h2 css={name}>{designerList}</h2>
             </div>
-          </li>
+          </Link>
         );
       })}
     </ul>
