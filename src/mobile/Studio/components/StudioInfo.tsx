@@ -40,6 +40,9 @@ const textCss = css`
   flex-direction: column;
 
   padding-top: 1.6rem;
+
+  /* 정보경험디자인스튜디오 글자 넘침 */
+  white-space: nowrap;
 `;
 
 const studioCss = css`
