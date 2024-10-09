@@ -1,8 +1,9 @@
 import { css } from '@emotion/react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import useGetStudioWorks from '../../../libs/hooks/useGetStudioWorks';
 import { colors, fonts } from '../../../styles/theme';
-import { TotalWorksProps } from '../types/studioType';
+import { TotalWorksProps, WorkType } from '../types/studioType';
 
 const DUMMY = {
   works: [
@@ -127,9 +128,8 @@ const DUMMY = {
 };
 
 const TotalWorks = ({ id }: TotalWorksProps) => {
-  const { works } = DUMMY;
-  // 빌드 에러 방지를 위한 코드 -> id는 추후 api 통신에 쓰일 예정
-  console.log(id);
+  const { totalWorks, isLoading } = useGetStudioWorks(id);
+  const { works } = !isLoading && totalWorks.data;
 
   const [hoveredImg, setHoveredImg] = useState({
     hoveredSrc: '',
@@ -165,36 +165,38 @@ const TotalWorks = ({ id }: TotalWorksProps) => {
 
   return (
     <article css={worksContainer}>
-      {works.map((work) => {
-        const { workId, workTitle, images, designers, url } = work;
-        const { imgPath } = images[0];
-        const isHoveredGif = hoveredSrc && workTitle === hovredTitle;
-        const isHoveredImg = workTitle === hovredTitle;
+      {!isLoading &&
+        works.map((work: WorkType) => {
+          const { workId, workTitle, images, designers, workEngTitle } = work;
+          const { imgPath } = images[0];
+          const isHoveredGif = hoveredSrc && workTitle === hovredTitle;
+          const isHoveredImg = workTitle === hovredTitle;
+          const url = workEngTitle.trim().split(' ').join('-');
 
-        return (
-          <article key={workTitle} css={workContainer}>
-            <Link to={url} state={{ workId: workId }}>
-              <img
-                src={isHoveredGif ? hoveredSrc : imgPath}
-                css={workImg}
-                onMouseEnter={() => handleHoverImg(images, workTitle)}
-                onMouseLeave={handleLeaveImg}
-              />
-              <p css={title(isHoveredImg)}>{workTitle}</p>
-              <div css={designerNameContainer}>
-                {designers.map((designer) => {
-                  const { name } = designer;
-                  return (
-                    <p key={name} css={designerName(isHoveredImg)}>
-                      {name}
-                    </p>
-                  );
-                })}
-              </div>
-            </Link>
-          </article>
-        );
-      })}
+          return (
+            <article
+              key={workTitle}
+              css={workContainer}
+              onMouseEnter={() => handleHoverImg(images, workTitle)}
+              onMouseLeave={handleLeaveImg}
+            >
+              <Link to={url} state={{ workId: workId }}>
+                <img src={isHoveredGif ? hoveredSrc : imgPath} css={workImg} />
+                <p css={title(isHoveredImg)}>{workTitle}</p>
+                <div css={designerNameContainer}>
+                  {designers.map((designer) => {
+                    const { name } = designer;
+                    return (
+                      <p key={name} css={designerName(isHoveredImg)}>
+                        {name}
+                      </p>
+                    );
+                  })}
+                </div>
+              </Link>
+            </article>
+          );
+        })}
     </article>
   );
 };
