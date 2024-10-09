@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import { Link } from 'react-router-dom';
 import { colors, fonts } from '../../../styles/theme';
 import { updateStudioUrl } from '../../../utils/updateStudioUrl';
-import { DESIGNER_DETAIL } from '../../constants/\bDESIGNER_DETAIL';
+import { DESIGNER_DETAIL } from '../../constants/DESIGNER_DETAIL';
 
 function Works() {
   const workList = DESIGNER_DETAIL.data.works;
@@ -39,7 +39,7 @@ const workListCss = css`
 
   width: 100%;
 
-  @media (375px <= width < 768px) {
+  @media (width < 768px) {
     gap: 1.2rem;
   }
 
@@ -52,7 +52,7 @@ const workContainer = css`
   display: flex;
   flex-direction: column;
 
-  @media (375px <= width < 768px) {
+  @media (width < 768px) {
     gap: 1.2rem;
 
     width: 16.6rem;
@@ -68,7 +68,7 @@ const workContainer = css`
 `;
 
 const imgCss = css`
-  @media (375px <= width < 768px) {
+  @media (width < 768px) {
     width: 16.6rem;
     height: 16.6rem;
   }
@@ -89,7 +89,7 @@ const textContainer = css`
 `;
 
 const textCss = (variant: 'title' | 'studio') => css`
-  @media (375px <= width < 768px) {
+  @media (width < 768px) {
     ${variant === 'title'
       ? fonts.mobile_body_semi_14
       : fonts.mobile_body_reg_14};

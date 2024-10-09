@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import { colors, fonts } from '../../../styles/theme';
-import { DESIGNER_DETAIL } from '../../constants/\bDESIGNER_DETAIL';
+import { DESIGNER_DETAIL } from '../../constants/DESIGNER_DETAIL';
 
 function DesignerInfo() {
   const { name, engName, major, email, instagram, behance } =
@@ -51,7 +51,7 @@ const textCss = css`
   display: flex;
   flex-direction: column;
 
-  @media (375px <= width < 768px) {
+  @media (width < 768px) {
     margin-bottom: 2rem;
   }
 
@@ -63,7 +63,7 @@ const textCss = css`
 `;
 
 const nameCss = (state: 'ko' | 'en') => css`
-  @media (375px <= width < 768px) {
+  @media (width < 768px) {
     ${state === 'ko' ? fonts.mobile_title_semi_20 : fonts.mobile_body_reg_14};
   }
 
@@ -73,7 +73,7 @@ const nameCss = (state: 'ko' | 'en') => css`
 `;
 
 const majorCss = css`
-  @media (375px <= width < 768px) {
+  @media (width < 768px) {
     margin-bottom: 3.2rem;
     ${fonts.mobile_body_semi_14};
   }
@@ -92,7 +92,7 @@ const urlContainer = css`
 
   width: 100%;
 
-  @media (375px <= width < 768px) {
+  @media (width < 768px) {
     gap: 1.2rem;
   }
 
@@ -109,7 +109,7 @@ const urlItem = css`
 const urlText = (variant: 'title' | 'content') => css`
   color: ${variant === 'title' ? colors.gray300 : colors.gray900};
 
-  @media (375px <= width < 768px) {
+  @media (width < 768px) {
     ${variant === 'title'
       ? fonts.mobile_body_semi_14
       : fonts.mobile_body_reg_14};
