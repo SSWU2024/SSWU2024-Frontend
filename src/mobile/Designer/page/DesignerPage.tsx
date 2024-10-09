@@ -1,10 +1,15 @@
 import { css } from '@emotion/react';
+import { useEffect } from 'react';
 import { ImgBg3Mobile } from '../../assets/image';
 import PageLayout from '../../Common/PageLayout';
 import DesignerInfo from '../components/DesignerInfo';
 import Works from '../components/Works';
 
 const DesignerPage = () => {
+  useEffect(() => {
+    scrollTo(0, 0);
+  }, []);
+
   return (
     <PageLayout>
       <section css={designerContainer(ImgBg3Mobile)}>
@@ -27,7 +32,7 @@ const designerContainer = (url: string) => css`
 
   padding: 8.8rem 1.6rem 9rem;
 
-  background-position: top 5.8rem left 0;
+  background-position: top 5.8rem right 0;
   background-size: contain;
   background-image: url(${url});
   background-repeat: no-repeat;
