@@ -3,11 +3,16 @@ import { useLocation } from 'react-router-dom';
 import { ImgBg2Mobile } from '../../assets/image';
 import PageLayout from '../../Common/PageLayout';
 
+import { useEffect } from 'react';
 import StudioInfoMobile from '../components/StudioInfo';
 import WorkList from '../components/WorkList';
 
 const StudioPage = () => {
   const location = useLocation();
+
+  useEffect(() => {
+    scrollTo(0, 0);
+  }, []);
 
   return (
     <PageLayout>
