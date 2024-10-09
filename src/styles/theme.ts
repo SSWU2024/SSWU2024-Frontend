@@ -139,7 +139,7 @@ export const fonts = {
     line-height: 100%;
     letter-spacing: -1%;
   `,
-  mobile_title_reg_20: css`
+  mobile_title_semi_20: css`
     font-weight: 600;
     font-size: 2rem;
     line-height: 120%;
