@@ -29,6 +29,15 @@ export const STUDIO_DETAILS = [
   },
   {
     id: 3,
+    studio: '모션그래픽스스튜디오',
+    advisor: '이명숙',
+    description:
+      '미디어 매체를 이용하여, 커뮤니케이션 이해를 토대로 비주얼 콘텐츠의 상상력을 최대한 키우고 스토리텔링, 정보, 동기 등의 상관관계를 바탕으로 시각적 표현능력을 구상하고 제작한다. 이미지, 일러스트레이션 및 영상에 애니메이션을 더하여 종합적으로 스토리에 생명력을 불어 넣음으로써 다양한 영상 플랫폼의 창작성과 아이덴티티를 드러낼 수 있도록 한다.',
+    imgsrc: ImgSymbolMotion,
+    url: '/motion-graphics',
+  },
+  {
+    id: 4,
     studio: '디자인씽킹스튜디오',
     advisor: '피종삼',
     description:
@@ -37,7 +46,7 @@ export const STUDIO_DETAILS = [
     url: '/design-thinking',
   },
   {
-    id: 4,
+    id: 5,
     studio: '정보경험디자인스튜디오',
     advisor: '전혜란',
     description:
@@ -45,15 +54,7 @@ export const STUDIO_DETAILS = [
     imgsrc: ImgSymbolInformation,
     url: '/user-experience',
   },
-  {
-    id: 5,
-    studio: '모션그래픽스스튜디오',
-    advisor: '이명숙',
-    description:
-      '미디어 매체를 이용하여, 커뮤니케이션 이해를 토대로 비주얼 콘텐츠의 상상력을 최대한 키우고 스토리텔링, 정보, 동기 등의 상관관계를 바탕으로 시각적 표현능력을 구상하고 제작한다. 이미지, 일러스트레이션 및 영상에 애니메이션을 더하여 종합적으로 스토리에 생명력을 불어 넣음으로써 다양한 영상 플랫폼의 창작성과 아이덴티티를 드러낼 수 있도록 한다.',
-    imgsrc: ImgSymbolMotion,
-    url: '/motion-graphics',
-  },
+
   {
     id: 6,
     studio: '공간디자인스튜디오',
