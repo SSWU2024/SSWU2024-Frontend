@@ -31,7 +31,7 @@ const listContainter = css`
 
 const imgCss = css`
   /* 모바일 (3 컬럼) */
-  @media (375px <= width < 445px) {
+  @media (width < 445px) {
     flex: 0 0 calc(33.3333% - 0.6rem);
   }
 

@@ -1,10 +1,15 @@
 import { css } from '@emotion/react';
+import { useEffect } from 'react';
 import { colors, fonts } from '../../../styles/theme';
 import PageLayout from '../../Common/PageLayout';
 import { ImgBg3Mobile } from '../../assets/image';
 import DesignerList from '../components/DesignerList';
 
 const DesignersPage = () => {
+  useEffect(() => {
+    scrollTo(0, 0);
+  }, []);
+
   return (
     <PageLayout>
       <div css={designersCss(ImgBg3Mobile)}>

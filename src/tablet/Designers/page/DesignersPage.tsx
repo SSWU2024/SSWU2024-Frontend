@@ -1,10 +1,15 @@
 import { css } from '@emotion/react';
+import { useEffect } from 'react';
 import DesignerList from '../../../mobile/Designers/components/DesignerList';
 import { colors, fonts } from '../../../styles/theme';
 import PageLayout from '../../Common/PageLayout';
 import { ImgBg3Tablet } from '../../assets/image';
 
 const DesignersPage = () => {
+  useEffect(() => {
+    scrollTo(0, 0);
+  }, []);
+
   return (
     <PageLayout>
       <div css={designersCss(ImgBg3Tablet)}>
@@ -39,13 +44,7 @@ const designersCss = (url: string) => css`
 `;
 
 const text = css`
-  @media (768px <= width < 1025px) {
-    padding: 5.4rem 0 6rem;
-  }
-
-  @media (1025px <= width < 1440px) {
-    padding: 5.4rem 4rem 6rem;
-  }
+  padding: 5.4rem 0 6rem;
 
   color: ${colors.gray900};
 
