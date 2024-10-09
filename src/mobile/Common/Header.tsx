@@ -12,8 +12,8 @@ const Header = () => {
   const navigate = useNavigate();
 
   const toggleDropDown = () => {
-    setIsMenuOpen((prev) => !prev); // 이전 상태를 반전
-    document.body.style.overflow = isMenuOpen ? '' : 'hidden'; // 현재 상태에 따라 오버플로우 설정
+    setIsMenuOpen((prev) => !prev);
+    document.body.style.overflow = isMenuOpen ? '' : 'hidden';
   };
 
   const handleOutsideDropDown = (e: CustomEvent<MouseEvent>) => {
