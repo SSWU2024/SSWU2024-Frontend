@@ -1,5 +1,7 @@
 import { css } from '@emotion/react';
 import { Link } from 'react-router-dom';
+import useGetDesigners from '../../../libs/hooks/useGetDesigners';
+import { designerType } from '../type/designersType';
 
 const DUMMY = {
   designers: [
@@ -133,20 +135,22 @@ const DUMMY = {
 };
 
 const TotalDesigners = () => {
-  const { designers } = DUMMY;
+  const { designers, isLoading } = useGetDesigners();
+  const designersArr = !isLoading && designers.data;
 
   return (
     <article css={totalDesigners}>
-      {designers.map((designer) => {
-        const { designerId, engName, imgPath } = designer;
-        const url = engName.split(' ').join('-');
+      {!isLoading &&
+        designersArr.map((designer: designerType) => {
+          const { designerId, engName, imgPath } = designer;
+          const url = engName.split(' ').join('-');
 
-        return (
-          <Link key={designerId} to={url}>
-            <img src={imgPath} css={designerImg} />
-          </Link>
-        );
-      })}
+          return (
+            <Link key={designerId} to={url}>
+              <img src={imgPath} css={designerImg} />
+            </Link>
+          );
+        })}
     </article>
   );
 };
