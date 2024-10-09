@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { STUDIO_DETAILS } from '../../../constants/studioDetail';
 import { colors, fonts } from '../../../styles/theme';
@@ -6,6 +7,10 @@ import PageLayout from '../../Common/PageLayout';
 import { ImgBg2Tablet } from '../../assets/image';
 
 const WorksPage = () => {
+  useEffect(() => {
+    scrollTo(0, 0);
+  }, []);
+
   return (
     <PageLayout>
       <section css={worksContainer(ImgBg2Tablet)}>
@@ -13,11 +18,12 @@ const WorksPage = () => {
           <h1 css={title}>Works</h1>
           <ul>
             {STUDIO_DETAILS.map((detail) => {
-              const { id, studio, advisor, description, imgsrc, url } = detail;
+              const { id, studio, advisor, description, mobileImgSrc, url } =
+                detail;
               return (
                 <Link
                   to={url}
-                  state={{ studio, advisor, description, imgsrc }}
+                  state={{ studio, advisor, description, mobileImgSrc }}
                   key={id}
                   css={detailContainer}
                 >
@@ -41,6 +47,8 @@ const worksContainer = (url: string) => css`
   flex-direction: column;
 
   width: 100%;
+  min-height: calc(100dvh - 2.4rem - 10rem);
+
   padding: 5.6rem 2.4rem 10rem;
 
   background-position: top 5.6rem left 0;

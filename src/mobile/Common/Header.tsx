@@ -12,8 +12,8 @@ const Header = () => {
   const navigate = useNavigate();
 
   const toggleDropDown = () => {
-    setIsMenuOpen(true);
-    document.body.style.overflow = 'hidden';
+    setIsMenuOpen((prev) => !prev);
+    document.body.style.overflow = isMenuOpen ? '' : 'hidden';
   };
 
   const handleOutsideDropDown = (e: CustomEvent<MouseEvent>) => {
@@ -34,7 +34,7 @@ const Header = () => {
         handleOutsideDropDown as EventListener,
       );
     };
-  }, []);
+  }, [isMenuOpen]);
 
   useEffect(() => {
     setIsMenuOpen(false);
@@ -71,6 +71,7 @@ export default Header;
 
 const dropDownBackground = css`
   position: absolute;
+  z-index: 998;
 
   width: 100%;
   height: 100%;
