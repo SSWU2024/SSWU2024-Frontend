@@ -1,9 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
+import { QUERY_KEY } from '../../constants/queryKeys';
 import getWorkDesigners from '../apis/getWorkDesigners';
 
 const useGetWorkDesigners = (workId: number) => {
   const { data, isLoading } = useQuery({
-    queryKey: ['get-work-desginers'],
+    queryKey: QUERY_KEY.workDesigners,
     queryFn: async () => await getWorkDesigners(workId),
   });
 
