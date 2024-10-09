@@ -79,6 +79,7 @@ const DesignerWorks = ({ works }: DesignerWorksProps) => {
           <Link
             key={workId}
             to={`${studioUrl}/${url}`}
+            state={{ workId: workId }}
             onMouseEnter={() => handleHoverImg(images, url)}
             onMouseLeave={handleLeaveImg}
           >

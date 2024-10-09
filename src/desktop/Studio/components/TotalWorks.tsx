@@ -7,6 +7,7 @@ import { TotalWorksProps } from '../types/studioType';
 const DUMMY = {
   works: [
     {
+      workId: 1,
       url: '1',
       workTitle: '제목 1',
       images: [
@@ -30,6 +31,7 @@ const DUMMY = {
       ],
     },
     {
+      workId: 2,
       url: '2',
       workTitle: '제목 2',
       images: [
@@ -46,6 +48,7 @@ const DUMMY = {
       ],
     },
     {
+      workId: 3,
       url: '3',
       workTitle: '제목 3',
       images: [
@@ -62,6 +65,7 @@ const DUMMY = {
       ],
     },
     {
+      workId: 4,
       url: '4',
       workTitle: '제목 4',
       images: [
@@ -86,6 +90,7 @@ const DUMMY = {
       ],
     },
     {
+      workId: 5,
       url: '5',
       workTitle: '제목 5',
       images: [
@@ -102,6 +107,7 @@ const DUMMY = {
       ],
     },
     {
+      workId: 6,
       url: '6',
       workTitle: '제목 6',
       images: [
@@ -160,14 +166,14 @@ const TotalWorks = ({ id }: TotalWorksProps) => {
   return (
     <article css={worksContainer}>
       {works.map((work) => {
-        const { workTitle, images, designers, url } = work;
+        const { workId, workTitle, images, designers, url } = work;
         const { imgPath } = images[0];
         const isHoveredGif = hoveredSrc && workTitle === hovredTitle;
         const isHoveredImg = workTitle === hovredTitle;
 
         return (
           <article key={workTitle} css={workContainer}>
-            <Link to={url}>
+            <Link to={url} state={{ workId: workId }}>
               <img
                 src={isHoveredGif ? hoveredSrc : imgPath}
                 css={workImg}
