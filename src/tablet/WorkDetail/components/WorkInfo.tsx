@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
+import { WorkInfoProps } from '../../../mobile/WorkDetail/types/WorkDetailType';
 import { colors, fonts } from '../../../styles/theme';
-import { WorkInfoProps } from '../types/WorkDetailType';
 
 function WorkInfo(props: WorkInfoProps) {
   const { title, description, engDescription, designers } = props;
@@ -29,27 +29,27 @@ const workInfoContainer = css`
   flex-direction: column;
 
   width: 100%;
-  padding: 3.2rem 2.4rem 6rem;
+  padding: 3.2rem 2.4rem 8rem;
 `;
 
 const mainCss = css`
   color: ${colors.gray900};
 
   h1:nth-of-type(1) {
-    ${fonts.mobile_title_semi_20};
+    ${fonts.desktop_title_semi_24};
   }
 
   p:nth-of-type(1) {
-    ${fonts.mobile_body_reg_14};
+    ${fonts.desktop_body_reg_16};
   }
 `;
 
 const descriptionCss = css`
   display: flex;
-  gap: 2.4rem;
+  gap: 8rem;
   flex-direction: column;
 
-  ${fonts.mobile_body_reg_14};
+  ${fonts.desktop_body_reg_16};
 
   p:nth-of-type(1) {
     color: ${colors.gray900};
