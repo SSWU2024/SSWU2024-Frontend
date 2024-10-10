@@ -1,29 +1,25 @@
 import { css } from '@emotion/react';
-import { IcListRight } from '../../../mobile/assets/icon';
+import { fonts } from '../../../styles/theme';
+import PageLayout from '../../Common/PageLayout';
 
 function MainPage() {
   return (
-    <div css={mainContainer}>
-      <IcListRight />
-      <span css={text(false)}>메인페이지래요</span>
-    </div>
+    <PageLayout>
+      <div css={mainContainer}>
+        <p css={text}>메인페이지</p>
+      </div>
+    </PageLayout>
   );
 }
 
 export default MainPage;
 
-// 스타일 파일 분리 말고 이렇게 한번에 쓰는거 어떨까욤?
 const mainContainer = css`
-  width: 10rem;
-  height: 10rem;
-
-  background-color: black;
-  color: white;
-
-  text-align: center;
+  width: 100%;
+  height: calc(100dvh - 10rem);
+  padding-top: 5.8rem;
 `;
 
-// props 사용은 요렇게!
-const text = (state: boolean) => css`
-  color: ${state ? 'black' : 'white'};
+const text = css`
+  ${fonts.mobile_title_reg_32};
 `;

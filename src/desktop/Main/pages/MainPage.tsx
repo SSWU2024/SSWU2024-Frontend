@@ -1,12 +1,15 @@
 import { css } from '@emotion/react';
 import { IcListRight } from '../../assets/icon';
+import PageLayout from '../../Common/PageLayout';
 
 function MainPage() {
   return (
-    <div css={mainContainer}>
-      <IcListRight />
-      <span css={text(false)}>메인페이지래요</span>
-    </div>
+    <PageLayout>
+      <div css={mainContainer}>
+        <IcListRight />
+        <span css={text(false)}>데스크탑 메인페이지래요</span>
+      </div>
+    </PageLayout>
   );
 }
 
