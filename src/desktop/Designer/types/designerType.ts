@@ -6,8 +6,9 @@ export interface DesignerContactProps {
 
 export interface DesignerWorksProps {
     works: Array<{
-      url: string;
+      workId: number;
       workTitle: string;
+      workEngTitle: string;
       studioNm: string;
       images: Array<{
         imgPath: string;
