@@ -69,6 +69,7 @@ export const STUDIO_DETAILS = [
     mobileImgSrc: ImgSymbolMobile_Information,
     url: '/user-experience',
   },
+
   {
     id: 6,
     studio: '공간디자인스튜디오',

@@ -21,6 +21,12 @@ export const fonts = {
     line-height: 140%;
     letter-spacing: -1%;
   `,
+  desktop_title_semi_60: css`
+    font-weight: 600;
+    font-size: 6rem;
+    line-height: 140%;
+    letter-spacing: -1%;
+  `,
   desktop_title_reg_54: css`
     font-weight: 400;
     font-size: 5.4rem;
@@ -106,6 +112,13 @@ export const fonts = {
   // tablet
   tablet_title_med_36: css`
     font-weight: 500;
+    font-size: 3.6rem;
+    line-height: 100%;
+    letter-spacing: -1%;
+  `,
+
+  tablet_title_reg_36: css`
+    font-weight: 400;
     font-size: 3.6rem;
     line-height: 100%;
     letter-spacing: -1%;
