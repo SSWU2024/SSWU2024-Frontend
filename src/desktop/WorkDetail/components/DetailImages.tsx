@@ -6,7 +6,7 @@ const DetailImages = ({ images }: DetailImagesProps) => {
     <article css={workImages}>
       {images.map((image) => {
         const { sort, imgPath } = image;
-        return <img key={sort + imgPath} src={imgPath} css={workImg} />;
+        return <img key={sort} src={imgPath} css={workImg} />;
       })}
     </article>
   );
