@@ -39,7 +39,7 @@ const designerListContainer = css`
   flex-direction: column;
 
   width: 100%;
-  padding: 14rem 2.4rem 0;
+  padding: 20rem 2.4rem 0;
 `;
 
 const title = css`

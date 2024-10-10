@@ -22,7 +22,7 @@ const imageSection = css`
   flex-direction: column;
 
   width: 100%;
-  padding: 0 2.4rem;
+  padding: 0 1.6rem;
 `;
 
 const imageCss = css`

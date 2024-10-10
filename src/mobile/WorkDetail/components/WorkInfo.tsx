@@ -29,7 +29,7 @@ const workInfoContainer = css`
   flex-direction: column;
 
   width: 100%;
-  padding: 3.2rem 2.4rem 6rem;
+  padding: 2.4rem 1.6rem 6rem;
 `;
 
 const mainCss = css`
