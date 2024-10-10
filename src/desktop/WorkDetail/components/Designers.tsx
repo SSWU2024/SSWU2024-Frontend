@@ -31,8 +31,8 @@ const Designers = ({ designers }: DesignersProps) => {
       <p css={designedByTitle}>Designed by</p>
       <div css={totalDesigners}>
         {designers.map((designer) => {
-          const { designerId, name, engName, email, works } = designer;
-          const { workId, workTitle, studioNm, images } = works[0];
+          const { name, engName, email, workTitle, studioNm, images } =
+            designer;
           const { imgPath, fileFormat } =
             images.length > 1 ? images[1] : images[0];
           const isStaticImg = fileFormat !== 'gif';
@@ -41,11 +41,8 @@ const Designers = ({ designers }: DesignersProps) => {
           const designerUrl = engName.split(' ').join('-');
 
           return (
-            <article key={workId + name} css={designerInfoContainer}>
-              <Link
-                to={`/designers/${designerUrl}`}
-                state={{ designerId: designerId }}
-              >
+            <article key={name} css={designerInfoContainer}>
+              <Link to={`/designers/${designerUrl}`}>
                 <div css={designerInfo}>
                   <p css={designerKrName}>{name}</p>
                   <p css={designerEngName}>{engName}</p>

@@ -68,18 +68,16 @@ const DesignerWorks = ({ works }: DesignerWorksProps) => {
   return (
     <article css={worksContainer}>
       {works.map((work) => {
-        const { workId, workTitle, workEngTitle, studioNm, images } = work;
+        const { url, workTitle, studioNm, images } = work;
         const { imgPath } = images[0];
         const studioUrl = updateStudioUrl(studioNm);
-        const url = workEngTitle.trim().split(' ').join('-');
         const isHoveredImg = url === hoveredUrl;
         const isHoveredGif = images.length > 1 && isHoveredImg;
 
         return (
           <Link
-            key={workId}
+            key={url}
             to={`${studioUrl}/${url}`}
-            state={{ workId: workId }}
             onMouseEnter={() => handleHoverImg(images, url)}
             onMouseLeave={handleLeaveImg}
           >
