@@ -36,6 +36,8 @@ const mainCss = css`
   color: ${colors.gray900};
 
   h1:nth-of-type(1) {
+    margin-bottom: 0.8rem;
+
     ${fonts.desktop_title_semi_24};
   }
 
