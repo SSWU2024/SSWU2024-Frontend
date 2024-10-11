@@ -7,9 +7,9 @@ import {
   COMMITTEE_COL3,
 } from '../constants/COMMITTEE';
 
-function PeopleInfo() {
+function CommitteeInfo() {
   return (
-    <section css={peopleInfoContainer}>
+    <section css={CommitteeInfoContainer}>
       <img css={bgImg} src={ImgBg1Mobile} alt="배경이미지" />
       <div css={contentSection}>
         <h1 css={title}>졸업전시준비위원회</h1>
@@ -55,9 +55,9 @@ function PeopleInfo() {
   );
 }
 
-export default PeopleInfo;
+export default CommitteeInfo;
 
-const peopleInfoContainer = css`
+const CommitteeInfoContainer = css`
   position: relative;
   overflow: hidden;
 

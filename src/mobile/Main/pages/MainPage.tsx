@@ -6,8 +6,8 @@ import {
 import PageLayout from '../../Common/PageLayout';
 
 import { useEffect } from 'react';
+import CommitteeInfo from '../components/CommitteeInfo';
 import ExhibitionInfo from '../components/ExhibitionInfo';
-import PeopleInfo from '../components/PeopleInfo';
 
 function MainPage() {
   useEffect(() => {
@@ -21,7 +21,7 @@ function MainPage() {
         <img src={ImgDescriptionMobile} css={imgCss} alt="메인_설명포스터" />
       </div>
       <ExhibitionInfo />
-      <PeopleInfo />
+      <CommitteeInfo />
     </PageLayout>
   );
 }
