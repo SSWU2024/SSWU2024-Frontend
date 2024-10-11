@@ -5,10 +5,15 @@ import {
 } from '../../assets/image';
 import PageLayout from '../../Common/PageLayout';
 
+import { useEffect } from 'react';
 import ExhibitionInfo from '../components/ExhibitionInfo';
 import PeopleInfo from '../components/PeopleInfo';
 
 function MainPage() {
+  useEffect(() => {
+    scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, []);
+
   return (
     <PageLayout>
       <div css={mainContainer}>

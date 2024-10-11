@@ -18,7 +18,7 @@ function PeopleInfo() {
             {COMMITTEE_COL1.map((item) => {
               const { team, name } = item;
               return (
-                <li css={listItem}>
+                <li css={listItem} key={name}>
                   <h2>{team}</h2>
                   <p>{name}</p>
                 </li>
@@ -30,7 +30,7 @@ function PeopleInfo() {
             {COMMITTEE_COL2.map((item) => {
               const { team, name } = item;
               return (
-                <li css={listItem}>
+                <li css={listItem} key={name}>
                   <h2>{team}</h2>
                   <p>{name}</p>
                 </li>
@@ -42,7 +42,7 @@ function PeopleInfo() {
             {COMMITTEE_COL3.map((item) => {
               const { team, name } = item;
               return (
-                <li css={listItem}>
+                <li css={listItem} key={name}>
                   <h2>{team}</h2>
                   <p>{name}</p>
                 </li>
