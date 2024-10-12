@@ -1,11 +1,7 @@
 import { css } from '@emotion/react';
 import { colors, fonts } from '../../../styles/theme';
 import { ImgBg1Mobile } from '../../assets/image';
-import {
-  COMMITTEE_COL1,
-  COMMITTEE_COL2,
-  COMMITTEE_COL3,
-} from '../constants/COMMITTEE';
+import { COMMITTEE } from '../constants/COMMITTEE';
 
 function CommitteeInfo() {
   return (
@@ -13,43 +9,18 @@ function CommitteeInfo() {
       <img css={bgImg} src={ImgBg1Mobile} alt="배경이미지" />
       <div css={contentSection}>
         <h1 css={title}>졸업전시준비위원회</h1>
-        <div css={committeeList}>
-          <ul css={colCss}>
-            {COMMITTEE_COL1.map((item) => {
-              const { team, name } = item;
-              return (
-                <li css={listItem} key={name}>
-                  <h2>{team}</h2>
-                  <p>{name}</p>
-                </li>
-              );
-            })}
-          </ul>
 
-          <ul css={colCss}>
-            {COMMITTEE_COL2.map((item) => {
-              const { team, name } = item;
-              return (
-                <li css={listItem} key={name}>
-                  <h2>{team}</h2>
-                  <p>{name}</p>
-                </li>
-              );
-            })}
-          </ul>
-
-          <ul css={colCss}>
-            {COMMITTEE_COL3.map((item) => {
-              const { team, name } = item;
-              return (
-                <li css={listItem} key={name}>
-                  <h2>{team}</h2>
-                  <p>{name}</p>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+        <ul css={committeeList}>
+          {COMMITTEE.map((item) => {
+            const { id, name, team } = item;
+            return (
+              <li css={listItem} key={id}>
+                <h2>{team}</h2>
+                <p>{name}</p>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </section>
   );
@@ -83,16 +54,11 @@ const title = css`
 `;
 
 const committeeList = css`
-  display: flex;
-  gap: 2rem;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(4, 7.3rem);
+  grid-gap: 2rem calc(100% / 23.43);
 
   margin-top: 4rem;
-`;
-
-const colCss = css`
-  display: flex;
-  gap: 1.6rem;
 `;
 
 const listItem = css`
@@ -100,15 +66,13 @@ const listItem = css`
   gap: 0.4rem;
   flex-direction: column;
 
-  width: 7.3rem;
-
-  h2:first-of-type {
+  h2 {
     color: ${colors.gray500};
 
     ${fonts.mobile_cap_reg_12};
   }
 
-  p:first-of-type {
+  p {
     color: ${colors.gray900};
 
     ${fonts.mobile_body_semi_14};
