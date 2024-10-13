@@ -8,7 +8,7 @@ import {
 import CommitteeInfo from '../components/CommitteeInfo';
 import ExhibitionInfo from '../components/ExhibitionInfo';
 
-function MainPage() {
+const MainPage = () => {
   useEffect(() => {
     scrollTo({ top: 0, left: 0, behavior: 'instant' });
   }, []);
@@ -23,7 +23,7 @@ function MainPage() {
       <CommitteeInfo />
     </PageLayout>
   );
-}
+};
 
 export default MainPage;
 

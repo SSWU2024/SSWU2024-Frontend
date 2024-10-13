@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import { colors, fonts } from '../../../styles/theme';
 import { ImgPosterMobile } from '../../assets/image';
 
-function ExhibitionInfo() {
+const ExhibitionInfo = () => {
   return (
     <div css={exhibitionInfoContainer}>
       <h1 css={title}>2024 성신여대 디자인과 졸업전시</h1>
@@ -39,7 +39,7 @@ function ExhibitionInfo() {
       <img src={ImgPosterMobile} alt="메인포스터" css={mainPoster} />
     </div>
   );
-}
+};
 
 export default ExhibitionInfo;
 

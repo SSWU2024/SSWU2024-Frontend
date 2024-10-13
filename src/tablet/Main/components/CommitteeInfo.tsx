@@ -3,7 +3,7 @@ import { COMMITTEE } from '../../../mobile/Main/constants/COMMITTEE';
 import { colors, fonts } from '../../../styles/theme';
 import { ImgBg1Tablet } from '../../assets/image';
 
-function CommitteeInfo() {
+const CommitteeInfo = () => {
   return (
     <section css={CommitteeInfoContainer}>
       <img css={bgImg} src={ImgBg1Tablet} alt="배경이미지" />
@@ -24,7 +24,7 @@ function CommitteeInfo() {
       </div>
     </section>
   );
-}
+};
 
 export default CommitteeInfo;
 
