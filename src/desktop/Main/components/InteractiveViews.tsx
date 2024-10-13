@@ -8,14 +8,29 @@ import {
 } from 'framer-motion';
 import { useEffect } from 'react';
 import { colors, fonts } from '../../../styles/theme';
-import { ImgBubble, ImgMainPeople } from '../../assets/image';
+import { ImgBubble, ImgLight, ImgMainPeople } from '../../assets/image';
 
 const InteractiveViews = () => {
   const { scrollY } = useScroll();
   const { scrollYProgress } = useScroll();
 
   const x = useTransform(scrollYProgress, [0, 0.3], ['100%', '0']);
-  const y = useTransform(scrollYProgress, [0.3, 0.7], ['200%', '-50%']);
+  const y = useTransform(scrollYProgress, [0.3, 0.7], ['100%', '-50%']);
+  const scale = useTransform(scrollYProgress, [0.3, 0.7], [1, 2]);
+  const bg = useTransform(
+    scrollY,
+    [0.3, 0.7],
+    ['rgba(38, 74, 194, 0)', 'rgba(38, 74, 194, 1)'],
+  );
+
+  const opacity = useTransform(scrollYProgress, [0.3, 0.7], [0, 1]);
+  const width = useTransform(scrollYProgress, [0.3, 0.7], ['1.3rem', '100vw']);
+  const height = useTransform(scrollYProgress, [0.3, 0.7], ['1.3rem', '100vh']);
+  const borderRadius = useTransform(
+    scrollYProgress,
+    [0.3, 0.7],
+    ['150%', '0%'],
+  );
 
   const scrollAntmation = useAnimation();
 
@@ -72,6 +87,26 @@ const InteractiveViews = () => {
             transition: { duration: 2 },
           }}
         />
+
+        <div css={lightContainer}>
+          <motion.img src={ImgLight} css={light} style={{ scale: scale }} />
+          <motion.span
+            css={blueCircle}
+            style={{
+              opacity,
+              width,
+              height,
+              borderRadius,
+              backgroundColor: bg,
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              margin: 'auto',
+            }}
+          />
+        </div>
       </article>
     </section>
   );
@@ -143,4 +178,27 @@ const animationBox = css`
 const individualsPeopleImg = css`
   width: calc(100% / 0.5894);
   height: 100%;
+`;
+
+const lightContainer = css`
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  position: relative;
+
+  width: 100vw;
+  height: 100vh;
+  padding: calc(100vh / 7.1681) calc(100% / 4.8) calc(100vh / 8.1)
+    calc(100% / 3.5468);
+`;
+
+const light = css`
+  z-index: 10;
+`;
+
+const blueCircle = css`
+  z-index: -1;
+
+  width: calc(100% / 107.8652);
+  height: calc(100vh / 61.2708);
 `;
