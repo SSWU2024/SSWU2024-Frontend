@@ -19,7 +19,7 @@ const WorkDetailPage = () => {
   const designers = !isWorkDesignersLoading && workDesigners.data;
 
   useEffect(() => {
-    window.scrollTo({ top: 0 });
+    scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 
   return (
