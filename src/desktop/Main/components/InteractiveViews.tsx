@@ -1,14 +1,31 @@
 import { css } from '@emotion/react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import {
+  motion,
+  useAnimation,
+  useMotionValueEvent,
+  useScroll,
+  useTransform,
+} from 'framer-motion';
 import { useEffect } from 'react';
 import { colors, fonts } from '../../../styles/theme';
 import { ImgBubble, ImgMainPeople } from '../../assets/image';
 
 const InteractiveViews = () => {
+  const { scrollY } = useScroll();
   const { scrollYProgress } = useScroll();
 
   const x = useTransform(scrollYProgress, [0, 0.3], ['100%', '0']);
-  const y = useTransform(scrollYProgress, [0.3, 0.7], ['150%', '-100%']);
+  const y = useTransform(scrollYProgress, [0.3, 0.7], ['200%', '-50%']);
+
+  const scrollAntmation = useAnimation();
+
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    if (window.innerHeight / latest < 1.1248) {
+      scrollAntmation.start({ color: 'rgba(0,0,0,0)' });
+    } else {
+      scrollAntmation.start({ color: 'rgba(0,0,0,1)' });
+    }
+  });
 
   useEffect(() => {
     scrollTo({ top: 0, behavior: 'instant' });
@@ -18,20 +35,20 @@ const InteractiveViews = () => {
     <section css={interactiveViewContainer}>
       <article css={individualsContainer}>
         {/* Text section */}
-        <motion.div
-          className="text"
-          css={individualsTitleContainer}
-          initial={{ opacity: 1 }}
-          whileInView={{
-            opacity: 0,
-            transition: { duration: 3.5, delay: 1 },
-          }}
-        >
-          <span css={individualsTitle}>Moments of Individuals</span>
-          <span
+        <div className="text" css={individualsTitleContainer}>
+          <motion.span
+            css={individualsTitle}
+            animate={scrollAntmation}
+            initial={{ color: 'rgba(0,0,0,1)' }}
+          >
+            Moments of Individuals
+          </motion.span>
+          <motion.span
             css={individualsDesc}
-          >{`성신여대 디자인과 졸업생들은 각자의 삶 속에서 다양한 일상과 경험을 마주하며 자신만의 길을 걸어갑니다.\n각자의 개성과 비전이 교차하는 복잡한 관계 속에서 우리는 유기적 네트워크를 이루고, 그 안에서 의미와 가치를 재창조합니다.\n이는 우리 모두를 더 크고 의미 있는 흐름 속으로 이끌어 갑니다.`}</span>
-        </motion.div>
+            animate={scrollAntmation}
+            initial={{ color: 'rgba(0,0,0,1)' }}
+          >{`성신여대 디자인과 졸업생들은 각자의 삶 속에서 다양한 일상과 경험을 마주하며 자신만의 길을 걸어갑니다.\n각자의 개성과 비전이 교차하는 복잡한 관계 속에서 우리는 유기적 네트워크를 이루고, 그 안에서 의미와 가치를 재창조합니다.\n이는 우리 모두를 더 크고 의미 있는 흐름 속으로 이끌어 갑니다.`}</motion.span>
+        </div>
 
         {/* Horizontal scroll section */}
         <motion.article
