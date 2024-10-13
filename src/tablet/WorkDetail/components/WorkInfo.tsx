@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import { WorkInfoProps } from '../../../mobile/WorkDetail/types/WorkDetailType';
 import { colors, fonts } from '../../../styles/theme';
 
-function WorkInfo(props: WorkInfoProps) {
+const WorkInfo = (props: WorkInfoProps) => {
   const { title, description, engDescription, designers } = props;
 
   const designerList = designers.map((designer) => designer.name).join(' ');
@@ -19,7 +19,7 @@ function WorkInfo(props: WorkInfoProps) {
       </div>
     </div>
   );
-}
+};
 
 export default WorkInfo;
 
