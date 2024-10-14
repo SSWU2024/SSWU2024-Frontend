@@ -30,8 +30,9 @@ const InteractiveViews = () => {
   // 좀 더 매끄럽게 수정하고 싶음
   const smoothCircleSize = useSpring(circleSize, {
     stiffness: 100,
-    // damping: 10,
+    damping: 10,
   });
+  // 처음 시작하는 투명도를 0.99로 하면 원이랑 투명도가 일치하는데, 이렇게 할 경우 스크롤 위치가 0.7일 때부터 적용되지 않고 처음부터 적용됨 ㅠ_ㅠ
   const bg = useTransform(
     scrollYProgress,
     [0.7, 0.75],
