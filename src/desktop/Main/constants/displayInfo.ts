@@ -6,7 +6,7 @@ export const INFO_TITLE = '2024 성신여대 디자인과 졸업전시';
 export const INFO_DETAIL = [
   {
     category: '전시일자',
-    detail: '2024.11.05 — 2024.11.10',
+    detail: ['2024.11.05 — 2024.11.10'],
   },
   {
     category: '시간',
