@@ -4,35 +4,39 @@ import {
   useAnimation,
   useMotionValueEvent,
   useScroll,
+  useSpring,
   useTransform,
 } from 'framer-motion';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { colors, fonts } from '../../../styles/theme';
+import { IcCircle } from '../../assets/icon';
 import { ImgBubble, ImgLight, ImgMainPeople } from '../../assets/image';
 
 const InteractiveViews = () => {
+  const [windowSize, setWindowSize] = useState(1440);
+
   const { scrollY } = useScroll();
   const { scrollYProgress } = useScroll();
-
+  const scrollAntmation = useAnimation();
   const x = useTransform(scrollYProgress, [0, 0.3], ['100%', '0']);
   const y = useTransform(scrollYProgress, [0.3, 0.7], ['100%', '-50%']);
   const scale = useTransform(scrollYProgress, [0.3, 0.7], [1, 2]);
+  const opacity = useTransform(scrollYProgress, [0.3, 0.7], [0, 1]);
+  const circleSize = useTransform(
+    scrollYProgress,
+    [0.4, 0.7],
+    ['1.3rem', `${windowSize}px`],
+  );
+  // 좀 더 매끄럽게 수정하고 싶음
+  const smoothCircleSize = useSpring(circleSize, {
+    stiffness: 100,
+    // damping: 10,
+  });
   const bg = useTransform(
-    scrollY,
-    [0.3, 0.7],
+    scrollYProgress,
+    [0.7, 0.75],
     ['rgba(38, 74, 194, 0)', 'rgba(38, 74, 194, 1)'],
   );
-
-  const opacity = useTransform(scrollYProgress, [0.3, 0.7], [0, 1]);
-  const width = useTransform(scrollYProgress, [0.3, 0.7], ['1.3rem', '100vw']);
-  const height = useTransform(scrollYProgress, [0.3, 0.7], ['1.3rem', '100vh']);
-  const borderRadius = useTransform(
-    scrollYProgress,
-    [0.3, 0.7],
-    ['150%', '0%'],
-  );
-
-  const scrollAntmation = useAnimation();
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     if (window.innerHeight / latest < 1.1248) {
@@ -44,6 +48,7 @@ const InteractiveViews = () => {
 
   useEffect(() => {
     scrollTo({ top: 0, behavior: 'instant' });
+    setWindowSize(window.innerWidth);
   }, []);
 
   return (
@@ -91,21 +96,19 @@ const InteractiveViews = () => {
         <div css={lightContainer}>
           <motion.img src={ImgLight} css={light} style={{ scale: scale }} />
           <motion.span
-            css={blueCircle}
+            css={icContainer}
             style={{
               opacity,
-              width,
-              height,
-              borderRadius,
-              backgroundColor: bg,
+              width: smoothCircleSize,
+              height: smoothCircleSize,
               position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
+              inset: 0,
               margin: 'auto',
+              backgroundColor: bg,
             }}
-          />
+          >
+            <IcCircle />
+          </motion.span>
         </div>
       </article>
     </section>
@@ -181,9 +184,9 @@ const individualsPeopleImg = css`
 `;
 
 const lightContainer = css`
-  /* display: flex;
+  display: flex;
   justify-content: center;
-  align-items: center; */
+  align-items: center;
   position: relative;
 
   width: 100vw;
@@ -193,12 +196,12 @@ const lightContainer = css`
 `;
 
 const light = css`
-  z-index: 10;
+  z-index: 1;
 `;
 
-const blueCircle = css`
+const icContainer = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: -1;
-
-  width: calc(100% / 107.8652);
-  height: calc(100vh / 61.2708);
 `;
