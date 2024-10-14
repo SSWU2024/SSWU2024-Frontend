@@ -88,7 +88,7 @@ const InteractiveViews = () => {
     <>
       <section css={interactiveViewContainer}>
         <article css={individualsContainer}>
-          {/* Text section */}
+          {/* 상단 검정색 텍스트 */}
           <div className="text" css={individualsTitleContainer}>
             <motion.span
               css={individualsTitle}
@@ -104,7 +104,7 @@ const InteractiveViews = () => {
             >{`성신여대 디자인과 졸업생들은 각자의 삶 속에서 다양한 일상과 경험을 마주하며 자신만의 길을 걸어갑니다.\n각자의 개성과 비전이 교차하는 복잡한 관계 속에서 우리는 유기적 네트워크를 이루고, 그 안에서 의미와 가치를 재창조합니다.\n이는 우리 모두를 더 크고 의미 있는 흐름 속으로 이끌어 갑니다.`}</motion.span>
           </div>
 
-          {/* Horizontal scroll section */}
+          {/* 상단 사람 이미지 가로스크롤 부분(현재 동작 X) - ㅠㅠ */}
           <motion.article
             className="peopleSlider"
             css={sliderBannerContainer}
@@ -127,6 +127,7 @@ const InteractiveViews = () => {
             }}
           />
 
+          {/* 빛 + 파란색 원이 커지는 부분 */}
           <div css={lightContainer}>
             <motion.img src={ImgLight} style={{ scale: scale }} />
             <motion.span
@@ -146,6 +147,7 @@ const InteractiveViews = () => {
         </article>
       </section>
 
+      {/* 졸업 전시 정보 관련 섹션 */}
       <motion.section
         css={displayInfoContainer}
         initial={{ backgroundColor: 'rgba(38, 74, 194, 0)' }}
