@@ -35,7 +35,7 @@ const headerContainer = css`
   align-items: center;
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 10;
 
   width: 100%;
 
