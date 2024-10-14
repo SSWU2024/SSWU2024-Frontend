@@ -31,6 +31,7 @@ const InteractiveViews = () => {
   const scrollAntmation = useAnimation();
   const scrollInfoBgAnimation = useAnimation();
   const scrollInfoAnimation = useAnimation();
+  // 이 부분 동작안함.. 왜인지 이해 불가...
   const x = useTransform(scrollYProgress, [0, 0.3], ['100%', '0']);
   const y = useTransform(scrollYProgress, [0.2, 0.4], ['100%', '-50%']);
   const scale = useTransform(scrollYProgress, [0.3, 0.7], [1, 2]);
@@ -49,7 +50,7 @@ const InteractiveViews = () => {
   // 처음 시작하는 투명도를 0.99로 하면 원이랑 투명도가 일치하는데, 이렇게 할 경우 스크롤 위치가 0.38일 때부터 적용되지 않고 처음부터 적용됨 ㅠ_ㅠ
   const bg = useTransform(
     scrollYProgress,
-    [0.39, 0.4],
+    [0.399, 0.4],
     ['rgba(38, 74, 194, 0)', 'rgba(38, 74, 194, 1)'],
   );
 
@@ -61,9 +62,9 @@ const InteractiveViews = () => {
     }
   });
 
+  // 여기랑 밑에 배경 부분은 추후 화면 크기(window.innerHeight)에 따라 분기처리해야 큰 사이즈의 화면에서도 대응 가능할 듯 (현재 1440 기준)
   useMotionValueEvent(scrollY, 'change', (latest) => {
-    console.log(window.innerHeight / latest);
-    if (window.innerHeight / latest < 0.348) {
+    if (window.innerHeight / latest < 0.355) {
       scrollInfoAnimation.start({ color: 'rgba(256,256,256,1)' });
     } else {
       scrollInfoAnimation.start({ color: 'rgba(38, 74, 194,0)' });
@@ -71,7 +72,7 @@ const InteractiveViews = () => {
   });
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
-    if (window.innerHeight / latest < 0.353) {
+    if (window.innerHeight / latest < 0.37) {
       scrollInfoBgAnimation.start({ backgroundColor: 'rgba(38, 74, 194, 1)' });
     } else {
       scrollInfoBgAnimation.start({ backgroundColor: 'rgba(38, 74, 194, 0)' });
@@ -193,11 +194,12 @@ const InteractiveViews = () => {
           </div>
         </article>
 
-        <article>
+        <article css={posterContainer}>
           <header>
             <p css={posterTitle}>Poster</p>
           </header>
 
+          {/* 화면에 따라 포스터 크기가 커지면 화질이 완전 깨지는데 어카죠? 포스터 높이가 화면 높이보다 커서(934) 비율대로 커지게 하면 투머치인데 . . . */}
           <img src={ImgPosterWeb} css={posterImg} />
         </article>
       </motion.section>
@@ -299,13 +301,13 @@ const displayInfoContainer = css`
   flex-direction: column;
 
   width: 100%;
-  padding: 0 34.9rem calc(100vh / 5.7857);
-  margin-top: 30.2rem;
+  padding: 0 calc(100% / 4.1261) calc(100vh / 5.7857);
+  margin-top: calc(100vh / 2.6821);
 `;
 
 const mainTitle = css`
   width: 100%;
-  margin-bottom: 4.8rem;
+  margin-bottom: calc(100vh / 16.875);
 
   color: ${colors.white};
   ${fonts.desktop_title_semi_60};
@@ -314,7 +316,7 @@ const mainTitle = css`
 `;
 
 const description = css`
-  margin-bottom: 26.8rem;
+  margin-bottom: calc(100vh / 3.0224);
 
   color: ${colors.white};
 
@@ -326,7 +328,7 @@ const description = css`
 
 const infoTitle = css`
   width: 100%;
-  margin-bottom: 6rem;
+  margin-bottom: calc(100vh / 13.5);
 
   color: ${colors.white};
 
@@ -336,13 +338,13 @@ const infoTitle = css`
 
 const infoDetailContainer = css`
   display: flex;
-  gap: 4.4rem;
+  gap: calc(100vh / 18.4091);
   justify-content: center;
   flex-direction: column;
 
   width: 100%;
-  padding: 0 12.9rem 0 15.6rem;
-  margin-bottom: 18.7rem;
+  padding: 0 calc(100% / 11.1628) 0 calc(100% / 9.2308);
+  margin-bottom: calc(100vh / 4.3316);
 `;
 
 const infoContainer = css`
@@ -367,9 +369,18 @@ const dateInfo = css`
   ${fonts.desktop_body_reg_18_desc};
 `;
 
+const posterContainer = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  width: 100%;
+`;
+
 const posterTitle = css`
   width: 100%;
-  margin-bottom: 6rem;
+  margin-bottom: calc(100vh / 13.5);
 
   color: ${colors.white};
 
