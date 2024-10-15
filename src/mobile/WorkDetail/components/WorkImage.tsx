@@ -1,9 +1,7 @@
 import { css } from '@emotion/react';
 import { WorkImageProps } from '../types/WorkDetailType';
 
-function WorkImage(props: WorkImageProps) {
-  const { images } = props;
-
+const WorkImage = ({ images }: WorkImageProps) => {
   return (
     <div css={imageSection}>
       {images.map((item) => {
@@ -13,7 +11,7 @@ function WorkImage(props: WorkImageProps) {
       })}
     </div>
   );
-}
+};
 
 export default WorkImage;
 

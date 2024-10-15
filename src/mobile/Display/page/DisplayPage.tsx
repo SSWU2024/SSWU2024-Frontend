@@ -15,7 +15,6 @@ const DisplayPage = () => {
   const studio2ImageList = useRef<imageType[]>(); // studio 2 이미지 리스트
 
   useEffect(() => {
-    scrollTo(0, 0);
     studio1ImageList.current = DISPLAY[0].images;
     studio2ImageList.current = DISPLAY[1].images;
   }, []);

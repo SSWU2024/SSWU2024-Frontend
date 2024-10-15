@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import { colors, fonts } from '../../../styles/theme';
 import { DESIGNER_DETAIL } from '../../constants/DESIGNER_DETAIL';
 
-function DesignerInfo() {
+const DesignerInfo = () => {
   const { name, engName, major, email, instagram, behance } =
     DESIGNER_DETAIL.data;
   return (
@@ -36,7 +36,7 @@ function DesignerInfo() {
       </ul>
     </section>
   );
-}
+};
 
 export default DesignerInfo;
 

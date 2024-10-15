@@ -5,7 +5,7 @@ import MobileRouter from './MobileRouter';
 import { GlobalStyles } from './styles/GlobalStyles';
 import TabletRouter from './TabletRouter';
 
-function App() {
+const App = () => {
   const [queryClient] = useState(() => new QueryClient());
 
   const width = useRef(window.innerWidth);
@@ -38,6 +38,6 @@ function App() {
       {renderRouter()}
     </QueryClientProvider>
   );
-}
+};
 
 export default App;

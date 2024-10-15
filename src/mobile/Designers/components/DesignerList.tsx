@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import { Link } from 'react-router-dom';
 import { DESIGNERS } from '../../constants/DESIGNERS';
 
-function DesignerList() {
+const DesignerList = () => {
   return (
     <ul css={listContainter}>
       {DESIGNERS.map((designer) => {
@@ -17,7 +17,7 @@ function DesignerList() {
       })}
     </ul>
   );
-}
+};
 
 export default DesignerList;
 
