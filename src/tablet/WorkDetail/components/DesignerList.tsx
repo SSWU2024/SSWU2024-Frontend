@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { WORK_DETAIL_DESIGNER } from '../../../mobile/constants/WORK_DETAIL_DESIGNER';
 import { colors, fonts } from '../../../styles/theme';
 
-function DesignerList() {
+const DesignerList = () => {
   return (
     <div css={designerListContainer}>
       <h1 css={title}>Designed By</h1>
@@ -29,7 +29,7 @@ function DesignerList() {
       </ul>
     </div>
   );
-}
+};
 
 export default DesignerList;
 

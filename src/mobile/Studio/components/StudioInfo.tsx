@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import { colors, fonts } from '../../../styles/theme';
 import { studioInfoProps } from '../types/studioType';
 
-function StudioInfoMobile(studioInfo: studioInfoProps) {
+const StudioInfoMobile = (studioInfo: studioInfoProps) => {
   const { studio, advisor, description, mobileImgSrc } = studioInfo.info;
 
   return (
@@ -17,7 +17,7 @@ function StudioInfoMobile(studioInfo: studioInfoProps) {
       <p css={descriptionCss}>{description}</p>
     </section>
   );
-}
+};
 
 export default StudioInfoMobile;
 

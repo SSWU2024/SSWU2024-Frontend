@@ -1,15 +1,10 @@
 import { css } from '@emotion/react';
-import { useEffect } from 'react';
 import DesignerInfo from '../../../mobile/Designer/components/DesignerInfo';
 import Works from '../../../mobile/Designer/components/Works';
 import { ImgBg3Tablet } from '../../assets/image';
 import PageLayout from '../../Common/PageLayout';
 
 const DesignerPage = () => {
-  useEffect(() => {
-    scrollTo(0, 0);
-  }, []);
-
   return (
     <PageLayout>
       <section css={designerContainer(ImgBg3Tablet)}>

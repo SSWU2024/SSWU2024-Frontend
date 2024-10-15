@@ -4,7 +4,7 @@ import { colors, fonts } from '../../../styles/theme';
 import { updateStudioUrl } from '../../../utils/updateStudioUrl';
 import { DESIGNER_DETAIL } from '../../constants/DESIGNER_DETAIL';
 
-function Works() {
+const Works = () => {
   const workList = DESIGNER_DETAIL.data.works;
 
   return (
@@ -30,7 +30,7 @@ function Works() {
       })}
     </section>
   );
-}
+};
 
 export default Works;
 
