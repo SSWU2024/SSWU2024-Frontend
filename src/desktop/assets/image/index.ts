@@ -17,3 +17,8 @@ export { default as ImgSymbolSpace } from './img_symbol_space.png';
 export { default as ImgSymbolSpaceDirection } from './img_symbol_space_direction.png';
 export { default as ImgSymbolStudioA } from './img_symbol_studio_A.png';
 export { default as ImgSymbolStudioB } from './img_symbol_studio_B.png';
+
+export { default as ImgMotionPoster } from './img_motion_poster.gif';
+
+export { default as ImgPeople1 } from './img_people_1.png';
+export { default as ImgPeople2 } from './img_people_2.png';
