@@ -18,7 +18,6 @@ const HorizontalImage = () => {
           trigger: '#text',
           start: 'top 60%',
           end: '+=160%',
-          markers: true,
           toggleActions: 'restart pause none reverse',
           onLeave: () => {
             // 원래 상태로 돌아가는 애니메이션
