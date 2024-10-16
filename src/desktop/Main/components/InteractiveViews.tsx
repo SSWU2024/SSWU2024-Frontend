@@ -188,7 +188,6 @@ const interactiveViewContainer = css`
   flex-direction: column;
 
   width: 100%;
-  padding-top: calc(100vh / 6.75);
 `;
 
 const individualsContainer = css`

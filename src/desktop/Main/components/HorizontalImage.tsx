@@ -16,8 +16,9 @@ const HorizontalImage = () => {
         duration: 1,
         scrollTrigger: {
           trigger: '#text',
-          start: 'top 40%',
-          end: '+=130%',
+          start: 'top 60%',
+          end: '+=160%',
+          markers: true,
           toggleActions: 'restart pause none reverse',
           onLeave: () => {
             // 원래 상태로 돌아가는 애니메이션
@@ -52,27 +53,25 @@ const HorizontalImage = () => {
   }, []);
 
   return (
-    <>
-      <div css={container} id="containerTop">
-        <section css={textSection} id="text" className="appear">
-          <h1 css={text('title')}>Moments of Individuals</h1>
-          <p css={text('sub')}>
-            성신여대 디자인과 졸업생들은 각자의 삶 속에서 다양한 일상과 경험을
-            마주하며 자신만의 길을 걸어갑니다.
-            <br />
-            각자의 개성과 비전이 교차하는 복잡한 관계 속에서 우리는 유기적
-            네트워크를 이루고, 그 안에서 의미와 가치를 재창조합니다.
-            <br />
-            이는 우리 모두를 더 크고 의미 있는 흐름 속으로 이끌어 갑니다.
-          </p>
-        </section>
+    <div css={container} id="containerTop">
+      <section css={textSection} id="text" className="appear">
+        <h1 css={text('title')}>Moments of Individuals</h1>
+        <p css={text('sub')}>
+          성신여대 디자인과 졸업생들은 각자의 삶 속에서 다양한 일상과 경험을
+          마주하며 자신만의 길을 걸어갑니다.
+          <br />
+          각자의 개성과 비전이 교차하는 복잡한 관계 속에서 우리는 유기적
+          네트워크를 이루고, 그 안에서 의미와 가치를 재창조합니다.
+          <br />
+          이는 우리 모두를 더 크고 의미 있는 흐름 속으로 이끌어 갑니다.
+        </p>
+      </section>
 
-        <div css={imgSection} className="imgSection">
-          <img src={ImgPeople1} className="image appear" css={imgCss} />
-          <img src={ImgPeople2} className="image appear" css={imgCss} />
-        </div>
+      <div css={imgSection} className="imgSection">
+        <img src={ImgPeople1} className="image appear" css={imgCss} />
+        <img src={ImgPeople2} className="image appear" css={imgCss} />
       </div>
-    </>
+    </div>
   );
 };
 
