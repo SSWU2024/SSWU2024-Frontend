@@ -10,18 +10,14 @@ import {
 import { useEffect, useState } from 'react';
 import { colors, fonts } from '../../../styles/theme';
 import { IcCircle } from '../../assets/icon';
-import {
-  ImgBubble,
-  ImgLight,
-  ImgMainPeople,
-  ImgPosterWeb,
-} from '../../assets/image';
+import { ImgBubble, ImgLight, ImgPosterWeb } from '../../assets/image';
 import {
   DESCRIPTION,
   INFO_DETAIL,
   INFO_TITLE,
   MAIN_TITLE,
 } from '../constants/displayInfo';
+import HorizontalImage from './HorizontalImage';
 
 const InteractiveViews = () => {
   const [windowSize, setWindowSize] = useState(1440);
@@ -31,15 +27,16 @@ const InteractiveViews = () => {
   const scrollAntmation = useAnimation();
   const scrollInfoBgAnimation = useAnimation();
   const scrollInfoAnimation = useAnimation();
-  // 이 부분 동작안함.. 왜인지 이해 불가...
-  const x = useTransform(scrollYProgress, [0, 0.3], ['100%', '0']);
-  const y = useTransform(scrollYProgress, [0.2, 0.4], ['100%', '-50%']);
-  const scale = useTransform(scrollYProgress, [0.3, 0.7], [1, 2]);
+
+  const y = useTransform(scrollYProgress, [0.15, 0.6], ['300%', '20%']);
+  const opacity = useTransform(scrollYProgress, [0.5, 0.55], [0, 1]);
+  const scale = useTransform(scrollYProgress, [0.3, 0.4], [1, 2]);
   const circleSize = useTransform(
     scrollYProgress,
-    [0.25, 0.4],
+    [0.35, 0.45],
     ['1.3rem', `${windowSize}px`],
   );
+
   // 좀 더 매끄럽게 수정하고 싶음
   const smoothCircleSize = useSpring(circleSize, {
     stiffness: 200,
@@ -50,7 +47,7 @@ const InteractiveViews = () => {
   // 처음 시작하는 투명도를 0.99로 하면 원이랑 투명도가 일치하는데, 이렇게 할 경우 스크롤 위치가 0.38일 때부터 적용되지 않고 처음부터 적용됨 ㅠ_ㅠ
   const bg = useTransform(
     scrollYProgress,
-    [0.399, 0.4],
+    [0.449, 0.45],
     ['rgba(38, 74, 194, 0)', 'rgba(38, 74, 194, 1)'],
   );
 
@@ -88,33 +85,7 @@ const InteractiveViews = () => {
     <>
       <section css={interactiveViewContainer}>
         <article css={individualsContainer}>
-          {/* 상단 검정색 텍스트 */}
-          <div className="text" css={individualsTitleContainer}>
-            <motion.span
-              css={individualsTitle}
-              animate={scrollAntmation}
-              initial={{ color: 'rgba(0,0,0,1)' }}
-            >
-              Moments of Individuals
-            </motion.span>
-            <motion.span
-              css={individualsDesc}
-              animate={scrollAntmation}
-              initial={{ color: 'rgba(0,0,0,1)' }}
-            >{`성신여대 디자인과 졸업생들은 각자의 삶 속에서 다양한 일상과 경험을 마주하며 자신만의 길을 걸어갑니다.\n각자의 개성과 비전이 교차하는 복잡한 관계 속에서 우리는 유기적 네트워크를 이루고, 그 안에서 의미와 가치를 재창조합니다.\n이는 우리 모두를 더 크고 의미 있는 흐름 속으로 이끌어 갑니다.`}</motion.span>
-          </div>
-
-          {/* 상단 사람 이미지 가로스크롤 부분(현재 동작 X) - ㅠㅠ */}
-          <motion.article
-            className="peopleSlider"
-            css={sliderBannerContainer}
-            style={{ x }}
-            initial={{ x: 0 }}
-          >
-            <div css={animationBox}>
-              <motion.img src={ImgMainPeople} css={individualsPeopleImg} />
-            </div>
-          </motion.article>
+          <HorizontalImage />
 
           {/* Bubble animation */}
           <motion.img
@@ -123,28 +94,27 @@ const InteractiveViews = () => {
             css={bubble}
             style={{ y }}
             whileInView={{
-              transition: { duration: 2 },
+              transition: { duration: 3 },
             }}
           />
-
-          {/* 빛 + 파란색 원이 커지는 부분 */}
-          <div css={lightContainer}>
-            <motion.img src={ImgLight} style={{ scale: scale }} />
-            <motion.span
-              css={icContainer}
-              style={{
-                width: smoothCircleSize,
-                height: smoothCircleSize,
-                position: 'absolute',
-                inset: 0,
-                margin: 'auto',
-                backgroundColor: bg,
-              }}
-            >
-              <IcCircle />
-            </motion.span>
-          </div>
         </article>
+        {/* 빛 + 파란색 원이 커지는 부분 */}
+        <div css={lightContainer}>
+          <motion.img src={ImgLight} style={{ scale: scale }} />
+          <motion.span
+            css={icContainer}
+            style={{
+              width: smoothCircleSize,
+              height: smoothCircleSize,
+              position: 'absolute',
+              inset: 0,
+              margin: 'auto',
+              backgroundColor: bg,
+            }}
+          >
+            <IcCircle />
+          </motion.span>
+        </div>
       </section>
 
       {/* 졸업 전시 정보 관련 섹션 */}
@@ -158,6 +128,7 @@ const InteractiveViews = () => {
             css={mainTitle}
             initial={{ color: 'rgba(38, 74, 194,0)' }}
             animate={scrollInfoAnimation}
+            style={{ opacity }}
           >
             {MAIN_TITLE}
           </motion.p>
@@ -165,6 +136,7 @@ const InteractiveViews = () => {
             css={description}
             initial={{ color: 'rgba(38, 74, 194,0)' }}
             animate={scrollInfoAnimation}
+            style={{ opacity }}
           >
             {DESCRIPTION}
           </motion.p>
@@ -217,64 +189,19 @@ const interactiveViewContainer = css`
 
   width: 100%;
   padding-top: calc(100vh / 6.75);
-  margin-top: 5.2rem;
 `;
 
 const individualsContainer = css`
   display: flex;
   align-items: center;
   flex-direction: column;
-`;
 
-const individualsTitleContainer = css`
-  display: flex;
-  gap: calc(100vh / 22.5);
-  align-items: center;
-  flex-direction: column;
-
-  opacity: 1;
-  transition: opacity 2s ease;
-`;
-
-const individualsTitle = css`
-  color: ${colors.gray900};
-  ${fonts.desktop_title_semi_60};
-`;
-
-const individualsDesc = css`
-  margin-bottom: calc(100vh / 11.4085);
-
-  color: ${colors.gray900};
-
-  ${fonts.desktop_body_reg_18_desc};
-  text-align: center;
-
-  white-space: pre-wrap;
-`;
-
-const sliderBannerContainer = css`
-  position: relative;
-  overflow: hidden;
-
-  width: 100%;
-  height: calc(100vh / 2.2253);
+  height: 200rem;
 `;
 
 const bubble = css`
   position: absolute;
   top: calc(100vh / 1.62);
-`;
-
-const animationBox = css`
-  display: flex;
-
-  width: calc(100% / 0.5894);
-  height: 100%;
-`;
-
-const individualsPeopleImg = css`
-  width: calc(100% / 0.5894);
-  height: 100%;
 `;
 
 const lightContainer = css`
@@ -293,6 +220,7 @@ const icContainer = css`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
   z-index: -1;
 `;
 
@@ -303,8 +231,7 @@ const displayInfoContainer = css`
   flex-direction: column;
 
   width: 100%;
-  padding: 0 calc(100% / 4.1261) calc(100vh / 5.7857);
-  margin-top: calc(100vh / 2.6821);
+  padding: 18rem calc(100% / 4.1261) calc(100vh / 5.7857);
 `;
 
 const mainTitle = css`
