@@ -12,8 +12,45 @@ const DesignerPage = () => {
   const { designerDetail, isLoading } = useGetDesignerDetail(designerId);
   const { data } = !isLoading && designerDetail;
 
-  const { name, engName, major, email, instagram, behance, works } =
+  const { name, engName, major, email, instagram, behance } =
     !isLoading && data;
+
+  const works = [
+    {
+      workId: 6,
+      workTitle: '서비스 디자인',
+      workEngTitle: 'Service Design',
+      studioNm: '모션그래픽스스튜디오',
+      images: [
+        {
+          imgPath: 'https://xen-api.linkareer.com/attachments/80334',
+          fileFormat: 'jpg',
+        },
+        {
+          imgPath:
+            'https://i.pinimg.com/originals/a0/89/e7/a089e759d7e713b4eba7b6cda87b6c8a.gif',
+          fileFormat: 'gif',
+        },
+      ],
+    },
+    {
+      workId: 11,
+      workTitle: '실내 디자인 컨셉',
+      workEngTitle: 'Interior Design Concept',
+      studioNm: '공간디자인스튜디오',
+      images: [
+        {
+          imgPath: 'https://xen-api.linkareer.com/attachments/80334',
+          fileFormat: 'jpg',
+        },
+        {
+          imgPath:
+            'https://i.pinimg.com/originals/a0/89/e7/a089e759d7e713b4eba7b6cda87b6c8a.gif',
+          fileFormat: 'gif',
+        },
+      ],
+    },
+  ];
 
   return (
     <PageLayout>

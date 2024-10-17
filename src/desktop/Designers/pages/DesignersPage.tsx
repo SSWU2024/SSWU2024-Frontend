@@ -34,7 +34,7 @@ const bg = css`
 `;
 
 const designersContainer = css`
-  padding: 5.2rem 6.2rem 0 6rem;
+  padding: 10rem 6.2rem 0 6rem;
   margin: 5.2rem 0 14rem;
 `;
 

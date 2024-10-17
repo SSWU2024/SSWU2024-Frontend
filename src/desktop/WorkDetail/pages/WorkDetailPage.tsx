@@ -14,9 +14,41 @@ const WorkDetailPage = () => {
   const { workDesigners, isWorkDesignersLoading } = useGetWorkDesigners(workId);
   const isLoading = isWorkDetailLoading || isWorkDesignersLoading;
 
-  const { workTitle, workBody, workEngBody, thumbnail, images } =
+  // 추후 서버에 데이터가 제대로 들어가면 아래 코드로 대체
+  // const { workTitle, workBody, workEngBody, thumbnail, images } =
+  //   !isWorkDetailLoading && workDetail.data;
+
+  const { workTitle, workBody, workEngBody } =
     !isWorkDetailLoading && workDetail.data;
   const designers = !isWorkDesignersLoading && workDesigners.data;
+
+  const thumbnail =
+    'https://png.pngtree.com/thumb_back/fh260/background/20220509/pngtree-road-to-night-city-image_1337790.jpg';
+  const images = [
+    {
+      sort: 1,
+      imgPath: 'https://cdn2.colley.kr/item_383431_1_0_title_0.jpeg',
+    },
+    {
+      sort: 2,
+      imgPath:
+        'https://i.pinimg.com/originals/99/7a/9b/997a9b2cd93277769ca9b3d109bceed7.jpg',
+    },
+    {
+      sort: 3,
+      imgPath: 'https://cdn2.colley.kr/item_127602_1_4_title_4.jpeg',
+    },
+    {
+      sort: 4,
+      imgPath:
+        'https://muko.kr/files/attach/images/2022/11/22/81725dc1572f2c88c1b2787db750735f.jpg',
+    },
+    {
+      sort: 5,
+      imgPath:
+        'https://i.pinimg.com/236x/2b/7b/dc/2b7bdc1b28064e8496bcc4e907cc87e3.jpg',
+    },
+  ];
 
   useEffect(() => {
     scrollTo({ top: 0, behavior: 'instant' });
@@ -53,5 +85,4 @@ const workDetailContainer = css`
 
 const workThumbnail = css`
   width: 100%;
-  height: calc(100vh / 1.65);
 `;
