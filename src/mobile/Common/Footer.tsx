@@ -9,7 +9,9 @@ const Footer = () => {
         ©2024 Sungshin Women’s University <br /> Dept. of Design Graduation
         Exhibition
       </p>
-      <IcInsta />
+      <a href="https://www.instagram.com/sswud_2024/">
+        <IcInsta />
+      </a>
     </footer>
   );
 };
