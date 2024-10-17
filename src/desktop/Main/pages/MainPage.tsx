@@ -17,5 +17,6 @@ function MainPage() {
 export default MainPage;
 
 const motionPoster = css`
+  width: 100%;
   padding-top: 5.3rem;
 `;
