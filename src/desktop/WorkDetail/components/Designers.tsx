@@ -5,6 +5,20 @@ import { colors, fonts } from '../../../styles/theme';
 import { DesignersProps } from '../types/workDetailTypes';
 
 const Designers = ({ designers }: DesignersProps) => {
+  // 서버에 데이터 제대로 들어가면 삭제예정
+  const images = [
+    {
+      imgPath:
+        'https://i.pinimg.com/236x/13/26/c1/1326c1f3ec2a54bfc0893a0c582360de.jpg',
+      fileFormat: 'jpeg',
+    },
+    {
+      imgPath:
+        'https://i.pinimg.com/originals/a0/89/e7/a089e759d7e713b4eba7b6cda87b6c8a.gif',
+      fileFormat: 'gif',
+    },
+  ];
+
   const [hoveredImg, setHoveredImg] = useState({
     hoveredTitle: '',
     hoveredName: '',
@@ -32,9 +46,11 @@ const Designers = ({ designers }: DesignersProps) => {
       <div css={totalDesigners}>
         {designers.map((designer) => {
           const { designerId, name, engName, email, works } = designer;
-          const { workId, workTitle, studioNm, images } = works[0];
-          const { imgPath, fileFormat } =
-            images.length > 1 ? images[1] : images[0];
+          // 서버에 데이터 제대로 들어오면 이 코드로 대체 예정
+          // const { workId, workTitle, studioNm, images } = works[0];
+
+          const { workId, workTitle, studioNm } = works[0];
+          const { imgPath, fileFormat } = images[0];
           const isStaticImg = fileFormat !== 'gif';
           const isHoveredImg =
             hoveredTitle === workTitle && hoveredName === name;
