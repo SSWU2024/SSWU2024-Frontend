@@ -36,7 +36,10 @@ const bg = css`
   left: 0;
   z-index: -1;
 
-  height: calc(100vh - 5.2rem);
+  min-height: calc(100vh - 5.2rem);
+
+  width: 100%;
+  height: 100%;
 `;
 
 const title = css`

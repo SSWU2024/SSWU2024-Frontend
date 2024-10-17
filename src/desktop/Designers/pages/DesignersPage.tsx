@@ -25,7 +25,7 @@ export default DesignersPage;
 
 const bg = css`
   position: absolute;
-  top: 5.2rem;
+  top: 0;
   left: 0;
   z-index: -1;
 

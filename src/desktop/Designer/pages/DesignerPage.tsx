@@ -99,6 +99,7 @@ const bg = css`
 
   min-height: calc(100vh - 5.2rem);
 
+  width: 100%;
   height: 100%;
 `;
 
