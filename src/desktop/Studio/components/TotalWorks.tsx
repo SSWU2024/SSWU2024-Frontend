@@ -8,6 +8,17 @@ import { TotalWorksProps, WorkType } from '../types/studioType';
 const TotalWorks = ({ id }: TotalWorksProps) => {
   const { totalWorks, isLoading } = useGetStudioWorks(id);
   const { works } = !isLoading && totalWorks.data;
+  const images = [
+    {
+      imgPath: 'https://xen-api.linkareer.com/attachments/80334',
+      fileFormat: 'jpeg',
+    },
+    {
+      imgPath:
+        'https://i.pinimg.com/originals/a0/89/e7/a089e759d7e713b4eba7b6cda87b6c8a.gif',
+      fileFormat: 'gif',
+    },
+  ];
 
   const [hoveredImg, setHoveredImg] = useState({
     hoveredSrc: '',
@@ -45,7 +56,10 @@ const TotalWorks = ({ id }: TotalWorksProps) => {
     <article css={worksContainer}>
       {!isLoading &&
         works.map((work: WorkType) => {
-          const { workId, workTitle, images, designers, workEngTitle } = work;
+          // 서버에 데이터 잘 들어가면 이 코드로 대체
+          // const { workId, workTitle, images, designers, workEngTitle } = work;
+
+          const { workId, workTitle, designers, workEngTitle } = work;
           const { imgPath } = images[0];
           const isHoveredGif = hoveredSrc && workTitle === hovredTitle;
           const isHoveredImg = workTitle === hovredTitle;

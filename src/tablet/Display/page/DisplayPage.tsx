@@ -1,15 +1,10 @@
 import { css } from '@emotion/react';
-import { useEffect } from 'react';
 import { DISPLAY } from '../../../mobile/constants/DISPLAY';
 import { colors, fonts } from '../../../styles/theme';
 import PageLayout from '../../Common/PageLayout';
 import { ImgBg2Tablet } from '../../assets/image';
 
 const DisplayPage = () => {
-  useEffect(() => {
-    scrollTo(0, 0);
-  }, []);
-
   const StudioImages1 =
     DISPLAY.find((item) => item.displayId === 1)?.images || [];
 

@@ -4,7 +4,7 @@ import { colors, fonts } from '../../../styles/theme';
 import { Link } from 'react-router-dom';
 import { DESIGNER_TOTAL_WORKS } from '../../constants/WORKS';
 
-function WorkList() {
+const WorkList = () => {
   const workList = DESIGNER_TOTAL_WORKS.data.works;
 
   return (
@@ -35,7 +35,7 @@ function WorkList() {
       })}
     </ul>
   );
-}
+};
 
 export default WorkList;
 
