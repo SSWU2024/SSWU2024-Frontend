@@ -3,13 +3,17 @@ import { colors, fonts } from '../../styles/theme';
 import { IcInsta } from '../assets/icon';
 
 const Footer = () => {
+  const handleClickInsta = () => {
+    window.open('https://www.instagram.com/sswud_2024/');
+  };
+
   return (
     <footer css={footerContainer}>
       <span css={footerText}>
         ©2024 Sungshin Women’s University Dept. of Design Graduation Exhibition
       </span>
 
-      <div css={idContainer}>
+      <div css={idContainer} onClick={handleClickInsta}>
         <span css={footerText}>@sswud_2024</span>
         <IcInsta />
       </div>
