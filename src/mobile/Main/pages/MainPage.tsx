@@ -1,25 +1,39 @@
 import { css } from '@emotion/react';
-import { fonts } from '../../../styles/theme';
+import {
+  ImgDescriptionMobile,
+  ImgMotionPosterMobile,
+} from '../../assets/image';
 import PageLayout from '../../Common/PageLayout';
 
-function MainPage() {
+import { useEffect } from 'react';
+import CommitteeInfo from '../components/CommitteeInfo';
+import ExhibitionInfo from '../components/ExhibitionInfo';
+
+const MainPage = () => {
+  useEffect(() => {
+    scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, []);
+
   return (
     <PageLayout>
       <div css={mainContainer}>
-        <p css={text}>메인페이지</p>
+        <img src={ImgMotionPosterMobile} css={imgCss} alt="메인_모션포스터" />
+        <img src={ImgDescriptionMobile} css={imgCss} alt="메인_설명포스터" />
       </div>
+      <ExhibitionInfo />
+      <CommitteeInfo />
     </PageLayout>
   );
-}
+};
 
 export default MainPage;
 
 const mainContainer = css`
-  width: 100%;
-  height: calc(100dvh - 10rem);
+  width: 100dvw;
   padding-top: 5.8rem;
 `;
 
-const text = css`
-  ${fonts.mobile_title_reg_32};
+const imgCss = css`
+  width: 100%;
+  height: auto;
 `;

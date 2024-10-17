@@ -1,22 +1,26 @@
 import { css } from '@emotion/react';
+import { useLocation } from 'react-router-dom';
+import useGetDesignerDetail from '../../../libs/hooks/useGetDesignerDetail';
 import { colors, fonts } from '../../../styles/theme';
 import { ImgBg3Web } from '../../assets/image';
 import PageLayout from '../../Common/PageLayout';
 import DesignerContact from '../components/DesignerContact';
 import DesignerWorks from '../components/DesignerWorks';
 
-const DUMMY = {
-  name: '양종욱',
-  engName: 'Jonguk Yang',
-  major: 'Computer Science',
-  email: 'didwhddnr123@naver.com',
-  instagram: '@jong_uks',
-  behance: 'https://juclass.co.kr',
-  works: [
+const DesignerPage = () => {
+  const { designerId } = useLocation().state;
+  const { designerDetail, isLoading } = useGetDesignerDetail(designerId);
+  const { data } = !isLoading && designerDetail;
+
+  const { name, engName, major, email, instagram, behance } =
+    !isLoading && data;
+
+  const works = [
     {
-      url: 'title-1',
-      workTitle: '디지털 일러스트',
-      studioNm: '시각디자인스튜디오 A',
+      workId: 6,
+      workTitle: '서비스 디자인',
+      workEngTitle: 'Service Design',
+      studioNm: '모션그래픽스스튜디오',
       images: [
         {
           imgPath: 'https://xen-api.linkareer.com/attachments/80334',
@@ -30,43 +34,46 @@ const DUMMY = {
       ],
     },
     {
-      url: 'title-2',
-      workTitle: '서비스 디자인',
-      studioNm: '디자인씽킹스튜디오',
+      workId: 11,
+      workTitle: '실내 디자인 컨셉',
+      workEngTitle: 'Interior Design Concept',
+      studioNm: '공간디자인스튜디오',
       images: [
         {
-          imgPath:
-            'https://i.pinimg.com/236x/13/26/c1/1326c1f3ec2a54bfc0893a0c582360de.jpg',
+          imgPath: 'https://xen-api.linkareer.com/attachments/80334',
           fileFormat: 'jpg',
+        },
+        {
+          imgPath:
+            'https://i.pinimg.com/originals/a0/89/e7/a089e759d7e713b4eba7b6cda87b6c8a.gif',
+          fileFormat: 'gif',
         },
       ],
     },
-  ],
-};
-
-const DesignerPage = () => {
-  const { name, engName, major, email, instagram, behance, works } = DUMMY;
+  ];
 
   return (
     <PageLayout>
-      <section css={designerPageContainer}>
-        <img src={ImgBg3Web} css={bg} />
+      {!isLoading && (
+        <section css={designerPageContainer}>
+          <img src={ImgBg3Web} css={bg} />
 
-        <article css={basicInfo}>
-          <p css={designerKrName}>{name}</p>
-          <p css={designerEngName}>{engName}</p>
-          <p css={mainMajor}>{major}</p>
-        </article>
+          <article css={basicInfo}>
+            <p css={designerKrName}>{name}</p>
+            <p css={designerEngName}>{engName}</p>
+            <p css={mainMajor}>{major}</p>
+          </article>
 
-        <article css={additionalInfo}>
-          <DesignerContact
-            email={email}
-            instagram={instagram}
-            behance={behance}
-          />
-          <DesignerWorks works={works} />
-        </article>
-      </section>
+          <article css={additionalInfo}>
+            <DesignerContact
+              email={email}
+              instagram={instagram}
+              behance={behance}
+            />
+            <DesignerWorks works={works} />
+          </article>
+        </section>
+      )}
     </PageLayout>
   );
 };
@@ -92,6 +99,7 @@ const bg = css`
 
   min-height: calc(100vh - 5.2rem);
 
+  width: 100%;
   height: 100%;
 `;
 

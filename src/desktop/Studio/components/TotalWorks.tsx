@@ -1,129 +1,24 @@
 import { css } from '@emotion/react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import useGetStudioWorks from '../../../libs/hooks/useGetStudioWorks';
 import { colors, fonts } from '../../../styles/theme';
-import { TotalWorksProps } from '../types/studioType';
-
-const DUMMY = {
-  works: [
-    {
-      url: '1',
-      workTitle: '제목 1',
-      images: [
-        {
-          imgPath: 'https://xen-api.linkareer.com/attachments/80334',
-          fileFormat: 'jpeg',
-        },
-        {
-          imgPath:
-            'https://i.pinimg.com/originals/a0/89/e7/a089e759d7e713b4eba7b6cda87b6c8a.gif',
-          fileFormat: 'gif',
-        },
-      ],
-      designers: [
-        {
-          name: '서아름',
-        },
-        {
-          name: '이도윤',
-        },
-      ],
-    },
-    {
-      url: '2',
-      workTitle: '제목 2',
-      images: [
-        {
-          imgPath:
-            'https://mblogthumb-phinf.pstatic.net/20151231_18/kimtaeyon1_1451530246034U8P5X_PNG/%BF%A1%BA%F1%C3%F2%C2%A9_%282%29.png?type=w420',
-          fileFormat: 'png',
-        },
-      ],
-      designers: [
-        {
-          name: '이도리',
-        },
-      ],
-    },
-    {
-      url: '3',
-      workTitle: '제목 3',
-      images: [
-        {
-          imgPath:
-            'https://blog.kakaocdn.net/dn/cYnypO/btrzcSaVpNa/VwDfLj2yOWZDKpAhZIlYJ1/img.jpg',
-          fileFormat: 'jpeg',
-        },
-      ],
-      designers: [
-        {
-          name: '루밍',
-        },
-      ],
-    },
-    {
-      url: '4',
-      workTitle: '제목 4',
-      images: [
-        {
-          imgPath:
-            'https://i.pinimg.com/236x/13/26/c1/1326c1f3ec2a54bfc0893a0c582360de.jpg',
-          fileFormat: 'jpeg',
-        },
-        {
-          imgPath:
-            'https://i.pinimg.com/originals/a0/89/e7/a089e759d7e713b4eba7b6cda87b6c8a.gif',
-          fileFormat: 'gif',
-        },
-      ],
-      designers: [
-        {
-          name: '서아름',
-        },
-        {
-          name: '이도윤',
-        },
-      ],
-    },
-    {
-      url: '5',
-      workTitle: '제목 5',
-      images: [
-        {
-          imgPath:
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-g0xvY7bk8G1iY6o3AfnJksWjZjRebCNzTg&s',
-          fileFormat: 'jpg',
-        },
-      ],
-      designers: [
-        {
-          name: '이도리',
-        },
-      ],
-    },
-    {
-      url: '6',
-      workTitle: '제목 6',
-      images: [
-        {
-          imgPath:
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRi_eHPe1zDes6lLBCoyiKmH_NSchwwROudnA&s',
-          fileFormat: 'jpeg',
-        },
-      ],
-      designers: [
-        {
-          name: '루밍',
-        },
-      ],
-    },
-  ],
-};
+import { TotalWorksProps, WorkType } from '../types/studioType';
 
 const TotalWorks = ({ id }: TotalWorksProps) => {
-  const { works } = DUMMY;
-  // 빌드 에러 방지를 위한 코드 -> id는 추후 api 통신에 쓰일 예정
-  console.log(id);
+  const { totalWorks, isLoading } = useGetStudioWorks(id);
+  const { works } = !isLoading && totalWorks.data;
+  const images = [
+    {
+      imgPath: 'https://xen-api.linkareer.com/attachments/80334',
+      fileFormat: 'jpeg',
+    },
+    {
+      imgPath:
+        'https://i.pinimg.com/originals/a0/89/e7/a089e759d7e713b4eba7b6cda87b6c8a.gif',
+      fileFormat: 'gif',
+    },
+  ];
 
   const [hoveredImg, setHoveredImg] = useState({
     hoveredSrc: '',
@@ -159,36 +54,41 @@ const TotalWorks = ({ id }: TotalWorksProps) => {
 
   return (
     <article css={worksContainer}>
-      {works.map((work) => {
-        const { workTitle, images, designers, url } = work;
-        const { imgPath } = images[0];
-        const isHoveredGif = hoveredSrc && workTitle === hovredTitle;
-        const isHoveredImg = workTitle === hovredTitle;
+      {!isLoading &&
+        works.map((work: WorkType) => {
+          // 서버에 데이터 잘 들어가면 이 코드로 대체
+          // const { workId, workTitle, images, designers, workEngTitle } = work;
 
-        return (
-          <article key={workTitle} css={workContainer}>
-            <Link to={url}>
-              <img
-                src={isHoveredGif ? hoveredSrc : imgPath}
-                css={workImg}
-                onMouseEnter={() => handleHoverImg(images, workTitle)}
-                onMouseLeave={handleLeaveImg}
-              />
-              <p css={title(isHoveredImg)}>{workTitle}</p>
-              <div css={designerNameContainer}>
-                {designers.map((designer) => {
-                  const { name } = designer;
-                  return (
-                    <p key={name} css={designerName(isHoveredImg)}>
-                      {name}
-                    </p>
-                  );
-                })}
-              </div>
-            </Link>
-          </article>
-        );
-      })}
+          const { workId, workTitle, designers, workEngTitle } = work;
+          const { imgPath } = images[0];
+          const isHoveredGif = hoveredSrc && workTitle === hovredTitle;
+          const isHoveredImg = workTitle === hovredTitle;
+          const url = workEngTitle.trim().split(' ').join('-');
+
+          return (
+            <article
+              key={workTitle}
+              css={workContainer}
+              onMouseEnter={() => handleHoverImg(images, workTitle)}
+              onMouseLeave={handleLeaveImg}
+            >
+              <Link to={url} state={{ workId: workId }}>
+                <img src={isHoveredGif ? hoveredSrc : imgPath} css={workImg} />
+                <p css={title(isHoveredImg)}>{workTitle}</p>
+                <div css={designerNameContainer}>
+                  {designers.map((designer) => {
+                    const { name } = designer;
+                    return (
+                      <p key={name} css={designerName(isHoveredImg)}>
+                        {name}
+                      </p>
+                    );
+                  })}
+                </div>
+              </Link>
+            </article>
+          );
+        })}
     </article>
   );
 };

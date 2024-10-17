@@ -61,5 +61,5 @@ const studioName = (isHoveredStudio: boolean) => css`
   min-width: 22.9rem;
 
   color: ${isHoveredStudio ? colors.pink300 : colors.gray900};
-  ${fonts.desktop_title_reg_24};
+  ${isHoveredStudio ? fonts.desktop_title_semi_24 : fonts.desktop_title_reg_24};
 `;

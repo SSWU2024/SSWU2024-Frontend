@@ -1,17 +1,12 @@
 import { css } from '@emotion/react';
 import PageLayout from '../../Common/PageLayout';
 
-import { useEffect } from 'react';
 import { WORK_DETAIL } from '../../../mobile/constants/WORK_DETAIL';
 import DesignerList from '../components/DesignerList';
 import WorkImage from '../components/WorkImage';
 import WorkInfo from '../components/WorkInfo';
 
 const WorkDetailPage = () => {
-  useEffect(() => {
-    scrollTo(0, 0);
-  }, []);
-
   const { workTitle, workBody, workEngBody, thumbnail, images, designers } =
     WORK_DETAIL;
 
@@ -44,6 +39,4 @@ const WorkDetailContainer = css`
 
 const thumbnailImg = css`
   width: 100%;
-  height: 26.2rem;
-  object-fit: cover;
 `;

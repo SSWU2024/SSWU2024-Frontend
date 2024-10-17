@@ -17,6 +17,7 @@ declare module '@emotion/react' {
     };
     fonts: {
       desktop_title_reg_60: SerializedStyles;
+      desktop_title_semi_60: SerializedStyles;
       desktop_title_reg_54: SerializedStyles;
       desktop_title_semi_40: SerializedStyles;
       desktop_title_semi_28: SerializedStyles;

@@ -1,17 +1,17 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import DesktopRouter from './DesktopRouter';
 import MobileRouter from './MobileRouter';
 import { GlobalStyles } from './styles/GlobalStyles';
 import TabletRouter from './TabletRouter';
 
-function App() {
+const App = () => {
   const [queryClient] = useState(() => new QueryClient());
 
-  const width = useRef(window.innerWidth);
+  const [width, setWidth] = useState(window.innerWidth);
 
   const handleResize = () => {
-    width.current = window.innerWidth;
+    setWidth(window.innerWidth);
   };
 
   useEffect(() => {
@@ -23,9 +23,9 @@ function App() {
   }, []);
 
   const renderRouter = () => {
-    if (width.current < 768) {
+    if (width < 768) {
       return <MobileRouter />;
-    } else if (width.current >= 768 && width.current < 1440) {
+    } else if (width >= 768 && width < 1440) {
       return <TabletRouter />;
     } else {
       return <DesktopRouter />;
@@ -38,6 +38,6 @@ function App() {
       {renderRouter()}
     </QueryClientProvider>
   );
-}
+};
 
 export default App;

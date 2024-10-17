@@ -5,6 +5,20 @@ import { colors, fonts } from '../../../styles/theme';
 import { DesignersProps } from '../types/workDetailTypes';
 
 const Designers = ({ designers }: DesignersProps) => {
+  // 서버에 데이터 제대로 들어가면 삭제예정
+  const images = [
+    {
+      imgPath:
+        'https://i.pinimg.com/236x/13/26/c1/1326c1f3ec2a54bfc0893a0c582360de.jpg',
+      fileFormat: 'jpeg',
+    },
+    {
+      imgPath:
+        'https://i.pinimg.com/originals/a0/89/e7/a089e759d7e713b4eba7b6cda87b6c8a.gif',
+      fileFormat: 'gif',
+    },
+  ];
+
   const [hoveredImg, setHoveredImg] = useState({
     hoveredTitle: '',
     hoveredName: '',
@@ -31,18 +45,22 @@ const Designers = ({ designers }: DesignersProps) => {
       <p css={designedByTitle}>Designed by</p>
       <div css={totalDesigners}>
         {designers.map((designer) => {
-          const { name, engName, email, workTitle, studioNm, images } =
-            designer;
-          const { imgPath, fileFormat } =
-            images.length > 1 ? images[1] : images[0];
-          const isStaticImg = fileFormat !== 'gif';
+          const { designerId, name, engName, email, works } = designer;
+          // 서버에 데이터 제대로 들어오면 이 코드로 대체 예정
+          // const { workId, workTitle, studioNm, images } = works[0];
+
+          const { workId, workTitle, studioNm } = works[0];
+          const { imgPath } = images[0];
           const isHoveredImg =
             hoveredTitle === workTitle && hoveredName === name;
           const designerUrl = engName.split(' ').join('-');
 
           return (
-            <article key={name} css={designerInfoContainer}>
-              <Link to={`/designers/${designerUrl}`}>
+            <article key={workId + name} css={designerInfoContainer}>
+              <Link
+                to={`/designers/${designerUrl}`}
+                state={{ designerId: designerId }}
+              >
                 <div css={designerInfo}>
                   <p css={designerKrName}>{name}</p>
                   <p css={designerEngName}>{engName}</p>
@@ -51,9 +69,7 @@ const Designers = ({ designers }: DesignersProps) => {
                 <img
                   src={imgPath}
                   css={designersWork(isHoveredImg)}
-                  onMouseEnter={() =>
-                    isStaticImg && handleHoverImg(workTitle, name)
-                  }
+                  onMouseEnter={() => handleHoverImg(workTitle, name)}
                   onMouseLeave={handleLeaveImg}
                 />
               </Link>
@@ -109,6 +125,8 @@ const designerInfo = css`
   display: flex;
   justify-content: center;
   flex-direction: column;
+
+  margin-bottom: calc(100vh / 50.625);
 `;
 
 const designerKrName = css`

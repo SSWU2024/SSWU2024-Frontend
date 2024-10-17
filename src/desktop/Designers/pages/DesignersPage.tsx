@@ -25,7 +25,7 @@ export default DesignersPage;
 
 const bg = css`
   position: absolute;
-  top: 5.2rem;
+  top: 0;
   left: 0;
   z-index: -1;
 
@@ -34,7 +34,7 @@ const bg = css`
 `;
 
 const designersContainer = css`
-  padding: 5.2rem 6.2rem 0 6rem;
+  padding: 10rem 6.2rem 0 6rem;
   margin: 5.2rem 0 14rem;
 `;
 
