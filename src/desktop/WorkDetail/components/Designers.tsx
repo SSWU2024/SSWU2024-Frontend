@@ -50,8 +50,7 @@ const Designers = ({ designers }: DesignersProps) => {
           // const { workId, workTitle, studioNm, images } = works[0];
 
           const { workId, workTitle, studioNm } = works[0];
-          const { imgPath, fileFormat } = images[0];
-          const isStaticImg = fileFormat !== 'gif';
+          const { imgPath } = images[0];
           const isHoveredImg =
             hoveredTitle === workTitle && hoveredName === name;
           const designerUrl = engName.split(' ').join('-');
@@ -70,9 +69,7 @@ const Designers = ({ designers }: DesignersProps) => {
                 <img
                   src={imgPath}
                   css={designersWork(isHoveredImg)}
-                  onMouseEnter={() =>
-                    isStaticImg && handleHoverImg(workTitle, name)
-                  }
+                  onMouseEnter={() => handleHoverImg(workTitle, name)}
                   onMouseLeave={handleLeaveImg}
                 />
               </Link>
