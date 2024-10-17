@@ -125,6 +125,8 @@ const designerInfo = css`
   display: flex;
   justify-content: center;
   flex-direction: column;
+
+  margin-bottom: calc(100vh / 50.625);
 `;
 
 const designerKrName = css`

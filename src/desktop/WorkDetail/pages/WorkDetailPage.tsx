@@ -23,7 +23,7 @@ const WorkDetailPage = () => {
   const designers = !isWorkDesignersLoading && workDesigners.data;
 
   const thumbnail =
-    'https://mblogthumb-phinf.pstatic.net/20151231_18/kimtaeyon1_1451530246034U8P5X_PNG/%BF%A1%BA%F1%C3%F2%C2%A9_%282%29.png?type=w420';
+    'https://png.pngtree.com/thumb_back/fh260/background/20220509/pngtree-road-to-night-city-image_1337790.jpg';
   const images = [
     {
       sort: 1,
@@ -85,5 +85,4 @@ const workDetailContainer = css`
 
 const workThumbnail = css`
   width: 100%;
-  height: calc(100vh / 1.65);
 `;
