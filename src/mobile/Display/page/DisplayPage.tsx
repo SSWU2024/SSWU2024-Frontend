@@ -34,7 +34,7 @@ const DisplayPage = () => {
         <div css={studioCss}>
           <div css={textCss}>
             <h1 css={titleText}>파이룸</h1>
-            <p css={subText}>모션그래픽스스튜디오, 공간디자인 스튜디오</p>
+            <p css={subText}>모션그래픽스스튜디오, 공간디자인스튜디오</p>
           </div>
           <ul css={imgCss}>
             {StudioImages2.map((item) => {
