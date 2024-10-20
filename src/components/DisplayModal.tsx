@@ -15,6 +15,12 @@ const DisplayModal = (props: modalProps) => {
   const { imgId, studio1ImageList, studio2ImageList, closeModal } = props;
   console.log(imgId);
 
+  const handleClickBg = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (e.target === e.currentTarget) {
+      closeModal();
+    }
+  };
+
   useEffect(() => {
     const scrollY = window.scrollY;
 
@@ -35,7 +41,7 @@ const DisplayModal = (props: modalProps) => {
 
   return (
     <ModalPortal>
-      <div css={background}>
+      <div css={background} onClick={handleClickBg}>
         <IcDone onClick={closeModal} />
         {/* 스와이퍼 넣기 */}
       </div>
