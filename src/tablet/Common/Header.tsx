@@ -71,7 +71,7 @@ export default Header;
 
 const dropDownBackground = css`
   position: absolute;
-  z-index: 998;
+  z-index: 990;
 
   width: 100%;
   height: 100%;
@@ -83,7 +83,7 @@ const headerContainer = css`
   display: flex;
   flex-direction: column;
   position: fixed;
-  z-index: 999;
+  z-index: 991;
 
   width: 100%;
 `;

@@ -1,6 +1,4 @@
 import { css } from '@emotion/react';
-import { useLocation } from 'react-router-dom';
-import useGetDesignerDetail from '../../../libs/hooks/useGetDesignerDetail';
 import { colors, fonts } from '../../../styles/theme';
 import { ImgBg3Web } from '../../assets/image';
 import PageLayout from '../../Common/PageLayout';
@@ -85,22 +83,21 @@ const DesignerPage = () => {
       <section css={designerPageContainer}>
         <img src={ImgBg3Web} css={bg} />
 
-          <article css={basicInfo}>
-            <p css={designerKrName}>{name}</p>
-            <p css={designerEngName}>{engName}</p>
-            <p css={mainMajor}>{major}</p>
-          </article>
+        <article css={basicInfo}>
+          <p css={designerKrName}>{name}</p>
+          <p css={designerEngName}>{engName}</p>
+          <p css={mainMajor}>{major}</p>
+        </article>
 
-          <article css={additionalInfo}>
-            <DesignerContact
-              email={email}
-              instagram={instagram}
-              behance={behance}
-            />
-            <DesignerWorks works={works} />
-          </article>
-        </section>
-      )}
+        <article css={additionalInfo}>
+          <DesignerContact
+            email={email}
+            instagram={instagram}
+            behance={behance}
+          />
+          <DesignerWorks works={works} />
+        </article>
+      </section>
     </PageLayout>
   );
 };

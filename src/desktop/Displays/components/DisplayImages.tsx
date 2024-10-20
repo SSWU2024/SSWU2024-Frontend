@@ -1,10 +1,12 @@
 import { css } from '@emotion/react';
+import { imageType } from '../../../mobile/Display/types/imageType';
 
 interface DisplayImagesProps {
-  images: Array<{ imgPath: string }>;
+  images: Array<imageType>;
+  onClickImage: (imgId: number, images: Array<imageType>) => void;
 }
 
-const DisplayImages = ({ images }: DisplayImagesProps) => {
+const DisplayImages = ({ images, onClickImage }: DisplayImagesProps) => {
   const firstColomnImages = images.slice(0, 3);
   const secondColumnImages = images.slice(3, 5);
   const thirdColumnImages = images.slice(5, 7);
@@ -14,22 +16,43 @@ const DisplayImages = ({ images }: DisplayImagesProps) => {
       <article css={imgContainer}>
         <div css={firstImagesContainer}>
           {firstColomnImages.map((image, idx) => {
-            const { imgPath } = image;
-            return <img key={idx} src={imgPath} css={img} />;
+            const { imgId, imgPath } = image;
+            return (
+              <img
+                key={idx}
+                src={imgPath}
+                css={img}
+                onClick={() => onClickImage(imgId, images)}
+              />
+            );
           })}
         </div>
 
         <div css={secondImagesContainer}>
           {secondColumnImages.map((image, idx) => {
-            const { imgPath } = image;
-            return <img key={idx} src={imgPath} css={img} />;
+            const { imgId, imgPath } = image;
+            return (
+              <img
+                key={idx}
+                src={imgPath}
+                css={img}
+                onClick={() => onClickImage(imgId, images)}
+              />
+            );
           })}
         </div>
 
         <div css={thirdImagesContainer}>
           {thirdColumnImages.map((image, idx) => {
-            const { imgPath } = image;
-            return <img key={idx} src={imgPath} css={img} />;
+            const { imgId, imgPath } = image;
+            return (
+              <img
+                key={idx}
+                src={imgPath}
+                css={img}
+                onClick={() => onClickImage(imgId, images)}
+              />
+            );
           })}
         </div>
       </article>
