@@ -160,5 +160,5 @@ const additionalInfo = css`
   justify-content: space-between;
   align-items: flex-start;
 
-  margin-top: calc(100vh / 6.86);
+  margin-top: calc(100vh / 6.8644);
 `;
