@@ -1,8 +1,9 @@
 import { css } from '@emotion/react';
+import { imageType } from '../../../mobile/Display/types/imageType';
 
 interface DisplayImagesProps {
-  images: Array<{ imgId: number; imgPath: string }>;
-  onClickImage: (imgId: number) => void;
+  images: Array<imageType>;
+  onClickImage: (imgId: number, images: Array<imageType>) => void;
 }
 
 const DisplayImages = ({ images, onClickImage }: DisplayImagesProps) => {
@@ -21,7 +22,7 @@ const DisplayImages = ({ images, onClickImage }: DisplayImagesProps) => {
                 key={idx}
                 src={imgPath}
                 css={img}
-                onClick={() => onClickImage(imgId)}
+                onClick={() => onClickImage(imgId, images)}
               />
             );
           })}
@@ -35,7 +36,7 @@ const DisplayImages = ({ images, onClickImage }: DisplayImagesProps) => {
                 key={idx}
                 src={imgPath}
                 css={img}
-                onClick={() => onClickImage(imgId)}
+                onClick={() => onClickImage(imgId, images)}
               />
             );
           })}
@@ -49,7 +50,7 @@ const DisplayImages = ({ images, onClickImage }: DisplayImagesProps) => {
                 key={idx}
                 src={imgPath}
                 css={img}
-                onClick={() => onClickImage(imgId)}
+                onClick={() => onClickImage(imgId, images)}
               />
             );
           })}

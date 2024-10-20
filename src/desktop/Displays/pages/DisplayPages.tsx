@@ -1,8 +1,7 @@
 import { css } from '@emotion/react';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import DisplayModal from '../../../components/DisplayModal';
 import { imageType } from '../../../mobile/Display/types/imageType';
-import { DISPLAY } from '../../../mobile/constants/DISPLAY';
 import PageLayout from '../../Common/PageLayout';
 import { ImgBg2Web } from '../../assets/image';
 import DisplayImages from '../components/DisplayImages';
@@ -21,31 +20,55 @@ const DUMMY = {
       images: [
         {
           imgId: 1,
+          imgNm: 'display_image_1',
+          sort: 1,
           imgPath: 'https://www.much.go.kr/images/sub/exhi1_img1.jpg',
+          fileFormat: 'jpg',
         },
         {
           imgId: 2,
-          imgPath: 'https://www.much.go.kr/images/sub/exhi1_img1.jpg',
+          imgNm: 'display_image_2',
+          sort: 2,
+          imgPath: 'https://xen-api.linkareer.com/attachments/80336',
+          fileFormat: 'jpg',
         },
         {
           imgId: 3,
-          imgPath: 'https://www.much.go.kr/images/sub/exhi1_img1.jpg',
+          imgNm: 'display_image_3',
+          sort: 3,
+          imgPath:
+            'https://i.pinimg.com/236x/53/c8/a3/53c8a3f0f62fda9647fd389be212806e.jpg',
+          fileFormat: 'jpg',
         },
         {
           imgId: 4,
-          imgPath: 'https://www.much.go.kr/images/sub/exhi1_img1.jpg',
+          imgNm: 'display_image_4',
+          sort: 4,
+          imgPath:
+            'https://mblogthumb-phinf.pstatic.net/MjAyMDA0MTNfMTEw/MDAxNTg2NzA0NTIzNTcy.DA2OKAbczYZwIPU8k2NfCgZHsBD8zLCMrqUnhDfQSo4g.42s5mkA7Pf-nAUUFcX-97sYEFsVjmCZxiO5FCW4Mi4Yg.JPEG.mjcty715/IMG_4348.jpg?type=w800',
+          fileFormat: 'jpg',
         },
         {
           imgId: 5,
-          imgPath: 'https://www.much.go.kr/images/sub/exhi1_img1.jpg',
+          imgNm: 'display_image_5',
+          sort: 5,
+          imgPath:
+            'https://i.pinimg.com/236x/53/c8/a3/53c8a3f0f62fda9647fd389be212806e.jpg',
+          fileFormat: 'jpg',
         },
         {
           imgId: 6,
+          imgNm: 'display_image_6',
+          sort: 6,
           imgPath: 'https://www.much.go.kr/images/sub/exhi1_img1.jpg',
+          fileFormat: 'jpg',
         },
         {
           imgId: 7,
-          imgPath: 'https://www.much.go.kr/images/sub/exhi1_img1.jpg',
+          imgNm: 'display_image_7',
+          sort: 7,
+          imgPath: 'https://xen-api.linkareer.com/attachments/80336',
+          fileFormat: 'jpg',
         },
       ],
     },
@@ -55,38 +78,59 @@ const DUMMY = {
       images: [
         {
           imgId: 1,
+          imgNm: 'display_image_1',
+          sort: 1,
           imgPath:
             'https://www.gangnam.go.kr/upload/editor/2021/11/16/48c7d1aa-dcb4-4bb8-9951-e6a763b25141.jpg',
+          fileFormat: 'jpg',
         },
         {
           imgId: 2,
+          imgNm: 'display_image_2',
+          sort: 2,
           imgPath:
             'https://www.gangnam.go.kr/upload/editor/2021/11/16/48c7d1aa-dcb4-4bb8-9951-e6a763b25141.jpg',
+          fileFormat: 'jpg',
         },
         {
           imgId: 3,
+          imgNm: 'display_image_3',
+          sort: 3,
           imgPath:
             'https://www.gangnam.go.kr/upload/editor/2021/11/16/48c7d1aa-dcb4-4bb8-9951-e6a763b25141.jpg',
+          fileFormat: 'jpg',
         },
         {
           imgId: 4,
+          imgNm: 'display_image_4',
+          sort: 4,
           imgPath:
             'https://www.gangnam.go.kr/upload/editor/2021/11/16/48c7d1aa-dcb4-4bb8-9951-e6a763b25141.jpg',
+          fileFormat: 'jpg',
         },
         {
           imgId: 5,
+          imgNm: 'display_image_5',
+          sort: 5,
           imgPath:
             'https://www.gangnam.go.kr/upload/editor/2021/11/16/48c7d1aa-dcb4-4bb8-9951-e6a763b25141.jpg',
+          fileFormat: 'jpg',
         },
         {
           imgId: 6,
+          imgNm: 'display_image_6',
+          sort: 6,
           imgPath:
             'https://www.gangnam.go.kr/upload/editor/2021/11/16/48c7d1aa-dcb4-4bb8-9951-e6a763b25141.jpg',
+          fileFormat: 'jpg',
         },
         {
           imgId: 7,
+          imgNm: 'display_image_7',
+          sort: 7,
           imgPath:
             'https://www.gangnam.go.kr/upload/editor/2021/11/16/48c7d1aa-dcb4-4bb8-9951-e6a763b25141.jpg',
+          fileFormat: 'jpg',
         },
       ],
     },
@@ -97,19 +141,17 @@ const DisplayPages = () => {
   const { displays } = DUMMY;
 
   const [isOpen, setIsOpen] = useState(false);
+  const [selectImg, setSelectedImg] = useState(0);
+  const [studioImageList, setStudioImageList] = useState<Array<imageType>>();
 
-  const selectImg = useRef(0);
-  const studio1ImageList = useRef<imageType[]>(); // studio 1 이미지 리스트
-  const studio2ImageList = useRef<imageType[]>(); // studio 2 이미지 리스트
-
-  useEffect(() => {
-    studio1ImageList.current = DISPLAY[0].images;
-    studio2ImageList.current = DISPLAY[1].images;
-  }, []);
+  const changeClickedImgId = (imgId: number) => {
+    setSelectedImg(imgId);
+  };
 
   /** 이미지 클릭 시 모달 oepn */
-  const onClickImage = (imgId: number) => {
-    selectImg.current = imgId;
+  const onClickImage = (imgId: number, images: Array<imageType>) => {
+    setStudioImageList(images);
+    changeClickedImgId(imgId);
     setIsOpen(true);
   };
 
@@ -124,9 +166,9 @@ const DisplayPages = () => {
         <img src={ImgBg2Web} css={bg} />
         {isOpen && (
           <DisplayModal
-            imgId={selectImg.current}
-            studio1ImageList={studio1ImageList.current}
-            studio2ImageList={studio2ImageList.current}
+            imgId={selectImg}
+            studioImageList={studioImageList}
+            changeClickedImgId={changeClickedImgId}
             closeModal={closeModal}
           />
         )}
