@@ -91,7 +91,8 @@ const displaysContainer = css`
   justify-content: center;
   flex-direction: column;
 
-  padding: calc(100vh / 6.1364) calc(100% / 24) calc(100vh / 5.7857);
+  padding: calc(100vh / 10.125) calc(100% / 24) calc(100vh / 5.7857);
+  margin-top: 5.2rem;
 `;
 
 const bg = css`

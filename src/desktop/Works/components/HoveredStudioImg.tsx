@@ -9,11 +9,14 @@ export default HoveredStudioImg;
 
 const imgContainer = css`
   position: absolute;
-  right: calc(100vh / 13.5);
+  right: calc(100% / 24);
   bottom: calc(100vh / 16.875);
 
-  width: calc(100% / 4.7059);
+  width: auto;
   height: calc(100vh / 2.2689);
+
   min-width: 30.6rem;
   min-height: 35.7rem;
+
+  object-fit: contain;
 `;

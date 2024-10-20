@@ -7,7 +7,7 @@ import TotalDesigners from '../components/TotalDesigners';
 
 const DesignersPage = () => {
   useEffect(() => {
-    window.scrollTo({ top: 0 });
+    window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
 
   return (
@@ -34,8 +34,8 @@ const bg = css`
 `;
 
 const designersContainer = css`
-  padding: 10rem 6.2rem 0 6rem;
-  margin: 5.2rem 0 14rem;
+  padding: calc(100vh / 8.1) calc(100% / 24) calc(100vh / 5.7857);
+  margin-top: 5.2rem;
 `;
 
 const title = css`

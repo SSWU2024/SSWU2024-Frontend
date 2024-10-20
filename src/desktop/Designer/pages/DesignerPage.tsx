@@ -1,6 +1,4 @@
 import { css } from '@emotion/react';
-import { useLocation } from 'react-router-dom';
-import useGetDesignerDetail from '../../../libs/hooks/useGetDesignerDetail';
 import { colors, fonts } from '../../../styles/theme';
 import { ImgBg3Web } from '../../assets/image';
 import PageLayout from '../../Common/PageLayout';
@@ -85,22 +83,21 @@ const DesignerPage = () => {
       <section css={designerPageContainer}>
         <img src={ImgBg3Web} css={bg} />
 
-          <article css={basicInfo}>
-            <p css={designerKrName}>{name}</p>
-            <p css={designerEngName}>{engName}</p>
-            <p css={mainMajor}>{major}</p>
-          </article>
+        <article css={basicInfo}>
+          <p css={designerKrName}>{name}</p>
+          <p css={designerEngName}>{engName}</p>
+          <p css={mainMajor}>{major}</p>
+        </article>
 
-          <article css={additionalInfo}>
-            <DesignerContact
-              email={email}
-              instagram={instagram}
-              behance={behance}
-            />
-            <DesignerWorks works={works} />
-          </article>
-        </section>
-      )}
+        <article css={additionalInfo}>
+          <DesignerContact
+            email={email}
+            instagram={instagram}
+            behance={behance}
+          />
+          <DesignerWorks works={works} />
+        </article>
+      </section>
     </PageLayout>
   );
 };
@@ -114,8 +111,11 @@ const designerPageContainer = css`
   position: relative;
 
   width: 100%;
-  height: calc(100vh - 5.3rem);
-  padding: calc(100vh / 6.13) calc(100% / 24) calc(100vh / 31.15);
+
+  min-height: calc(100vh - 10.4rem);
+
+  padding: calc(100vh / 10.125) calc(100% / 24) calc(100vh / 31.1538);
+  margin-top: 5.2rem;
 `;
 
 const bg = css`
@@ -124,7 +124,7 @@ const bg = css`
   left: 0;
   z-index: -1;
 
-  min-height: calc(100vh - 5.2rem);
+  min-height: calc(100vh - 10.4rem);
 
   width: 100%;
   height: 100%;
