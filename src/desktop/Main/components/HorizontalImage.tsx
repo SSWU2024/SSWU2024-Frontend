@@ -96,6 +96,7 @@ const text = (variant: 'title' | 'sub') => css`
   ${variant === 'title'
     ? fonts.desktop_title_semi_60
     : fonts.desktop_body_reg_18_desc};
+  text-align: center;
 `;
 
 const imgSection = css`
