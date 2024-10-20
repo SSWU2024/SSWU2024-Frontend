@@ -1,4 +1,8 @@
 import { css } from '@emotion/react';
+import { useEffect, useRef, useState } from 'react';
+import DisplayModal from '../../../components/DisplayModal';
+import { imageType } from '../../../mobile/Display/types/imageType';
+import { DISPLAY } from '../../../mobile/constants/DISPLAY';
 import PageLayout from '../../Common/PageLayout';
 import { ImgBg2Web } from '../../assets/image';
 import DisplayImages from '../components/DisplayImages';
@@ -15,13 +19,34 @@ const DUMMY = {
         '공간연출디자인스튜디오',
       ],
       images: [
-        { imgPath: 'https://www.much.go.kr/images/sub/exhi1_img1.jpg' },
-        { imgPath: 'https://www.much.go.kr/images/sub/exhi1_img1.jpg' },
-        { imgPath: 'https://www.much.go.kr/images/sub/exhi1_img1.jpg' },
-        { imgPath: 'https://www.much.go.kr/images/sub/exhi1_img1.jpg' },
-        { imgPath: 'https://www.much.go.kr/images/sub/exhi1_img1.jpg' },
-        { imgPath: 'https://www.much.go.kr/images/sub/exhi1_img1.jpg' },
-        { imgPath: 'https://www.much.go.kr/images/sub/exhi1_img1.jpg' },
+        {
+          imgId: 1,
+          imgPath: 'https://www.much.go.kr/images/sub/exhi1_img1.jpg',
+        },
+        {
+          imgId: 2,
+          imgPath: 'https://www.much.go.kr/images/sub/exhi1_img1.jpg',
+        },
+        {
+          imgId: 3,
+          imgPath: 'https://www.much.go.kr/images/sub/exhi1_img1.jpg',
+        },
+        {
+          imgId: 4,
+          imgPath: 'https://www.much.go.kr/images/sub/exhi1_img1.jpg',
+        },
+        {
+          imgId: 5,
+          imgPath: 'https://www.much.go.kr/images/sub/exhi1_img1.jpg',
+        },
+        {
+          imgId: 6,
+          imgPath: 'https://www.much.go.kr/images/sub/exhi1_img1.jpg',
+        },
+        {
+          imgId: 7,
+          imgPath: 'https://www.much.go.kr/images/sub/exhi1_img1.jpg',
+        },
       ],
     },
     {
@@ -29,30 +54,37 @@ const DUMMY = {
       studioList: ['모션그래픽스스튜디오', '공간디자인 스튜디오'],
       images: [
         {
+          imgId: 1,
           imgPath:
             'https://www.gangnam.go.kr/upload/editor/2021/11/16/48c7d1aa-dcb4-4bb8-9951-e6a763b25141.jpg',
         },
         {
+          imgId: 2,
           imgPath:
             'https://www.gangnam.go.kr/upload/editor/2021/11/16/48c7d1aa-dcb4-4bb8-9951-e6a763b25141.jpg',
         },
         {
+          imgId: 3,
           imgPath:
             'https://www.gangnam.go.kr/upload/editor/2021/11/16/48c7d1aa-dcb4-4bb8-9951-e6a763b25141.jpg',
         },
         {
+          imgId: 4,
           imgPath:
             'https://www.gangnam.go.kr/upload/editor/2021/11/16/48c7d1aa-dcb4-4bb8-9951-e6a763b25141.jpg',
         },
         {
+          imgId: 5,
           imgPath:
             'https://www.gangnam.go.kr/upload/editor/2021/11/16/48c7d1aa-dcb4-4bb8-9951-e6a763b25141.jpg',
         },
         {
+          imgId: 6,
           imgPath:
             'https://www.gangnam.go.kr/upload/editor/2021/11/16/48c7d1aa-dcb4-4bb8-9951-e6a763b25141.jpg',
         },
         {
+          imgId: 7,
           imgPath:
             'https://www.gangnam.go.kr/upload/editor/2021/11/16/48c7d1aa-dcb4-4bb8-9951-e6a763b25141.jpg',
         },
@@ -64,17 +96,48 @@ const DUMMY = {
 const DisplayPages = () => {
   const { displays } = DUMMY;
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const selectImg = useRef(0);
+  const studio1ImageList = useRef<imageType[]>(); // studio 1 이미지 리스트
+  const studio2ImageList = useRef<imageType[]>(); // studio 2 이미지 리스트
+
+  useEffect(() => {
+    studio1ImageList.current = DISPLAY[0].images;
+    studio2ImageList.current = DISPLAY[1].images;
+  }, []);
+
+  /** 이미지 클릭 시 모달 oepn */
+  const onClickImage = (imgId: number) => {
+    selectImg.current = imgId;
+    setIsOpen(true);
+  };
+
+  /** 모달 내 x 버튼 클릭 시 모달 close (props) */
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
   return (
     <PageLayout>
       <section css={displaysContainer}>
         <img src={ImgBg2Web} css={bg} />
+        {isOpen && (
+          <DisplayModal
+            imgId={selectImg.current}
+            studio1ImageList={studio1ImageList.current}
+            studio2ImageList={studio2ImageList.current}
+            closeModal={closeModal}
+          />
+        )}
+
         {displays.map((display) => {
           const { name, studioList, images } = display;
 
           return (
             <article key={name} css={displayContainer}>
               <DisplayInfo name={name} studioList={studioList} />
-              <DisplayImages images={images} />
+              <DisplayImages images={images} onClickImage={onClickImage} />
             </article>
           );
         })}
