@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import { useEffect } from 'react';
 import { IcDone } from '../assets';
 import { imageType } from '../mobile/Display/types/imageType';
 import ModalPortal from './ModalPortal';
@@ -13,8 +14,24 @@ interface modalProps {
 const DisplayModal = (props: modalProps) => {
   const { imgId, studio1ImageList, studio2ImageList, closeModal } = props;
   console.log(imgId);
-  console.log(studio1ImageList);
-  console.log(studio2ImageList);
+
+  useEffect(() => {
+    const scrollY = window.scrollY;
+
+    document.body.style.cssText = `
+      position: fixed; 
+      top: -${scrollY}px;
+      overflow-y: hidden;
+      `;
+
+    return () => {
+      document.body.style.cssText = '';
+      window.scrollTo({
+        top: scrollY,
+        behavior: 'instant',
+      });
+    };
+  }, []);
 
   return (
     <ModalPortal>
