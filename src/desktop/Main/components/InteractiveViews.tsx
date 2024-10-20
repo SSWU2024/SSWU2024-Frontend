@@ -271,7 +271,6 @@ const infoDetailContainer = css`
   flex-direction: column;
 
   width: 100%;
-  padding: 0 calc(100% / 11.1628) 0 calc(100% / 9.2308);
   margin-bottom: calc(100vh / 4.3316);
 `;
 

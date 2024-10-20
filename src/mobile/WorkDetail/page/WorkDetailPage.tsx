@@ -38,6 +38,4 @@ const WorkDetailContainer = css`
 
 const thumbnailImg = css`
   width: 100%;
-  height: 15.2rem;
-  object-fit: cover;
 `;

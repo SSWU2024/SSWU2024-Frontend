@@ -10,3 +10,7 @@ export { default as ImgSymbolMobile_Space } from './img_symbol_mobile_space.png'
 export { default as ImgSymbolMobile_SpaceDirection } from './img_symbol_mobile_space_direction.png';
 export { default as ImgSymbolMobile_VisualA } from './img_symbol_mobile_visualA.png';
 export { default as ImgSymbolMobile_VisualB } from './img_symbol_mobile_visualB.png';
+
+export { default as ImgDescriptionMobile } from './img_description_mobile.gif';
+export { default as ImgMotionPosterMobile } from './img_motion_poster_mobile.gif';
+export { default as ImgPosterMobile } from './img_poster_mobile.png';

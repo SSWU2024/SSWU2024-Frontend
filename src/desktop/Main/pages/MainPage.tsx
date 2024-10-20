@@ -8,6 +8,7 @@ function MainPage() {
   return (
     <PageLayout>
       <img src={ImgMotionPoster} css={motionPoster} />
+
       <InteractiveViews />
       <PreparatoryCommittee />
     </PageLayout>

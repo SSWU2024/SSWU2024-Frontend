@@ -10,11 +10,12 @@ const DesignerList = () => {
       <ul css={designerList}>
         {WORK_DETAIL_DESIGNER.map((item) => {
           const { designerId, name, engName, email, works } = item;
+          const url = engName.trim().split(' ').join('-');
 
           const { images } = works;
           const { imgPath } = images.length === 2 ? images[1] : images[0];
           return (
-            <Link to="" css={listCss} key={designerId}>
+            <Link to={`/designers/${url}`} css={listCss} key={designerId}>
               <div css={textInfo}>
                 <p>{name}</p>
                 <p>{engName}</p>
