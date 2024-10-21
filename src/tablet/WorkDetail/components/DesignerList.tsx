@@ -6,7 +6,7 @@ import { colors, fonts } from '../../../styles/theme';
 const DesignerList = () => {
   return (
     <div css={designerListContainer}>
-      <h1 css={title}>Designed By</h1>
+      <h1 css={title}>Designed by</h1>
       <ul css={designerList}>
         {WORK_DETAIL_DESIGNER.map((item) => {
           const { designerId, name, engName, email, works } = item;
