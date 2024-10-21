@@ -17,9 +17,11 @@ const DesignerList = () => {
           return (
             <Link to={`/designers/${url}`} css={listCss} key={designerId}>
               <div css={textInfo}>
-                <p>{name}</p>
-                <p>{engName}</p>
-                <p>{email}</p>
+                <div css={nameSection}>
+                  <p>{name}</p>
+                  <p>{engName}</p>
+                </div>
+                <p css={emailCss}>{email}</p>
               </div>
               <div css={imgBox}>
                 <img src={imgPath} css={imgCss} />
@@ -64,27 +66,33 @@ const listCss = css`
 `;
 
 const textInfo = css`
-  p:nth-of-type(1) {
-    color: ${colors.gray900};
+  display: flex;
+  gap: 0.4rem;
+  flex-direction: column;
+`;
 
+const nameSection = css`
+  display: flex;
+  gap: 0.2rem;
+  flex-direction: column;
+
+  padding: 0.4rem 0;
+
+  color: ${colors.gray900};
+
+  p:nth-of-type(1) {
     ${fonts.tablet_body_semi_16};
   }
 
   p:nth-of-type(2) {
-    margin-top: 0.2rem;
-
-    color: ${colors.gray900};
-
     ${fonts.desktop_cap_reg_14};
   }
+`;
 
-  p:nth-of-type(3) {
-    margin-top: 0.8rem;
+const emailCss = css`
+  color: ${colors.gray500};
 
-    color: ${colors.gray500};
-
-    ${fonts.desktop_cap_reg_14};
-  }
+  ${fonts.desktop_cap_reg_14};
 `;
 
 const imgBox = css`
