@@ -4,7 +4,7 @@ import { IcInsta } from '../assets/icon';
 
 const Footer = () => {
   const handleClickInsta = () => {
-    window.open('https://www.instagram.com/sswud_2024/');
+    window.open('https://www.instagram.com/sswud_2024/', '_blank');
   };
 
   return (
@@ -15,7 +15,7 @@ const Footer = () => {
 
       <div css={idContainer} onClick={handleClickInsta}>
         <span css={footerText}>@sswud_2024</span>
-        <IcInsta />
+        <IcInsta css={insta} />
       </div>
     </footer>
   );
@@ -46,4 +46,8 @@ const idContainer = css`
   gap: 0.8rem;
   justify-content: center;
   align-items: center;
+`;
+
+const insta = css`
+  cursor: pointer;
 `;

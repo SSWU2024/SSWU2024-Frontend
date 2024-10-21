@@ -117,5 +117,5 @@ const dropDownMenu = css`
 const dropDownItem = css`
   width: 100%;
   height: 5.4rem;
-  padding: 1.8rem 0 1.8rem 1.6rem;
+  padding: 1.8rem 0 1.8rem 2.4rem;
 `;

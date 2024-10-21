@@ -30,8 +30,9 @@ const studioContainer = (url: string) => css`
   width: 100%;
   padding: 7.4rem 2.4rem 10rem;
 
-  background-position: top 5.6rem left 0;
+  background-position: top 5.6rem right 0;
   background-size: contain;
   background-image: url(${url});
   background-repeat: no-repeat;
+  background-attachment: fixed;
 `;

@@ -1,8 +1,8 @@
 import { css } from '@emotion/react';
-import DisplayImages from '../components/DisplayImages';
-import DisplayInfo from '../components/DisplayInfo';
 import PageLayout from '../../Common/PageLayout';
 import { ImgBg2Web } from '../../assets/image';
+import DisplayImages from '../components/DisplayImages';
+import DisplayInfo from '../components/DisplayInfo';
 
 const DUMMY = {
   displays: [
@@ -26,7 +26,7 @@ const DUMMY = {
     },
     {
       name: '파이룸',
-      studioList: ['모션그래픽스스튜디오', '공간디자인 스튜디오'],
+      studioList: ['모션그래픽스스튜디오', '공간디자인스튜디오'],
       images: [
         {
           imgPath:

@@ -2,7 +2,6 @@ import { css } from '@emotion/react';
 import { DISPLAY } from '../../../mobile/constants/DISPLAY';
 import { colors, fonts } from '../../../styles/theme';
 import PageLayout from '../../Common/PageLayout';
-import { ImgBg2Tablet } from '../../assets/image';
 
 const DisplayPage = () => {
   const StudioImages1 =
@@ -20,14 +19,13 @@ const DisplayPage = () => {
 
   return (
     <PageLayout>
-      <section css={displayCss(ImgBg2Tablet)}>
+      <section css={displayCss}>
         <div css={studioCss}>
           <div css={textCss}>
             <h1 css={titleText}>가온전시실</h1>
             <p css={subText}>
-              디자인씽킹스튜디오, 시각디자인스튜디오,
-              <br />
-              정보경험디자인스튜디오, 공간연출디자인스튜디오
+              디자인씽킹스튜디오, 시각디자인스튜디오, 정보경험디자인스튜디오,
+              공간연출디자인스튜디오
             </p>
           </div>
           <ul css={imgList}>
@@ -61,7 +59,7 @@ const DisplayPage = () => {
         <div css={studioCss}>
           <div css={textCss}>
             <h1 css={titleText}>파이룸</h1>
-            <p css={subText}>모션그래픽스스튜디오, 공간디자인 스튜디오</p>
+            <p css={subText}>모션그래픽스스튜디오, 공간디자인스튜디오</p>
           </div>
           <ul css={imgList}>
             <li css={col1Css}>
@@ -91,7 +89,7 @@ const DisplayPage = () => {
 
 export default DisplayPage;
 
-const displayCss = (url: string) => css`
+const displayCss = css`
   display: flex;
   gap: 6rem;
   justify-content: center;
@@ -99,11 +97,6 @@ const displayCss = (url: string) => css`
 
   width: 100%;
   padding: 10.4rem 2.4rem 10rem;
-
-  background-position: top 5.6rem left 0;
-  background-size: contain;
-  background-image: url(${url});
-  background-repeat: no-repeat;
 `;
 
 const studioCss = css`

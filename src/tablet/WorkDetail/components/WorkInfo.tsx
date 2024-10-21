@@ -14,8 +14,8 @@ const WorkInfo = (props: WorkInfoProps) => {
         <p>{designerList}</p>
       </div>
       <div css={descriptionCss}>
-        <p> {description}</p>
-        <p> {engDescription}</p>
+        <p>{description}</p>
+        <p>{engDescription}</p>
       </div>
     </div>
   );
@@ -48,7 +48,7 @@ const mainCss = css`
 
 const descriptionCss = css`
   display: flex;
-  gap: 8rem;
+  gap: 3.2rem;
   flex-direction: column;
 
   ${fonts.desktop_body_reg_16};

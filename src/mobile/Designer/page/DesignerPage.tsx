@@ -31,4 +31,5 @@ const designerContainer = (url: string) => css`
   background-size: contain;
   background-image: url(${url});
   background-repeat: no-repeat;
+  background-attachment: fixed;
 `;

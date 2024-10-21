@@ -5,8 +5,7 @@ import { ImgBg1Tablet } from '../../assets/image';
 
 const CommitteeInfo = () => {
   return (
-    <section css={CommitteeInfoContainer}>
-      <img css={bgImg} src={ImgBg1Tablet} alt="배경이미지" />
+    <section css={CommitteeInfoContainer(ImgBg1Tablet)}>
       <div css={contentSection}>
         <h1 css={title}>졸업전시준비위원회</h1>
 
@@ -28,23 +27,20 @@ const CommitteeInfo = () => {
 
 export default CommitteeInfo;
 
-const CommitteeInfoContainer = css`
+const CommitteeInfoContainer = (url: string) => css`
   position: relative;
   overflow: hidden;
 
   width: 100dvw;
+
+  background-position: top 0 right 0;
+  background-size: contain;
+  background-image: url(${url});
+  background-repeat: no-repeat;
 `;
 
 const contentSection = css`
   padding: 20rem 0 35.7rem 3.2rem;
-`;
-
-const bgImg = css`
-  position: absolute;
-  z-index: -1;
-
-  width: 100%;
-  height: auto;
 `;
 
 const title = css`

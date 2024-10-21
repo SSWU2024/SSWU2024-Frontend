@@ -281,13 +281,13 @@ export const DESIGNERS = [
   },
   {
     designerId: 57,
-    engName: 'Jeong Eunji',
-    imgPath: 'https://i.postimg.cc/0yM3yJQ3/img_designers_57_3x.png',
+    engName: 'Cheong Juhui',
+    imgPath: 'https://i.postimg.cc/BQKQJ8vN/img-designers-57-3x.png',
   },
   {
     designerId: 58,
-    engName: 'Cheong Juhui',
-    imgPath: 'https://i.postimg.cc/9Q6kRFwf/img_designers_58_3x.png',
+    engName: 'Jeong Jihyun',
+    imgPath: 'https://i.postimg.cc/0y15j8Mv/img-designers-58-3x.png',
   },
 
   {

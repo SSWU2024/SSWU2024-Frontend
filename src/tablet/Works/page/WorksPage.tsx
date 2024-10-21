@@ -44,12 +44,13 @@ const worksContainer = (url: string) => css`
   width: 100%;
   min-height: calc(100dvh - 2.4rem - 10rem);
 
-  padding: 5.6rem 2.4rem 10rem;
+  padding: 5.6rem 2.4rem calc(100dvh - 97.9rem);
 
-  background-position: top 5.6rem left 0;
-  background-size: cover;
+  background-position: top 5.6rem right 0;
+  background-size: contain;
   background-image: url(${url});
   background-repeat: no-repeat;
+  background-attachment: fixed;
 `;
 
 const title = css`
