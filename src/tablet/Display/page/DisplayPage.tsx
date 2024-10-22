@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import DisplayModal from '../../../components/DisplayModal';
 import { imageType } from '../../../mobile/Display/types/imageType';
 import { DISPLAY } from '../../../mobile/constants/DISPLAY';
@@ -10,48 +10,42 @@ import { ImgBg2Tablet } from '../../assets/image';
 const DisplayPage = () => {
   const [isOpen, setIsOpen] = useState(false); // 모달 open / close 관리
 
-  const selectImg = useRef(0);
-  const studio1ImageList = useRef<imageType[]>(); // studio 1 이미지 리스트
-  const studio2ImageList = useRef<imageType[]>(); // studio 2 이미지 리스트
+  const [selectImg, setSelectedImg] = useState(0);
+  const [studioImageList, setStudioImageList] = useState<Array<imageType>>();
+  const studio1ImageList = DISPLAY[0].images; // studio 1 이미지 리스트
+  const studio2ImageList = DISPLAY[1].images;
 
-  useEffect(() => {
-    studio1ImageList.current = DISPLAY[0].images;
-    studio2ImageList.current = DISPLAY[1].images;
-  }, []);
+  const GAON1 = studio1ImageList.slice(0, 3);
+  const GAON2 = studio1ImageList.slice(3, 5);
+  const GAON3 = studio1ImageList.slice(5);
 
-  const StudioImages1 =
-    DISPLAY.find((item) => item.displayId === 1)?.images || [];
+  const PYROOM1 = studio2ImageList.slice(0, 3);
+  const PYROOM2 = studio2ImageList.slice(3, 5);
+  const PYROOM3 = studio2ImageList.slice(5);
 
-  const GAON1 = StudioImages1.slice(0, 3);
-  const GAON2 = StudioImages1.slice(3, 5);
-  const GAON3 = StudioImages1.slice(5);
-
-  const StudioImages2 =
-    DISPLAY.find((item) => item.displayId === 2)?.images || [];
-  const PYROOM1 = StudioImages2.slice(0, 3);
-  const PYROOM2 = StudioImages2.slice(3, 5);
-  const PYROOM3 = StudioImages2.slice(5);
+  const changeClickedImgId = (imgId: number) => {
+    setSelectedImg(imgId);
+  };
 
   /** 이미지 클릭 시 모달 oepn */
-  const onClickImgage = (imgId: number) => {
-    selectImg.current = imgId;
+  const onClickImage = (imgId: number, images: Array<imageType>) => {
+    setStudioImageList(images);
+    changeClickedImgId(imgId);
     setIsOpen(true);
-    document.body.style.overflow = '';
   };
 
   /** 모달 내 x 버튼 클릭 시 모달 close (props) */
   const closeModal = () => {
     setIsOpen(false);
-    document.body.style.overflow = 'hidden';
   };
 
   return (
     <PageLayout>
       {isOpen && (
         <DisplayModal
-          imgId={selectImg.current}
-          studio1ImageList={studio1ImageList.current}
-          studio2ImageList={studio2ImageList.current}
+          imgId={selectImg}
+          studioImageList={studioImageList}
+          changeClickedImgId={changeClickedImgId}
           closeModal={closeModal}
         />
       )}
@@ -75,7 +69,7 @@ const DisplayPage = () => {
                     key={imgId}
                     src={imgPath}
                     alt="가온전시실 이미지"
-                    onClick={() => onClickImgage(imgId)}
+                    onClick={() => onClickImage(imgId, studio1ImageList)}
                   />
                 );
               })}
@@ -88,7 +82,7 @@ const DisplayPage = () => {
                     key={imgId}
                     src={imgPath}
                     alt="가온전시실 이미지"
-                    onClick={() => onClickImgage(imgId)}
+                    onClick={() => onClickImage(imgId, studio1ImageList)}
                   />
                 );
               })}
@@ -101,7 +95,7 @@ const DisplayPage = () => {
                     key={imgId}
                     src={imgPath}
                     alt="가온전시실 이미지"
-                    onClick={() => onClickImgage(imgId)}
+                    onClick={() => onClickImage(imgId, studio1ImageList)}
                   />
                 );
               })}
@@ -123,7 +117,7 @@ const DisplayPage = () => {
                     key={imgId}
                     src={imgPath}
                     alt="파이룸 이미지"
-                    onClick={() => onClickImgage(imgId)}
+                    onClick={() => onClickImage(imgId, studio2ImageList)}
                   />
                 );
               })}
@@ -136,7 +130,7 @@ const DisplayPage = () => {
                     key={imgId}
                     src={imgPath}
                     alt="파이룸 이미지"
-                    onClick={() => onClickImgage(imgId)}
+                    onClick={() => onClickImage(imgId, studio2ImageList)}
                   />
                 );
               })}
@@ -149,7 +143,7 @@ const DisplayPage = () => {
                     key={imgId}
                     src={imgPath}
                     alt="파이룸 이미지"
-                    onClick={() => onClickImgage(imgId)}
+                    onClick={() => onClickImage(imgId, studio2ImageList)}
                   />
                 );
               })}
