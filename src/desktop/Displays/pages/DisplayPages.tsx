@@ -74,7 +74,7 @@ const DUMMY = {
     },
     {
       name: '파이룸',
-      studioList: ['모션그래픽스스튜디오', '공간디자인 스튜디오'],
+      studioList: ['모션그래픽스스튜디오', '공간디자인스튜디오'],
       images: [
         {
           imgId: 1,
