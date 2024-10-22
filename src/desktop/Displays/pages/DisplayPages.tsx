@@ -162,8 +162,7 @@ const DisplayPages = () => {
 
   return (
     <PageLayout>
-      <section css={displaysContainer}>
-        <img src={ImgBg2Web} css={bg} />
+      <section css={displaysContainer(ImgBg2Web)}>
         {isOpen && (
           <DisplayModal
             imgId={selectImg}
@@ -190,7 +189,7 @@ const DisplayPages = () => {
 
 export default DisplayPages;
 
-const displaysContainer = css`
+const displaysContainer = (imgUrl: string) => css`
   display: flex;
   gap: calc(100vh / 10.125);
   justify-content: center;
@@ -198,15 +197,12 @@ const displaysContainer = css`
 
   padding: calc(100vh / 10.125) calc(100% / 24) calc(100vh / 5.7857);
   margin-top: 5.2rem;
-`;
 
-const bg = css`
-  position: absolute;
-  top: 5.2rem;
-  left: 0;
-  z-index: -1;
-
-  height: calc(100vh - 5.2rem);
+  background-position: top 5.2rem right 0;
+  background-size: contain;
+  background-image: url(${imgUrl});
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 `;
 
 const displayContainer = css`

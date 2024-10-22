@@ -12,8 +12,7 @@ const DesignersPage = () => {
 
   return (
     <PageLayout>
-      <img src={ImgBg3Web} css={bg} />
-      <section css={designersContainer}>
+      <section css={designersContainer(ImgBg3Web)}>
         <p css={title}>Designers</p>
         <TotalDesigners />
       </section>
@@ -23,19 +22,15 @@ const DesignersPage = () => {
 
 export default DesignersPage;
 
-const bg = css`
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-
-  width: 100%;
-  height: calc(100vh - 5.2rem);
-`;
-
-const designersContainer = css`
+const designersContainer = (imgUrl: string) => css`
   padding: calc(100vh / 8.1) calc(100% / 24) calc(100vh / 5.7857);
   margin-top: 5.2rem;
+
+  background-position: top 5.2rem right 0;
+  background-size: contain;
+  background-image: url(${imgUrl});
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 `;
 
 const title = css`
