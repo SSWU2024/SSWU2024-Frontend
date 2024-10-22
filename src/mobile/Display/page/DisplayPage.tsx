@@ -1,10 +1,20 @@
 import { css } from '@emotion/react';
+import { useEffect, useRef } from 'react';
 import { colors, fonts } from '../../../styles/theme';
 import { ImgBg2Mobile } from '../../assets/image';
 import PageLayout from '../../Common/PageLayout';
 import { DISPLAY } from '../../constants/DISPLAY';
+import { imageType } from '../types/imageType';
 
 const DisplayPage = () => {
+  const studio1ImageList = useRef<imageType[]>(); // studio 1 이미지 리스트
+  const studio2ImageList = useRef<imageType[]>(); // studio 2 이미지 리스트
+
+  useEffect(() => {
+    studio1ImageList.current = DISPLAY[0].images;
+    studio2ImageList.current = DISPLAY[1].images;
+  }, []);
+
   const StudioImages1 =
     DISPLAY.find((item) => item.displayId === 1)?.images || [];
 
