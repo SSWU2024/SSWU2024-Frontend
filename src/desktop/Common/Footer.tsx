@@ -4,7 +4,7 @@ import { IcInsta } from '../assets/icon';
 
 const Footer = () => {
   const handleClickInsta = () => {
-    window.open('https://www.instagram.com/sswud_2024/', '_blank');
+    window.open('https://www.instagram.com/sswud_2024/');
   };
 
   return (

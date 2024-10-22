@@ -49,7 +49,7 @@ const DisplayPage = () => {
         />
       )}
 
-      <section css={displayCss(ImgBg2Tablet)}>
+      <section css={displayCss}>
         <div css={studioCss}>
           <div css={textCss}>
             <h1 css={titleText}>가온전시실</h1>
