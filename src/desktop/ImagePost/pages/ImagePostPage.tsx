@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import { useRef, useState } from 'react';
 import getPresignedUrl from '../../../libs/apis/getPresignedUrl';
 import putImageS3 from '../../../libs/apis/putImageS3';
+import PostInfo from '../components/PostInfo';
 
 const CATEGORY = ['work', 'designer', 'main', 'display'];
 
@@ -55,10 +56,6 @@ const ImagePostPage = () => {
     }
   };
 
-  const postImage = () => {
-    console.log(imgPath);
-  };
-
   return (
     <div css={container}>
       {/* 카테고리 선택 */}
@@ -91,7 +88,15 @@ const ImagePostPage = () => {
       {/* 파일 업로드 */}
       <input type="file" onChange={uploadImage} accept="image/*" ref={imgRef} />
 
-      <button onClick={postImage}>이미지 업로드</button>
+      {fileName && fileType && imgPath ? (
+        <PostInfo
+          fileNm={fileName.split('.')[0]}
+          fileFormat={fileType.split('/')[1]}
+          imgPath={imgPath}
+        />
+      ) : (
+        <PostInfo />
+      )}
     </div>
   );
 };
