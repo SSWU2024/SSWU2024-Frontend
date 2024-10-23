@@ -1,10 +1,19 @@
 import { css } from '@emotion/react';
+import { useEffect, useRef } from 'react';
 import { colors, fonts } from '../../../styles/theme';
-import { ImgBg2Mobile } from '../../assets/image';
 import PageLayout from '../../Common/PageLayout';
 import { DISPLAY } from '../../constants/DISPLAY';
+import { imageType } from '../types/imageType';
 
 const DisplayPage = () => {
+  const studio1ImageList = useRef<imageType[]>(); // studio 1 이미지 리스트
+  const studio2ImageList = useRef<imageType[]>(); // studio 2 이미지 리스트
+
+  useEffect(() => {
+    studio1ImageList.current = DISPLAY[0].images;
+    studio2ImageList.current = DISPLAY[1].images;
+  }, []);
+
   const StudioImages1 =
     DISPLAY.find((item) => item.displayId === 1)?.images || [];
 
@@ -13,7 +22,7 @@ const DisplayPage = () => {
 
   return (
     <PageLayout>
-      <section css={displayCss(ImgBg2Mobile)}>
+      <section css={displayCss}>
         <div css={studioCss}>
           <div css={textCss}>
             <h1 css={titleText}>가온전시실</h1>
@@ -34,7 +43,7 @@ const DisplayPage = () => {
         <div css={studioCss}>
           <div css={textCss}>
             <h1 css={titleText}>파이룸</h1>
-            <p css={subText}>모션그래픽스스튜디오, 공간디자인 스튜디오</p>
+            <p css={subText}>모션그래픽스스튜디오, 공간디자인스튜디오</p>
           </div>
           <ul css={imgCss}>
             {StudioImages2.map((item) => {
@@ -50,7 +59,7 @@ const DisplayPage = () => {
 
 export default DisplayPage;
 
-const displayCss = (url: string) => css`
+const displayCss = css`
   display: flex;
   gap: 6rem;
   justify-content: center;
@@ -58,11 +67,6 @@ const displayCss = (url: string) => css`
 
   width: 100%;
   padding: 9rem 1.6rem 10rem;
-
-  background-position: top 5.8rem left 0;
-  background-size: contain;
-  background-image: url(${url});
-  background-repeat: no-repeat;
 `;
 
 const studioCss = css`
