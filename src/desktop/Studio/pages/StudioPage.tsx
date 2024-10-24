@@ -23,8 +23,8 @@ const StudioPage = () => {
     <PageLayout>
       <section css={studioPageContainer(ImgBg2Web)}>
         {state && <StudioInfo info={state} />}
-        {/* {id && <TotalWorks id={id} />} */}
-        {id && <TotalWorks />}
+        {id && <TotalWorks id={id} />}
+        {/* {id && <TotalWorks />} */}
       </section>
     </PageLayout>
   );
