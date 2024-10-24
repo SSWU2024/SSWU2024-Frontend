@@ -25,9 +25,11 @@ const worksPageContainer = css`
   position: relative;
 
   width: 100%;
-  height: calc(100vh - 5.3rem);
-  padding: calc(100vh / 5.33) calc(100vh / 2.03) calc(100vh / 5.47)
-    calc(100vh / 13.5);
+  height: 100%;
+  min-height: calc(100vh - 10.4rem);
+
+  padding: calc(100vh / 8.1) calc(100% / 24) calc(100vh / 8.4375);
+  margin-top: 5.2rem;
 `;
 
 const bg = css`
@@ -36,7 +38,7 @@ const bg = css`
   left: 0;
   z-index: -1;
 
-  min-height: calc(100vh - 5.2rem);
+  min-height: calc(100vh - 10.4rem);
 
   width: 100%;
   height: 100%;

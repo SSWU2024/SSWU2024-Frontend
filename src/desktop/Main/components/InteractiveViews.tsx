@@ -10,7 +10,12 @@ import {
 import { useEffect, useState } from 'react';
 import { colors, fonts } from '../../../styles/theme';
 import { IcCircle } from '../../assets/icon';
-import { ImgBubble, ImgLight, ImgPosterWeb } from '../../assets/image';
+import {
+  ImgBubble,
+  ImgLight,
+  ImgMotionPoster,
+  ImgPosterWeb,
+} from '../../assets/image';
 import {
   DESCRIPTION,
   INFO_DETAIL,
@@ -84,6 +89,7 @@ const InteractiveViews = () => {
   return (
     <>
       <section css={interactiveViewContainer}>
+        <img src={ImgMotionPoster} css={motionPoster} />
         <article css={individualsContainer}>
           <HorizontalImage />
 
@@ -188,6 +194,11 @@ const interactiveViewContainer = css`
   flex-direction: column;
 
   width: 100%;
+`;
+
+const motionPoster = css`
+  width: 100%;
+  padding-top: 5.3rem;
 `;
 
 const individualsContainer = css`
