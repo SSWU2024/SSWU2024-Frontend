@@ -29,11 +29,16 @@ const InteractiveViews = () => {
 
   const { scrollY } = useScroll();
   const { scrollYProgress } = useScroll();
-  const scrollAntmation = useAnimation();
+  const scrollLightAnimation = useAnimation();
   const scrollInfoBgAnimation = useAnimation();
   const scrollInfoAnimation = useAnimation();
 
-  const y = useTransform(scrollYProgress, [0.15, 0.6], ['300%', '20%']);
+  // const y = useTransform(scrollYProgress, [0.15, 0.6], ['300%', '20%']);
+  const y = useTransform(
+    scrollYProgress,
+    [0.15, 0.6],
+    [`${window.innerHeight / 3.24}%`, `${window.innerHeight / 40.5}%`],
+  );
   const opacity = useTransform(scrollYProgress, [0.5, 0.55], [0, 1]);
   const scale = useTransform(scrollYProgress, [0.3, 0.4], [1, 2]);
   const circleSize = useTransform(
@@ -57,16 +62,18 @@ const InteractiveViews = () => {
   );
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
-    if (window.innerHeight / latest < 1.122) {
-      scrollAntmation.start({ color: 'rgba(0,0,0,0)' });
+    console.log(window.innerHeight / latest);
+
+    if (window.innerHeight / latest < 1.122 / (window.innerHeight / 810)) {
+      scrollLightAnimation.start({ color: 'rgba(0,0,0,0)' });
     } else {
-      scrollAntmation.start({ color: 'rgba(0,0,0,1)' });
+      scrollLightAnimation.start({ color: 'rgba(0,0,0,1)' });
     }
   });
 
   // 여기랑 밑에 배경 부분은 추후 화면 크기(window.innerHeight)에 따라 분기처리해야 큰 사이즈의 화면에서도 대응 가능할 듯 (현재 1440 기준)
   useMotionValueEvent(scrollY, 'change', (latest) => {
-    if (window.innerHeight / latest < 0.355) {
+    if (window.innerHeight / latest < 0.355 / (window.innerHeight / 810)) {
       scrollInfoAnimation.start({ color: 'rgba(256,256,256,1)' });
     } else {
       scrollInfoAnimation.start({ color: 'rgba(38, 74, 194,0)' });
@@ -74,7 +81,7 @@ const InteractiveViews = () => {
   });
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
-    if (window.innerHeight / latest < 0.37) {
+    if (window.innerHeight / latest < 0.37 / (window.innerHeight / 810 / 2.6)) {
       scrollInfoBgAnimation.start({ backgroundColor: 'rgba(38, 74, 194, 1)' });
     } else {
       scrollInfoBgAnimation.start({ backgroundColor: 'rgba(38, 74, 194, 0)' });
@@ -99,9 +106,6 @@ const InteractiveViews = () => {
             src={ImgBubble}
             css={bubble}
             style={{ y }}
-            whileInView={{
-              transition: { duration: 3 },
-            }}
           />
         </article>
         {/* 빛 + 파란색 원이 커지는 부분 */}
