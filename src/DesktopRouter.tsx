@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import DesignerPage from './desktop/Designer/pages/DesignerPage';
 import DesignersPage from './desktop/Designers/pages/DesignersPage';
 import DisplayPages from './desktop/Displays/pages/DisplayPages';
+import ImagePostPage from './desktop/ImagePost/pages/ImagePostPage';
 import MainPage from './desktop/Main/pages/MainPage';
 import StudioPage from './desktop/Studio/pages/StudioPage';
 import WorkDetailPage from './desktop/WorkDetail/pages/WorkDetailPage';
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
   { path: '/designers', element: <DesignersPage /> },
   { path: '/designers/:name', element: <DesignerPage /> },
   { path: '/displays', element: <DisplayPages /> },
+  { path: '/img-post', element: <ImagePostPage /> },
 ]);
 
 const DesktopRouter = () => {

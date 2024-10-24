@@ -7,4 +7,6 @@ export const QUERY_KEY = {
   works: ['get-studio-works'],
   workDesigners: ['get-work-desginers'],
   workDetail: ['get-work-detail'],
+  presignedUrl: ['get-presigned-url'],
+  postImage: ['post-image'],
 };
