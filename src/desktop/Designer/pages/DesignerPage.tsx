@@ -50,8 +50,11 @@ const designerPageContainer = css`
   position: relative;
 
   width: 100%;
-  height: calc(100vh - 5.3rem);
-  padding: calc(100vh / 6.13) calc(100% / 24) calc(100vh / 31.15);
+
+  min-height: calc(100vh - 10.4rem);
+
+  padding: calc(100vh / 10.125) calc(100% / 24) calc(100vh / 31.1538);
+  margin-top: 5.2rem;
 `;
 
 const bg = css`
@@ -60,7 +63,7 @@ const bg = css`
   left: 0;
   z-index: -1;
 
-  min-height: calc(100vh - 5.2rem);
+  min-height: calc(100vh - 10.4rem);
 
   width: 100%;
   height: 100%;
@@ -96,5 +99,5 @@ const additionalInfo = css`
   justify-content: space-between;
   align-items: flex-start;
 
-  margin-top: calc(100vh / 6.86);
+  margin-top: calc(100vh / 6.8644);
 `;

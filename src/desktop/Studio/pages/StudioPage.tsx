@@ -21,9 +21,7 @@ const StudioPage = () => {
 
   return (
     <PageLayout>
-      <section css={studioPageContainer}>
-        <img src={ImgBg2Web} css={bg} />
-
+      <section css={studioPageContainer(ImgBg2Web)}>
         {state && <StudioInfo info={state} />}
         {id && <TotalWorks id={id} />}
         {/* {id && <TotalWorks />} */}
@@ -34,25 +32,18 @@ const StudioPage = () => {
 
 export default StudioPage;
 
-const studioPageContainer = css`
+const studioPageContainer = (imgUrl: string) => css`
   display: flex;
   gap: calc(100vh / 5.06);
   flex-direction: column;
   position: relative;
 
   width: 100%;
-  padding: calc(100vh / 6.13) calc(100% / 24) 0;
-  margin-bottom: calc(100vh / 5.78);
-`;
+  padding: calc(100vh / 6.13) calc(100% / 24) calc(100vh / 5.78);
 
-const bg = css`
-  position: absolute;
-  top: 5.2rem;
-  left: 0;
-  z-index: -1;
-
-  min-height: calc(100vh - 5.2rem);
-
-  width: 100%;
-  height: 100%;
+  background-position: top 5.2rem right 0;
+  background-size: contain;
+  background-image: url(${imgUrl});
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 `;
