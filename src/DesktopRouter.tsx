@@ -16,7 +16,7 @@ const router = createBrowserRouter([
   { path: '/designers', element: <DesignersPage /> },
   { path: '/designers/:name', element: <DesignerPage /> },
   { path: '/displays', element: <DisplayPages /> },
-  { path: '/img_post', element: <ImagePostPage /> },
+  { path: '/img-post', element: <ImagePostPage /> },
 ]);
 
 const DesktopRouter = () => {
