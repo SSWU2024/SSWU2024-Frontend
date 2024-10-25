@@ -10,7 +10,12 @@ const DesignerList = () => {
         const url = engName.trim().split(' ').join('-');
 
         return (
-          <Link to={url} key={designerId} css={imgCss}>
+          <Link
+            to={url}
+            key={designerId}
+            css={imgCss}
+            state={{ designerId: designerId }}
+          >
             <img src={imgPath} alt={`${engName}의 디자이너 이미지`} />
           </Link>
         );

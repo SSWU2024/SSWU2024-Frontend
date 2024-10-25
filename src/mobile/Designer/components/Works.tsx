@@ -2,15 +2,44 @@ import { css } from '@emotion/react';
 import { Link } from 'react-router-dom';
 import { colors, fonts } from '../../../styles/theme';
 import { updateStudioUrl } from '../../../utils/updateStudioUrl';
-import { DESIGNER_DETAIL } from '../../constants/DESIGNER_DETAIL';
 
-const Works = () => {
-  const workList = DESIGNER_DETAIL.data.works;
+interface imagesType {
+  sort: number;
+  imgPath: string;
+  fileFormat: string;
+}
+
+interface workInfo {
+  workId: number;
+  workTitle: string;
+  studioNm: string;
+  images: imagesType[];
+}
+
+interface worksProps {
+  works: workInfo[];
+}
+
+const Works = (props: worksProps) => {
+  const { works } = props;
+
+  const images = [
+    {
+      imgPath: 'https://xen-api.linkareer.com/attachments/80334',
+      fileFormat: 'jpg',
+    },
+    {
+      imgPath:
+        'https://i.pinimg.com/originals/a0/89/e7/a089e759d7e713b4eba7b6cda87b6c8a.gif',
+      fileFormat: 'gif',
+    },
+  ];
 
   return (
     <section css={workListCss}>
-      {workList.map((work) => {
-        const { workId, workTitle, studioNm, images } = work;
+      {works.map((work) => {
+        // const { workId, workTitle, studioNm, images } = work;
+        const { workId, workTitle, studioNm } = work;
         const studioUrl = updateStudioUrl(studioNm);
 
         return (

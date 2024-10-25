@@ -1,10 +1,17 @@
 import { css } from '@emotion/react';
 import { colors, fonts } from '../../../styles/theme';
-import { DESIGNER_DETAIL } from '../../constants/DESIGNER_DETAIL';
 
-const DesignerInfo = () => {
-  const { name, engName, major, email, instagram, behance } =
-    DESIGNER_DETAIL.data;
+interface designerInfoProps {
+  name: string;
+  engName: string;
+  major: string;
+  email: string;
+  instagram?: string;
+  behance?: string;
+}
+
+const DesignerInfo = (props: designerInfoProps) => {
+  const { name, engName, major, email, instagram, behance } = props;
   return (
     <section css={infoContainer}>
       <div css={textCss}>
