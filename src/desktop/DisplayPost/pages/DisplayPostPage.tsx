@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { postDisplayImg } from '../../../libs/apis/postDisplayImg';
 import { colors } from '../../../styles/theme';
 
@@ -9,23 +9,21 @@ interface inputType {
 }
 
 const DisplayPostPage = () => {
-  // const [input, setInput] = useState<inputType>({
-  //   displayId: 0,
-  //   imgIds: [],
-  // });
+  const [input, setInput] = useState<inputType>({
+    displayId: 0,
+    imgIds: [],
+  });
 
-  const displayId = useRef<number>();
-  const idList: number[] = [];
-  const idItem = useRef<number>();
+  const idStr = useRef<string>('');
 
   const onClickSubmitBtn = async () => {
-    if (displayId.current && idList.length !== 0) {
+    if (input.displayId && input.imgIds.length !== 0) {
       if (
         confirm(
-          `request body{ displayId: ${displayId.current}, imgIds: [${idList}]}를 전송하시겠습니까?`,
+          `request body{ displayId: ${input.displayId}, imgIds: [${input.imgIds}]}를 전송하시겠습니까?`,
         )
       ) {
-        const { code } = await postDisplayImg(displayId.current, idList);
+        const { code } = await postDisplayImg(input);
 
         alert(code);
       }
@@ -33,11 +31,12 @@ const DisplayPostPage = () => {
   };
 
   const addIds = () => {
-    if (idItem.current) {
-      idList.push(idItem.current);
-    }
-
-    console.log('idList: ', idList);
+    const idList = idStr.current.split(' ').map((item) => Number(item));
+    console.log(idList);
+    setInput((prev) => ({
+      ...prev,
+      imgIds: idList,
+    }));
   };
 
   return (
@@ -53,22 +52,25 @@ const DisplayPostPage = () => {
           css={inputCss}
           required
           onChange={(e) => {
-            displayId.current = Number(e.target.value);
+            setInput((prev) => ({
+              ...prev,
+              displayId: Number(e.target.value),
+            }));
           }}
         />
       </div>
 
       <div css={inputWrapper}>
-        <span>Image Ids* (추가되는 id들은 콘솔창으로 확인)</span>
+        <span>Image Ids* (id값 별로 띄어쓰기 하면 됩니당)</span>
         <div>
           <input
             type="text"
             css={inputCss}
             required
-            onChange={(e) => (idItem.current = Number(e.target.value))}
+            onChange={(e) => (idStr.current = e.target.value)}
           />
           <button css={buttonCss} onClick={addIds}>
-            추가
+            완료
           </button>
         </div>
       </div>

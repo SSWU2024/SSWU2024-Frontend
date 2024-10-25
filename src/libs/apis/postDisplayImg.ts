@@ -6,15 +6,15 @@ interface ApiResponse {
   message: string;
 }
 
-const postDisplayImg = async (
-  displayId: number,
-  imgIds: number[],
-): Promise<ApiResponse> => {
-  console.log(`request body{ displayId: ${displayId}, imgIds: ${imgIds}}`);
+interface postBodyType {
+  displayId: number;
+  imgIds: number[];
+}
 
+const postDisplayImg = async (data: postBodyType): Promise<ApiResponse> => {
   const response: AxiosResponse<ApiResponse> = await api.post(
     '/display',
-    { displayId, imgIds },
+    data,
     {
       headers: {
         'Content-Type': 'application/json',
