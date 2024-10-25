@@ -4,6 +4,7 @@ import DesignerPostPage from './desktop/DesignerPost/pages/DesignerPostPage';
 import DesignersPage from './desktop/Designers/pages/DesignersPage';
 import DisplayPostPage from './desktop/DisplayPost/pages/DisplayPostPage';
 import DisplayPages from './desktop/Displays/pages/DisplayPages';
+import DisplayWorkPostPage from './desktop/DisplayWorkPost/pages/DisplayWorkPostPage';
 import ImagePostPage from './desktop/ImagePost/pages/ImagePostPage';
 import MainPage from './desktop/Main/pages/MainPage';
 import StudioPage from './desktop/Studio/pages/StudioPage';
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
   { path: '/designer-post', element: <DesignerPostPage /> },
   { path: '/work-post', element: <WorkPostPage /> },
   { path: '/display-post', element: <DisplayPostPage /> },
+  { path: '/display-work-post', element: <DisplayWorkPostPage /> },
 ]);
 
 const DesktopRouter = () => {

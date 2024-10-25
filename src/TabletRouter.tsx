@@ -4,6 +4,7 @@ import DesignersPage from './tablet/Designers/page/DesignersPage';
 
 import DesignerPostPage from './desktop/DesignerPost/pages/DesignerPostPage';
 import DisplayPostPage from './desktop/DisplayPost/pages/DisplayPostPage';
+import DisplayWorkPostPage from './desktop/DisplayWorkPost/pages/DisplayWorkPostPage';
 import ImagePostPage from './desktop/ImagePost/pages/ImagePostPage';
 import WorkPostPage from './desktop/WorkPost/pages/WorkPostPage';
 import DisplayPage from './tablet/Display/page/DisplayPage';
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
   { path: '/designer-post', element: <DesignerPostPage /> },
   { path: '/work-post', element: <WorkPostPage /> },
   { path: '/display-post', element: <DisplayPostPage /> },
+  { path: '/display-work-post', element: <DisplayWorkPostPage /> },
 ]);
 
 const TabletRouter = () => {
