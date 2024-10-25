@@ -26,8 +26,20 @@ const DesignerPostPage = () => {
 
   const onClickSubmitBtn = async () => {
     console.log('input:', input);
-    const { code } = await postDesignerInfo(input);
-    alert(code);
+
+    if (
+      confirm(`request body : { 
+      name: ${input.name}, 
+      engName: ${input.engName},
+      major: ${input.major},
+      email: ${input.email},
+      instagram: ${input.instagram},
+      behance: ${input.behance},
+      imgId: ${input.imgId}}`)
+    ) {
+      const { code } = await postDesignerInfo(input);
+      alert(code);
+    }
   };
 
   return (
