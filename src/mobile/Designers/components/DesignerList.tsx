@@ -2,7 +2,16 @@ import { css } from '@emotion/react';
 import { Link } from 'react-router-dom';
 import { DESIGNERS } from '../../constants/DESIGNERS';
 
+interface designerType {
+  designerId: number;
+  engName: string;
+  imgPath: string;
+}
+
 const DesignerList = () => {
+  // const { designers, isLoading } = useGetDesigners();
+  // const designersArr = !isLoading && designers.data;
+
   return (
     <ul css={listContainter}>
       {DESIGNERS.map((designer) => {
@@ -21,6 +30,27 @@ const DesignerList = () => {
         );
       })}
     </ul>
+
+    /** api연결 이후 갈아끼우기
+    <ul css={listContainter}>
+      {!isLoading &&
+        designersArr.map((designer: designerType) => {
+          const { designerId, engName, imgPath } = designer;
+          const url = engName.trim().split(' ').join('-');
+
+          return (
+            <Link
+              to={url}
+              key={designerId}
+              css={imgCss}
+              state={{ designerId: designerId }}
+            >
+              <img src={imgPath} alt={`${engName}의 디자이너 이미지`} />
+            </Link>
+          );
+        })}
+    </ul>
+     */
   );
 };
 
