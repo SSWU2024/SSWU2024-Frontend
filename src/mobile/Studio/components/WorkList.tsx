@@ -39,7 +39,12 @@ const WorkList = ({ id }: WorkListProps) => {
             .join(' ');
 
           return (
-            <Link key={workId} css={listItem} to={`${workId}`}>
+            <Link
+              key={workId}
+              css={listItem}
+              to={`${workId}`}
+              state={{ workId: workId }}
+            >
               <div css={imgBox}>
                 <img
                   css={imgCss}

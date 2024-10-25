@@ -1,35 +1,69 @@
 import { css } from '@emotion/react';
 import { Link } from 'react-router-dom';
 import { colors, fonts } from '../../../styles/theme';
-import { WORK_DETAIL_DESIGNER } from '../../constants/WORK_DETAIL_DESIGNER';
 
-const DesignerList = () => {
+export interface DesignerListProps {
+  designers: Array<{
+    designerId: number;
+    name: string;
+    engName: string;
+    email: string;
+    works: Array<{
+      workId: number;
+      workTitle: string;
+      studioNm: string;
+      images: Array<{ imgPath: string; fileFormat: string }>;
+    }>;
+  }>;
+  isWorkDesignersLoading: boolean;
+}
+
+const DesignerList = ({
+  designers,
+  isWorkDesignersLoading,
+}: DesignerListProps) => {
+  const images = [
+    {
+      imgPath:
+        'https://i.pinimg.com/236x/13/26/c1/1326c1f3ec2a54bfc0893a0c582360de.jpg',
+      fileFormat: 'jpeg',
+    },
+    {
+      imgPath:
+        'https://i.pinimg.com/originals/a0/89/e7/a089e759d7e713b4eba7b6cda87b6c8a.gif',
+      fileFormat: 'gif',
+    },
+  ];
+
   return (
     <div css={designerListContainer}>
       <h1 css={title}>Designed by</h1>
-      <ul css={designerList}>
-        {WORK_DETAIL_DESIGNER.map((item) => {
-          const { designerId, name, engName, email, works } = item;
-          const url = engName.trim().split(' ').join('-');
+      {!isWorkDesignersLoading && (
+        <ul css={designerList}>
+          {designers.map((item) => {
+            // const { designerId, name, engName, email, works } = item;
+            const { designerId, name, engName, email } = item;
+            const url = engName.trim().split(' ').join('-');
 
-          const { images } = works;
-          const { imgPath } = images.length === 2 ? images[1] : images[0];
-          return (
-            <Link to={`/designers/${url}`} css={listCss} key={designerId}>
-              <div css={textInfo}>
-                <div css={nameSection}>
-                  <p>{name}</p>
-                  <p>{engName}</p>
+            // const { images } = works;
+            const { imgPath } = images.length === 2 ? images[1] : images[0];
+            return (
+              <Link to={`/designers/${url}`} css={listCss} key={designerId}>
+                <div css={textInfo}>
+                  <div css={nameSection}>
+                    <p>{name}</p>
+                    <p>{engName}</p>
+                  </div>
+                  <p css={emailCss}>{email}</p>
                 </div>
-                <p css={emailCss}>{email}</p>
-              </div>
-              <div css={imgBox}>
-                <img src={imgPath} css={imgCss} />
-              </div>
-            </Link>
-          );
-        })}
-      </ul>
+                <div css={imgBox}>
+                  <img src={imgPath} css={imgCss} />
+                </div>
+              </Link>
+            );
+          })}
+        </ul>
+      )}
     </div>
   );
 };

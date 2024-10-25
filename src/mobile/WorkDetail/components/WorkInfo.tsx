@@ -5,7 +5,8 @@ import { WorkInfoProps } from '../types/WorkDetailType';
 const WorkInfo = (props: WorkInfoProps) => {
   const { title, description, engDescription, designers } = props;
 
-  const designerList = designers.map((designer) => designer.name).join(' ');
+  const designerList =
+    designers && designers.map((designer) => designer.name).join(' ');
 
   return (
     <div css={workInfoContainer}>
