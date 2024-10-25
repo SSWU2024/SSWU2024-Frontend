@@ -14,7 +14,7 @@ const DesignerList = () => {
 
   return (
     <ul css={listContainter}>
-      {DESIGNERS.map((designer) => {
+      {DESIGNERS.map((designer: designerType) => {
         const { designerId, engName, imgPath } = designer;
         const url = engName.trim().split(' ').join('-');
 
