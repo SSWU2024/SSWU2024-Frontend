@@ -20,9 +20,15 @@ const DisplayPostPage = () => {
 
   const onClickSubmitBtn = async () => {
     if (displayId.current && idList.length !== 0) {
-      const { code } = await postDisplayImg(displayId.current, idList);
+      if (
+        confirm(
+          `request body{ displayId: ${displayId.current}, imgIds: [${idList}]}를 전송하시겠습니까?`,
+        )
+      ) {
+        const { code } = await postDisplayImg(displayId.current, idList);
 
-      alert(code);
+        alert(code);
+      }
     }
   };
 
