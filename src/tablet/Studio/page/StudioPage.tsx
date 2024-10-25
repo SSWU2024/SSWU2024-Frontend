@@ -7,13 +7,14 @@ import { ImgBg2Tablet } from '../../assets/image';
 import PageLayout from '../../Common/PageLayout';
 
 const StudioPage = () => {
-  const location = useLocation();
+  const { state } = useLocation();
+  const { id } = state || {};
 
   return (
     <PageLayout>
       <section css={studioContainer(ImgBg2Tablet)}>
-        <StudioInfoMobile info={location.state} />
-        <WorkList />
+        {state && <StudioInfoMobile info={state} />}
+        {id && <WorkList id={id} />}
       </section>
     </PageLayout>
   );

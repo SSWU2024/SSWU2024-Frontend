@@ -2,37 +2,58 @@ import { css } from '@emotion/react';
 import { colors, fonts } from '../../../styles/theme';
 
 import { Link } from 'react-router-dom';
-import { DESIGNER_TOTAL_WORKS } from '../../constants/WORKS';
+import { WorkType } from '../../../desktop/Studio/types/studioType';
+import useGetStudioWorks from '../../../libs/hooks/useGetStudioWorks';
 
-const WorkList = () => {
-  const workList = DESIGNER_TOTAL_WORKS.data.works;
+interface WorkListProps {
+  id: number;
+}
+
+const WorkList = ({ id }: WorkListProps) => {
+  const images = [
+    {
+      imgPath:
+        'https://i.pinimg.com/236x/13/26/c1/1326c1f3ec2a54bfc0893a0c582360de.jpg',
+      fileFormat: 'jpeg',
+    },
+    {
+      imgPath:
+        'https://i.pinimg.com/originals/a0/89/e7/a089e759d7e713b4eba7b6cda87b6c8a.gif',
+      fileFormat: 'gif',
+    },
+  ];
+
+  const { totalWorks, isLoading } = useGetStudioWorks(id);
+  const { works } = !isLoading && totalWorks.data;
 
   return (
     <ul css={listContainer}>
-      {workList.map((work) => {
-        const { workId, workTitle, images, designers } = work;
-        const { imgPath } = images.length === 2 ? images[1] : images[0];
+      {!isLoading &&
+        works.map((work: WorkType) => {
+          // const { workId, workTitle, designers, images } = work;
+          const { workId, workTitle, designers } = work;
+          const { imgPath } = images.length === 2 ? images[1] : images[0];
 
-        const designerList = designers
-          .map((designer) => designer.name)
-          .join(' ');
+          const designerList = designers
+            .map((designer) => designer.name)
+            .join(' ');
 
-        return (
-          <Link key={workId} css={listItem} to={`${workId}`}>
-            <div css={imgBox}>
-              <img
-                css={imgCss}
-                src={imgPath}
-                alt={`${workTitle}의 썸네일 이미지`}
-              />
-            </div>
-            <div css={textCss}>
-              <h1 css={title}>{workTitle}</h1>
-              <h2 css={name}>{designerList}</h2>
-            </div>
-          </Link>
-        );
-      })}
+          return (
+            <Link key={workId} css={listItem} to={`${workId}`}>
+              <div css={imgBox}>
+                <img
+                  css={imgCss}
+                  src={imgPath}
+                  alt={`${workTitle}의 썸네일 이미지`}
+                />
+              </div>
+              <div css={textCss}>
+                <h1 css={title}>{workTitle}</h1>
+                <h2 css={name}>{designerList}</h2>
+              </div>
+            </Link>
+          );
+        })}
     </ul>
   );
 };
