@@ -25,55 +25,58 @@ import {
 import HorizontalImage from './HorizontalImage';
 
 const InteractiveViews = () => {
-  const [windowSize, setWindowSize] = useState(1440);
+  const [resize, setResize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
 
+  const { width, height } = resize;
   const { scrollY } = useScroll();
   const { scrollYProgress } = useScroll();
   const scrollLightAnimation = useAnimation();
   const scrollInfoBgAnimation = useAnimation();
   const scrollInfoAnimation = useAnimation();
 
-  // const y = useTransform(scrollYProgress, [0.15, 0.6], ['300%', '20%']);
+  const handleResize = () => {
+    setResize({ width: window.innerWidth, height: window.innerHeight });
+  };
+
   const y = useTransform(
     scrollYProgress,
     [0.15, 0.6],
-    [`${window.innerHeight / 3.24}%`, `${window.innerHeight / 40.5}%`],
+    [`${height / 3.24}%`, `${height / 40.5}%`],
   );
   const opacity = useTransform(scrollYProgress, [0.5, 0.55], [0, 1]);
-  const scale = useTransform(scrollYProgress, [0.3, 0.4], [1, 2]);
+  const scale = useTransform(scrollYProgress, [0.3, 0.4], [1, 1.8]);
   const circleSize = useTransform(
     scrollYProgress,
     [0.35, 0.45],
-    ['1.3rem', `${windowSize}px`],
+    ['1.3rem', `${width}px`],
   );
 
-  // 좀 더 매끄럽게 수정하고 싶음
   const smoothCircleSize = useSpring(circleSize, {
     stiffness: 200,
     damping: 20,
     mass: 1,
   });
 
-  // 처음 시작하는 투명도를 0.99로 하면 원이랑 투명도가 일치하는데, 이렇게 할 경우 스크롤 위치가 0.38일 때부터 적용되지 않고 처음부터 적용됨 ㅠ_ㅠ
   const bg = useTransform(
     scrollYProgress,
     [0.449, 0.45],
     ['rgba(38, 74, 194, 0)', 'rgba(38, 74, 194, 1)'],
   );
 
+  // 여기
   useMotionValueEvent(scrollY, 'change', (latest) => {
-    console.log(window.innerHeight / latest);
-
-    if (window.innerHeight / latest < 1.122 / (window.innerHeight / 810)) {
+    if (height / latest < 1.122 / (height / 810)) {
       scrollLightAnimation.start({ color: 'rgba(0,0,0,0)' });
     } else {
       scrollLightAnimation.start({ color: 'rgba(0,0,0,1)' });
     }
   });
 
-  // 여기랑 밑에 배경 부분은 추후 화면 크기(window.innerHeight)에 따라 분기처리해야 큰 사이즈의 화면에서도 대응 가능할 듯 (현재 1440 기준)
   useMotionValueEvent(scrollY, 'change', (latest) => {
-    if (window.innerHeight / latest < 0.355 / (window.innerHeight / 810)) {
+    if (height / latest < 0.355 / (height / 810)) {
       scrollInfoAnimation.start({ color: 'rgba(256,256,256,1)' });
     } else {
       scrollInfoAnimation.start({ color: 'rgba(38, 74, 194,0)' });
@@ -81,7 +84,7 @@ const InteractiveViews = () => {
   });
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
-    if (window.innerHeight / latest < 0.37 / (window.innerHeight / 810 / 2.6)) {
+    if (height / latest < 0.37 / (height / 810 / 2.6)) {
       scrollInfoBgAnimation.start({ backgroundColor: 'rgba(38, 74, 194, 1)' });
     } else {
       scrollInfoBgAnimation.start({ backgroundColor: 'rgba(38, 74, 194, 0)' });
@@ -90,7 +93,11 @@ const InteractiveViews = () => {
 
   useEffect(() => {
     scrollTo({ top: 0, behavior: 'instant' });
-    setWindowSize(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => {
+      // cleanup
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   return (
@@ -108,6 +115,7 @@ const InteractiveViews = () => {
             style={{ y }}
           />
         </article>
+
         {/* 빛 + 파란색 원이 커지는 부분 */}
         <div css={lightContainer}>
           <motion.img src={ImgLight} style={{ scale: scale }} />
@@ -183,7 +191,6 @@ const InteractiveViews = () => {
             <p css={posterTitle}>Poster</p>
           </header>
 
-          {/* 화면에 따라 포스터 크기가 커지면 화질이 완전 깨지는데 어카죠? 포스터 높이가 화면 높이보다 커서(934) 비율대로 커지게 하면 투머치인데 . . . */}
           <img src={ImgPosterWeb} css={posterImg} />
         </article>
       </motion.section>
@@ -244,7 +251,7 @@ const displayInfoContainer = css`
   align-items: center;
   flex-direction: column;
 
-  width: 100%;
+  width: 100vw;
   padding: 18rem calc(100% / 4.1261) calc(100vh / 5.7857);
 `;
 
