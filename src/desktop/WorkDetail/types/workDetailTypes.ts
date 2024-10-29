@@ -9,6 +9,7 @@ export interface DetailImagesProps {
   images: Array<{
     sort: number;
     imgPath: string;
+    fileFormat: string;
   }>;
 }
 
