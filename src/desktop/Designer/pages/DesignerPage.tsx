@@ -16,7 +16,7 @@ const DesignerPage = () => {
   const { name, engName, major, email, instagram, behance, works } =
     !isLoading && data;
 
-  const newEngName = renderEngName(engName);
+  const newEngName = !isLoading && renderEngName(engName);
 
   return (
     <PageLayout>
