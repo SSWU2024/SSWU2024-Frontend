@@ -8,7 +8,7 @@ import PageLayout from '../../Common/PageLayout';
 
 const StudioPage = () => {
   const { state } = useLocation();
-  const { id } = state || {};
+  const id = state.id;
 
   return (
     <PageLayout>

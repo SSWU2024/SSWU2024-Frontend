@@ -10,19 +10,6 @@ interface WorkListProps {
 }
 
 const WorkList = ({ id }: WorkListProps) => {
-  const images = [
-    {
-      imgPath:
-        'https://i.pinimg.com/236x/13/26/c1/1326c1f3ec2a54bfc0893a0c582360de.jpg',
-      fileFormat: 'jpeg',
-    },
-    {
-      imgPath:
-        'https://i.pinimg.com/originals/a0/89/e7/a089e759d7e713b4eba7b6cda87b6c8a.gif',
-      fileFormat: 'gif',
-    },
-  ];
-
   const { totalWorks, isLoading } = useGetStudioWorks(id);
   const { works } = !isLoading && totalWorks.data;
 
@@ -30,8 +17,8 @@ const WorkList = ({ id }: WorkListProps) => {
     <ul css={listContainer}>
       {!isLoading &&
         works.map((work: WorkType) => {
-          // const { workId, workTitle, designers, images } = work;
-          const { workId, workTitle, designers } = work;
+          const { workId, workTitle, designers, images } = work;
+
           const { imgPath } = images.length === 2 ? images[1] : images[0];
 
           const designerList = designers
