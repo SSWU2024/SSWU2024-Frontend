@@ -34,7 +34,7 @@ const WorkDetailPage = () => {
             workEngBody={workEngBody}
           />
           <DetailImages images={images} />
-          <Designers designers={designers} />
+          <Designers designers={designers} currentWorkId={workId} />
         </section>
       )}
     </PageLayout>
