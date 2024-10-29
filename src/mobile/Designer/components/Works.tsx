@@ -69,6 +69,8 @@ const workListCss = css`
 
   @media (768px <=width < 1440px) {
     gap: 2rem;
+
+    padding-right: 39.2rem;
   }
 `;
 
@@ -79,28 +81,22 @@ const workContainer = css`
   @media (width < 768px) {
     gap: 1.2rem;
 
-    width: 16.6rem;
-    height: 21.8rem;
+    width: 48.5%;
+
+    /* max-width: 16.8rem; */
   }
 
   @media (768px <=width < 1440px) {
     gap: 1.4rem;
 
-    width: 16.8rem;
-    height: 22.2rem;
+    width: 48.5%;
+    max-width: 30.6rem;
+    min-width: 16.8rem;
   }
 `;
 
 const imgCss = css`
-  @media (width < 768px) {
-    width: 16.6rem;
-    height: 16.6rem;
-  }
-
-  @media (768px <=width < 1440px) {
-    width: 16.8rem;
-    height: 16.8rem;
-  }
+  width: 100%;
 
   object-fit: cover;
 `;
