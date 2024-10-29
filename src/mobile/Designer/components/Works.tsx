@@ -23,40 +23,32 @@ interface worksProps {
 const Works = (props: worksProps) => {
   const { works } = props;
 
-  const images = [
-    {
-      imgPath: 'https://xen-api.linkareer.com/attachments/80334',
-      fileFormat: 'jpg',
-    },
-    {
-      imgPath:
-        'https://i.pinimg.com/originals/a0/89/e7/a089e759d7e713b4eba7b6cda87b6c8a.gif',
-      fileFormat: 'gif',
-    },
-  ];
-
   return (
     <section css={workListCss}>
-      {works.map((work) => {
-        // const { workId, workTitle, studioNm, images } = work;
-        const { workId, workTitle, studioNm } = work;
-        const studioUrl = updateStudioUrl(studioNm);
+      {works &&
+        works.map((work) => {
+          const { workId, workTitle, studioNm, images } = work;
+          const studioUrl = updateStudioUrl(studioNm);
 
-        return (
-          <Link to={`${studioUrl}/${workId}`} key={workId} css={workContainer}>
-            <img
-              css={imgCss}
-              src={images.length > 1 ? images[1].imgPath : images[0].imgPath}
-              alt={`${workTitle} 썸네일`}
-            />
+          return (
+            <Link
+              to={`${studioUrl}/${workId}`}
+              key={workId}
+              css={workContainer}
+            >
+              <img
+                css={imgCss}
+                src={images.length > 1 ? images[1].imgPath : images[0].imgPath}
+                alt={`${workTitle} 썸네일`}
+              />
 
-            <div css={textContainer}>
-              <h1 css={textCss('title')}>{workTitle}</h1>
-              <h2 css={textCss('studio')}>{studioNm}</h2>
-            </div>
-          </Link>
-        );
-      })}
+              <div css={textContainer}>
+                <h1 css={textCss('title')}>{workTitle}</h1>
+                <h2 css={textCss('studio')}>{studioNm}</h2>
+              </div>
+            </Link>
+          );
+        })}
     </section>
   );
 };

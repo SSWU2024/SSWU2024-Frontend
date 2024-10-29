@@ -17,15 +17,19 @@ const DesignerPage = () => {
   return (
     <PageLayout>
       <section css={designerContainer(ImgBg3Tablet)}>
-        <DesignerInfo
-          name={name}
-          engName={engName}
-          major={major}
-          email={email}
-          instagram={instagram}
-          behance={behance}
-        />
-        <Works works={works} />
+        {!isLoading && (
+          <>
+            <DesignerInfo
+              name={name}
+              engName={engName}
+              major={major}
+              email={email}
+              instagram={instagram}
+              behance={behance}
+            />
+            <Works works={works} />
+          </>
+        )}
       </section>
     </PageLayout>
   );
