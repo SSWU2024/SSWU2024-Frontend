@@ -13,6 +13,7 @@ export interface DetailImagesProps {
 }
 
 export interface DesignersProps {
+  currentWorkId: number;
   designers: Array<{
     designerId: number;
     name: string;

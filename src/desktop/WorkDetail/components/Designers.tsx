@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { colors, fonts } from '../../../styles/theme';
 import { DesignersProps } from '../types/workDetailTypes';
 
-const Designers = ({ designers }: DesignersProps) => {
+const Designers = ({ designers, currentWorkId }: DesignersProps) => {
   const [hoveredImg, setHoveredImg] = useState({
     hoveredTitle: '',
     hoveredName: '',
@@ -32,7 +32,10 @@ const Designers = ({ designers }: DesignersProps) => {
       <div css={totalDesigners}>
         {designers.map((designer) => {
           const { designerId, name, engName, email, works } = designer;
-          const { workId, workTitle, studioNm, images } = works[0];
+          const { workId, workTitle, studioNm, images } =
+            works.length === 2
+              ? works.filter((work) => work.workId !== currentWorkId)[0]
+              : works[0];
           const { imgPath } = images[0];
           const isHoveredImg =
             hoveredTitle === workTitle && hoveredName === name;
