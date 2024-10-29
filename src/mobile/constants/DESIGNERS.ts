@@ -2,372 +2,439 @@ export const DESIGNERS = [
   {
     designerId: 1,
     engName: 'Kang Minji',
-    imgPath: 'https://i.postimg.cc/yN6ZT0Zp/img-designers-1-3x.png',
-  },
-  {
-    designerId: 2,
-    engName: 'Kang Seoyeon',
-    imgPath: 'https://i.postimg.cc/7LBTtb1H/img-designers-2-3x.png',
-  },
-  {
-    designerId: 3,
-    engName: 'Kang Eunseo',
-    imgPath: 'https://i.postimg.cc/tTYnKyDh/img-designers-3-3x.png',
-  },
-  {
-    designerId: 4,
-    engName: 'Kang Jiwon',
-    imgPath: 'https://i.postimg.cc/DZH4FDYR/img-designers-4-3x.png',
-  },
-  {
-    designerId: 5,
-    engName: 'Kwon Soyeon',
-    imgPath: 'https://i.postimg.cc/4yc735Dy/img_designers_5_3x.png',
-  },
-  {
-    designerId: 6,
-    engName: 'Kim Keonhee',
-    imgPath: 'https://i.postimg.cc/QNKWS8FD/img_designers_6_3x.png',
-  },
-  {
-    designerId: 7,
-    engName: 'Kim Daeun',
-    imgPath: 'https://i.postimg.cc/gk9LTChZ/img_designers_7_3x.png',
-  },
-  {
-    designerId: 8,
-    engName: 'Kim Minji',
-    imgPath: 'https://i.postimg.cc/MKyf290r/img_designers_8_3x.png',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/d2ff38bd-cb61-46e5-92fb-e07c8ea6b420-img_designers_1.png',
   },
   {
     designerId: 9,
-    engName: 'Kim Minji',
-    imgPath: 'https://i.postimg.cc/Qdh9Xc0N/img_designers_9_3x.png',
-  },
-  {
-    designerId: 10,
-    engName: 'Kim Minjee',
-    imgPath: 'https://i.postimg.cc/Cx7ZddQG/img-designers-10-3x.png',
-  },
-  {
-    designerId: 11,
-    engName: 'Kim Seoyoung',
-    imgPath: 'https://i.postimg.cc/Xvvr53RT/img-designers-11-3x.png',
-  },
-  {
-    designerId: 12,
-    engName: 'Kim Sohyun',
-    imgPath: 'https://i.postimg.cc/jjkLQmKC/img-designers-12-3x.png',
-  },
-  {
-    designerId: 13,
-    engName: 'Kim Subin',
-    imgPath: 'https://i.postimg.cc/632THc5c/img-designers-13-3x.png',
-  },
-  {
-    designerId: 14,
-    engName: 'Kim Yeiryn',
-    imgPath: 'https://i.postimg.cc/wvCMnN1p/img-designers-14-3x.png',
-  },
-  {
-    designerId: 15,
-    engName: 'Kim Yerim',
-    imgPath: 'https://i.postimg.cc/hvVvnGm7/img-designers-15-3x.png',
-  },
-  {
-    designerId: 16,
-    engName: 'Kim Yejin',
-    imgPath: 'https://i.postimg.cc/y6RkcLGY/img-designers-16-3x.png',
-  },
-  {
-    designerId: 17,
-    engName: 'Kim Jayoung',
-    imgPath: 'https://i.postimg.cc/sDR1cpFP/img-designers-17-3x.png',
-  },
-  {
-    designerId: 18,
-    engName: 'Kim Jinhee',
-    imgPath: 'https://i.postimg.cc/5Nqyk61h/img-designers-18-3x.png',
-  },
-  {
-    designerId: 19,
-    engName: 'Kim Taeeun',
-    imgPath: 'https://i.postimg.cc/y8LdstDn/img-designers-19-3x.png',
-  },
-  {
-    designerId: 20,
-    engName: 'Na Hakyoung',
-    imgPath: 'https://i.postimg.cc/SKjKsd84/img-designers-20-3x.png',
-  },
-  {
-    designerId: 21,
-    engName: 'Nam Subeen',
-    imgPath: 'https://i.postimg.cc/1zT3NFcq/img-designers-21-3x.png',
-  },
-  {
-    designerId: 22,
-    engName: 'Noh Yujeong',
-    imgPath: 'https://i.postimg.cc/qR3Mc7jZ/img-designers-22-3x.png',
-  },
-  {
-    designerId: 23,
-    engName: 'Park Tabitha',
-    imgPath: 'https://i.postimg.cc/RhxCgzYC/img-designers-23-3x.png',
-  },
-  {
-    designerId: 24,
-    engName: 'Park Sohee',
-    imgPath: 'https://i.postimg.cc/MH064Fk7/img-designers-24-3x.png',
-  },
-  {
-    designerId: 25,
-    engName: 'Park Sujin',
-    imgPath: 'https://i.postimg.cc/Pf15PPLC/img-designers-25-3x.png',
-  },
-  {
-    designerId: 26,
-    engName: 'Park Yejin',
-    imgPath: 'https://i.postimg.cc/m2R2MBM8/img-designers-26-3x.png',
-  },
-  {
-    designerId: 27,
-    engName: 'Park Juwon',
-    imgPath: 'https://i.postimg.cc/xTRj3h3Y/img-designers-27-3x.png',
-  },
-  {
-    designerId: 28,
-    engName: 'Park Jihyun',
-    imgPath: 'https://i.postimg.cc/qvvJbw1K/img-designers-28-3x.png',
-  },
-  {
-    designerId: 29,
-    engName: 'Song Ahyun',
-    imgPath: 'https://i.postimg.cc/FHC92S6B/img-designers-29-3x.png',
-  },
-  {
-    designerId: 30,
-    engName: 'Shin Subeen',
-    imgPath: 'https://i.postimg.cc/jjWsK50d/img-designers-30-3x.png',
-  },
-  {
-    designerId: 31,
-    engName: 'Yang Jioh',
-    imgPath: 'https://i.postimg.cc/Lsrmsp2k/img-designers-31-3x.png',
-  },
-  {
-    designerId: 32,
-    engName: 'Um Jimin',
-    imgPath: 'https://i.postimg.cc/NMmB9zj3/img-designers-32-3x.png',
-  },
-  {
-    designerId: 33,
-    engName: 'Yu Gahyoung',
-    imgPath: 'https://i.postimg.cc/3Nh7gFyd/img-designers-33-3x.png',
-  },
-  {
-    designerId: 34,
-    engName: 'Ryu Haena',
-    imgPath: 'https://i.postimg.cc/gjKp4LR4/img-designers-34-3x.png',
-  },
-  {
-    designerId: 35,
-    engName: 'Yoo Hyeongyeong',
-    imgPath: 'https://i.postimg.cc/sfP33q8S/img-designers-35-3x.png',
-  },
-  {
-    designerId: 36,
-    engName: 'Yu Hyejin',
-    imgPath: 'https://i.postimg.cc/c4XZnYdL/img-designers-36-3x.png',
-  },
-  {
-    designerId: 37,
-    engName: 'Yoon Ahhyun',
-    imgPath: 'https://i.postimg.cc/Hspdn3DN/img-designers-37-3x.png',
-  },
-  {
-    designerId: 38,
-    engName: 'Eun Sewon',
-    imgPath: 'https://i.postimg.cc/NjFt7M07/img-designers-38-3x.png',
-  },
-  {
-    designerId: 39,
-    engName: 'Lee Gaeun',
-    imgPath: 'https://i.postimg.cc/htYBCBzF/img-designers-39-3x.png',
-  },
-  {
-    designerId: 40,
-    engName: 'Lee Danbi',
-    imgPath: 'https://i.postimg.cc/FR5Q4VVD/img-designers-40-3x.png',
-  },
-  {
-    designerId: 41,
-    engName: 'Lee Seojin',
-    imgPath: 'https://i.postimg.cc/W3Gcbq9j/img-designers-41-3x.png',
-  },
-  {
-    designerId: 42,
-    engName: 'Lee Seohyun',
-    imgPath: 'https://i.postimg.cc/C5wTZMt8/img-designers-42-3x.png',
-  },
-  {
-    designerId: 43,
-    engName: 'Lee Sunho',
-    imgPath: 'https://i.postimg.cc/gj493FFT/img-designers-43-3x.png',
-  },
-  {
-    designerId: 44,
-    engName: 'Lee Sumin',
-    imgPath: 'https://i.postimg.cc/9XBH6TRY/img-designers-44-3x.png',
-  },
-  {
-    designerId: 45,
-    engName: 'Lee Sumin',
-    imgPath: 'https://i.postimg.cc/8PPgN5LQ/img-designers-45-3x.png',
-  },
-  {
-    designerId: 46,
-    engName: 'Lee Subin',
-    imgPath: 'https://i.postimg.cc/bNCcJhRG/img-designers-46-3x.png',
-  },
-  {
-    designerId: 47,
-    engName: 'Lee Sinyoung',
-    imgPath: 'https://i.postimg.cc/NjKh2zNd/img-designers-47-3x.png',
-  },
-  {
-    designerId: 48,
-    engName: 'Lee Yunhae',
-    imgPath: 'https://i.postimg.cc/rw3B1N3M/img-designers-48-3x.png',
-  },
-  {
-    designerId: 49,
-    engName: 'Lee Inhye',
-    imgPath: 'https://i.postimg.cc/6QZDYGxR/img-designers-49-3x.png',
-  },
-  {
-    designerId: 50,
-    engName: 'Lee Jimin',
-    imgPath: 'https://i.postimg.cc/gJP15kG7/img-designers-50-3x.png',
-  },
-  {
-    designerId: 51,
-    engName: 'Lee Jihyun',
-    imgPath: 'https://i.postimg.cc/fLj1hnLR/img-designers-51-3x.png',
-  },
-  {
-    designerId: 52,
-    engName: 'Lee Hajeong',
-    imgPath: 'https://i.postimg.cc/d3spsHkm/img-designers-52-3x.png',
-  },
-  {
-    designerId: 53,
-    engName: 'Lee Hyunju',
-    imgPath: 'https://i.postimg.cc/Wz5KhG0R/img-designers-53-3x.png',
-  },
-  {
-    designerId: 54,
-    engName: 'Lim Subeen',
-    imgPath: 'https://i.postimg.cc/CM79PgXv/img_designers_54_3x.png',
-  },
-  {
-    designerId: 55,
-    engName: 'Jeong Seoyeon',
-    imgPath: 'https://i.postimg.cc/fTbp1PhM/img_designers_55_3x.png',
-  },
-  {
-    designerId: 56,
-    engName: 'Jung Suyeon',
-    imgPath: 'https://i.postimg.cc/gkBQpKY8/img_designers_56_3x.png',
-  },
-  {
-    designerId: 57,
-    engName: 'Cheong Juhui',
-    imgPath: 'https://i.postimg.cc/BQKQJ8vN/img-designers-57-3x.png',
-  },
-  {
-    designerId: 58,
-    engName: 'Jeong Jihyun',
-    imgPath: 'https://i.postimg.cc/0y15j8Mv/img-designers-58-3x.png',
-  },
-
-  {
-    designerId: 59,
-    engName: 'Joe Nayeon',
-    imgPath: 'https://i.postimg.cc/FK3rj1Gn/img-designers-59-3x.png',
-  },
-  {
-    designerId: 60,
-    engName: 'Cha Yerin',
-    imgPath: 'https://i.postimg.cc/ZRmTjZMY/img-designers-60-3x.png',
-  },
-  {
-    designerId: 61,
-    engName: 'Chae Wonbin',
-    imgPath: 'https://i.postimg.cc/KjvmSfbd/img-designers-61-3x.png',
-  },
-  {
-    designerId: 62,
-    engName: 'Chae Jeongwan',
-    imgPath: 'https://i.postimg.cc/TwcT4SzV/img-designers-62-3x.png',
-  },
-  {
-    designerId: 63,
-    engName: 'Choi Suin',
-    imgPath: 'https://i.postimg.cc/908CW9Fz/img-designers-63-3x.png',
-  },
-  {
-    designerId: 64,
-    engName: 'Choi Yunha',
-    imgPath: 'https://i.postimg.cc/CMmFC3HY/img-designers-64-3x.png',
-  },
-  {
-    designerId: 65,
-    engName: 'Pyun Jiwon',
-    imgPath: 'https://i.postimg.cc/RVhvggXt/img-designers-65-3x.png',
-  },
-  {
-    designerId: 66,
-    engName: 'Han Kyuri',
-    imgPath: 'https://i.postimg.cc/J4FMvj22/img-designers-66-3x.png',
-  },
-  {
-    designerId: 67,
-    engName: 'Han Soyeon',
-    imgPath: 'https://i.postimg.cc/t4VpjY0C/img-designers-67-3x.png',
-  },
-  {
-    designerId: 68,
-    engName: 'Han Seungyeon',
-    imgPath: 'https://i.postimg.cc/6QJw5twV/img-designers-68-3x.png',
-  },
-  {
-    designerId: 69,
-    engName: 'Heo Yeryeon',
-    imgPath: 'https://i.postimg.cc/rp1TD3FB/img-designers-69-3x.png',
-  },
-  {
-    designerId: 70,
-    engName: 'Hong Jisoo',
-    imgPath: 'https://i.postimg.cc/XJnbdLrp/img-designers-70-3x.png',
-  },
-  {
-    designerId: 71,
-    engName: 'Hong Jihyeon',
-    imgPath: 'https://i.postimg.cc/fL5hKdd5/img-designers-71-3x.png',
-  },
-  {
-    designerId: 72,
-    engName: 'Hwang Yunjeong',
-    imgPath: 'https://i.postimg.cc/Gt2nSpJR/img-designers-72-3x.png',
+    engName: 'Kang Seoyeon',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/cacac4f8-0240-4a50-b3e2-88b39f8c44fd-img_designers_2.png',
   },
   {
     designerId: 73,
-    engName: 'Whang Jisu',
-    imgPath: 'https://i.postimg.cc/7hWrvym2/img-designers-73-3x.png',
+    engName: 'Kang Eunseo',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/82e46119-2a0f-4c27-84a3-63322b41ef46-img_designers_3.png',
   },
   {
-    designerId: 74,
+    designerId: 21,
+    engName: 'Kang Jiwon',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/8620c056-bcba-4fa9-b65f-d38cf2cc9b54-img_designers_4.png',
+  },
+  {
+    designerId: 10,
+    engName: 'Kwon Soyeon',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/39b9f2ce-8e8d-4060-8652-d923581d2602-img_designers_5.png',
+  },
+  {
+    designerId: 42,
+    engName: 'Kim Keonhee',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/f99e717f-1e2e-4180-9cfd-bd62bcb22428-img_designers_6.png',
+  },
+  {
+    designerId: 64,
+    engName: 'Kim Daeun',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/3352d859-7a60-4b91-b67d-c3d360c18eea-img_designers_7.png',
+  },
+  {
+    designerId: 11,
+    engName: 'Kim Minji 1',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/null/img/2f1562ac-2ac2-4710-a4a1-4eb30b2bfcb5-img_designers_8.png',
+  },
+  {
+    designerId: 12,
+    engName: 'Kim Minji 2',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/005e6f8d-5d60-4b33-b4d1-44ea37031ff3-img_designers_9.png',
+  },
+  {
+    designerId: 22,
+    engName: 'Kim Minjee',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/9683c2f5-75cd-43b5-a65f-5b343dd31a57-img_designers_10.png',
+  },
+  {
+    designerId: 51,
+    engName: 'Kim Seoyoung',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/14f5adf8-52fc-490e-85e3-f64edb202925-img_designers_11.png',
+  },
+  {
+    designerId: 28,
+    engName: 'Kim Sohyun',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/883296dd-e44e-4d86-b811-952581638da7-img_designers_12.png',
+  },
+  {
+    designerId: 45,
+    engName: 'Kim Subin',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/42f89a46-557d-44a5-a941-982ece0ceaa2-img_designers_13.png',
+  },
+  {
+    designerId: 46,
+    engName: 'Kim Yeiryn',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/1d8eeebe-d7c4-479e-ae64-e81ecbe61955-img_designers_14.png',
+  },
+  {
+    designerId: 41,
+    engName: 'Kim Yerim',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/319bb674-ed28-4778-85d8-55b13074738e-img_designers_15.png',
+  },
+  {
+    designerId: 39,
+    engName: 'Kim Yejin',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/e4a4dc7e-3f54-4009-8a2d-4c1ab0f58754-img_designers_16.png',
+  },
+  {
+    designerId: 62,
+    engName: 'Kim Jayoung',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/cc9ba3bf-9da1-4268-8a79-baf9ab261ab2-img_designers_17.png',
+  },
+  {
+    designerId: 2,
+    engName: 'Kim Jinhee',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/2be5b49c-31d6-4b30-b2ac-279606e3c97c-img_designers_18.png',
+  },
+  {
+    designerId: 13,
+    engName: 'Kim Taeeun',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/f408c21f-6e22-4eb0-98db-8db4be65a6bb-img_designers_19.png',
+  },
+  {
+    designerId: 38,
+    engName: 'Na Hakyoung',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/6898ccd5-4648-4c5a-9b6a-68cfef13985b-img_designers_20.png',
+  },
+  {
+    designerId: 61,
+    engName: 'Nam Subeen',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/b567952f-ffeb-4950-864b-98afd30ad2f0-img_designers_21.png',
+  },
+  {
+    designerId: 65,
+    engName: 'Noh Yujeong',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/e84c98fd-16a3-4750-b44d-479aca034328-img_designers_22.png',
+  },
+  {
+    designerId: 14,
+    engName: 'Park Tabitha',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/833ad918-8995-4440-9506-8f4a53e2f327-img_designers_23.png',
+  },
+  {
+    designerId: 15,
+    engName: 'Park Sohee',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/7bda6588-60aa-4e5e-b9a6-d4551b6bbdf4-img_designers_24.png',
+  },
+  {
+    designerId: 33,
+    engName: 'Park Sujin',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/02d192da-f855-4629-990e-dc25f09b1c8c-img_designers_25.png',
+  },
+  {
+    designerId: 55,
+    engName: 'Park Yejin',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/49fa208f-723d-40f0-b058-9f346db6ba82-img_designers_26.png',
+  },
+  {
+    designerId: 16,
+    engName: 'Park Juwon',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/81bf7ec4-4e5e-4970-9752-f4437b45d458-img_designers_27.png',
+  },
+  {
+    designerId: 17,
+    engName: 'Park Jihyun',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/cb33de70-f451-4841-8870-b89fd134c9ff-img_designers_28.png',
+  },
+  {
+    designerId: 50,
+    engName: 'Song Ahyun',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/d8354496-389e-4368-8bad-334ecf696ea8-img_designers_29.png',
+  },
+  {
+    designerId: 31,
+    engName: 'Shin Subeen',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/85dbd9c2-a0e5-44fc-954a-fcf197fdf0db-img_designers_30.png',
+  },
+  {
+    designerId: 48,
+    engName: 'Yang Jioh',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/66b1624c-8504-4525-bc5c-b1dfb29541cf-img_designers_31.png',
+  },
+  {
+    designerId: 6,
+    engName: 'Um Jimin',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/5503a4d0-3678-484f-b982-e1497c38ec7e-img_designers_32.png',
+  },
+  {
+    designerId: 35,
+    engName: 'Yu Gahyoung',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/04d50591-bf7b-407c-88f9-310698ffe630-img_designers_33.png',
+  },
+  {
+    designerId: 24,
+    engName: 'Ryu Haena',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/c5d314e3-59dd-4470-8d62-6d9827e77fa5-img_designers_34.png',
+  },
+  {
+    designerId: 57,
+    engName: 'Yoo Hyeongyeong',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/fdf012d0-f19d-45da-9e1c-4a785fe901f8-img_designers_35.png',
+  },
+  {
+    designerId: 37,
+    engName: 'Yu Hyejin',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/c450ce8e-a5bb-4481-9d2b-fe717064f211-img_designers_36.png',
+  },
+  {
+    designerId: 43,
+    engName: 'Yoon Ahhyun',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/e7d7164c-7b55-4861-8bad-3784654f8e9e-img_designers_37.png',
+  },
+  {
+    designerId: 34,
+    engName: 'Eun Sewon',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/0eaa4590-7c43-4376-884e-5837efba6c69-img_designers_38.png',
+  },
+  {
+    designerId: 67,
+    engName: 'Lee Gaeun',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/90b2d281-c562-44b2-bb04-7accb6790a21-img_designers_39.png',
+  },
+  {
+    designerId: 29,
+    engName: 'Lee Danbi',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/1b4bb074-0674-45bd-b5f8-1a136dc772f7-img_designers_40.png',
+  },
+  {
+    designerId: 66,
+    engName: 'Lee Seojin',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/9391a91b-c6bf-4621-bf84-a456fe286e67-img_designers_41.png',
+  },
+  {
+    designerId: 25,
+    engName: 'Lee Seohyun',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/6c8ef023-2ac7-46ab-9885-5d46c62bf1d3-img_designers_42.png',
+  },
+  {
+    designerId: 58,
+    engName: 'Lee Sunho',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/bc4681e5-2f45-42e5-b29c-f472adc044eb-img_designers_43.png',
+  },
+  {
+    designerId: 60,
+    engName: 'Lee Sumin 1',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/996e3f74-8469-43f1-bbd2-a9463c688232-img_designers_44.png',
+  },
+  {
+    designerId: 68,
+    engName: 'Lee Sumin 2',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/27c19926-36ee-4d45-9f2b-c4ba5d9c551b-img_designers_45.png',
+  },
+  {
+    designerId: 26,
+    engName: 'Lee Subin',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/822c6ba6-a239-4dd3-98cb-88615f573c40-img_designers_46.png',
+  },
+  {
+    designerId: 40,
+    engName: 'Lee Sinyoung',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/3aefbece-fae1-4e0f-8ca8-56cf8249bb36-img_designers_47.png',
+  },
+  {
+    designerId: 49,
+    engName: 'Lee Yunhae',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/bfa0db11-119a-4461-a135-4d0adac94e61-img_designers_48.png',
+  },
+  {
+    designerId: 7,
+    engName: 'Lee Inhye',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/494199f8-0b1b-4576-9793-6bff1c4e27da-img_designers_49.png',
+  },
+  {
+    designerId: 69,
+    engName: 'Lee Jimin',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/06d36100-cccf-4c98-8a71-fe33ad41a440-img_designers_50.png',
+  },
+  {
+    designerId: 27,
+    engName: 'Lee Jihyun',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/4297721f-c4b0-4b3b-975f-1660a762682a-img_designers_51.png',
+  },
+  {
+    designerId: 30,
+    engName: 'Lee Hajeong',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/597e3892-364e-4e65-ab5b-021f782d4824-img_designers_52.png',
+  },
+  {
+    designerId: 18,
+    engName: 'Lee Hyunju',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/44f7cba1-8a75-4f15-bd02-f79b9ba2d836-img_designers_53.png',
+  },
+  {
+    designerId: 4,
+    engName: 'Lim Subeen',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/846f2ea4-7ec4-47a4-9a97-7f2e001b8234-img_designers_54.png',
+  },
+  {
+    designerId: 23,
+    engName: 'Jeong Seoyeon',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/20ae2dc7-c615-4a8a-86dd-33bc40acd69d-img_designers_55.png',
+  },
+  {
+    designerId: 70,
+    engName: 'Jung Suyeon',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/dc83c199-0b50-47a6-a744-c6ff0e719d6d-img_designers_56.png',
+  },
+  {
+    designerId: 54,
+    engName: 'Cheong Juhui',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/20920ba0-62fe-49cd-8441-6aac8c630cc2-img_designers_57.png',
+  },
+  {
+    designerId: 71,
+    engName: 'Joe Nayeon',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/271c8804-2994-44cc-99ac-11ce939757d4-img_designers_58.png',
+  },
+  {
+    designerId: 59,
+    engName: 'Cha Yerin',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/2fc2d4fe-088b-4314-abc4-2ab8757c073a-img_designers_59.png',
+  },
+  {
+    designerId: 20,
+    engName: 'Chae Wonbin',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/29f87692-5d31-447c-ab4e-eddb814f4f08-img_designers_60.png',
+  },
+  {
+    designerId: 56,
+    engName: 'Chae Jeongwan',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/f749e705-a123-4d80-a283-c5848fc8a0ce-img_designers_61.png',
+  },
+  {
+    designerId: 47,
+    engName: 'Choi Suin',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/0b2318c6-3904-4f4d-a44d-270d33b4e687-img_designers_62.png',
+  },
+  {
+    designerId: 63,
+    engName: 'Choi Yunha',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/7a1b3de1-5390-4c09-8a7a-24b8a90d79d8-img_designers_63.png',
+  },
+  {
+    designerId: 5,
+    engName: 'Pyun Jiwon',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/ecc2b2bb-01bd-47df-8804-e2217bb80c04-img_designers_64.png',
+  },
+  {
+    designerId: 3,
+    engName: 'Han Kyuri',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/7ac051ae-c3ab-40fc-8fe7-47ee8516c3bc-img_designers_65.png',
+  },
+  {
+    designerId: 52,
+    engName: 'Han Soyeon',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/e44db82a-6a8a-42ab-9942-cfd8dc1611b5-img_designers_66.png',
+  },
+  {
+    designerId: 19,
+    engName: 'Han Seungyeon',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/799e430d-cc4c-4bbb-9784-d9da64ba63be-img_designers_67.png',
+  },
+  {
+    designerId: 8,
+    engName: 'Heo Yeryeon',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/73e928d8-a171-4120-9c19-31eb073b02aa-img_designers_68.png',
+  },
+  {
+    designerId: 36,
+    engName: 'Hong Jisoo',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/3aedaf8d-4806-4a6e-b9c8-02a1073cced2-img_designers_69.png',
+  },
+  {
+    designerId: 53,
+    engName: 'Hong Jihyeon',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/2612e3ea-f4f9-4d94-b66d-07626053bc18-img_designers_70.png',
+  },
+  {
+    designerId: 44,
+    engName: 'Hwang Yunjeong',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/ceeab0dd-2df6-445b-93d4-b2d626265ab6-img_designers_71.png',
+  },
+  {
+    designerId: 72,
+    engName: 'Whang Jisu',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/f4bb8aa8-a739-485f-a9e2-440f88626216-img_designers_72.png',
+  },
+  {
+    designerId: 32,
     engName: 'Whang Taegyeong',
-    imgPath: 'https://i.postimg.cc/tRSjnhp4/img-designers-74-3x.png',
+    imgPath:
+      'https://sswu-2024-test.s3.ap-northeast-2.amazonaws.com/designer/1/f42a0399-d482-4a98-b92d-89e7cb410286-img_designers_73.png',
   },
 ];

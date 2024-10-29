@@ -1,35 +1,55 @@
 import { css } from '@emotion/react';
 import { Link } from 'react-router-dom';
-import { WORK_DETAIL_DESIGNER } from '../../../mobile/constants/WORK_DETAIL_DESIGNER';
+import { DesignerListProps } from '../../../mobile/WorkDetail/components/DesignerList';
 import { colors, fonts } from '../../../styles/theme';
+import { renderEngName } from '../../../utils/renderEngName';
 
-const DesignerList = () => {
+const DesignerList = ({ designers, currentWorkId }: DesignerListProps) => {
   return (
     <div css={designerListContainer}>
       <h1 css={title}>Designed by</h1>
-      <ul css={designerList}>
-        {WORK_DETAIL_DESIGNER.map((item) => {
-          const { designerId, name, engName, email, works } = item;
-          const url = engName.trim().split(' ').join('-');
+      {designers && (
+        <ul css={designerList}>
+          {designers.map((item) => {
+            const { designerId, name, engName, email, works } = item;
+            const url = engName.trim().split(' ').join('-');
+            const newEngName = renderEngName(engName);
 
-          const { images } = works;
-          const { imgPath } = images.length === 2 ? images[1] : images[0];
-          return (
-            <Link to={`/designers/${url}`} css={listCss} key={designerId}>
-              <div css={textInfo}>
-                <div css={nameSection}>
-                  <p>{name}</p>
-                  <p>{engName}</p>
+            const { images } =
+              works.length === 2
+                ? works.filter((work) => work.workId !== currentWorkId)[0]
+                : works[0];
+            // const { images, workId } =
+            //   works.length === 2
+            //     ? works.filter((work) => work.workId !== currentWorkId)[0]
+            //     : works[0];
+
+            const imgUrl =
+              images.length === 2 ? images[1].imgPath : images[0].imgPath;
+
+            return (
+              // <Link to={`/designers/${url}`} css={listCss} key={designerId} state={{workId}}>
+              <Link
+                to={`/designers/${url}`}
+                css={listCss}
+                key={designerId}
+                state={{ designerId: designerId }}
+              >
+                <div css={textInfo}>
+                  <div css={nameSection}>
+                    <p>{name}</p>
+                    <p>{newEngName}</p>
+                  </div>
+                  <p css={emailCss}>{email}</p>
                 </div>
-                <p css={emailCss}>{email}</p>
-              </div>
-              <div css={imgBox}>
-                <img src={imgPath} css={imgCss} />
-              </div>
-            </Link>
-          );
-        })}
-      </ul>
+                <div css={imgBox}>
+                  <img src={imgUrl} css={imgCss} />
+                </div>
+              </Link>
+            );
+          })}
+        </ul>
+      )}
     </div>
   );
 };

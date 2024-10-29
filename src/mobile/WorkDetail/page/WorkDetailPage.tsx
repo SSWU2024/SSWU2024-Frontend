@@ -1,18 +1,30 @@
 import { css } from '@emotion/react';
+import { useLocation } from 'react-router-dom';
+import useGetWorkDesigners from '../../../libs/hooks/useGetWorkDesigners';
+import useGetWorkDetail from '../../../libs/hooks/useGetWorkDetail';
 import PageLayout from '../../Common/PageLayout';
-import { WORK_DETAIL } from '../../constants/WORK_DETAIL';
 import DesignerList from '../components/DesignerList';
 import WorkImage from '../components/WorkImage';
 import WorkInfo from '../components/WorkInfo';
 
 const WorkDetailPage = () => {
-  const { workTitle, workBody, workEngBody, thumbnail, images, designers } =
-    WORK_DETAIL;
+  const { workId } = useLocation().state;
+
+  const { workDetail, isWorkDetailLoading } = useGetWorkDetail(workId);
+  const { workDesigners, isWorkDesignersLoading } = useGetWorkDesigners(workId);
+
+  const { workTitle, workBody, workEngBody, workBanner, images } =
+    !isWorkDetailLoading && workDetail.data;
+  const designers = !isWorkDesignersLoading && workDesigners.data;
 
   return (
     <PageLayout>
       <section css={WorkDetailContainer}>
-        <img src={thumbnail} alt={`${workTitle}의 썸네일`} css={thumbnailImg} />
+        <img
+          src={workBanner}
+          alt={`${workTitle}의 썸네일`}
+          css={thumbnailImg}
+        />
         <WorkInfo
           title={workTitle}
           description={workBody}
@@ -20,7 +32,7 @@ const WorkDetailPage = () => {
           designers={designers}
         />
         <WorkImage images={images} />
-        <DesignerList />
+        <DesignerList designers={designers} currentWorkId={workId} />
       </section>
     </PageLayout>
   );

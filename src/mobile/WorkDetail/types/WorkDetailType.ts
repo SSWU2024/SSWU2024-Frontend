@@ -1,17 +1,21 @@
 interface designer {
+  designerId: number;
   name: string;
+  engName: string;
+  email: string;
+  works: work[];
 }
 
 interface work {
   workId: number;
   workTitle: string;
-  images: { imgPath: string; fileFormat: string };
+  images: { imgPath: string; fileFormat?: string };
 }
 
 interface image {
   sort: number;
   imgPath: string;
-  fileFormat: string;
+  fileFormat?: string;
 }
 
 // WorkInfo.tsx

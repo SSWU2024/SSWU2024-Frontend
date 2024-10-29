@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import { useLocation } from 'react-router-dom';
 import useGetDesignerDetail from '../../../libs/hooks/useGetDesignerDetail';
 import { colors, fonts } from '../../../styles/theme';
+import { renderEngName } from '../../../utils/renderEngName';
 import { ImgBg3Web } from '../../assets/image';
 import PageLayout from '../../Common/PageLayout';
 import DesignerContact from '../components/DesignerContact';
@@ -15,6 +16,8 @@ const DesignerPage = () => {
   const { name, engName, major, email, instagram, behance, works } =
     !isLoading && data;
 
+  const newEngName = renderEngName(engName);
+
   return (
     <PageLayout>
       {!isLoading && (
@@ -23,7 +26,7 @@ const DesignerPage = () => {
 
           <article css={basicInfo}>
             <p css={designerKrName}>{name}</p>
-            <p css={designerEngName}>{engName}</p>
+            <p css={designerEngName}>{newEngName}</p>
             <p css={mainMajor}>{major}</p>
           </article>
 
