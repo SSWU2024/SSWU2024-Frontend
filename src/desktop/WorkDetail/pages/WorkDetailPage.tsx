@@ -14,7 +14,7 @@ const WorkDetailPage = () => {
   const { workDesigners, isWorkDesignersLoading } = useGetWorkDesigners(workId);
   const isLoading = isWorkDetailLoading || isWorkDesignersLoading;
 
-  const { workTitle, workBody, workEngBody, thumbnail, images } =
+  const { workTitle, workBody, workEngBody, workBanner, images } =
     !isWorkDetailLoading && workDetail.data;
   const designers = !isWorkDesignersLoading && workDesigners.data;
 
@@ -26,7 +26,7 @@ const WorkDetailPage = () => {
     <PageLayout>
       {!isLoading && (
         <section css={workDetailContainer}>
-          <img src={thumbnail} css={workThumbnail} />
+          <img src={workBanner} css={workThumbnail} />
           <Details
             workTitle={workTitle}
             designers={designers}
