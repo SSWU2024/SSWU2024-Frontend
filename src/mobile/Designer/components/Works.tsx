@@ -2,32 +2,56 @@ import { css } from '@emotion/react';
 import { Link } from 'react-router-dom';
 import { colors, fonts } from '../../../styles/theme';
 import { updateStudioUrl } from '../../../utils/updateStudioUrl';
-import { DESIGNER_DETAIL } from '../../constants/DESIGNER_DETAIL';
 
-const Works = () => {
-  const workList = DESIGNER_DETAIL.data.works;
+interface imagesType {
+  sort: number;
+  imgPath: string;
+  fileFormat: string;
+}
+
+interface workInfo {
+  workId: number;
+  workTitle: string;
+  workEngTitle: string;
+  studioNm: string;
+  images: imagesType[];
+}
+
+interface worksProps {
+  works: workInfo[];
+}
+
+const Works = (props: worksProps) => {
+  const { works } = props;
 
   return (
     <section css={workListCss}>
-      {workList.map((work) => {
-        const { workId, workTitle, studioNm, images } = work;
-        const studioUrl = updateStudioUrl(studioNm);
+      {works &&
+        works.map((work) => {
+          const { workId, workTitle, workEngTitle, studioNm, images } = work;
+          const studioUrl = updateStudioUrl(studioNm);
+          const url = workEngTitle.trim().split(' ').join('-');
 
-        return (
-          <Link to={`${studioUrl}/${workId}`} key={workId} css={workContainer}>
-            <img
-              css={imgCss}
-              src={images.length > 1 ? images[1].imgPath : images[0].imgPath}
-              alt={`${workTitle} 썸네일`}
-            />
+          return (
+            <Link
+              to={`${studioUrl}/${url}`}
+              key={workId}
+              css={workContainer}
+              state={{ workId }}
+            >
+              <img
+                css={imgCss}
+                src={images.length > 1 ? images[1].imgPath : images[0].imgPath}
+                alt={`${workTitle} 썸네일`}
+              />
 
-            <div css={textContainer}>
-              <h1 css={textCss('title')}>{workTitle}</h1>
-              <h2 css={textCss('studio')}>{studioNm}</h2>
-            </div>
-          </Link>
-        );
-      })}
+              <div css={textContainer}>
+                <h1 css={textCss('title')}>{workTitle}</h1>
+                <h2 css={textCss('studio')}>{studioNm}</h2>
+              </div>
+            </Link>
+          );
+        })}
     </section>
   );
 };

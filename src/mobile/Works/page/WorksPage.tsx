@@ -15,10 +15,11 @@ const WorksPage = () => {
             {STUDIO_DETAILS.map((detail) => {
               const { id, studio, advisor, description, mobileImgSrc, url } =
                 detail;
+
               return (
                 <Link
                   to={url}
-                  state={{ studio, advisor, description, mobileImgSrc }}
+                  state={{ id, studio, advisor, description, mobileImgSrc }}
                   key={id}
                   css={detailContainer}
                 >

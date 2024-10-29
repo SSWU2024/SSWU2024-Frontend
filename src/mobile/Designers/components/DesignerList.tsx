@@ -2,15 +2,26 @@ import { css } from '@emotion/react';
 import { Link } from 'react-router-dom';
 import { DESIGNERS } from '../../constants/DESIGNERS';
 
+interface designerType {
+  designerId: number;
+  engName: string;
+  imgPath: string;
+}
+
 const DesignerList = () => {
   return (
     <ul css={listContainter}>
-      {DESIGNERS.map((designer) => {
+      {DESIGNERS.map((designer: designerType) => {
         const { designerId, engName, imgPath } = designer;
         const url = engName.trim().split(' ').join('-');
 
         return (
-          <Link to={url} key={designerId} css={imgCss}>
+          <Link
+            to={url}
+            key={designerId}
+            css={imgCss}
+            state={{ designerId: designerId }}
+          >
             <img src={imgPath} alt={`${engName}의 디자이너 이미지`} />
           </Link>
         );

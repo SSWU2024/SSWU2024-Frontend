@@ -107,7 +107,7 @@ const closeBtn = css`
 
 const imgContainer = css`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 
   width: 100%;
@@ -117,14 +117,16 @@ const imgContainer = css`
 const arrow = (direction: string) => css`
   ${direction === 'left'
     ? css`
-        margin-right: calc(100% / 60);
+        margin-left: calc(100% / 33.4884);
       `
     : css`
-        margin-left: calc(100% / 60);
+        margin-right: calc(100% / 33.4884);
       `}
 `;
 
 const studioImg = css`
-  width: calc(100% / 1.1823);
+  max-width: calc(100% / 1.1823);
+
   height: 100%;
+  object-fit: cover;
 `;

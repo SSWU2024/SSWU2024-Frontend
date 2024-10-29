@@ -2,37 +2,50 @@ import { css } from '@emotion/react';
 import { colors, fonts } from '../../../styles/theme';
 
 import { Link } from 'react-router-dom';
-import { DESIGNER_TOTAL_WORKS } from '../../constants/WORKS';
+import { WorkType } from '../../../desktop/Studio/types/studioType';
+import useGetStudioWorks from '../../../libs/hooks/useGetStudioWorks';
 
-const WorkList = () => {
-  const workList = DESIGNER_TOTAL_WORKS.data.works;
+interface WorkListProps {
+  id: number;
+}
+
+const WorkList = ({ id }: WorkListProps) => {
+  const { totalWorks, isLoading } = useGetStudioWorks(id);
+  const { works } = !isLoading && totalWorks.data;
 
   return (
     <ul css={listContainer}>
-      {workList.map((work) => {
-        const { workId, workTitle, images, designers } = work;
-        const { imgPath } = images.length === 2 ? images[1] : images[0];
+      {!isLoading &&
+        works.map((work: WorkType) => {
+          const { workId, workTitle, designers, images } = work;
 
-        const designerList = designers
-          .map((designer) => designer.name)
-          .join(' ');
+          const { imgPath } = images.length === 2 ? images[1] : images[0];
 
-        return (
-          <Link key={workId} css={listItem} to={`${workId}`}>
-            <div css={imgBox}>
-              <img
-                css={imgCss}
-                src={imgPath}
-                alt={`${workTitle}의 썸네일 이미지`}
-              />
-            </div>
-            <div css={textCss}>
-              <h1 css={title}>{workTitle}</h1>
-              <h2 css={name}>{designerList}</h2>
-            </div>
-          </Link>
-        );
-      })}
+          const designerList = designers
+            .map((designer) => designer.name)
+            .join(' ');
+
+          return (
+            <Link
+              key={workId}
+              css={listItem}
+              to={`${workId}`}
+              state={{ workId: workId }}
+            >
+              <div css={imgBox}>
+                <img
+                  css={imgCss}
+                  src={imgPath}
+                  alt={`${workTitle}의 썸네일 이미지`}
+                />
+              </div>
+              <div css={textCss}>
+                <h1 css={title}>{workTitle}</h1>
+                <h2 css={name}>{designerList}</h2>
+              </div>
+            </Link>
+          );
+        })}
     </ul>
   );
 };
