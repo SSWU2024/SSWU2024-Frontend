@@ -9,19 +9,6 @@ const TotalWorks = ({ id }: TotalWorksProps) => {
   const { totalWorks, isLoading } = useGetStudioWorks(id);
   const { works } = !isLoading && totalWorks.data;
 
-  const images = [
-    {
-      imgPath:
-        'https://i.pinimg.com/236x/13/26/c1/1326c1f3ec2a54bfc0893a0c582360de.jpg',
-      fileFormat: 'jpeg',
-    },
-    {
-      imgPath:
-        'https://i.pinimg.com/originals/a0/89/e7/a089e759d7e713b4eba7b6cda87b6c8a.gif',
-      fileFormat: 'gif',
-    },
-  ];
-
   const [hoveredImg, setHoveredImg] = useState({
     hoveredSrc: '',
     hovredTitle: '',
@@ -58,8 +45,7 @@ const TotalWorks = ({ id }: TotalWorksProps) => {
     <article css={worksContainer}>
       {!isLoading &&
         works.map((work: WorkType) => {
-          // const { workId, workTitle, images, designers, workEngTitle } = work;
-          const { workId, workTitle, designers, workEngTitle } = work;
+          const { workId, workTitle, images, designers, workEngTitle } = work;
           const { imgPath } = images[0];
           const isHoveredGif = hoveredSrc && workTitle === hovredTitle;
           const isHoveredImg = workTitle === hovredTitle;

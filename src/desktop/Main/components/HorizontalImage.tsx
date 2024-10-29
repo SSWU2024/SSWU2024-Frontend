@@ -41,7 +41,7 @@ const HorizontalImage = () => {
       scrollTrigger: {
         trigger: '#containerTop', // 부모 요소를 트리거로 설정
         start: 'top 10%', // 고정 시작
-        end: '+=100%', // 고정 해제 시점 (적절하게 조정)
+        end: `+=${100 / Math.ceil(window.innerHeight / 810)}%`,
         pin: true, // 고정 설정
         toggleActions: 'restart pause reverse reverse',
         scrub: 1,
@@ -77,8 +77,8 @@ const HorizontalImage = () => {
 export default HorizontalImage;
 
 const container = css`
-  width: 100dvw;
-  height: 100dvh;
+  width: 100vw;
+  height: 100vh;
 `;
 
 const textSection = css`
