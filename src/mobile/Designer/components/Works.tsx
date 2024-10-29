@@ -12,6 +12,7 @@ interface imagesType {
 interface workInfo {
   workId: number;
   workTitle: string;
+  workEngTitle: string;
   studioNm: string;
   images: imagesType[];
 }
@@ -27,14 +28,16 @@ const Works = (props: worksProps) => {
     <section css={workListCss}>
       {works &&
         works.map((work) => {
-          const { workId, workTitle, studioNm, images } = work;
+          const { workId, workTitle, workEngTitle, studioNm, images } = work;
           const studioUrl = updateStudioUrl(studioNm);
+          const url = workEngTitle.trim().split(' ').join('-');
 
           return (
             <Link
-              to={`${studioUrl}/${workId}`}
+              to={`${studioUrl}/${url}`}
               key={workId}
               css={workContainer}
+              state={{ workId }}
             >
               <img
                 css={imgCss}

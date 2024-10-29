@@ -4,11 +4,12 @@ import { WorkImageProps } from '../../../mobile/WorkDetail/types/WorkDetailType'
 const WorkImage = ({ images }: WorkImageProps) => {
   return (
     <div css={imageSection}>
-      {images.map((item) => {
-        const { imgPath } = item;
+      {images &&
+        images.map((item) => {
+          const { imgPath } = item;
 
-        return <img src={imgPath} key={imgPath} css={imageCss} />;
-      })}
+          return <img src={imgPath} key={imgPath} css={imageCss} />;
+        })}
     </div>
   );
 };

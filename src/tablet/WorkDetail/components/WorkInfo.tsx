@@ -8,6 +8,8 @@ const WorkInfo = (props: WorkInfoProps) => {
   const designerList =
     designers && designers.map((designer) => designer.name).join(' ');
 
+  console.log(description);
+
   return (
     <div css={workInfoContainer}>
       <div css={mainCss}>
@@ -15,8 +17,8 @@ const WorkInfo = (props: WorkInfoProps) => {
         <p>{designerList}</p>
       </div>
       <div css={descriptionCss}>
-        <p>{description}</p>
-        <p>{engDescription}</p>
+        <div>{description}</div>
+        <div>{engDescription}</div>
       </div>
     </div>
   );
@@ -54,11 +56,13 @@ const descriptionCss = css`
 
   ${fonts.desktop_body_reg_16};
 
-  p:nth-of-type(1) {
+  white-space: pre-wrap;
+
+  div:nth-of-type(1) {
     color: ${colors.gray900};
   }
 
-  p:nth-of-type(2) {
+  div:nth-of-type(2) {
     color: ${colors.gray500};
   }
 `;
