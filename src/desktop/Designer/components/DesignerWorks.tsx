@@ -105,6 +105,9 @@ const worksContainer = css`
   align-items: center;
   grid-template-columns: repeat(2, 1fr);
 
+  /* 이미지가 오른쪽부터 배치 */
+  direction: rtl;
+
   min-width: 64.4rem;
 
   width: calc(100% / 2.24);
