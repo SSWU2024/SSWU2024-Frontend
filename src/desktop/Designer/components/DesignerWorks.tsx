@@ -5,18 +5,6 @@ import { colors, fonts } from '../../../styles/theme';
 import { DesignerWorksProps } from '../types/designerType';
 
 const DesignerWorks = ({ works }: DesignerWorksProps) => {
-  const images = [
-    {
-      imgPath: 'https://xen-api.linkareer.com/attachments/80334',
-      fileFormat: 'jpg',
-    },
-    {
-      imgPath:
-        'https://i.pinimg.com/originals/a0/89/e7/a089e759d7e713b4eba7b6cda87b6c8a.gif',
-      fileFormat: 'gif',
-    },
-  ];
-
   const [hoveredImg, setHoveredImg] = useState({
     hoveredSrc: '',
     hoveredUrl: '',
@@ -80,8 +68,7 @@ const DesignerWorks = ({ works }: DesignerWorksProps) => {
   return (
     <article css={worksContainer}>
       {works.map((work) => {
-        // const { workId, workTitle, workEngTitle, studioNm, images } = work;
-        const { workId, workTitle, workEngTitle, studioNm } = work;
+        const { workId, workTitle, workEngTitle, studioNm, images } = work;
         const { imgPath } = images[0];
         const studioUrl = updateStudioUrl(studioNm);
         const url = workEngTitle.trim().split(' ').join('-');
