@@ -31,9 +31,18 @@ const InteractiveViews = () => {
   });
 
   const { width, height } = resize;
+  const minHeight = 810;
+  const maxHeight = 2190;
+  const minValue = 100;
+  const maxValue = 300;
+
+  // 화면 높이에 따라 값이 비례해서 변하도록 선형 보간식 적용
+  const scrollValue =
+    maxValue -
+    ((height - minHeight) / (maxHeight - minHeight)) * (maxValue - minValue);
+
   const { scrollY } = useScroll();
   const { scrollYProgress } = useScroll();
-  const scrollLightAnimation = useAnimation();
   const scrollInfoBgAnimation = useAnimation();
   const scrollInfoAnimation = useAnimation();
 
@@ -43,8 +52,8 @@ const InteractiveViews = () => {
 
   const y = useTransform(
     scrollYProgress,
-    [0.15, 0.6],
-    [`${height / 3.24}%`, `${height / 40.5}%`],
+    [0.2, 0.5],
+    [`${scrollValue}%`, `20%`],
   );
   const opacity = useTransform(scrollYProgress, [0.5, 0.55], [0, 1]);
   const scale = useTransform(scrollYProgress, [0.3, 0.4], [1, 1.8]);
@@ -66,15 +75,6 @@ const InteractiveViews = () => {
     ['rgba(38, 74, 194, 0)', 'rgba(38, 74, 194, 1)'],
   );
 
-  // 여기
-  useMotionValueEvent(scrollY, 'change', (latest) => {
-    if (height / latest < 1.122 / (height / 810)) {
-      scrollLightAnimation.start({ color: 'rgba(0,0,0,0)' });
-    } else {
-      scrollLightAnimation.start({ color: 'rgba(0,0,0,1)' });
-    }
-  });
-
   useMotionValueEvent(scrollY, 'change', (latest) => {
     if (height / latest < 0.355 / (height / 810)) {
       scrollInfoAnimation.start({ color: 'rgba(256,256,256,1)' });
@@ -94,6 +94,7 @@ const InteractiveViews = () => {
   useEffect(() => {
     scrollTo({ top: 0, behavior: 'instant' });
     window.addEventListener('resize', handleResize);
+
     return () => {
       // cleanup
       window.removeEventListener('resize', handleResize);
@@ -118,7 +119,8 @@ const InteractiveViews = () => {
 
         {/* 빛 + 파란색 원이 커지는 부분 */}
         <div css={lightContainer}>
-          <motion.img src={ImgLight} style={{ scale: scale }} />
+          <motion.img src={ImgLight} style={{ scale }} />
+
           <motion.span
             css={icContainer}
             style={{
@@ -233,8 +235,7 @@ const lightContainer = css`
 
   width: 100vw;
   height: 100vh;
-  padding: calc(100vh / 7.1681) calc(100% / 4.8) calc(100vh / 8.1)
-    calc(100% / 3.5468);
+  padding: 0 calc(100% / 4.8) calc(100vh / 8.1) calc(100% / 3.5468);
 `;
 
 const icContainer = css`
