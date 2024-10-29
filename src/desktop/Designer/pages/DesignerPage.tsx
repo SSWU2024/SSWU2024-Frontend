@@ -76,14 +76,14 @@ const basicInfo = css`
 `;
 
 const designerKrName = css`
-  margin-bottom: calc(100vh / 101.25);
+  margin-bottom: 0.8rem;
 
   color: ${colors.gray900};
   ${fonts.desktop_title_semi_28};
 `;
 
 const designerEngName = css`
-  margin-bottom: calc(100vh / 33.75);
+  margin-bottom: 2.4rem;
 
   ${colors.gray900};
   ${fonts.desktop_body_reg_20};
@@ -99,5 +99,5 @@ const additionalInfo = css`
   justify-content: space-between;
   align-items: flex-start;
 
-  margin-top: calc(100vh / 6.8644);
+  margin-top: 11.8rem;
 `;
