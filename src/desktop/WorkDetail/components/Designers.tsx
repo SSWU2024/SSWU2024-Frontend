@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { colors, fonts } from '../../../styles/theme';
+import { renderEngName } from '../../../utils/renderEngName';
 import { DesignersProps } from '../types/workDetailTypes';
 
 const Designers = ({ designers, currentWorkId }: DesignersProps) => {
@@ -40,6 +41,7 @@ const Designers = ({ designers, currentWorkId }: DesignersProps) => {
           const isHoveredImg =
             hoveredTitle === workTitle && hoveredName === name;
           const designerUrl = engName.split(' ').join('-');
+          const newEngName = renderEngName(engName);
 
           return (
             <article key={workId + name} css={designerInfoContainer}>
@@ -49,7 +51,7 @@ const Designers = ({ designers, currentWorkId }: DesignersProps) => {
               >
                 <div css={designerInfo}>
                   <p css={designerKrName}>{name}</p>
-                  <p css={designerEngName}>{engName}</p>
+                  <p css={designerEngName}>{newEngName}</p>
                   <p css={designerEmail}>{email}</p>
                 </div>
                 <img
