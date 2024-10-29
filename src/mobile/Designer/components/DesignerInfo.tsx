@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 import { colors, fonts } from '../../../styles/theme';
+import { renderEngName } from '../../../utils/renderEngName';
 
 interface designerInfoProps {
   name: string;
@@ -12,11 +13,13 @@ interface designerInfoProps {
 
 const DesignerInfo = (props: designerInfoProps) => {
   const { name, engName, major, email, instagram, behance } = props;
+  const newEngName = renderEngName(engName);
+
   return (
     <section css={infoContainer}>
       <div css={textCss}>
         <h1 css={nameCss('ko')}>{name}</h1>
-        <p css={nameCss('en')}>{engName}</p>
+        <p css={nameCss('en')}>{newEngName}</p>
       </div>
 
       <p css={majorCss}>{major}</p>

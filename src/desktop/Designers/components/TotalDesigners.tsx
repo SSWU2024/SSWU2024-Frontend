@@ -1,25 +1,21 @@
 import { css } from '@emotion/react';
 import { Link } from 'react-router-dom';
-import useGetDesigners from '../../../libs/hooks/useGetDesigners';
+import { DESIGNERS } from '../../../mobile/constants/DESIGNERS';
 import { designerType } from '../type/designersType';
 
 const TotalDesigners = () => {
-  const { designers, isLoading } = useGetDesigners();
-  const designersArr = !isLoading && designers.data;
-
   return (
     <article css={totalDesigners}>
-      {!isLoading &&
-        designersArr.map((designer: designerType) => {
-          const { designerId, engName, imgPath } = designer;
-          const url = engName.split(' ').join('-');
+      {DESIGNERS.map((designer: designerType) => {
+        const { designerId, engName, imgPath } = designer;
+        const url = engName.split(' ').join('-');
 
-          return (
-            <Link key={designerId} to={url} state={{ designerId: designerId }}>
-              <img src={imgPath} css={designerImg} />
-            </Link>
-          );
-        })}
+        return (
+          <Link key={designerId} to={url} state={{ designerId: designerId }}>
+            <img src={imgPath} css={designerImg} />
+          </Link>
+        );
+      })}
     </article>
   );
 };
