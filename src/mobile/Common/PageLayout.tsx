@@ -27,4 +27,7 @@ export default PageLayout;
 
 const pageLayoutCss = css`
   position: relative;
+
+  width: 100%;
+  min-height: 100dvh;
 `;
