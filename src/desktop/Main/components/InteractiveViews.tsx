@@ -76,7 +76,7 @@ const InteractiveViews = () => {
   );
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
-    if (height / latest < 0.355 / (height / 810)) {
+    if (height / latest < 0.47) {
       scrollInfoAnimation.start({ color: 'rgba(256,256,256,1)' });
     } else {
       scrollInfoAnimation.start({ color: 'rgba(38, 74, 194,0)' });
@@ -84,7 +84,7 @@ const InteractiveViews = () => {
   });
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
-    if (height / latest < 0.37 / (height / 810 / 2.6)) {
+    if (height / latest < 0.47) {
       scrollInfoBgAnimation.start({ backgroundColor: 'rgba(38, 74, 194, 1)' });
     } else {
       scrollInfoBgAnimation.start({ backgroundColor: 'rgba(38, 74, 194, 0)' });
