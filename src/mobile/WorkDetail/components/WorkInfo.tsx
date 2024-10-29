@@ -15,8 +15,8 @@ const WorkInfo = (props: WorkInfoProps) => {
         <p>{designerList}</p>
       </div>
       <div css={descriptionCss}>
-        <div> {description}</div>
-        <div> {engDescription}</div>
+        <div>{description}</div>
+        <div>{engDescription}</div>
       </div>
     </div>
   );

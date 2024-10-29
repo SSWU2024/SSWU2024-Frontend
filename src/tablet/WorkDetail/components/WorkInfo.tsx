@@ -8,8 +8,6 @@ const WorkInfo = (props: WorkInfoProps) => {
   const designerList =
     designers && designers.map((designer) => designer.name).join(' ');
 
-  console.log(description);
-
   return (
     <div css={workInfoContainer}>
       <div css={mainCss}>
