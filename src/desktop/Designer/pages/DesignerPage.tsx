@@ -21,9 +21,7 @@ const DesignerPage = () => {
   return (
     <PageLayout>
       {!isLoading && (
-        <section css={designerPageContainer}>
-          <img src={ImgBg3Web} css={bg} />
-
+        <section css={designerPageContainer(ImgBg3Web)}>
           <article css={basicInfo}>
             <p css={designerKrName}>{name}</p>
             <p css={designerEngName}>{newEngName}</p>
@@ -46,7 +44,7 @@ const DesignerPage = () => {
 
 export default DesignerPage;
 
-const designerPageContainer = css`
+const designerPageContainer = (imgUrl: string) => css`
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -58,18 +56,12 @@ const designerPageContainer = css`
 
   padding: calc(100vh / 10.125) calc(100% / 24) calc(100vh / 31.1538);
   margin-top: 5.2rem;
-`;
 
-const bg = css`
-  position: absolute;
-  top: 5.2rem;
-  left: 0;
-  z-index: -1;
-
-  min-height: calc(100vh - 10.4rem);
-
-  width: 100%;
-  height: 100%;
+  background-position: top 5.2rem right 0;
+  background-size: contain;
+  background-image: url(${imgUrl});
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 `;
 
 const basicInfo = css`
