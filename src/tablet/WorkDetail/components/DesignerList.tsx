@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { DesignerListProps } from '../../../mobile/WorkDetail/components/DesignerList';
 import { colors, fonts } from '../../../styles/theme';
 import { renderEngName } from '../../../utils/renderEngName';
+import { updateStudioUrl } from '../../../utils/updateStudioUrl';
 
 const DesignerList = ({ designers, currentWorkId }: DesignerListProps) => {
   return (
@@ -11,29 +12,26 @@ const DesignerList = ({ designers, currentWorkId }: DesignerListProps) => {
       {designers && (
         <ul css={designerList}>
           {designers.map((item) => {
-            const { designerId, name, engName, email, works } = item;
-            const url = engName.trim().split(' ').join('-');
+            const { name, engName, email, works } = item;
+
             const newEngName = renderEngName(engName);
 
-            const { images } =
+            const { images, studioNm, workEngTitle, workId } =
               works.length === 2
                 ? works.filter((work) => work.workId !== currentWorkId)[0]
                 : works[0];
-            // const { images, workId } =
-            //   works.length === 2
-            //     ? works.filter((work) => work.workId !== currentWorkId)[0]
-            //     : works[0];
 
             const imgUrl =
               images.length === 2 ? images[1].imgPath : images[0].imgPath;
 
+            const studioUrl = updateStudioUrl(studioNm);
+            const workUrl = workEngTitle.split(' ').join('-');
             return (
-              // <Link to={`/designers/${url}`} css={listCss} key={designerId} state={{workId}}>
               <Link
-                to={`/designers/${url}`}
+                to={`${studioUrl}/${workUrl}`}
                 css={listCss}
-                key={designerId}
-                state={{ designerId: designerId }}
+                key={workId}
+                state={{ workId: workId }}
               >
                 <div css={textInfo}>
                   <div css={nameSection}>
