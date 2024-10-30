@@ -83,7 +83,7 @@ const workContainer = css`
 
     width: 48.5%;
 
-    /* max-width: 16.8rem; */
+    max-width: 16.8rem;
   }
 
   @media (768px <=width < 1440px) {
