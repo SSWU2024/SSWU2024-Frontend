@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import { useLocation } from 'react-router-dom';
 import useGetDesignerDetail from '../../../libs/hooks/useGetDesignerDetail';
 import { colors, fonts } from '../../../styles/theme';
+import { renderEngName } from '../../../utils/renderEngName';
 import { ImgBg3Web } from '../../assets/image';
 import PageLayout from '../../Common/PageLayout';
 import DesignerContact from '../components/DesignerContact';
@@ -15,6 +16,8 @@ const DesignerPage = () => {
   const { name, engName, major, email, instagram, behance, works } =
     !isLoading && data;
 
+  const newEngName = !isLoading && renderEngName(engName);
+
   return (
     <PageLayout>
       {!isLoading && (
@@ -23,7 +26,7 @@ const DesignerPage = () => {
 
           <article css={basicInfo}>
             <p css={designerKrName}>{name}</p>
-            <p css={designerEngName}>{engName}</p>
+            <p css={designerEngName}>{newEngName}</p>
             <p css={mainMajor}>{major}</p>
           </article>
 
@@ -76,14 +79,14 @@ const basicInfo = css`
 `;
 
 const designerKrName = css`
-  margin-bottom: calc(100vh / 101.25);
+  margin-bottom: 0.8rem;
 
   color: ${colors.gray900};
   ${fonts.desktop_title_semi_28};
 `;
 
 const designerEngName = css`
-  margin-bottom: calc(100vh / 33.75);
+  margin-bottom: 2.4rem;
 
   ${colors.gray900};
   ${fonts.desktop_body_reg_20};
@@ -99,5 +102,5 @@ const additionalInfo = css`
   justify-content: space-between;
   align-items: flex-start;
 
-  margin-top: calc(100vh / 6.8644);
+  margin-top: 11.8rem;
 `;

@@ -4,7 +4,7 @@ import getWorkDetail from '../apis/getWorkDetail';
 
 const useGetWorkDetail = (workId: number) => {
   const { data, isLoading } = useQuery({
-    queryKey: QUERY_KEY.workDetail,
+    queryKey: [QUERY_KEY.workDetail, workId],
     queryFn: async () => await getWorkDetail(workId),
   });
 

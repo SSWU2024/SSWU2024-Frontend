@@ -9,10 +9,12 @@ export interface DetailImagesProps {
   images: Array<{
     sort: number;
     imgPath: string;
+    fileFormat: string;
   }>;
 }
 
 export interface DesignersProps {
+  currentWorkId: number;
   designers: Array<{
     designerId: number;
     name: string;
@@ -21,6 +23,7 @@ export interface DesignersProps {
     works: Array<{
       workId: number;
       workTitle: string;
+      workEngTitle: string;
       studioNm: string;
       images: Array<{ imgPath: string; fileFormat: string }>;
     }>;

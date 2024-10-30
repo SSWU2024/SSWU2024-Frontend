@@ -7,14 +7,14 @@ import StudioInfoMobile from '../components/StudioInfo';
 import WorkList from '../components/WorkList';
 
 const StudioPage = () => {
-  const location = useLocation();
+  const { state } = useLocation();
+  const id = state.id;
 
   return (
     <PageLayout>
       <section css={studioContainer(ImgBg2Mobile)}>
-        <StudioInfoMobile info={location.state} />
-
-        <WorkList />
+        {state && <StudioInfoMobile info={state} />}
+        {id && <WorkList id={id} />}
       </section>
     </PageLayout>
   );

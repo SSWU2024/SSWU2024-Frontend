@@ -4,7 +4,7 @@ import getWorkDesigners from '../apis/getWorkDesigners';
 
 const useGetWorkDesigners = (workId: number) => {
   const { data, isLoading } = useQuery({
-    queryKey: QUERY_KEY.workDesigners,
+    queryKey: [QUERY_KEY.workDesigners, workId],
     queryFn: async () => await getWorkDesigners(workId),
   });
 
