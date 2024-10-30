@@ -17,9 +17,10 @@ const WorkList = ({ id }: WorkListProps) => {
     <ul css={listContainer}>
       {!isLoading &&
         works.map((work: WorkType) => {
-          const { workId, workTitle, designers, images } = work;
+          const { workId, workTitle, designers, images, workEngTitle } = work;
 
           const { imgPath } = images.length === 2 ? images[1] : images[0];
+          const url = workEngTitle.split(' ').join('-');
 
           const designerList = designers
             .map((designer) => designer.name)
@@ -29,7 +30,7 @@ const WorkList = ({ id }: WorkListProps) => {
             <Link
               key={workId}
               css={listItem}
-              to={`${workId}`}
+              to={`${url}`}
               state={{ workId: workId }}
             >
               <div css={imgBox}>

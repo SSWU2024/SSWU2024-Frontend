@@ -10,7 +10,7 @@ interface PageLayoutProps {
 const PageLayout = (props: PageLayoutProps) => {
   useEffect(() => {
     scrollTo({ top: 0, left: 0, behavior: 'instant' });
-  }, []);
+  });
 
   const { children } = props;
 
@@ -27,4 +27,7 @@ export default PageLayout;
 
 const pageLayoutCss = css`
   position: relative;
+
+  width: 100%;
+  min-height: 100dvh;
 `;

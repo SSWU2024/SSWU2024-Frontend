@@ -10,8 +10,8 @@ import WorkInfo from '../components/WorkInfo';
 
 const WorkDetailPage = () => {
   const { workId } = useLocation().state;
-
   const { workDetail, isWorkDetailLoading } = useGetWorkDetail(workId);
+
   const { workDesigners, isWorkDesignersLoading } = useGetWorkDesigners(workId);
 
   const { workTitle, workBody, workEngBody, workBanner, images } =

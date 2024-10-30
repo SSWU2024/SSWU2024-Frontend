@@ -8,14 +8,10 @@ import {
   useTransform,
 } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { desktopMotionPoster } from '../../../constants/mainImgUrl';
 import { colors, fonts } from '../../../styles/theme';
 import { IcCircle } from '../../assets/icon';
-import {
-  ImgBubble,
-  ImgLight,
-  ImgMotionPoster,
-  ImgPosterWeb,
-} from '../../assets/image';
+import { ImgBubble, ImgLight, ImgPosterWeb } from '../../assets/image';
 import {
   DESCRIPTION,
   INFO_DETAIL,
@@ -104,7 +100,7 @@ const InteractiveViews = () => {
   return (
     <>
       <section css={interactiveViewContainer}>
-        <img src={ImgMotionPoster} css={motionPoster} />
+        <img src={desktopMotionPoster} css={motionPoster} />
         <article css={individualsContainer}>
           <HorizontalImage />
 
