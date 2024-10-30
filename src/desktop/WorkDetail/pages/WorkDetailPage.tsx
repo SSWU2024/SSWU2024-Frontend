@@ -20,7 +20,7 @@ const WorkDetailPage = () => {
 
   useEffect(() => {
     scrollTo({ top: 0, behavior: 'instant' });
-  }, [workId, workDetail, workDesigners]);
+  });
 
   return (
     <PageLayout>
