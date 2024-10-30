@@ -23,14 +23,7 @@ const designersCss = (url: string) => css`
   flex-direction: column;
 
   width: 100%;
-
-  @media (768px <= width < 1025px) {
-    padding: 5.6rem 2.4rem 10rem;
-  }
-
-  @media (1025px <= width < 1440px) {
-    padding: 5.6rem 4rem 10rem;
-  }
+  padding: 5.6rem 2.4rem 10rem;
 
   background-position: top 5.6rem right 0;
   background-size: contain;
