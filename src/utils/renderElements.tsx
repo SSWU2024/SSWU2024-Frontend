@@ -7,6 +7,7 @@ import DesktopWorksPage from '../desktop/Works/pages/WorksPage';
 
 import MobileDesignerPage from '../mobile/Designer/page/DesignerPage';
 import MobileDesignersPage from '../mobile/Designers/page/DesignersPage';
+import MobileMainPage from '../mobile/Main/pages/MainPage';
 import MobileStudioPage from '../mobile/Studio/page/StudioPage';
 import MobileWorkDetailPage from '../mobile/WorkDetail/page/WorkDetailPage';
 import MobileWorksPage from '../mobile/Works/page/WorksPage';
@@ -37,7 +38,7 @@ const renderPageElement = ({
 export const mainPageElement = (width: number) =>
   renderPageElement({
     width,
-    mobile: <DesktopMainPage />,
+    mobile: <MobileMainPage />,
     tablet: <TabletMainPage />,
     desktop: <DesktopMainPage />,
   });
