@@ -23,6 +23,7 @@ export interface DesignersProps {
     works: Array<{
       workId: number;
       workTitle: string;
+      workEngTitle: string;
       studioNm: string;
       images: Array<{ imgPath: string; fileFormat: string }>;
     }>;

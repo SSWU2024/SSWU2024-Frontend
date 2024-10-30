@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { colors, fonts } from '../../../styles/theme';
 import { renderEngName } from '../../../utils/renderEngName';
+import { updateStudioUrl } from '../../../utils/updateStudioUrl';
 import { DesignersProps } from '../types/workDetailTypes';
 
 const Designers = ({ designers, currentWorkId }: DesignersProps) => {
@@ -32,23 +33,22 @@ const Designers = ({ designers, currentWorkId }: DesignersProps) => {
       <p css={designedByTitle}>Designed by</p>
       <div css={totalDesigners}>
         {designers.map((designer) => {
-          const { designerId, name, engName, email, works } = designer;
-          const { workId, workTitle, studioNm, images } =
+          const { name, engName, email, works } = designer;
+          const { workId, workTitle, workEngTitle, studioNm, images } =
             works.length === 2
               ? works.filter((work) => work.workId !== currentWorkId)[0]
               : works[0];
           const { imgPath } = images[0];
           const isHoveredImg =
             hoveredTitle === workTitle && hoveredName === name;
-          const designerUrl = engName.split(' ').join('-');
+          const studioUrl = updateStudioUrl(studioNm);
+          const workUrl = workEngTitle.trim().split(' ').join('-');
+          const url = `${studioUrl}/${workUrl}`;
           const newEngName = renderEngName(engName);
 
           return (
             <article key={workId + name} css={designerInfoContainer}>
-              <Link
-                to={`/designers/${designerUrl}`}
-                state={{ designerId: designerId }}
-              >
+              <Link to={url} state={{ workId: workId }}>
                 <div css={designerInfo}>
                   <p css={designerKrName}>{name}</p>
                   <p css={designerEngName}>{newEngName}</p>
