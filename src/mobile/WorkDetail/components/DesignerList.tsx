@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import { Link } from 'react-router-dom';
 import { colors, fonts } from '../../../styles/theme';
 import { renderEngName } from '../../../utils/renderEngName';
+import { updateStudioUrl } from '../../../utils/updateStudioUrl';
 
 export interface DesignerListProps {
   designers: Array<{
@@ -13,6 +14,7 @@ export interface DesignerListProps {
       workId: number;
       workTitle: string;
       studioNm: string;
+      workEngTitle: string;
       images: Array<{ imgPath: string; fileFormat: string }>;
     }>;
   }>;
@@ -26,36 +28,28 @@ const DesignerList = ({ designers, currentWorkId }: DesignerListProps) => {
       {designers && (
         <ul css={designerList}>
           {designers.map((item) => {
-            const { designerId, name, engName, email, works } = item;
-            const url = engName.trim().split(' ').join('-');
+            const { name, engName, email, works } = item;
+
             const newEngName = renderEngName(engName);
 
-            const { images } =
+            const { images, studioNm, workEngTitle, workId } =
               works.length === 2
                 ? works.filter((work) => work.workId !== currentWorkId)[0]
                 : works[0];
 
-            // const { images, workId } =
-            //   works.length === 2
-            //     ? works.filter((work) => work.workId !== currentWorkId)[0]
-            //     : works[0];
-
             const imgUrl =
               images.length === 2 ? images[1].imgPath : images[0].imgPath;
 
+            const studioUrl = updateStudioUrl(studioNm);
+            const workUrl = workEngTitle.split(' ').join('-');
+
             return (
               <Link
-                to={`/designers/${url}`}
+                to={`${studioUrl}/${workUrl}`}
                 css={listCss}
-                key={designerId}
-                state={{ designerId: designerId }}
+                key={workId}
+                state={{ workId: workId }}
               >
-                {/* <Link
-                to={`/designers/${url}`}
-                css={listCss}
-                key={designerId}
-                state={{ workId }}
-              > */}
                 <div css={textInfo}>
                   <div css={nameSection}>
                     <p>{name}</p>
