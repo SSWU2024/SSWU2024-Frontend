@@ -231,7 +231,7 @@ const lightContainer = css`
 
   width: 100vw;
   height: 100vh;
-  padding: 0 calc(100% / 4.8) calc(100vh / 8.1) calc(100% / 3.5468);
+  padding: 0 calc(100% / 4.5) calc(100vh / 8.1);
 `;
 
 const icContainer = css`
