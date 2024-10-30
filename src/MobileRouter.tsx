@@ -2,7 +2,6 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import DesignerPage from './mobile/Designer/page/DesignerPage';
 import DesignersPage from './mobile/Designers/page/DesignersPage';
 
-import DisplayPage from './mobile/Display/page/DisplayPage';
 import MainPage from './mobile/Main/pages/MainPage';
 import StudioPage from './mobile/Studio/page/StudioPage';
 import WorkDetailPage from './mobile/WorkDetail/page/WorkDetailPage';
@@ -15,7 +14,7 @@ const router = createBrowserRouter([
   { path: '/works', element: <WorksPage /> },
   { path: '/designers', element: <DesignersPage /> },
   { path: '/designers/:name', element: <DesignerPage /> },
-  { path: '/displays', element: <DisplayPage /> },
+  // { path: '/displays', element: <DisplayPage /> },
 ]);
 
 const MobileRouter = () => {

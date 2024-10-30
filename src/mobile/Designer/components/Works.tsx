@@ -2,32 +2,56 @@ import { css } from '@emotion/react';
 import { Link } from 'react-router-dom';
 import { colors, fonts } from '../../../styles/theme';
 import { updateStudioUrl } from '../../../utils/updateStudioUrl';
-import { DESIGNER_DETAIL } from '../../constants/DESIGNER_DETAIL';
 
-const Works = () => {
-  const workList = DESIGNER_DETAIL.data.works;
+interface imagesType {
+  sort: number;
+  imgPath: string;
+  fileFormat: string;
+}
+
+interface workInfo {
+  workId: number;
+  workTitle: string;
+  workEngTitle: string;
+  studioNm: string;
+  images: imagesType[];
+}
+
+interface worksProps {
+  works: workInfo[];
+}
+
+const Works = (props: worksProps) => {
+  const { works } = props;
 
   return (
     <section css={workListCss}>
-      {workList.map((work) => {
-        const { workId, workTitle, studioNm, images } = work;
-        const studioUrl = updateStudioUrl(studioNm);
+      {works &&
+        works.map((work) => {
+          const { workId, workTitle, workEngTitle, studioNm, images } = work;
+          const studioUrl = updateStudioUrl(studioNm);
+          const url = workEngTitle.trim().split(' ').join('-');
 
-        return (
-          <Link to={`${studioUrl}/${workId}`} key={workId} css={workContainer}>
-            <img
-              css={imgCss}
-              src={images.length > 1 ? images[1].imgPath : images[0].imgPath}
-              alt={`${workTitle} 썸네일`}
-            />
+          return (
+            <Link
+              to={`${studioUrl}/${url}`}
+              key={workId}
+              css={workContainer}
+              state={{ workId }}
+            >
+              <img
+                css={imgCss}
+                src={images.length > 1 ? images[1].imgPath : images[0].imgPath}
+                alt={`${workTitle} 썸네일`}
+              />
 
-            <div css={textContainer}>
-              <h1 css={textCss('title')}>{workTitle}</h1>
-              <h2 css={textCss('studio')}>{studioNm}</h2>
-            </div>
-          </Link>
-        );
-      })}
+              <div css={textContainer}>
+                <h1 css={textCss('title')}>{workTitle}</h1>
+                <h2 css={textCss('studio')}>{studioNm}</h2>
+              </div>
+            </Link>
+          );
+        })}
     </section>
   );
 };
@@ -45,6 +69,8 @@ const workListCss = css`
 
   @media (768px <=width < 1440px) {
     gap: 2rem;
+
+    padding-right: 39.2rem;
   }
 `;
 
@@ -55,28 +81,22 @@ const workContainer = css`
   @media (width < 768px) {
     gap: 1.2rem;
 
-    width: 16.6rem;
-    height: 21.8rem;
+    width: 48.5%;
+
+    /* max-width: 16.8rem; */
   }
 
   @media (768px <=width < 1440px) {
     gap: 1.4rem;
 
-    width: 16.8rem;
-    height: 22.2rem;
+    width: 48.5%;
+    max-width: 30.6rem;
+    min-width: 16.8rem;
   }
 `;
 
 const imgCss = css`
-  @media (width < 768px) {
-    width: 16.6rem;
-    height: 16.6rem;
-  }
-
-  @media (768px <=width < 1440px) {
-    width: 16.8rem;
-    height: 16.8rem;
-  }
+  width: 100%;
 
   object-fit: cover;
 `;

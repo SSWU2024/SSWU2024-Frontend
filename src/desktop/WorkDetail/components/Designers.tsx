@@ -2,23 +2,11 @@ import { css } from '@emotion/react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { colors, fonts } from '../../../styles/theme';
+import { renderEngName } from '../../../utils/renderEngName';
+import { updateStudioUrl } from '../../../utils/updateStudioUrl';
 import { DesignersProps } from '../types/workDetailTypes';
 
-const Designers = ({ designers }: DesignersProps) => {
-  // 서버에 데이터 제대로 들어가면 삭제예정
-  const images = [
-    {
-      imgPath:
-        'https://i.pinimg.com/236x/13/26/c1/1326c1f3ec2a54bfc0893a0c582360de.jpg',
-      fileFormat: 'jpeg',
-    },
-    {
-      imgPath:
-        'https://i.pinimg.com/originals/a0/89/e7/a089e759d7e713b4eba7b6cda87b6c8a.gif',
-      fileFormat: 'gif',
-    },
-  ];
-
+const Designers = ({ designers, currentWorkId }: DesignersProps) => {
   const [hoveredImg, setHoveredImg] = useState({
     hoveredTitle: '',
     hoveredName: '',
@@ -45,25 +33,25 @@ const Designers = ({ designers }: DesignersProps) => {
       <p css={designedByTitle}>Designed by</p>
       <div css={totalDesigners}>
         {designers.map((designer) => {
-          const { designerId, name, engName, email, works } = designer;
-          // 서버에 데이터 제대로 들어오면 이 코드로 대체 예정
-          // const { workId, workTitle, studioNm, images } = works[0];
-
-          const { workId, workTitle, studioNm } = works[0];
+          const { name, engName, email, works } = designer;
+          const { workId, workTitle, workEngTitle, studioNm, images } =
+            works.length === 2
+              ? works.filter((work) => work.workId !== currentWorkId)[0]
+              : works[0];
           const { imgPath } = images[0];
           const isHoveredImg =
             hoveredTitle === workTitle && hoveredName === name;
-          const designerUrl = engName.split(' ').join('-');
+          const studioUrl = updateStudioUrl(studioNm);
+          const workUrl = workEngTitle.trim().split(' ').join('-');
+          const url = `${studioUrl}/${workUrl}`;
+          const newEngName = renderEngName(engName);
 
           return (
             <article key={workId + name} css={designerInfoContainer}>
-              <Link
-                to={`/designers/${designerUrl}`}
-                state={{ designerId: designerId }}
-              >
+              <Link to={url} state={{ workId: workId }}>
                 <div css={designerInfo}>
                   <p css={designerKrName}>{name}</p>
-                  <p css={designerEngName}>{engName}</p>
+                  <p css={designerEngName}>{newEngName}</p>
                   <p css={designerEmail}>{email}</p>
                 </div>
                 <img

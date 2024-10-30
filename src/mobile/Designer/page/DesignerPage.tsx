@@ -1,15 +1,35 @@
 import { css } from '@emotion/react';
+import { useLocation } from 'react-router-dom';
+import useGetDesignerDetail from '../../../libs/hooks/useGetDesignerDetail';
 import { ImgBg3Mobile } from '../../assets/image';
 import PageLayout from '../../Common/PageLayout';
 import DesignerInfo from '../components/DesignerInfo';
 import Works from '../components/Works';
 
 const DesignerPage = () => {
+  const { designerId } = useLocation().state;
+  const { designerDetail, isLoading } = useGetDesignerDetail(designerId);
+  const { data } = !isLoading && designerDetail;
+
+  const { name, engName, major, email, instagram, behance, works } =
+    !isLoading && data;
+
   return (
     <PageLayout>
       <section css={designerContainer(ImgBg3Mobile)}>
-        <DesignerInfo />
-        <Works />
+        {!isLoading && (
+          <>
+            <DesignerInfo
+              name={name}
+              engName={engName}
+              major={major}
+              email={email}
+              instagram={instagram}
+              behance={behance}
+            />
+            <Works works={works} />
+          </>
+        )}
       </section>
     </PageLayout>
   );

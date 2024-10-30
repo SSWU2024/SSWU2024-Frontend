@@ -18,7 +18,7 @@ const WorksPage = () => {
               return (
                 <Link
                   to={url}
-                  state={{ studio, advisor, description, mobileImgSrc }}
+                  state={{ id, studio, advisor, description, mobileImgSrc }}
                   key={id}
                   css={detailContainer}
                 >
