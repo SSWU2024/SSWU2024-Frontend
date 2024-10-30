@@ -34,6 +34,8 @@ export const reset = css`
   body {
     min-width: 100vw;
     min-height: 100%;
+
+    min-height: -webkit-fill-available;
   }
 
   img,
