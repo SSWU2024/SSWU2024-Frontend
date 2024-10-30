@@ -3,12 +3,12 @@ import { QUERY_KEY } from '../../constants/queryKeys';
 import getWorkDetail from '../apis/getWorkDetail';
 
 const useGetWorkDetail = (workId: number) => {
-  const { data, isLoading, refetch } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: [QUERY_KEY.workDetail, workId],
     queryFn: async () => await getWorkDetail(workId),
   });
 
-  return { workDetail: data, isWorkDetailLoading: isLoading, refetch };
+  return { workDetail: data, isWorkDetailLoading: isLoading };
 };
 
 export default useGetWorkDetail;

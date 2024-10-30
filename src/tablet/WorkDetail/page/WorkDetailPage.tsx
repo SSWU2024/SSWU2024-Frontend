@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
 import PageLayout from '../../Common/PageLayout';
 
-import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import useGetWorkDesigners from '../../../libs/hooks/useGetWorkDesigners';
 import useGetWorkDetail from '../../../libs/hooks/useGetWorkDetail';
@@ -11,24 +10,9 @@ import WorkInfo from '../components/WorkInfo';
 
 const WorkDetailPage = () => {
   const { workId } = useLocation().state;
-  const {
-    workDetail,
-    isWorkDetailLoading,
-    refetch: refetchWorkDetail,
-  } = useGetWorkDetail(workId);
+  const { workDetail, isWorkDetailLoading } = useGetWorkDetail(workId);
 
-  const {
-    workDesigners,
-    isWorkDesignersLoading,
-    refetch: refetchWorkDesigners,
-  } = useGetWorkDesigners(workId);
-
-  useEffect(() => {
-    if (workId) {
-      refetchWorkDetail();
-      refetchWorkDesigners();
-    }
-  }, [workId, refetchWorkDetail, refetchWorkDesigners]);
+  const { workDesigners, isWorkDesignersLoading } = useGetWorkDesigners(workId);
 
   const { workTitle, workBody, workEngBody, workBanner, images } =
     !isWorkDetailLoading && workDetail.data;
