@@ -62,10 +62,10 @@ const TotalWorks = ({ id }: TotalWorksProps) => {
                 <img src={isHoveredGif ? hoveredSrc : imgPath} css={workImg} />
                 <p css={title(isHoveredImg)}>{workTitle}</p>
                 <div css={designerNameContainer}>
-                  {designers.map((designer) => {
+                  {designers.map((designer, idx) => {
                     const { name } = designer;
                     return (
-                      <p key={name} css={designerName(isHoveredImg)}>
+                      <p key={name + idx} css={designerName(isHoveredImg)}>
                         {name}
                       </p>
                     );
