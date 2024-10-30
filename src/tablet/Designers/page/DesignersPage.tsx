@@ -44,5 +44,5 @@ const text = css`
 
   color: ${colors.gray900};
 
-  ${fonts.tablet_title_reg_36};
+  ${fonts.tablet_title_med_36};
 `;
