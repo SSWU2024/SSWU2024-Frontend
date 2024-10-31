@@ -124,7 +124,10 @@ const workInfoContainer = css`
   gap: 0.4rem;
   flex-direction: column;
 
+  width: 100%;
   margin-top: 1.2rem;
+
+  text-align: left;
 `;
 
 const title = (isHoveredImg: boolean) => css`
