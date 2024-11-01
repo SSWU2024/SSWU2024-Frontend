@@ -120,14 +120,14 @@ const workImg = css`
 `;
 
 const workInfoContainer = css`
-  display: flex;
+  /* display: flex; */
   gap: 0.4rem;
   flex-direction: column;
 
-  width: 100%;
+  /* width: 100%; */
   margin-top: 1.2rem;
 
-  text-align: left;
+  direction: ltr;
 `;
 
 const title = (isHoveredImg: boolean) => css`
