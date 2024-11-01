@@ -5,36 +5,37 @@ import { DetailImagesProps } from '../types/workDetailTypes';
 const DetailImages = ({ images }: DetailImagesProps) => {
   return (
     <article css={workImages}>
-      {images.map((image) => {
-        const { sort, imgPath, fileFormat } = image;
-        const isVideo = fileFormat === 'video';
-        const splitedUrl = imgPath.split('/');
-        const specialId = splitedUrl[splitedUrl.length - 2];
-        const lastUrl = splitedUrl.pop();
-        const isYoutubeUrl = splitedUrl?.includes('watch');
-        const videoId =
-          isVideo &&
-          (isYoutubeUrl
-            ? lastUrl?.split('?')[1].split('=')[1]
-            : lastUrl?.split('?')[0]);
-        const videoSrc = isYoutubeUrl
-          ? `https://www.youtube.com/embed/${videoId}`
-          : specialId.length === 10
-            ? `https://player.vimeo.com/video/${specialId}?h=${videoId}`
-            : `https://player.vimeo.com/video/${videoId}`;
+      {images &&
+        images.map((image) => {
+          const { sort, imgPath, fileFormat } = image;
+          const isVideo = fileFormat === 'video';
+          const splitedUrl = imgPath.split('/');
+          const specialId = splitedUrl[splitedUrl.length - 2];
+          const lastUrl = splitedUrl.pop();
+          const isYoutubeUrl = splitedUrl?.includes('watch');
+          const videoId =
+            isVideo &&
+            (isYoutubeUrl
+              ? lastUrl?.split('?')[1].split('=')[1]
+              : lastUrl?.split('?')[0]);
+          const videoSrc = isYoutubeUrl
+            ? `https://www.youtube.com/embed/${videoId}`
+            : specialId.length === 10
+              ? `https://player.vimeo.com/video/${specialId}?h=${videoId}`
+              : `https://player.vimeo.com/video/${videoId}`;
 
-        return (
-          <React.Fragment key={sort + imgPath}>
-            {isVideo ? (
-              <div css={videoContainer}>
-                <iframe css={workVideo} src={videoSrc} />
-              </div>
-            ) : (
-              <img src={imgPath} css={workImg} />
-            )}
-          </React.Fragment>
-        );
-      })}
+          return (
+            <React.Fragment key={sort + imgPath}>
+              {isVideo ? (
+                <div css={videoContainer}>
+                  <iframe css={workVideo} src={videoSrc} />
+                </div>
+              ) : (
+                <img src={imgPath} css={workImg} />
+              )}
+            </React.Fragment>
+          );
+        })}
     </article>
   );
 };

@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import useGetWorkDesigners from '../../../libs/hooks/useGetWorkDesigners';
 import useGetWorkDetail from '../../../libs/hooks/useGetWorkDetail';
+import { setImages } from '../../../utils/setImages';
 import PageLayout from '../../Common/PageLayout';
 import Designers from '../components/Designers';
 import DetailImages from '../components/DetailImages';
@@ -17,6 +18,8 @@ const WorkDetailPage = () => {
   const { workTitle, workBody, workEngBody, workBanner, images } =
     !isWorkDetailLoading && workDetail.data;
   const designers = !isWorkDesignersLoading && workDesigners.data;
+
+  const sortImgArr = images && setImages(images);
 
   useEffect(() => {
     scrollTo({ top: 0, behavior: 'instant' });
@@ -33,7 +36,7 @@ const WorkDetailPage = () => {
             workBody={workBody}
             workEngBody={workEngBody}
           />
-          <DetailImages images={images} />
+          <DetailImages images={sortImgArr} />
           <Designers designers={designers} currentWorkId={workId} />
         </section>
       )}

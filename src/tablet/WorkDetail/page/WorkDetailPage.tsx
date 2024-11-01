@@ -4,6 +4,7 @@ import PageLayout from '../../Common/PageLayout';
 import { useLocation } from 'react-router-dom';
 import useGetWorkDesigners from '../../../libs/hooks/useGetWorkDesigners';
 import useGetWorkDetail from '../../../libs/hooks/useGetWorkDetail';
+import { setImages } from '../../../utils/setImages';
 import DesignerList from '../components/DesignerList';
 import WorkImage from '../components/WorkImage';
 import WorkInfo from '../components/WorkInfo';
@@ -17,6 +18,8 @@ const WorkDetailPage = () => {
   const { workTitle, workBody, workEngBody, workBanner, images } =
     !isWorkDetailLoading && workDetail.data;
   const designers = !isWorkDesignersLoading && workDesigners.data;
+
+  const sortImgArr = images && setImages(images);
 
   return (
     <PageLayout>
@@ -32,7 +35,7 @@ const WorkDetailPage = () => {
           engDescription={workEngBody}
           designers={designers}
         />
-        <WorkImage images={images} />
+        <WorkImage images={sortImgArr} />
         <DesignerList designers={designers} currentWorkId={workId} />
       </section>
     </PageLayout>

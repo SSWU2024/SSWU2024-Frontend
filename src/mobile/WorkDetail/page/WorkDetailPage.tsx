@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import { useLocation } from 'react-router-dom';
 import useGetWorkDesigners from '../../../libs/hooks/useGetWorkDesigners';
 import useGetWorkDetail from '../../../libs/hooks/useGetWorkDetail';
+import { setImages } from '../../../utils/setImages';
 import PageLayout from '../../Common/PageLayout';
 import DesignerList from '../components/DesignerList';
 import WorkImage from '../components/WorkImage';
@@ -17,6 +18,8 @@ const WorkDetailPage = () => {
     !isWorkDetailLoading && workDetail.data;
   const designers = !isWorkDesignersLoading && workDesigners.data;
 
+  const sortImgArr = images && setImages(images);
+
   return (
     <PageLayout>
       <section css={WorkDetailContainer}>
@@ -31,7 +34,7 @@ const WorkDetailPage = () => {
           engDescription={workEngBody}
           designers={designers}
         />
-        <WorkImage images={images} />
+        <WorkImage images={sortImgArr} />
         <DesignerList designers={designers} currentWorkId={workId} />
       </section>
     </PageLayout>
