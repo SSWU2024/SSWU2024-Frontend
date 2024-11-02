@@ -39,6 +39,7 @@ const Designers = ({ designers, currentWorkId }: DesignersProps) => {
               ? works.filter((work) => work.workId !== currentWorkId)[0]
               : works[0];
           const { imgPath } = images[0];
+          console.log(images);
           const isHoveredImg =
             hoveredTitle === workTitle && hoveredName === name;
           const studioUrl = updateStudioUrl(studioNm);
@@ -48,7 +49,7 @@ const Designers = ({ designers, currentWorkId }: DesignersProps) => {
 
           return (
             <article key={workId + name} css={designerInfoContainer}>
-              <Link to={url} state={{ workId: workId }}>
+              <Link to={`${url}-${workId}`}>
                 <div css={designerInfo}>
                   <p css={designerKrName}>{name}</p>
                   <p css={designerEngName}>{newEngName}</p>

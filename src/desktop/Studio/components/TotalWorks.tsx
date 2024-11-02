@@ -58,7 +58,7 @@ const TotalWorks = ({ id }: TotalWorksProps) => {
               onMouseEnter={() => handleHoverImg(images, workTitle)}
               onMouseLeave={handleLeaveImg}
             >
-              <Link to={url} state={{ workId: workId }}>
+              <Link to={`${url}-${workId}`}>
                 <img src={isHoveredGif ? hoveredSrc : imgPath} css={workImg} />
                 <p css={title(isHoveredImg)}>{workTitle}</p>
                 <div css={designerNameContainer}>
