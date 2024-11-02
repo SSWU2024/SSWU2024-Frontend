@@ -103,6 +103,7 @@ const imgCss = css`
 
 const textContainer = css`
   display: flex;
+  gap: 0.2rem;
   flex-direction: column;
 
   color: ${colors.gray900};

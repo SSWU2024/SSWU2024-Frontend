@@ -38,7 +38,11 @@ const Designers = ({ designers, currentWorkId }: DesignersProps) => {
             works.length === 2
               ? works.filter((work) => work.workId !== currentWorkId)[0]
               : works[0];
-          const { imgPath } = images[0];
+
+          const imgPath = images.find(
+            (image) => image.fileFormat !== 'gif',
+          )?.imgPath;
+          
           const isHoveredImg =
             hoveredTitle === workTitle && hoveredName === name;
           const studioUrl = updateStudioUrl(studioNm);

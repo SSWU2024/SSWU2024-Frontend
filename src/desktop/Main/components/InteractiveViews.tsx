@@ -295,7 +295,6 @@ const infoDetailContainer = css`
 
 const infoContainer = css`
   display: grid;
-  align-items: center;
   grid-template-columns: 1fr 2.22fr;
 `;
 

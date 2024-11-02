@@ -37,6 +37,7 @@ const globalCss = css`
   body {
     background-color: white;
     font-family: 'Pretendard Variable', Pretendard, sans-serif;
+    user-select: text;
   }
 
   ul,
