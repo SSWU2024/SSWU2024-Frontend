@@ -19,30 +19,34 @@ const WorkDetailPage = () => {
     parseInt(currentWorkId),
   );
 
+  const isLoading = isWorkDetailLoading || isWorkDesignersLoading;
+
   const { workTitle, workBody, workEngBody, workBanner, images } =
     !isWorkDetailLoading && workDetail.data;
   const designers = !isWorkDesignersLoading && workDesigners.data;
 
   return (
     <PageLayout>
-      <section css={WorkDetailContainer}>
-        <img
-          src={workBanner}
-          alt={`${workTitle}의 썸네일`}
-          css={thumbnailImg}
-        />
-        <WorkInfo
-          title={workTitle}
-          description={workBody}
-          engDescription={workEngBody}
-          designers={designers}
-        />
-        <WorkImage images={images} />
-        <DesignerList
-          designers={designers}
-          currentWorkId={parseInt(currentWorkId)}
-        />
-      </section>
+      {!isLoading && (
+        <section css={WorkDetailContainer}>
+          <img
+            src={workBanner}
+            alt={`${workTitle}의 썸네일`}
+            css={thumbnailImg}
+          />
+          <WorkInfo
+            title={workTitle.replace(/\\n/g, '\n')}
+            description={workBody.replace(/\\n/g, '\n')}
+            engDescription={workEngBody.replace(/\\n/g, '\n')}
+            designers={designers}
+          />
+          <WorkImage images={images} />
+          <DesignerList
+            designers={designers}
+            currentWorkId={parseInt(currentWorkId)}
+          />
+        </section>
+      )}
     </PageLayout>
   );
 };

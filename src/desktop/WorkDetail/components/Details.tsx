@@ -11,12 +11,12 @@ const Details = ({
   return (
     <article css={workDetail}>
       <div css={workInfo}>
-        <p css={title}>{workTitle}</p>
+        <p css={title}>{workTitle.replace(/\\n/g, '\n')}</p>
         <div css={designerContainer}>
-          {designers.map((designer) => {
+          {designers.map((designer, idx) => {
             const { name } = designer;
             return (
-              <p key={name} css={designerName}>
+              <p key={name + idx} css={designerName}>
                 {name}
               </p>
             );
@@ -24,8 +24,8 @@ const Details = ({
         </div>
       </div>
       <div css={workDescription}>
-        <p css={krDesc}>{workBody}</p>
-        <p css={engDesc}>{workEngBody}</p>
+        <p css={krDesc}>{workBody.replace(/\\n/g, '\n')}</p>
+        <p css={engDesc}>{workEngBody.replace(/\\n/g, '\n')}</p>
       </div>
     </article>
   );
@@ -52,6 +52,8 @@ const workInfo = css`
 const title = css`
   color: ${colors.gray900};
   ${fonts.desktop_title_semi_28};
+
+  white-space: pre-wrap;
 `;
 
 const designerContainer = css`

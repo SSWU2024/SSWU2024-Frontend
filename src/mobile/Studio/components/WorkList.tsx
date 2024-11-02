@@ -36,7 +36,7 @@ const WorkList = ({ id }: WorkListProps) => {
                 />
               </div>
               <div css={textCss}>
-                <h1 css={title}>{workTitle}</h1>
+                <h1 css={title}>{workTitle.replace(/\\n/g, '\n')}</h1>
                 <h2 css={name}>{designerList}</h2>
               </div>
             </Link>
@@ -127,11 +127,13 @@ const title = css`
   /* 모바일 */
   @media (width < 768px) {
     ${fonts.mobile_body_semi_14};
+    white-space: pre-wrap;
   }
 
   /* 태블릿 */
   @media (768px <= width < 1440px) {
     ${fonts.tablet_body_semi_16};
+    white-space: pre-wrap;
   }
 `;
 
