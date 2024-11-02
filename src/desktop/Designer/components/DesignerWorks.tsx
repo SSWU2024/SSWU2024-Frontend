@@ -119,6 +119,7 @@ const workImg = css`
 `;
 
 const workInfoContainer = css`
+  display: flex;
   gap: 0.4rem;
   flex-direction: column;
 
