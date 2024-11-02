@@ -39,7 +39,6 @@ const Designers = ({ designers, currentWorkId }: DesignersProps) => {
               ? works.filter((work) => work.workId !== currentWorkId)[0]
               : works[0];
           const { imgPath } = images[0];
-          console.log(images);
           const isHoveredImg =
             hoveredTitle === workTitle && hoveredName === name;
           const studioUrl = updateStudioUrl(studioNm);
