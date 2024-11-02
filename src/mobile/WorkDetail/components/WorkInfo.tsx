@@ -40,6 +40,7 @@ const mainCss = css`
     margin-bottom: 0.2rem;
 
     ${fonts.mobile_title_semi_20};
+    white-space: pre-wrap;
   }
 
   p:nth-of-type(1) {

@@ -11,7 +11,7 @@ const TotalDesigners = () => {
         const url = engName.split(' ').join('-');
 
         return (
-          <Link key={designerId} to={url} state={{ designerId: designerId }}>
+          <Link key={designerId} to={`${url}-${designerId}`}>
             <img src={imgPath} css={designerImg} />
           </Link>
         );
