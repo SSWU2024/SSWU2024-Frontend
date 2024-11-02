@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import PageLayout from '../../Common/PageLayout';
 
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import useGetWorkDesigners from '../../../libs/hooks/useGetWorkDesigners';
 import useGetWorkDetail from '../../../libs/hooks/useGetWorkDetail';
 import { setImages } from '../../../utils/setImages';
@@ -10,10 +10,16 @@ import WorkImage from '../components/WorkImage';
 import WorkInfo from '../components/WorkInfo';
 
 const WorkDetailPage = () => {
-  const { workId } = useLocation().state;
-  const { workDetail, isWorkDetailLoading } = useGetWorkDetail(workId);
+  const { workId } = useParams();
+  const currentWorkId = workId?.split('-')[workId?.split('-').length - 1];
+  if (!currentWorkId) return;
+  const { workDetail, isWorkDetailLoading } = useGetWorkDetail(
+    parseInt(currentWorkId),
+  );
 
-  const { workDesigners, isWorkDesignersLoading } = useGetWorkDesigners(workId);
+  const { workDesigners, isWorkDesignersLoading } = useGetWorkDesigners(
+    parseInt(currentWorkId),
+  );
 
   const { workTitle, workBody, workEngBody, workBanner, images } =
     !isWorkDetailLoading && workDetail.data;
@@ -36,7 +42,10 @@ const WorkDetailPage = () => {
           designers={designers}
         />
         <WorkImage images={sortImgArr} />
-        <DesignerList designers={designers} currentWorkId={workId} />
+        <DesignerList
+          designers={designers}
+          currentWorkId={parseInt(currentWorkId)}
+        />
       </section>
     </PageLayout>
   );
