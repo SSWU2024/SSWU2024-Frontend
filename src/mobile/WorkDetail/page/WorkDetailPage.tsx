@@ -33,8 +33,8 @@ const WorkDetailPage = () => {
         />
         <WorkInfo
           title={workTitle}
-          description={workBody}
-          engDescription={workEngBody}
+          description={workBody.replace(/\\n/g, '\n')}
+          engDescription={workEngBody.replace(/\\n/g, '\n')}
           designers={designers}
         />
         <WorkImage images={images} />

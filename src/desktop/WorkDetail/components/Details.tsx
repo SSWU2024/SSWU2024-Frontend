@@ -24,8 +24,8 @@ const Details = ({
         </div>
       </div>
       <div css={workDescription}>
-        <p css={krDesc}>{workBody}</p>
-        <p css={engDesc}>{workEngBody}</p>
+        <p css={krDesc}>{workBody.replace(/\\n/g, '\n')}</p>
+        <p css={engDesc}>{workEngBody.replace(/\\n/g, '\n')}</p>
       </div>
     </article>
   );
