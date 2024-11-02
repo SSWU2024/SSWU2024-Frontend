@@ -34,7 +34,7 @@ const Works = (props: worksProps) => {
 
           return (
             <Link
-              to={`${studioUrl}/${url}`}
+              to={`${studioUrl}/${url}-${workId}`}
               key={workId}
               css={workContainer}
               state={{ workId }}

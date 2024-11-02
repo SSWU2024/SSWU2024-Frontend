@@ -58,9 +58,11 @@ const TotalWorks = ({ id }: TotalWorksProps) => {
               onMouseEnter={() => handleHoverImg(images, workTitle)}
               onMouseLeave={handleLeaveImg}
             >
-              <Link to={url} state={{ workId: workId }}>
+              <Link to={`${url}-${workId}`}>
                 <img src={isHoveredGif ? hoveredSrc : imgPath} css={workImg} />
-                <p css={title(isHoveredImg)}>{workTitle}</p>
+                <p css={title(isHoveredImg)}>
+                  {workTitle.replace(/\\n/g, '\n')}
+                </p>
                 <div css={designerNameContainer}>
                   {designers.map((designer, idx) => {
                     const { name } = designer;
@@ -109,7 +111,9 @@ const title = (isHoveredImg: boolean) => css`
   margin-bottom: calc(100vh / 202.5);
 
   color: ${isHoveredImg ? colors.pink300 : colors.gray900};
+
   ${fonts.desktop_body_semi_20};
+  white-space: pre-wrap;
 `;
 
 const designerNameContainer = css`

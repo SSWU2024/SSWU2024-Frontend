@@ -48,7 +48,7 @@ const Designers = ({ designers, currentWorkId }: DesignersProps) => {
 
           return (
             <article key={workId + name} css={designerInfoContainer}>
-              <Link to={url} state={{ workId: workId }}>
+              <Link to={`${url}-${workId}`}>
                 <div css={designerInfo}>
                   <p css={designerKrName}>{name}</p>
                   <p css={designerEngName}>{newEngName}</p>
