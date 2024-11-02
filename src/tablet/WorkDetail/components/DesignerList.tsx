@@ -28,10 +28,9 @@ const DesignerList = ({ designers, currentWorkId }: DesignerListProps) => {
             const workUrl = workEngTitle.split(' ').join('-');
             return (
               <Link
-                to={`${studioUrl}/${workUrl}`}
+                to={`${studioUrl}/${workUrl}-${workId}`}
                 css={listCss}
                 key={workId}
-                state={{ workId: workId }}
               >
                 <div css={textInfo}>
                   <div css={nameSection}>

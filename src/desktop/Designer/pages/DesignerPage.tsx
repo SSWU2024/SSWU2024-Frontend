@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import useGetDesignerDetail from '../../../libs/hooks/useGetDesignerDetail';
 import { colors, fonts } from '../../../styles/theme';
 import { renderEngName } from '../../../utils/renderEngName';
@@ -9,8 +9,13 @@ import DesignerContact from '../components/DesignerContact';
 import DesignerWorks from '../components/DesignerWorks';
 
 const DesignerPage = () => {
-  const { designerId } = useLocation().state;
-  const { designerDetail, isLoading } = useGetDesignerDetail(designerId);
+  const designerName = useParams().name;
+  const designerId =
+    designerName?.split('-')[designerName?.split('-').length - 1];
+  if (!designerId) return;
+  const { designerDetail, isLoading } = useGetDesignerDetail(
+    parseInt(designerId),
+  );
   const { data } = !isLoading && designerDetail;
 
   const { name, engName, major, email, instagram, behance, works } =

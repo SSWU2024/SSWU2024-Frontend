@@ -40,6 +40,7 @@ const mainCss = css`
     margin-bottom: 0.8rem;
 
     ${fonts.desktop_title_semi_24};
+    white-space: pre-wrap;
   }
 
   p:nth-of-type(1) {
