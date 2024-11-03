@@ -7,25 +7,25 @@ import { DesignerWorksProps } from '../types/designerType';
 const DesignerWorks = ({ works }: DesignerWorksProps) => {
   const [hoveredImg, setHoveredImg] = useState({
     hoveredSrc: '',
-    hoveredUrl: '',
+    hoveredWorkId: 0,
   });
 
-  const { hoveredSrc, hoveredUrl } = hoveredImg;
+  const { hoveredSrc, hoveredWorkId } = hoveredImg;
 
   const handleHoverImg = (
     images: Array<{ imgPath: string; fileFormat: string }>,
-    url: string,
+    workId: number,
   ) => {
     if (images.length > 1) {
       const { imgPath } = images[1];
       setHoveredImg({
         hoveredSrc: imgPath,
-        hoveredUrl: url,
+        hoveredWorkId: workId,
       });
     } else {
       setHoveredImg({
         hoveredSrc: '',
-        hoveredUrl: url,
+        hoveredWorkId: workId,
       });
     }
   };
@@ -33,7 +33,7 @@ const DesignerWorks = ({ works }: DesignerWorksProps) => {
   const handleLeaveImg = () => {
     setHoveredImg({
       hoveredSrc: '',
-      hoveredUrl: '',
+      hoveredWorkId: 0,
     });
   };
 
@@ -72,14 +72,14 @@ const DesignerWorks = ({ works }: DesignerWorksProps) => {
         const { imgPath } = images[0];
         const studioUrl = updateStudioUrl(studioNm);
         const url = workEngTitle.trim().split(' ').join('-');
-        const isHoveredImg = url === hoveredUrl;
+        const isHoveredImg = workId === hoveredWorkId;
         const isHoveredGif = images.length > 1 && isHoveredImg;
 
         return (
           <Link
             key={workId}
             to={`${studioUrl}/${url}-${workId}`}
-            onMouseEnter={() => handleHoverImg(images, url)}
+            onMouseEnter={() => handleHoverImg(images, workId)}
             onMouseLeave={handleLeaveImg}
           >
             <img src={isHoveredGif ? hoveredSrc : imgPath} css={workImg} />
