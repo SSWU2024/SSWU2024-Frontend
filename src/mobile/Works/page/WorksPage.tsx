@@ -48,7 +48,10 @@ const worksContainer = (url: string) => css`
   flex-direction: column;
 
   width: 100%;
-  padding: 5.8rem 1.6rem 5.6rem;
+  min-height: 100dvh;
+
+  padding: 0 1.6rem 5.6rem;
+  margin-top: 5.8rem;
 
   background-position: top 5.8rem right 0;
   background-size: contain;

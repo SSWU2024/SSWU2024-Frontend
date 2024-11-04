@@ -35,7 +35,10 @@ const studioContainer = (url: string) => css`
   flex-direction: column;
 
   width: 100%;
-  padding: 7.4rem 1.6rem 10rem;
+  min-height: 100dvh;
+
+  padding: 1.6rem 1.6rem 10rem;
+  margin-top: 5.8rem;
 
   background-position: top 5.8rem right 0;
   background-size: contain;
