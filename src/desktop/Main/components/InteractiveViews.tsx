@@ -25,6 +25,7 @@ const InteractiveViews = () => {
     width: window.innerWidth,
     height: window.innerHeight,
   });
+  const [isLoading, setIsLoading] = useState(true);
 
   const { width, height } = resize;
 
@@ -36,12 +37,6 @@ const InteractiveViews = () => {
   const handleResize = () => {
     setResize({ width: window.innerWidth, height: window.innerHeight });
   };
-
-  useEffect(() => {
-    scrollY.onChange(() => {
-      console.log(scrollY.get(), scrollYProgress.get());
-    });
-  }, [scrollY, scrollYProgress]);
 
   const opacity = useTransform(scrollYProgress, [0.47, 0.53], [0, 1]);
   const scale = useTransform(scrollYProgress, [0.33, 0.4], [1, 1.8]);
@@ -84,17 +79,15 @@ const InteractiveViews = () => {
     };
   }, []);
 
-  const [isLoading, setIsLoading] = useState(false);
-
   return (
     <>
       <section css={imgContiner}>
         <img
           src={desktopMotionPoster}
           css={motionPoster}
-          onLoad={() => setIsLoading(true)}
+          onLoad={() => setIsLoading(false)}
         />
-        {isLoading && <div css={blankWindow}></div>}
+        {isLoading ? <div css={blankWindow} /> : null}
       </section>
 
       <section css={interactiveViewContainer}>
