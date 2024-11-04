@@ -46,7 +46,9 @@ const Works = (props: worksProps) => {
               />
 
               <div css={textContainer}>
-                <h1 css={textCss('title')}>{workTitle}</h1>
+                <h1 css={textCss('title')}>
+                  {workTitle.replace(/\\n/g, '\n')}
+                </h1>
                 <h2 css={textCss('studio')}>{studioNm}</h2>
               </div>
             </Link>
@@ -110,6 +112,8 @@ const textContainer = css`
 `;
 
 const textCss = (variant: 'title' | 'studio') => css`
+  white-space: pre-wrap;
+
   @media (width < 768px) {
     ${variant === 'title'
       ? fonts.mobile_body_semi_14

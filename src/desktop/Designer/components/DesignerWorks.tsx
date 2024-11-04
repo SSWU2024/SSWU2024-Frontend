@@ -84,7 +84,7 @@ const DesignerWorks = ({ works }: DesignerWorksProps) => {
           >
             <img src={isHoveredGif ? hoveredSrc : imgPath} css={workImg} />
             <div css={workInfoContainer}>
-              <p css={title(isHoveredImg)}>{workTitle}</p>
+              <p css={title(isHoveredImg)}>{workTitle.replace(/\\n/g, '\n')}</p>
               <p css={studioName(isHoveredImg)}>{studioNm}</p>
             </div>
           </Link>
@@ -130,6 +130,8 @@ const workInfoContainer = css`
 
 const title = (isHoveredImg: boolean) => css`
   color: ${isHoveredImg ? colors.pink300 : colors.gray900};
+
+  white-space: pre-wrap;
   ${fonts.desktop_body_semi_20};
 `;
 
