@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import useGetWorkDesigners from '../../../libs/hooks/useGetWorkDesigners';
 import useGetWorkDetail from '../../../libs/hooks/useGetWorkDetail';
@@ -9,6 +10,10 @@ import WorkImage from '../components/WorkImage';
 import WorkInfo from '../components/WorkInfo';
 
 const WorkDetailPage = () => {
+  useEffect(() => {
+    scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  });
+
   const { workId } = useParams();
   const currentWorkId = workId?.split('-')[workId?.split('-').length - 1];
   if (!currentWorkId) return;

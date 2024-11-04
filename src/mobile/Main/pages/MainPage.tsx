@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import PageLayout from '../../Common/PageLayout';
 
+import { useEffect } from 'react';
 import {
   mobileInteraction,
   MobileMotionPoster,
@@ -9,6 +10,10 @@ import CommitteeInfo from '../components/CommitteeInfo';
 import ExhibitionInfo from '../components/ExhibitionInfo';
 
 const MainPage = () => {
+  useEffect(() => {
+    scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  });
+
   return (
     <PageLayout>
       <div css={mainContainer}>
