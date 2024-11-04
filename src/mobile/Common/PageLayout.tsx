@@ -12,7 +12,7 @@ const PageLayout = (props: PageLayoutProps) => {
   return (
     <div css={pageLayoutCss}>
       <Header />
-      {children}
+      <div css={childerenCss}>{children}</div>
       <Footer />
     </div>
   );
@@ -25,4 +25,9 @@ const pageLayoutCss = css`
 
   width: 100%;
   min-height: 100dvh;
+`;
+
+const childerenCss = css`
+  width: 100%;
+  padding-top: 5.8rem;
 `;

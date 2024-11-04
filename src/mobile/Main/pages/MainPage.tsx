@@ -30,7 +30,6 @@ export default MainPage;
 
 const mainContainer = css`
   width: 100dvw;
-  padding-top: 5.8rem;
 `;
 
 const imgCss = css`
