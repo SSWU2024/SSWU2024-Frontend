@@ -58,7 +58,8 @@ const designerContainer = (url: string) => css`
 
   min-height: 100dvh;
 
-  padding: 8.8rem 1.6rem 9rem;
+  padding: 3rem 1.6rem 9rem;
+  margin-top: 5.8rem;
 
   background-position: top 5.8rem right 0;
   background-size: contain;

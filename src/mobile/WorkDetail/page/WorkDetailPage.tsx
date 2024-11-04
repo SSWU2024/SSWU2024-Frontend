@@ -68,7 +68,8 @@ const WorkDetailContainer = css`
   width: 100%;
   min-height: 100dvh;
 
-  padding: 5.8rem 0 10rem;
+  padding-bottom: 10rem;
+  margin-top: 5.8rem;
 `;
 
 const thumbnailImg = css`

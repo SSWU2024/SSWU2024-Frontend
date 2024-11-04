@@ -37,7 +37,8 @@ const studioContainer = (url: string) => css`
   width: 100%;
   min-height: 100dvh;
 
-  padding: 7.4rem 1.6rem 10rem;
+  padding: 1.6rem 1.6rem 10rem;
+  margin-top: 5.8rem;
 
   background-position: top 5.8rem right 0;
   background-size: contain;

@@ -70,9 +70,9 @@ const displayCss = css`
   flex-direction: column;
 
   width: 100%;
+  padding: 3.2rem 1.6rem 10rem;
+  margin-top: 5.8rem;
   min-height: 100dvh;
-
-  padding: 9rem 1.6rem 10rem;
 `;
 
 const studioCss = css`

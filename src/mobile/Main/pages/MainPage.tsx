@@ -32,7 +32,7 @@ const mainContainer = css`
   width: 100dvw;
   min-height: 100dvh;
 
-  padding-top: 5.8rem;
+  margin-top: 5.8rem;
 `;
 
 const imgCss = css`
