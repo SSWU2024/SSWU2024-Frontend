@@ -1,5 +1,4 @@
 import { css } from '@emotion/react';
-import { useEffect } from 'react';
 import Footer from './Footer';
 import Header from './Header';
 
@@ -8,10 +7,6 @@ interface PageLayoutProps {
 }
 
 const PageLayout = (props: PageLayoutProps) => {
-  useEffect(() => {
-    scrollTo({ top: Number('-5.8rem'), left: 0, behavior: 'instant' });
-  });
-
   const { children } = props;
 
   return (

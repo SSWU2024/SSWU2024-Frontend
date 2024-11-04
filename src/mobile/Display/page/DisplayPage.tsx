@@ -6,6 +6,10 @@ import { DISPLAY } from '../../constants/DISPLAY';
 import { imageType } from '../types/imageType';
 
 const DisplayPage = () => {
+  useEffect(() => {
+    scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  });
+
   const studio1ImageList = useRef<imageType[]>(); // studio 1 이미지 리스트
   const studio2ImageList = useRef<imageType[]>(); // studio 2 이미지 리스트
 

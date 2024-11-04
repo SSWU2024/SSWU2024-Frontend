@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { STUDIO_DETAILS } from '../../../constants/studioDetail';
 import { colors, fonts } from '../../../styles/theme';
@@ -6,6 +7,10 @@ import PageLayout from '../../Common/PageLayout';
 import { ImgBg2Mobile } from '../../assets/image';
 
 const WorksPage = () => {
+  useEffect(() => {
+    scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  });
+
   return (
     <PageLayout>
       <section css={worksContainer(ImgBg2Mobile)}>

@@ -3,10 +3,15 @@ import { useLocation } from 'react-router-dom';
 import { ImgBg2Mobile } from '../../assets/image';
 import PageLayout from '../../Common/PageLayout';
 
+import { useEffect } from 'react';
 import StudioInfoMobile from '../components/StudioInfo';
 import WorkList from '../components/WorkList';
 
 const StudioPage = () => {
+  useEffect(() => {
+    scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  });
+
   const { state } = useLocation();
   const id = state.id;
 

@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import useGetDesignerDetail from '../../../libs/hooks/useGetDesignerDetail';
 import { ImgBg3Mobile } from '../../assets/image';
@@ -18,6 +19,10 @@ const DesignerPage = () => {
 
   const { name, engName, major, email, instagram, behance, works } =
     !isLoading && data;
+
+  useEffect(() => {
+    scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  });
 
   return (
     <PageLayout>
