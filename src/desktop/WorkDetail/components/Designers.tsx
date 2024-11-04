@@ -16,7 +16,7 @@ const Designers = ({ designers, currentWorkId }: DesignersProps) => {
 
   const handleHoverImg = (workTitle: string, name: string) => {
     setHoveredImg({
-      hoveredTitle: workTitle,
+      hoveredTitle: workTitle.replace(/\\n/g, '\n'),
       hoveredName: name,
     });
   };
@@ -42,7 +42,7 @@ const Designers = ({ designers, currentWorkId }: DesignersProps) => {
           const imgPath = images.find(
             (image) => image.fileFormat !== 'gif',
           )?.imgPath;
-          
+
           const isHoveredImg =
             hoveredTitle === workTitle && hoveredName === name;
           const studioUrl = updateStudioUrl(studioNm);
@@ -165,6 +165,9 @@ const hoveredInfo = css`
 
 const hoveredWorkTitle = css`
   color: ${colors.white};
+
+  white-space: pre-wrap;
+
   ${fonts.desktop_body_semi_20};
 `;
 
