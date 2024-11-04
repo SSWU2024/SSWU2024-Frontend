@@ -12,12 +12,6 @@ interface work {
   images: { imgPath: string; fileFormat?: string };
 }
 
-interface image {
-  sort: number;
-  imgPath: string;
-  fileFormat?: string;
-}
-
 // WorkInfo.tsx
 export interface WorkInfoProps {
   title: string;
@@ -26,9 +20,12 @@ export interface WorkInfoProps {
   designers: designer[];
 }
 
-// WorkImage.tsx
 export interface WorkImageProps {
-  images: image[];
+  images: Array<{
+    sort: number;
+    imgPath: string;
+    fileFormat: string;
+  }>;
 }
 
 // DesignerList.tsx

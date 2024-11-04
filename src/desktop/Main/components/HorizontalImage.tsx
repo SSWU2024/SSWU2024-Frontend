@@ -3,7 +3,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { colors, fonts } from '../../../styles/theme';
-import { ImgPeople1, ImgPeople2 } from '../../assets/image';
+import { ImgBubble, ImgPeople1, ImgPeople2 } from '../../assets/image';
 gsap.registerPlugin(ScrollTrigger); //플러그인 꼭 연결해줘야함 안하면 스크롤 트리거가 작동이 안됨
 
 const HorizontalImage = () => {
@@ -51,6 +51,20 @@ const HorizontalImage = () => {
     });
   }, []);
 
+  useGSAP(() => {
+    gsap.to('.bubbleImage', {
+      scrollTrigger: {
+        trigger: '.image',
+        start: 'top 20%',
+        end: '250%',
+        toggleActions: 'restart pause reverse reverse',
+        scrub: 1,
+      },
+      ease: 'none',
+      yPercent: -130,
+    });
+  });
+
   return (
     <div css={container} id="containerTop">
       <section css={textSection} id="text" className="appear">
@@ -65,11 +79,13 @@ const HorizontalImage = () => {
           이는 우리 모두를 더 크고 의미 있는 흐름 속으로 이끌어 갑니다.
         </p>
       </section>
-
-      <div css={imgSection} className="imgSection">
+      <section css={imgSection} className="imgSection">
         <img src={ImgPeople1} className="image appear" css={imgCss} />
         <img src={ImgPeople2} className="image appear" css={imgCss} />
-      </div>
+      </section>
+      <section className="bubbleImage">
+        <img src={ImgBubble} alt="" />
+      </section>
     </div>
   );
 };

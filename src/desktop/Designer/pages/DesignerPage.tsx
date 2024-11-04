@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import useGetDesignerDetail from '../../../libs/hooks/useGetDesignerDetail';
 import { colors, fonts } from '../../../styles/theme';
 import { renderEngName } from '../../../utils/renderEngName';
@@ -9,8 +9,13 @@ import DesignerContact from '../components/DesignerContact';
 import DesignerWorks from '../components/DesignerWorks';
 
 const DesignerPage = () => {
-  const { designerId } = useLocation().state;
-  const { designerDetail, isLoading } = useGetDesignerDetail(designerId);
+  const designerName = useParams().name;
+  const designerId =
+    designerName?.split('-')[designerName?.split('-').length - 1];
+  if (!designerId) return;
+  const { designerDetail, isLoading } = useGetDesignerDetail(
+    parseInt(designerId),
+  );
   const { data } = !isLoading && designerDetail;
 
   const { name, engName, major, email, instagram, behance, works } =
@@ -21,9 +26,7 @@ const DesignerPage = () => {
   return (
     <PageLayout>
       {!isLoading && (
-        <section css={designerPageContainer}>
-          <img src={ImgBg3Web} css={bg} />
-
+        <section css={designerPageContainer(ImgBg3Web)}>
           <article css={basicInfo}>
             <p css={designerKrName}>{name}</p>
             <p css={designerEngName}>{newEngName}</p>
@@ -46,7 +49,7 @@ const DesignerPage = () => {
 
 export default DesignerPage;
 
-const designerPageContainer = css`
+const designerPageContainer = (imgUrl: string) => css`
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -58,18 +61,12 @@ const designerPageContainer = css`
 
   padding: calc(100vh / 10.125) calc(100% / 24) calc(100vh / 31.1538);
   margin-top: 5.2rem;
-`;
 
-const bg = css`
-  position: absolute;
-  top: 5.2rem;
-  left: 0;
-  z-index: -1;
-
-  min-height: calc(100vh - 10.4rem);
-
-  width: 100%;
-  height: 100%;
+  background-position: top 5.2rem right 0;
+  background-size: contain;
+  background-image: url(${imgUrl});
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 `;
 
 const basicInfo = css`

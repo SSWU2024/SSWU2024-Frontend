@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react';
 import { desktopMotionPoster } from '../../../constants/mainImgUrl';
 import { colors, fonts } from '../../../styles/theme';
 import { IcCircle } from '../../assets/icon';
-import { ImgBubble, ImgLight, ImgPosterWeb } from '../../assets/image';
+import { ImgLight, ImgPosterWeb } from '../../assets/image';
 import {
   DESCRIPTION,
   INFO_DETAIL,
@@ -27,15 +27,6 @@ const InteractiveViews = () => {
   });
 
   const { width, height } = resize;
-  const minHeight = 810;
-  const maxHeight = 2190;
-  const minValue = 100;
-  const maxValue = 300;
-
-  // 화면 높이에 따라 값이 비례해서 변하도록 선형 보간식 적용
-  const scrollValue =
-    maxValue -
-    ((height - minHeight) / (maxHeight - minHeight)) * (maxValue - minValue);
 
   const { scrollY } = useScroll();
   const { scrollYProgress } = useScroll();
@@ -46,17 +37,19 @@ const InteractiveViews = () => {
     setResize({ width: window.innerWidth, height: window.innerHeight });
   };
 
-  const y = useTransform(
-    scrollYProgress,
-    [0.2, 0.5],
-    [`${scrollValue}%`, `20%`],
-  );
-  const opacity = useTransform(scrollYProgress, [0.5, 0.55], [0, 1]);
-  const scale = useTransform(scrollYProgress, [0.3, 0.4], [1, 1.8]);
+  useEffect(() => {
+    scrollY.onChange(() => {
+      console.log(scrollY.get(), scrollYProgress.get());
+    });
+  }, [scrollY, scrollYProgress]);
+
+  const opacity = useTransform(scrollYProgress, [0.47, 0.53], [0, 1]);
+  const scale = useTransform(scrollYProgress, [0.33, 0.4], [1, 1.8]);
+
   const circleSize = useTransform(
     scrollYProgress,
     [0.35, 0.45],
-    ['1.3rem', `${width}px`],
+    ['2rem', `${width + width / 3}px`],
   );
 
   const smoothCircleSize = useSpring(circleSize, {
@@ -64,12 +57,6 @@ const InteractiveViews = () => {
     damping: 20,
     mass: 1,
   });
-
-  const bg = useTransform(
-    scrollYProgress,
-    [0.449, 0.45],
-    ['rgba(38, 74, 194, 0)', 'rgba(38, 74, 194, 1)'],
-  );
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     if (height / latest < 0.47) {
@@ -101,21 +88,12 @@ const InteractiveViews = () => {
     <>
       <section css={interactiveViewContainer}>
         <img src={desktopMotionPoster} css={motionPoster} />
-        <article css={individualsContainer}>
+        <article css={individualsContainer(height)}>
           <HorizontalImage />
-
-          {/* Bubble animation */}
-          <motion.img
-            className="bubble"
-            src={ImgBubble}
-            css={bubble}
-            style={{ y }}
-          />
         </article>
-
         {/* 빛 + 파란색 원이 커지는 부분 */}
-        <div css={lightContainer}>
-          <motion.img src={ImgLight} style={{ scale }} />
+        <motion.div css={lightContainer}>
+          <motion.img src={ImgLight} style={{ scale }} css={imgCss} />
 
           <motion.span
             css={icContainer}
@@ -123,14 +101,15 @@ const InteractiveViews = () => {
               width: smoothCircleSize,
               height: smoothCircleSize,
               position: 'absolute',
-              inset: 0,
-              margin: 'auto',
-              backgroundColor: bg,
+              marginLeft: `-${Number(smoothCircleSize) / 2}px`,
+              marginTop: `-${Number(smoothCircleSize) / 2}px`,
+              borderRadius: '50%',
+              transformOrigin: 'center',
             }}
           >
             <IcCircle />
           </motion.span>
-        </div>
+        </motion.div>
       </section>
 
       {/* 졸업 전시 정보 관련 섹션 */}
@@ -201,6 +180,7 @@ export default InteractiveViews;
 const interactiveViewContainer = css`
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 
   width: 100%;
 `;
@@ -210,17 +190,23 @@ const motionPoster = css`
   padding-top: 5.3rem;
 `;
 
-const individualsContainer = css`
+const individualsContainer = (h: number) => css`
   display: flex;
   align-items: center;
   flex-direction: column;
 
-  height: 200rem;
+  height: ${h <= 1080
+    ? '190rem'
+    : h < 1440
+      ? '200rem'
+      : h < 2160
+        ? '230rem'
+        : '280rem'};
 `;
 
-const bubble = css`
-  position: absolute;
-  top: calc(100vh / 1.62);
+const imgCss = css`
+  width: 100%;
+  padding-right: 2rem;
 `;
 
 const lightContainer = css`
@@ -249,7 +235,7 @@ const displayInfoContainer = css`
   flex-direction: column;
 
   width: 100vw;
-  padding: 18rem calc(100% / 4.1261) calc(100vh / 5.7857);
+  padding: 0 calc(100% / 4.1261) calc(100vh / 5.7857);
 `;
 
 const mainTitle = css`
@@ -295,7 +281,6 @@ const infoDetailContainer = css`
 
 const infoContainer = css`
   display: grid;
-  align-items: center;
   grid-template-columns: 1fr 2.22fr;
 `;
 

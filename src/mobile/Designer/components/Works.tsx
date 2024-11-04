@@ -34,7 +34,7 @@ const Works = (props: worksProps) => {
 
           return (
             <Link
-              to={`${studioUrl}/${url}`}
+              to={`${studioUrl}/${url}-${workId}`}
               key={workId}
               css={workContainer}
               state={{ workId }}
@@ -103,6 +103,7 @@ const imgCss = css`
 
 const textContainer = css`
   display: flex;
+  gap: 0.2rem;
   flex-direction: column;
 
   color: ${colors.gray900};
