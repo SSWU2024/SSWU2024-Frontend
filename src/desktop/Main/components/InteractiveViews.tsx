@@ -27,17 +27,6 @@ const InteractiveViews = () => {
   });
 
   const { width, height } = resize;
-  // const minHeight = 810;
-  // const maxHeight = 2190;
-  // const minValue = 100;
-  // const maxValue = 300;
-
-  // 화면 높이에 따라 값이 비례해서 변하도록 선형 보간식 적용
-  // const scrollValue =
-  //   maxValue -
-  //   ((height - minHeight) / (maxHeight - minHeight)) * (maxValue - minValue);
-
-  const ratio = getRatio(height);
 
   const { scrollY } = useScroll();
   const { scrollYProgress } = useScroll();
@@ -54,26 +43,12 @@ const InteractiveViews = () => {
     });
   }, [scrollY, scrollYProgress]);
 
-  function getRatio(height: number) {
-    if (height <= 870) {
-      return 0.3;
-    } else if (height <= 1080) {
-      return 0.0002381 * (height - 870) + 0.3;
-    } else if (height <= 1440) {
-      return 0.0000833 * (height - 1080) + 0.32;
-    } else if (height <= 2160) {
-      return 0.00004167 * (height - 1440) + 0.34;
-    } else {
-      return 0.35;
-    }
-  }
+  const opacity = useTransform(scrollYProgress, [0.47, 0.53], [0, 1]);
+  const scale = useTransform(scrollYProgress, [0.33, 0.4], [1, 1.8]);
 
-  const opacity = useTransform(scrollYProgress, [0.45, 0.5], [0, 1]);
-  const scale = useTransform(scrollYProgress, [ratio, ratio + 0.07], [1, 1.8]);
-  console.log(ratio);
   const circleSize = useTransform(
     scrollYProgress,
-    [ratio + 0.02, ratio + 0.09],
+    [0.35, 0.45],
     ['2rem', `${width + width / 3}px`],
   );
 
@@ -220,13 +195,13 @@ const individualsContainer = (h: number) => css`
   align-items: center;
   flex-direction: column;
 
-  height: ${h < 1080
-    ? '150rem'
+  height: ${h <= 1080
+    ? '190rem'
     : h < 1440
-      ? '170rem'
+      ? '200rem'
       : h < 2160
-        ? '200rem'
-        : '250rem'};
+        ? '230rem'
+        : '280rem'};
 `;
 
 const imgCss = css`
