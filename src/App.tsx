@@ -1,3 +1,4 @@
+import { css } from '@emotion/react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 import Router from './Router';
@@ -9,6 +10,9 @@ const App = () => {
 
   const handleResize = () => {
     setWidth(window.innerWidth);
+
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
   };
 
   useEffect(() => {
@@ -20,11 +24,17 @@ const App = () => {
   }, []);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <GlobalStyles />
-      <Router width={width} />
-    </QueryClientProvider>
+    <div css={wrapperCss}>
+      <QueryClientProvider client={queryClient}>
+        <GlobalStyles />
+        <Router width={width} />
+      </QueryClientProvider>
+    </div>
   );
 };
 
 export default App;
+
+const wrapperCss = css`
+  min-height: calc(var(--vh, 1vh) * 100);
+`;
