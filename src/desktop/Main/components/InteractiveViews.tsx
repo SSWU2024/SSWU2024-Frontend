@@ -84,10 +84,20 @@ const InteractiveViews = () => {
     };
   }, []);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   return (
     <>
+      <section css={imgContiner}>
+        <img
+          src={desktopMotionPoster}
+          css={motionPoster}
+          onLoad={() => setIsLoading(true)}
+        />
+        {isLoading && <div css={blankWindow}></div>}
+      </section>
+
       <section css={interactiveViewContainer}>
-        <img src={desktopMotionPoster} css={motionPoster} />
         <article css={individualsContainer(height)}>
           <HorizontalImage />
         </article>
@@ -176,6 +186,16 @@ const InteractiveViews = () => {
 };
 
 export default InteractiveViews;
+
+const imgContiner = css`
+  width: 100dvw;
+  height: 100dvh;
+`;
+
+const blankWindow = css`
+  width: 100dvw;
+  height: 100dvh;
+`;
 
 const interactiveViewContainer = css`
   display: flex;
