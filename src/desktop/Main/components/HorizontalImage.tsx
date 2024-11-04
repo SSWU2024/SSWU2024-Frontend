@@ -56,7 +56,7 @@ const HorizontalImage = () => {
       scrollTrigger: {
         trigger: '.image',
         start: 'top 20%',
-        end: '240%',
+        end: '250%',
         toggleActions: 'restart pause reverse reverse',
         scrub: 1,
       },
