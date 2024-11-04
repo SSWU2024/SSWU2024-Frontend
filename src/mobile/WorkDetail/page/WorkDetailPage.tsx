@@ -66,7 +66,9 @@ const WorkDetailContainer = css`
   flex-direction: column;
 
   width: 100%;
-  padding-bottom: 10rem;
+  min-height: 100dvh;
+
+  padding: 5.8rem 0 10rem;
 `;
 
 const thumbnailImg = css`
