@@ -49,7 +49,7 @@ const TotalWorks = ({ id }: TotalWorksProps) => {
           const { imgPath } = images[0];
           const isHoveredGif = hoveredSrc && workTitle === hovredTitle;
           const isHoveredImg = workTitle === hovredTitle;
-          const url = workEngTitle.trim().split(' ').join('-');
+          const url = workEngTitle.replace('?', '').trim().split(' ').join('-');
 
           return (
             <article

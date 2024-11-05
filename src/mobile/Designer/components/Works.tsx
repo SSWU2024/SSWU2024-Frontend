@@ -30,7 +30,7 @@ const Works = (props: worksProps) => {
         works.map((work) => {
           const { workId, workTitle, workEngTitle, studioNm, images } = work;
           const studioUrl = updateStudioUrl(studioNm);
-          const url = workEngTitle.trim().split(' ').join('-');
+          const url = workEngTitle.replace('?', '').trim().split(' ').join('-');
 
           return (
             <Link

@@ -20,7 +20,7 @@ const WorkList = ({ id }: WorkListProps) => {
           const { workId, workTitle, designers, images, workEngTitle } = work;
 
           const { imgPath } = images.length === 2 ? images[1] : images[0];
-          const url = workEngTitle.split(' ').join('-');
+          const url = workEngTitle.replace('?', '').split(' ').join('-');
 
           const designerList = designers
             .map((designer) => designer.name)

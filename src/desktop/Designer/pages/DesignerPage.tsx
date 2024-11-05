@@ -57,10 +57,9 @@ const designerPageContainer = (imgUrl: string) => css`
 
   width: 100%;
 
-  min-height: calc(100vh - 10.4rem);
+  min-height: calc(100vh - 5.2em);
 
-  padding: calc(100vh / 10.125) calc(100% / 24) calc(100vh / 31.1538);
-  margin-top: 5.2rem;
+  padding: calc(100vh / 6.1364) calc(100% / 24) calc(100vh / 31.1538);
 
   background-position: top 5.2rem right 0;
   background-size: contain;

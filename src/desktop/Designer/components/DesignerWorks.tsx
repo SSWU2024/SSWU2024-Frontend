@@ -71,7 +71,7 @@ const DesignerWorks = ({ works }: DesignerWorksProps) => {
         const { workId, workTitle, workEngTitle, studioNm, images } = work;
         const { imgPath } = images[0];
         const studioUrl = updateStudioUrl(studioNm);
-        const url = workEngTitle.trim().split(' ').join('-');
+        const url = workEngTitle.replace('?', '').trim().split(' ').join('-');
         const isHoveredImg = workId === hoveredWorkId;
         const isHoveredGif = images.length > 1 && isHoveredImg;
 
