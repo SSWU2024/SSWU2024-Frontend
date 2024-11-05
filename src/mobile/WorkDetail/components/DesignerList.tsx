@@ -41,7 +41,7 @@ const DesignerList = ({ designers, currentWorkId }: DesignerListProps) => {
               images.length === 2 ? images[1].imgPath : images[0].imgPath;
 
             const studioUrl = updateStudioUrl(studioNm);
-            const workUrl = workEngTitle.split(' ').join('-');
+            const workUrl = workEngTitle.replace('?', '').split(' ').join('-');
 
             return (
               <Link

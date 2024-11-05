@@ -46,7 +46,7 @@ const Designers = ({ designers, currentWorkId }: DesignersProps) => {
           const isHoveredImg =
             hoveredTitle === workTitle && hoveredName === name;
           const studioUrl = updateStudioUrl(studioNm);
-          const workUrl = workEngTitle.trim().split(' ').join('-');
+          const workUrl = workEngTitle.replace('?', '').trim().split(' ').join('-');
           const url = `${studioUrl}/${workUrl}`;
           const newEngName = renderEngName(engName);
 
