@@ -13,7 +13,7 @@ const WorkImage = ({ images }: WorkImageProps) => {
           const splitedUrl = imgPath.split('/');
           const specialId = splitedUrl[splitedUrl.length - 2];
           const lastUrl = splitedUrl.pop();
-          const isYoutubeUrl = splitedUrl?.includes('watch');
+          const isYoutubeUrl = splitedUrl[2].includes('youtube');
           const videoId =
             isVideo &&
             (isYoutubeUrl
