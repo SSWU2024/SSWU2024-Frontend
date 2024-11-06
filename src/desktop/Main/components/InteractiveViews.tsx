@@ -10,8 +10,7 @@ import {
 import { useEffect, useState } from 'react';
 import { desktopMotionPoster } from '../../../constants/mainImgUrl';
 import { colors, fonts } from '../../../styles/theme';
-import { IcCircle } from '../../assets/icon';
-import { ImgLight, ImgPosterWeb } from '../../assets/image';
+import { ImgCircle, ImgLight, ImgPosterWeb } from '../../assets/image';
 import {
   DESCRIPTION,
   INFO_DETAIL,
@@ -110,7 +109,7 @@ const InteractiveViews = () => {
               transformOrigin: 'center',
             }}
           >
-            <IcCircle />
+            <img src={ImgCircle} />
           </motion.span>
         </motion.div>
       </section>
