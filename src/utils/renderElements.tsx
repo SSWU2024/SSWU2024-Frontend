@@ -1,5 +1,6 @@
 import DesktopDesignerPage from '../desktop/Designer/pages/DesignerPage';
 import DesktopDesignersPage from '../desktop/Designers/pages/DesignersPage';
+import DesktopDisplayPage from '../desktop/Displays/pages/DisplayPages';
 import DesktopMainPage from '../desktop/Main/pages/MainPage';
 import DesktopStudioPage from '../desktop/Studio/pages/StudioPage';
 import DesktopWorkDetailPage from '../desktop/WorkDetail/pages/WorkDetailPage';
@@ -7,6 +8,7 @@ import DesktopWorksPage from '../desktop/Works/pages/WorksPage';
 
 import MobileDesignerPage from '../mobile/Designer/page/DesignerPage';
 import MobileDesignersPage from '../mobile/Designers/page/DesignersPage';
+import MobileDisplayPage from '../mobile/Display/page/DisplayPage';
 import MobileMainPage from '../mobile/Main/pages/MainPage';
 import MobileStudioPage from '../mobile/Studio/page/StudioPage';
 import MobileWorkDetailPage from '../mobile/WorkDetail/page/WorkDetailPage';
@@ -14,6 +16,7 @@ import MobileWorksPage from '../mobile/Works/page/WorksPage';
 
 import TabletDesignerPage from '../tablet/Designer/page/DesignerPage';
 import TabletDesignersPage from '../tablet/Designers/page/DesignersPage';
+import TabletDisplayPage from '../tablet/Display/page/DisplayPage';
 import TabletMainPage from '../tablet/Main/page/MainPage';
 import TabletStudioPage from '../tablet/Studio/page/StudioPage';
 import TabletWorkDetailPage from '../tablet/WorkDetail/page/WorkDetailPage';
@@ -63,7 +66,6 @@ export const workDetailPageElement = (width: number) =>
   renderPageElement({
     width,
     mobile: <MobileWorkDetailPage />,
-
     tablet: <TabletWorkDetailPage />,
     desktop: <DesktopWorkDetailPage />,
   });
@@ -82,4 +84,12 @@ export const designerPageElement = (width: number) =>
     mobile: <MobileDesignerPage />,
     tablet: <TabletDesignerPage />,
     desktop: <DesktopDesignerPage />,
+  });
+
+export const displayPageElement = (width: number) =>
+  renderPageElement({
+    width,
+    mobile: <MobileDisplayPage />,
+    tablet: <TabletDisplayPage />,
+    desktop: <DesktopDisplayPage />,
   });

@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import {
   designerPageElement,
   designersPageElement,
+  displayPageElement,
   mainPageElement,
   studioPageElement,
   workDetailPageElement,
@@ -16,8 +17,7 @@ const Router = ({ width }: { width: number }) => {
     { path: '/works', element: worksPageElement(width) },
     { path: '/designers', element: designersPageElement(width) },
     { path: '/designers/:name', element: designerPageElement(width) },
-
-    // { path: '/displays', element: <DisplayPages /> },
+    { path: '/display', element: displayPageElement(width) },
   ]);
 
   return <RouterProvider router={router} />;
