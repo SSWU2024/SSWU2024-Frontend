@@ -3,5 +3,4 @@ export interface imageType {
   imgNm: string;
   sort: number;
   imgPath: string;
-  fileFormat: string;
 }
