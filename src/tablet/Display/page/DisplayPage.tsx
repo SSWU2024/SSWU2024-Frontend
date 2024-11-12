@@ -55,7 +55,7 @@ const DisplayPage = () => {
             <h1 css={titleText}>가온전시실</h1>
             <p css={subText}>
               디자인씽킹스튜디오, 시각디자인스튜디오, 정보경험디자인스튜디오,
-              공간연출디자인스튜디오
+              공간디자인스튜디오
             </p>
           </div>
           <ul css={imgList}>
@@ -104,7 +104,7 @@ const DisplayPage = () => {
         <div css={studioCss}>
           <div css={textCss}>
             <h1 css={titleText}>파이룸</h1>
-            <p css={subText}>모션그래픽스스튜디오, 공간디자인스튜디오</p>
+            <p css={subText}>모션그래픽스스튜디오, 공간연출디자인스튜디오</p>
           </div>
           <ul css={imgList}>
             <li css={col1Css}>
