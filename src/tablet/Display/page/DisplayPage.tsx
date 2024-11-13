@@ -215,21 +215,21 @@ const col1Css = css`
   img:nth-of-type(1) {
     min-height: 13.909rem;
 
-    height: calc(100vh / 3.15);
+    height: calc(70vh / 3.15);
     object-fit: cover;
   }
 
   img:nth-of-type(2) {
     min-height: 14.236rem;
 
-    height: calc(100vh / 3.15);
+    height: calc(70vh / 3.15);
     object-fit: cover;
   }
 
   img:nth-of-type(3) {
     min-height: 15.055rem;
 
-    height: calc(100vh / 2.98);
+    height: calc(70vh / 2.98);
     object-fit: cover;
   }
 `;
@@ -244,14 +244,14 @@ const col2Css = css`
   img:first-of-type {
     min-height: 25.2rem;
 
-    height: calc(100vh / 1.77);
+    height: calc(70vh / 1.77);
     object-fit: cover;
   }
 
   img:last-of-type {
     min-height: 18.7rem;
 
-    height: calc(100vh / 2.39);
+    height: calc(70vh / 2.39);
     object-fit: cover;
   }
 `;
@@ -266,14 +266,14 @@ const col3Css = css`
   img:nth-of-type(1) {
     min-height: 22.4rem;
 
-    height: calc(100vh / 2);
+    height: calc(70vh / 2);
     object-fit: cover;
   }
 
   img:nth-of-type(2) {
     min-height: 21.6rem;
 
-    height: calc(100vh / 2.07);
+    height: calc(70vh / 2.07);
     object-fit: cover;
   }
 `;
