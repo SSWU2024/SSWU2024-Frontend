@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import DisplayModal from '../../../components/DisplayModal';
 import useGetDisplay from '../../../libs/hooks/useGetDisplay';
 import { imageType } from '../../../mobile/Display/types/imageType';
@@ -10,6 +10,10 @@ import DisplayInfo from '../components/DisplayInfo';
 import { STUDIO_LIST } from '../constants/studioList';
 
 const DisplayPages = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
+
   const { display, isLoading } = useGetDisplay();
   const displays = !isLoading && display.data;
 
