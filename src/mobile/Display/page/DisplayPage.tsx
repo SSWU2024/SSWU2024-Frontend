@@ -1,8 +1,8 @@
 import { css } from '@emotion/react';
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
+import useGetDisplay from '../../../libs/hooks/useGetDisplay';
 import { colors, fonts } from '../../../styles/theme';
 import PageLayout from '../../Common/PageLayout';
-import { DISPLAY } from '../../constants/DISPLAY';
 import { imageType } from '../types/imageType';
 
 const DisplayPage = () => {
@@ -10,54 +10,53 @@ const DisplayPage = () => {
     scrollTo({ top: 0, left: 0, behavior: 'instant' });
   });
 
-  const studio1ImageList = useRef<imageType[]>(); // studio 1 이미지 리스트
-  const studio2ImageList = useRef<imageType[]>(); // studio 2 이미지 리스트
+  const { display, isLoading } = useGetDisplay();
 
-  useEffect(() => {
-    studio1ImageList.current = DISPLAY[0].images;
-    studio2ImageList.current = DISPLAY[1].images;
-  }, []);
-
-  const StudioImages1 =
-    DISPLAY.find((item) => item.displayId === 1)?.images || [];
-
-  const StudioImages2 =
-    DISPLAY.find((item) => item.displayId === 2)?.images || [];
+  const studio1Images = !isLoading && display.data[0].images;
+  const studio2Images = !isLoading && display.data[1].images;
 
   return (
-    <PageLayout>
-      <section css={displayCss}>
-        <div css={studioCss}>
-          <div css={textCss}>
-            <h1 css={titleText}>가온전시실</h1>
-            <p css={subText}>
-              디자인씽킹스튜디오, 시각디자인스튜디오,
-              <br />
-              정보경험디자인스튜디오, 공간디자인스튜디오
-            </p>
-          </div>
-          <ul css={imgCss}>
-            {StudioImages1.map((item) => {
-              const { imgId, imgPath } = item;
-              return <img key={imgId} src={imgPath} alt="가온전시실 이미지" />;
-            })}
-          </ul>
-        </div>
+    <>
+      {!isLoading && (
+        <PageLayout>
+          <section css={displayCss}>
+            <div css={studioCss}>
+              <div css={textCss}>
+                <h1 css={titleText}>가온전시실</h1>
+                <p css={subText}>
+                  디자인씽킹스튜디오, 시각디자인스튜디오,
+                  <br />
+                  정보경험디자인스튜디오, 공간디자인스튜디오
+                </p>
+              </div>
+              <ul css={imgCss}>
+                {studio1Images.map((item: imageType) => {
+                  const { imgId, imgPath } = item;
+                  return (
+                    <img key={imgId} src={imgPath} alt="가온전시실 이미지" />
+                  );
+                })}
+              </ul>
+            </div>
 
-        <div css={studioCss}>
-          <div css={textCss}>
-            <h1 css={titleText}>파이룸</h1>
-            <p css={subText}>모션그래픽스스튜디오, 공간연출디자인스튜디오</p>
-          </div>
-          <ul css={imgCss}>
-            {StudioImages2.map((item) => {
-              const { imgId, imgPath } = item;
-              return <img key={imgId} src={imgPath} alt="파이룸 이미지" />;
-            })}
-          </ul>
-        </div>
-      </section>
-    </PageLayout>
+            <div css={studioCss}>
+              <div css={textCss}>
+                <h1 css={titleText}>파이룸</h1>
+                <p css={subText}>
+                  모션그래픽스스튜디오, 공간연출디자인스튜디오
+                </p>
+              </div>
+              <ul css={imgCss}>
+                {studio2Images.map((item: imageType) => {
+                  const { imgId, imgPath } = item;
+                  return <img key={imgId} src={imgPath} alt="파이룸 이미지" />;
+                })}
+              </ul>
+            </div>
+          </section>
+        </PageLayout>
+      )}
+    </>
   );
 };
 
