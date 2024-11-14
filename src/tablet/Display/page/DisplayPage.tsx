@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import DisplayModal from '../../../components/DisplayModal';
 import useGetDisplay from '../../../libs/hooks/useGetDisplay';
 import { imageType } from '../../../mobile/Display/types/imageType';
@@ -7,6 +7,10 @@ import { colors, fonts } from '../../../styles/theme';
 import PageLayout from '../../Common/PageLayout';
 
 const DisplayPage = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  });
+
   const [isOpen, setIsOpen] = useState(false); // 모달 open / close 관리
 
   const [selectImg, setSelectedImg] = useState(0);
