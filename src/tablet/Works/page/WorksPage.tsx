@@ -44,7 +44,7 @@ const worksContainer = (url: string) => css`
   width: 100%;
   min-height: calc(100dvh - 2.4rem - 10rem);
 
-  padding: 5.6rem 2.4rem calc(100dvh - 97.9rem);
+  padding: 5.6rem 2.4rem 10rem;
 
   background-position: top 5.6rem right 0;
   background-size: contain;
