@@ -18,11 +18,10 @@ const renderPageElement = ({
   const MemoizedComponent = useMemo(() => {
     const { mobile, tablet, desktop } = page;
 
-    if (width < 768)
-      return lazy(() => import(/* @vite-ignore */ `../mobile/${mobile}`));
+    if (width < 768) return lazy(() => import(`../mobile/${mobile}`));
     if (width >= 768 && width < 1440)
-      return lazy(() => import(/* @vite-ignore */ `../tablet/${tablet}`));
-    return lazy(() => import(/* @vite-ignore */ `../desktop/${desktop}`));
+      return lazy(() => import(`../tablet/${tablet}`));
+    return lazy(() => import(`../desktop/${desktop}`));
   }, [width, page]);
 
   return (
