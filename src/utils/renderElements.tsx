@@ -1,26 +1,59 @@
-import DesktopDesignerPage from '../desktop/Designer/pages/DesignerPage';
-import DesktopDesignersPage from '../desktop/Designers/pages/DesignersPage';
-import DesktopDisplayPage from '../desktop/Displays/pages/DisplayPages';
-import DesktopMainPage from '../desktop/Main/pages/MainPage';
-import DesktopStudioPage from '../desktop/Studio/pages/StudioPage';
-import DesktopWorkDetailPage from '../desktop/WorkDetail/pages/WorkDetailPage';
-import DesktopWorksPage from '../desktop/Works/pages/WorksPage';
+import { lazy, Suspense } from 'react';
 
-import MobileDesignerPage from '../mobile/Designer/page/DesignerPage';
-import MobileDesignersPage from '../mobile/Designers/page/DesignersPage';
-import MobileDisplayPage from '../mobile/Display/page/DisplayPage';
-import MobileMainPage from '../mobile/Main/pages/MainPage';
-import MobileStudioPage from '../mobile/Studio/page/StudioPage';
-import MobileWorkDetailPage from '../mobile/WorkDetail/page/WorkDetailPage';
-import MobileWorksPage from '../mobile/Works/page/WorksPage';
+// Desktop
+const DesktopDesignerPage = lazy(
+  () => import('../desktop/Designer/pages/DesignerPage'),
+);
+const DesktopDesignersPage = lazy(
+  () => import('../desktop/Designers/pages/DesignersPage'),
+);
+const DesktopDisplayPage = lazy(
+  () => import('../desktop/Displays/pages/DisplayPages'),
+);
+const DesktopMainPage = lazy(() => import('../desktop/Main/pages/MainPage'));
+const DesktopStudioPage = lazy(
+  () => import('../desktop/Studio/pages/StudioPage'),
+);
+const DesktopWorkDetailPage = lazy(
+  () => import('../desktop/WorkDetail/pages/WorkDetailPage'),
+);
+const DesktopWorksPage = lazy(() => import('../desktop/Works/pages/WorksPage'));
 
-import TabletDesignerPage from '../tablet/Designer/page/DesignerPage';
-import TabletDesignersPage from '../tablet/Designers/page/DesignersPage';
-import TabletDisplayPage from '../tablet/Display/page/DisplayPage';
-import TabletMainPage from '../tablet/Main/page/MainPage';
-import TabletStudioPage from '../tablet/Studio/page/StudioPage';
-import TabletWorkDetailPage from '../tablet/WorkDetail/page/WorkDetailPage';
-import TabletWorksPage from '../tablet/Works/page/WorksPage';
+// Mobile
+const MobileDesignerPage = lazy(
+  () => import('../mobile/Designer/page/DesignerPage'),
+);
+const MobileDesignersPage = lazy(
+  () => import('../mobile/Designers/page/DesignersPage'),
+);
+const MobileDisplayPage = lazy(
+  () => import('../mobile/Display/page/DisplayPage'),
+);
+const MobileMainPage = lazy(() => import('../mobile/Main/pages/MainPage'));
+const MobileStudioPage = lazy(() => import('../mobile/Studio/page/StudioPage'));
+const MobileWorkDetailPage = lazy(
+  () => import('../mobile/WorkDetail/page/WorkDetailPage'),
+);
+const MobileWorksPage = lazy(() => import('../mobile/Works/page/WorksPage'));
+
+// Tablet
+const TabletDesignerPage = lazy(
+  () => import('../tablet/Designer/page/DesignerPage'),
+);
+const TabletDesignersPage = lazy(
+  () => import('../tablet/Designers/page/DesignersPage'),
+);
+const TabletDisplayPage = lazy(
+  () => import('../tablet/Display/page/DisplayPage'),
+);
+const TabletMainPage = lazy(() => import('../tablet/Main/page/MainPage'));
+const TabletStudioPage = lazy(() => import('../tablet/Studio/page/StudioPage'));
+const TabletWorkDetailPage = lazy(
+  () => import('../tablet/WorkDetail/page/WorkDetailPage'),
+);
+const TabletWorksPage = lazy(() => import('../tablet/Works/page/WorksPage'));
+
+const Loading = () => <div>Loading...</div>;
 
 const renderPageElement = ({
   width,
@@ -33,9 +66,11 @@ const renderPageElement = ({
   tablet: React.ReactNode;
   desktop: React.ReactNode;
 }) => {
-  if (width < 768) return mobile;
-  else if (width >= 768 && width < 1440) return tablet;
-  else return desktop;
+  return (
+    <Suspense fallback={<Loading />}>
+      {width < 768 ? mobile : width >= 768 && width < 1440 ? tablet : desktop}
+    </Suspense>
+  );
 };
 
 export const mainPageElement = (width: number) =>
