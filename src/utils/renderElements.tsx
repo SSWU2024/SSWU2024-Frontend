@@ -1,32 +1,74 @@
-import { lazy, Suspense, useMemo } from 'react';
+import { lazy, Suspense } from 'react';
+
+// Desktop
+const DesktopDesignerPage = lazy(
+  () => import('../desktop/Designer/pages/DesignerPage'),
+);
+const DesktopDesignersPage = lazy(
+  () => import('../desktop/Designers/pages/DesignersPage'),
+);
+const DesktopDisplayPage = lazy(
+  () => import('../desktop/Displays/pages/DisplayPages'),
+);
+const DesktopMainPage = lazy(() => import('../desktop/Main/pages/MainPage'));
+const DesktopStudioPage = lazy(
+  () => import('../desktop/Studio/pages/StudioPage'),
+);
+const DesktopWorkDetailPage = lazy(
+  () => import('../desktop/WorkDetail/pages/WorkDetailPage'),
+);
+const DesktopWorksPage = lazy(() => import('../desktop/Works/pages/WorksPage'));
+
+// Mobile
+const MobileDesignerPage = lazy(
+  () => import('../mobile/Designer/page/DesignerPage'),
+);
+const MobileDesignersPage = lazy(
+  () => import('../mobile/Designers/page/DesignersPage'),
+);
+const MobileDisplayPage = lazy(
+  () => import('../mobile/Display/page/DisplayPage'),
+);
+const MobileMainPage = lazy(() => import('../mobile/Main/pages/MainPage'));
+const MobileStudioPage = lazy(() => import('../mobile/Studio/page/StudioPage'));
+const MobileWorkDetailPage = lazy(
+  () => import('../mobile/WorkDetail/page/WorkDetailPage'),
+);
+const MobileWorksPage = lazy(() => import('../mobile/Works/page/WorksPage'));
+
+// Tablet
+const TabletDesignerPage = lazy(
+  () => import('../tablet/Designer/page/DesignerPage'),
+);
+const TabletDesignersPage = lazy(
+  () => import('../tablet/Designers/page/DesignersPage'),
+);
+const TabletDisplayPage = lazy(
+  () => import('../tablet/Display/page/DisplayPage'),
+);
+const TabletMainPage = lazy(() => import('../tablet/Main/page/MainPage'));
+const TabletStudioPage = lazy(() => import('../tablet/Studio/page/StudioPage'));
+const TabletWorkDetailPage = lazy(
+  () => import('../tablet/WorkDetail/page/WorkDetailPage'),
+);
+const TabletWorksPage = lazy(() => import('../tablet/Works/page/WorksPage'));
 
 const Loading = () => <div>Loading...</div>;
 
-type Pagetype = {
-  mobile: string;
-  tablet: string;
-  desktop: string;
-};
-
 const renderPageElement = ({
   width,
-  page,
+  mobile,
+  tablet,
+  desktop,
 }: {
   width: number;
-  page: Pagetype;
+  mobile: React.ReactNode;
+  tablet: React.ReactNode;
+  desktop: React.ReactNode;
 }) => {
-  const MemoizedComponent = useMemo(() => {
-    const { mobile, tablet, desktop } = page;
-
-    if (width < 768) return lazy(() => import(`../mobile/${mobile}`));
-    if (width >= 768 && width < 1440)
-      return lazy(() => import(`../tablet/${tablet}`));
-    return lazy(() => import(`../desktop/${desktop}`));
-  }, [width, page]);
-
   return (
     <Suspense fallback={<Loading />}>
-      <MemoizedComponent />
+      {width < 768 ? mobile : width >= 768 && width < 1440 ? tablet : desktop}
     </Suspense>
   );
 };
@@ -34,69 +76,55 @@ const renderPageElement = ({
 export const mainPageElement = (width: number) =>
   renderPageElement({
     width,
-    page: {
-      mobile: 'Main/pages/MainPage',
-      tablet: 'Main/page/MainPage',
-      desktop: 'Main/pages/MainPage',
-    },
+    mobile: <MobileMainPage />,
+    tablet: <TabletMainPage />,
+    desktop: <DesktopMainPage />,
   });
 
 export const studioPageElement = (width: number) =>
   renderPageElement({
     width,
-    page: {
-      mobile: 'Studio/page/StudioPage',
-      tablet: 'Studio/page/StudioPage',
-      desktop: 'Studio/pages/StudioPage',
-    },
+    mobile: <MobileStudioPage />,
+    tablet: <TabletStudioPage />,
+    desktop: <DesktopStudioPage />,
   });
 
 export const worksPageElement = (width: number) =>
   renderPageElement({
     width,
-    page: {
-      mobile: 'Works/page/WorksPage',
-      tablet: 'Works/page/WorksPage',
-      desktop: 'Works/pages/WorksPage',
-    },
+    mobile: <MobileWorksPage />,
+    tablet: <TabletWorksPage />,
+    desktop: <DesktopWorksPage />,
   });
 
 export const workDetailPageElement = (width: number) =>
   renderPageElement({
     width,
-    page: {
-      mobile: 'WorkDetail/page/WorkDetailPage',
-      tablet: 'WorkDetail/page/WorkDetailPage',
-      desktop: 'WorkDetail/pages/WorkDetailPage',
-    },
+    mobile: <MobileWorkDetailPage />,
+    tablet: <TabletWorkDetailPage />,
+    desktop: <DesktopWorkDetailPage />,
   });
 
 export const designersPageElement = (width: number) =>
   renderPageElement({
     width,
-    page: {
-      mobile: 'Designers/page/DesignersPage',
-      tablet: 'Designers/page/DesignersPage',
-      desktop: 'Designers/pages/DesignersPage',
-    },
+    mobile: <MobileDesignersPage />,
+    tablet: <TabletDesignersPage />,
+    desktop: <DesktopDesignersPage />,
   });
 
 export const designerPageElement = (width: number) =>
   renderPageElement({
     width,
-    page: {
-      mobile: 'Designer/page/DesignerPage',
-      tablet: 'Designer/page/DesignerPage',
-      desktop: 'Designer/pages/DesignerPage',
-    },
+    mobile: <MobileDesignerPage />,
+    tablet: <TabletDesignerPage />,
+    desktop: <DesktopDesignerPage />,
   });
 
 export const displayPageElement = (width: number) =>
   renderPageElement({
     width,
-    page: {
-      mobile: 'Display/page/DisplayPage',
-      tablet: 'Display/page/DisplayPage',
-      desktop: 'Displays/pages/DisplayPages',
-    },
+    mobile: <MobileDisplayPage />,
+    tablet: <TabletDisplayPage />,
+    desktop: <DesktopDisplayPage />,
   });
