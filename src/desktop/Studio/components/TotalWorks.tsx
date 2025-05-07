@@ -59,7 +59,11 @@ const TotalWorks = ({ id }: TotalWorksProps) => {
               onMouseLeave={handleLeaveImg}
             >
               <Link to={`${url}-${workId}`}>
-                <img src={isHoveredGif ? hoveredSrc : imgPath} css={workImg} />
+                <img
+                  src={isHoveredGif ? hoveredSrc : imgPath}
+                  css={workImg}
+                  loading="lazy"
+                />
                 <p css={title(isHoveredImg)}>
                   {workTitle.replace(/\\n/g, '\n')}
                 </p>

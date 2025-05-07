@@ -33,6 +33,7 @@ const WorkList = ({ id }: WorkListProps) => {
                   css={imgCss}
                   src={imgPath}
                   alt={`${workTitle}의 썸네일 이미지`}
+                  loading="lazy"
                 />
               </div>
               <div css={textCss}>
